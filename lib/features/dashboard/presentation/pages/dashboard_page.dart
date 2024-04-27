@@ -1,3 +1,5 @@
+import 'package:charge_route/features/dashboard/presentation/widgets/search_bar.dart';
+import 'package:charge_route/features/shared/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -11,7 +13,9 @@ class DashboardPage extends StatelessWidget {
     String time = DateFormat.yMMMd().format(now);
 
     return Scaffold(
+      //extendBodyBehindAppBar: true,
       backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
+      appBar: const CustomAppBar(),
       body: SafeArea(
         //top container with title and search bar
         child: Column(
@@ -35,7 +39,7 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       Text(
                         'Welcome to',
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.kanit(
                           color: Colors.black87,
                           fontSize: 20,
                         ),
@@ -61,7 +65,7 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       Text(
                         'ChargeRoute',
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.kanit(
                           color: Colors.black,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -74,26 +78,14 @@ class DashboardPage extends StatelessWidget {
                     height: 15,
                   ),
                   // search bar
-                  Container(
-                    padding: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(244, 243, 243, 1),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Colors.black87,
-                        ),
-                        hintText: 'Where are we going today?',
-                        hintStyle: GoogleFonts.lato(
-                          color: Colors.grey,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
+                  const DashboardSearchBar(
+                    hintText: 'Where are we going today?',
+                    titleText: 'Your current location',
+                  ),
+                  const SizedBox(height: 15),
+                  const DashboardSearchBar(
+                    hintText: 'Where are we going today?',
+                    titleText: 'Your destined location',
                   ),
                 ],
               ),
