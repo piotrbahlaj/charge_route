@@ -1,5 +1,7 @@
 import 'package:charge_route/features/dashboard/presentation/widgets/search_bar.dart';
+import 'package:charge_route/features/dashboard/presentation/widgets/search_button.dart';
 import 'package:charge_route/features/shared/app_bar.dart';
+import 'package:charge_route/features/shared/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -13,7 +15,7 @@ class DashboardPage extends StatelessWidget {
     String time = DateFormat.yMMMd().format(now);
 
     return Scaffold(
-      //extendBodyBehindAppBar: true,
+      bottomNavigationBar: const CustomNavigationBar(),
       backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
       appBar: const CustomAppBar(),
       body: SafeArea(
@@ -22,7 +24,7 @@ class DashboardPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
               width: double.infinity,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -79,14 +81,17 @@ class DashboardPage extends StatelessWidget {
                   ),
                   // search bar
                   const DashboardSearchBar(
-                    hintText: 'Where are we going today?',
                     titleText: 'Your current location',
+                    hintText: 'Enter the starting location',
                   ),
                   const SizedBox(height: 15),
                   const DashboardSearchBar(
-                    hintText: 'Where are we going today?',
                     titleText: 'Your destined location',
+                    hintText: 'Where are we going today?',
                   ),
+                  const SizedBox(height: 30),
+                  // search button
+                  const DashboardSearchButton(),
                 ],
               ),
             ),
