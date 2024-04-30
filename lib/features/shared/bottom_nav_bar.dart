@@ -16,21 +16,21 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       currentIndex: _currentIndex,
       onTap: (i) => setState(() => _currentIndex = i),
       items: [
-        /// Home
+        // Dashboard
         SalomonBottomBarItem(
           icon: const Icon(Icons.home),
           title: const Text('Dashboard'),
           selectedColor: Colors.grey[800],
         ),
 
-        /// Likes
+        // Car details
         SalomonBottomBarItem(
           icon: const Icon(Icons.car_crash),
           title: const Text('Car details'),
           selectedColor: Colors.blueGrey,
         ),
 
-        /// Profile
+        // Settings
         SalomonBottomBarItem(
           icon: const Icon(Icons.settings),
           title: const Text('Settings'),

@@ -20,6 +20,9 @@ dependencies:
   bloc: ^8.1.4
   font_awesome_flutter: ^10.7.0
   salomon_bottom_bar: ^3.3.2
+  location: ^6.0.1
+  flutter_polyline_points: ^2.0.0
+  google_maps_flutter: ^2.5.3
 
 dev_dependencies:
   flutter_test:
