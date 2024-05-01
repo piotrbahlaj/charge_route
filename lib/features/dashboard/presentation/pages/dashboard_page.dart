@@ -1,3 +1,4 @@
+import 'package:charge_route/features/dashboard/presentation/widgets/dashboard_map.dart';
 import 'package:charge_route/features/dashboard/presentation/widgets/search_bar.dart';
 import 'package:charge_route/features/dashboard/presentation/widgets/search_button.dart';
 import 'package:charge_route/features/shared/app_bar.dart';
@@ -95,6 +96,7 @@ class DashboardPage extends StatelessWidget {
                 ],
               ),
             ),
+            const DashBoardMap(),
           ],
         ),
       ),
