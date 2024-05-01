@@ -17,7 +17,7 @@ class DashboardPage extends StatelessWidget {
 
     return Scaffold(
       bottomNavigationBar: const CustomNavigationBar(),
-      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
+      backgroundColor: const Color.fromRGBO(244, 243, 243, 0.98),
       appBar: const CustomAppBar(),
       body: SafeArea(
         //top container with title and search bar

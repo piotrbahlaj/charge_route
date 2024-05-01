@@ -13,6 +13,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return SalomonBottomBar(
+      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
       currentIndex: _currentIndex,
       onTap: (i) => setState(() => _currentIndex = i),
       items: [

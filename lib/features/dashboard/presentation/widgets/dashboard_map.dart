@@ -8,11 +8,30 @@ class DashBoardMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: sourceLocation,
-          zoom: 14.5,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+              top: Radius.circular(30),
+            ),
+          ),
+          child: const ClipRRect(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+              top: Radius.circular(30),
+            ),
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: sourceLocation,
+                zoom: 14.5,
+              ),
+            ),
+          ),
         ),
       ),
     );
