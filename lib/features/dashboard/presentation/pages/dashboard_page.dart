@@ -2,7 +2,6 @@ import 'package:charge_route/features/dashboard/presentation/widgets/dashboard_m
 import 'package:charge_route/features/dashboard/presentation/widgets/search_bar.dart';
 import 'package:charge_route/features/dashboard/presentation/widgets/search_button.dart';
 import 'package:charge_route/features/shared/app_bar.dart';
-import 'package:charge_route/features/shared/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -16,8 +15,7 @@ class DashboardPage extends StatelessWidget {
     String time = DateFormat.yMMMd().format(now);
 
     return Scaffold(
-      bottomNavigationBar: const CustomNavigationBar(),
-      backgroundColor: const Color.fromRGBO(244, 243, 243, 0.98),
+      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
       appBar: const CustomAppBar(),
       body: SafeArea(
         //top container with title and search bar

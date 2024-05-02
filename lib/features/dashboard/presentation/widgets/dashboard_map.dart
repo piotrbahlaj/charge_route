@@ -10,7 +10,7 @@ class DashBoardMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(13.0),
         child: Container(
           width: double.infinity,
           decoration: const BoxDecoration(
@@ -20,16 +20,22 @@ class DashBoardMap extends StatelessWidget {
               top: Radius.circular(30),
             ),
           ),
-          child: const ClipRRect(
-            borderRadius: BorderRadius.vertical(
+          child: ClipRRect(
+            borderRadius: const BorderRadius.vertical(
               bottom: Radius.circular(30),
               top: Radius.circular(30),
             ),
             child: GoogleMap(
-              initialCameraPosition: CameraPosition(
+              initialCameraPosition: const CameraPosition(
                 target: sourceLocation,
-                zoom: 14.5,
+                zoom: 15,
               ),
+              markers: {
+                const Marker(
+                  markerId: MarkerId('source'),
+                  position: sourceLocation,
+                ),
+              },
             ),
           ),
         ),

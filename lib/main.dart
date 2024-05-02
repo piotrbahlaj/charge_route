@@ -1,4 +1,4 @@
-import 'package:charge_route/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:charge_route/%20core/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +10,9 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
-      home: DashboardPage(),
     );
   }
 }
