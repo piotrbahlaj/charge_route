@@ -20,7 +20,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return SalomonBottomBar(
-      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
+      backgroundColor: Theme.of(context).colorScheme.background,
       currentIndex: _currentIndex,
       onTap: (i) {
         setState(() => _currentIndex = i);
@@ -32,21 +32,24 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         SalomonBottomBarItem(
           icon: const Icon(Icons.home),
           title: const Text('Dashboard'),
-          selectedColor: Colors.grey[800],
+          selectedColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedColor: Theme.of(context).colorScheme.onSecondary,
         ),
 
         // Car details
         SalomonBottomBarItem(
           icon: const Icon(Icons.car_crash),
           title: const Text('Car details'),
-          selectedColor: Colors.blueGrey,
+          selectedColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedColor: Theme.of(context).colorScheme.onSecondary,
         ),
 
         // Settings
         SalomonBottomBarItem(
           icon: const Icon(Icons.settings),
           title: const Text('Settings'),
-          selectedColor: Colors.blueAccent,
+          selectedColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedColor: Theme.of(context).colorScheme.onSecondary,
         ),
       ],
     );

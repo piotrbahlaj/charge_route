@@ -9,7 +9,7 @@ class DashboardSearchButton extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.blueGrey[400], // button color
+        color: Theme.of(context).colorScheme.onSecondary,
       ),
       child: ElevatedButton(
         onPressed: () {
@@ -22,12 +22,12 @@ class DashboardSearchButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
           child: Text(
             'Find the route',
             style: TextStyle(
-              color: Colors.white, //tText color
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

@@ -13,9 +13,9 @@ class DashBoardMap extends StatelessWidget {
         padding: const EdgeInsets.all(13.0),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: const BorderRadius.vertical(
               bottom: Radius.circular(30),
               top: Radius.circular(30),
             ),

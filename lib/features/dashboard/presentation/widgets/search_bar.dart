@@ -24,7 +24,7 @@ class DashboardSearchBar extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: const Color.fromRGBO(244, 243, 243, 1),
+            color: Theme.of(context).colorScheme.background,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
@@ -32,13 +32,13 @@ class DashboardSearchBar extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.search,
-                    color: Colors.black87,
+                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
                   hintText: hintText,
                   hintStyle: GoogleFonts.lato(
-                    color: Colors.grey,
+                    color: Theme.of(context).colorScheme.onBackground,
                     fontSize: 15,
                   ),
                 ),

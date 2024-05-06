@@ -15,7 +15,7 @@ class DashboardPage extends StatelessWidget {
     String time = DateFormat.yMMMd().format(now);
 
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: const CustomAppBar(),
       body: SafeArea(
         //top container with title and search bar
@@ -25,9 +25,9 @@ class DashboardPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
               width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(30),
                 ),
               ),
@@ -41,7 +41,7 @@ class DashboardPage extends StatelessWidget {
                       Text(
                         'Welcome to',
                         style: GoogleFonts.kanit(
-                          color: Colors.black87,
+                          color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: 20,
                         ),
                       ),
@@ -51,11 +51,11 @@ class DashboardPage extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color.fromRGBO(244, 243, 243, 1),
+                            color: Theme.of(context).colorScheme.background,
                           ),
-                          child: const Icon(
+                          child: Icon(
                             Icons.notifications,
-                            color: Colors.black87,
+                            color: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
                       )
@@ -67,7 +67,7 @@ class DashboardPage extends StatelessWidget {
                       Text(
                         'ChargeRoute',
                         style: GoogleFonts.kanit(
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onPrimary,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
