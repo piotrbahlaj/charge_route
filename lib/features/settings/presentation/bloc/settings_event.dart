@@ -6,3 +6,9 @@ abstract class SettingsEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class ToggleThemeEvent extends SettingsEvent {
+  final bool isDarkMode;
+
+  const ToggleThemeEvent({required this.isDarkMode});
+}
