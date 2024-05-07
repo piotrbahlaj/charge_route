@@ -8,3 +8,12 @@ abstract class SettingsState extends Equatable {
 }
 
 final class SettingsInitial extends SettingsState {}
+
+class SettingsThemeUpdated extends SettingsState {
+  final bool isDarkMode;
+
+  const SettingsThemeUpdated({required this.isDarkMode});
+
+  @override
+  List<Object> get props => [isDarkMode];
+}

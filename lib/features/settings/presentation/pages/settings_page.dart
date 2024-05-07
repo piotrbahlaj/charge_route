@@ -1,4 +1,7 @@
+import 'package:charge_route/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -20,14 +23,21 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ListTile(
-              title: const Text('Theme'),
-              trailing: Switch(
-                value: false,
-                onChanged: (value) {},
-              ),
-              onTap: () {
-                // Navigate to theme settings page
+            BlocBuilder<SettingsBloc, SettingsState>(
+              builder: (context, state) {
+                final isDarkMode =
+                    (state is SettingsThemeUpdated) ? state.isDarkMode : false;
+                return ListTile(
+                  title: const Text('Theme'),
+                  trailing: Switch(
+                    value: isDarkMode,
+                    onChanged: (value) {
+                      BlocProvider.of<SettingsBloc>(context).add(
+                        ToggleThemeEvent(value),
+                      );
+                    },
+                  ),
+                );
               },
             ),
             const Divider(),
@@ -43,7 +53,7 @@ class SettingsPage extends StatelessWidget {
               title: const Text('About'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
-                // Navigate to about page
+                GoRouter.of(context).go('/about');
               },
             ),
             const Divider(),

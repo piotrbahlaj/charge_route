@@ -9,6 +9,5 @@ abstract class SettingsEvent extends Equatable {
 
 class ToggleThemeEvent extends SettingsEvent {
   final bool isDarkMode;
-
-  const ToggleThemeEvent({required this.isDarkMode});
+  const ToggleThemeEvent(this.isDarkMode);
 }

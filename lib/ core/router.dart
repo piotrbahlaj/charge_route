@@ -1,3 +1,4 @@
+import 'package:charge_route/features/about/about_page.dart';
 import 'package:charge_route/features/bottom_navigation_bar/presentation/bottom_nav_bar.dart';
 import 'package:charge_route/features/car_details/presentation/pages/car_details_page.dart';
 import 'package:charge_route/features/dashboard/presentation/pages/dashboard_page.dart';
@@ -30,6 +31,11 @@ final router = GoRouter(
           builder: (context, state) => const SettingsPage(),
         ),
       ],
+    ),
+    // about page
+    GoRoute(
+      path: '/about',
+      builder: (context, state) => const AboutPage(),
     ),
   ],
 );
