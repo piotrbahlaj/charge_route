@@ -12,6 +12,8 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def googleMapsApiKey = localProperties.getProperty('google_maps_api_key')
+
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -49,6 +51,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders = [googleMapsApiKey: googleMapsApiKey]
     }
 
     buildTypes {

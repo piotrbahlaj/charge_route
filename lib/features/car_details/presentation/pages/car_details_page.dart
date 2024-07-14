@@ -20,14 +20,11 @@ class CarDetailsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             const CarDetailsTextField(
                 labelText: 'Car Model', hintText: 'Enter your car model'),
             const SizedBox(height: 30),
-            const CarDetailsTextField(
-                labelText: 'Battery Info (kWh)',
-                hintText: 'Enter battery capacity'),
-            const SizedBox(height: 30),
+
             // Add more text fields for additional car details
           ],
         ),

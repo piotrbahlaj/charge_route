@@ -42,7 +42,7 @@ class SettingsPage extends StatelessWidget {
             ),
             const Divider(),
             ListTile(
-              title: const Text('Notifications'),
+              title: const Text('Language'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
                 // Navigate to notifications settings page
@@ -53,7 +53,7 @@ class SettingsPage extends StatelessWidget {
               title: const Text('About'),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
-                GoRouter.of(context).go('/about');
+                GoRouter.of(context).push('/about');
               },
             ),
             const Divider(),

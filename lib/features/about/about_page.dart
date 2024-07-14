@@ -6,6 +6,7 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = GoRouter.of(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 70),
@@ -16,7 +17,7 @@ class AboutPage extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    GoRouter.of(context).go('/settings');
+                    router.pop(context);
                   },
                 ),
                 const SizedBox(width: 10),
