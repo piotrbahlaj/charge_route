@@ -28,7 +28,7 @@ class Main extends StatelessWidget {
             darkTheme: AppTheme.darkTheme,
             themeMode: (state is SettingsThemeUpdated)
                 ? (state.isDarkMode ? ThemeMode.dark : ThemeMode.light)
-                : ThemeMode.system,
+                : ThemeMode.light,
           );
         },
       ),

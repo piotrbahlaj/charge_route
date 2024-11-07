@@ -1,10 +1,59 @@
+import 'package:charge_route/%20core/location_service.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class DashBoardMap extends StatelessWidget {
+class DashBoardMap extends StatefulWidget {
   const DashBoardMap({super.key});
-  static const LatLng sourceLocation =
-      LatLng(37.42796133580664, -122.085749655962);
+
+  @override
+  State<DashBoardMap> createState() => _DashBoardMapState();
+}
+
+class _DashBoardMapState extends State<DashBoardMap> {
+  GoogleMapController? _controller;
+  LatLng? _currentPosition;
+  Stream<Position>? _positionStream;
+
+  @override
+  void initState() {
+    super.initState();
+    _startLocationTracking();
+  }
+
+  @override
+  void dispose() {
+    _positionStream?.listen((_) {}).cancel();
+    super.dispose();
+  }
+
+  Future<void> _startLocationTracking() async {
+    final locationService = LocationService();
+
+    // Get initial location
+    Position initialPosition = await locationService.getCurrentLocation();
+    setState(() {
+      _currentPosition = LatLng(initialPosition.latitude, initialPosition.longitude);
+    });
+
+    // Move the camera to the initial position
+    _controller?.animateCamera(CameraUpdate.newLatLng(_currentPosition!));
+
+    // Start listening to the position stream for real-time updates
+    _positionStream = Geolocator.getPositionStream(
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+    );
+
+    _positionStream!.listen((Position position) {
+      LatLng newPosition = LatLng(position.latitude, position.longitude);
+      setState(() {
+        _currentPosition = newPosition;
+      });
+
+      // Animate the camera to the new position
+      _controller?.animateCamera(CameraUpdate.newLatLng(newPosition));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +74,19 @@ class DashBoardMap extends StatelessWidget {
               bottom: Radius.circular(30),
               top: Radius.circular(30),
             ),
-            child: GoogleMap(
-              initialCameraPosition: const CameraPosition(
-                target: sourceLocation,
-                zoom: 15,
-              ),
-              markers: {
-                const Marker(
-                  markerId: MarkerId('source'),
-                  position: sourceLocation,
-                ),
-              },
-            ),
+            child: _currentPosition == null
+                ? Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.onPrimary))
+                : GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: _currentPosition!,
+                      zoom: 14,
+                    ),
+                    myLocationEnabled: true,
+                    myLocationButtonEnabled: true,
+                    onMapCreated: (controller) {
+                      _controller = controller;
+                    },
+                  ),
           ),
         ),
       ),

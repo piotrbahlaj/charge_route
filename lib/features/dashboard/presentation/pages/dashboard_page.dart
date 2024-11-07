@@ -15,7 +15,7 @@ class DashboardPage extends StatelessWidget {
     String time = DateFormat.yMMMd().format(now);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: const CustomAppBar(),
       body: SafeArea(
         //top container with title and search bar
@@ -51,7 +51,7 @@ class DashboardPage extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                           ),
                           child: Icon(
                             Icons.notifications,

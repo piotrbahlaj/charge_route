@@ -5,8 +5,8 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light().copyWith(
-      background: const Color.fromRGBO(244, 243, 243, 1),
-      onBackground: Colors.grey,
+      surface: const Color.fromRGBO(244, 243, 243, 1),
+      onSurface: Colors.grey[800],
       primary: Colors.white,
       onPrimary: Colors.black87,
       secondary: Colors.grey[800],
@@ -17,8 +17,8 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark().copyWith(
-      background: const Color.fromARGB(255, 55, 54, 54),
-      onBackground: Colors.white70,
+      surface: const Color.fromARGB(255, 55, 54, 54),
+      onSurface: Colors.white70,
       primary: const Color.fromARGB(221, 27, 25, 25),
       onPrimary: Colors.white,
       secondary: Colors.grey[300],

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardSearchBar extends StatelessWidget {
-  const DashboardSearchBar(
-      {super.key, required this.hintText, required this.titleText});
+  const DashboardSearchBar({super.key, required this.hintText, required this.titleText});
 
   final String hintText;
   final String titleText;
@@ -24,7 +23,7 @@ class DashboardSearchBar extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
@@ -38,7 +37,7 @@ class DashboardSearchBar extends StatelessWidget {
                   ),
                   hintText: hintText,
                   hintStyle: GoogleFonts.lato(
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontSize: 15,
                   ),
                 ),

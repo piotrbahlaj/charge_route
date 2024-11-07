@@ -25,8 +25,7 @@ class SettingsPage extends StatelessWidget {
             const SizedBox(height: 20),
             BlocBuilder<SettingsBloc, SettingsState>(
               builder: (context, state) {
-                final isDarkMode =
-                    (state is SettingsThemeUpdated) ? state.isDarkMode : false;
+                final isDarkMode = (state is SettingsThemeUpdated) ? state.isDarkMode : false;
                 return ListTile(
                   title: const Text('Theme'),
                   trailing: Switch(
@@ -44,9 +43,7 @@ class SettingsPage extends StatelessWidget {
             ListTile(
               title: const Text('Language'),
               trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: () {
-                // Navigate to notifications settings page
-              },
+              onTap: () {},
             ),
             const Divider(),
             ListTile(

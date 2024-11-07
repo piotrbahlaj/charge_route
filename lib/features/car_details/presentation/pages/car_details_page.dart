@@ -21,8 +21,7 @@ class CarDetailsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            const CarDetailsTextField(
-                labelText: 'Car Model', hintText: 'Enter your car model'),
+            const CarDetailsTextField(labelText: 'Car Model', hintText: 'Enter your car model'),
             const SizedBox(height: 30),
 
             // Add more text fields for additional car details
