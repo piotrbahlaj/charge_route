@@ -1,8 +1,6 @@
 part of 'dashboard_bloc.dart';
 
-abstract class DashboardEvent extends Equatable {
-  const DashboardEvent();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class DashboardEvent with _$DashboardEvent {
+  const factory DashboardEvent.fetchAutocomplete(String query) = FetchAutocompleteEvent;
 }

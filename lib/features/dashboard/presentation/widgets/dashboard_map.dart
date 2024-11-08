@@ -1,4 +1,4 @@
-import 'package:charge_route/%20core/location_service.dart';
+import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

@@ -1,10 +1,15 @@
+import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/router.dart';
 import 'package:charge_route/%20core/theme.dart';
 import 'package:charge_route/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  setupLocator();
   runApp(const Main());
 }
 

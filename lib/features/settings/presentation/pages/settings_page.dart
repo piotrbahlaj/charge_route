@@ -32,7 +32,7 @@ class SettingsPage extends StatelessWidget {
                     value: isDarkMode,
                     onChanged: (value) {
                       BlocProvider.of<SettingsBloc>(context).add(
-                        ToggleThemeEvent(value),
+                        ToggleThemeEvent(isDarkMode: value),
                       );
                     },
                   ),

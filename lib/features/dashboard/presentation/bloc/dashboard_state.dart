@@ -1,10 +1,10 @@
 part of 'dashboard_bloc.dart';
 
-abstract class DashboardState extends Equatable {
-  const DashboardState();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class DashboardState with _$DashboardState {
+  const factory DashboardState({
+    @Default(false) bool isLoading,
+    @Default([]) List<Prediction> suggestions,
+    String? errorMessage,
+  }) = _DashboardState;
 }
-
-class DashboardInitial extends DashboardState {}
