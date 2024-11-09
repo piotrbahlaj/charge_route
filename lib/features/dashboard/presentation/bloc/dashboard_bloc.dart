@@ -13,15 +13,41 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   DashboardBloc() : super(const DashboardState()) {
     on<FetchAutocompleteEvent>(_onFetchAutocomplete);
+    on<ActivateTextFieldEvent>(_onActivateTextField);
   }
 
   Future<void> _onFetchAutocomplete(FetchAutocompleteEvent event, Emitter<DashboardState> emit) async {
-    emit(state.copyWith(isLoading: true, errorMessage: null));
-    try {
-      final response = await apiService.getAutocompleteSuggestions(event.query);
-      emit(state.copyWith(isLoading: false, suggestions: response.predictions));
-    } catch (e) {
-      emit(state.copyWith(isLoading: false, errorMessage: 'Failed to load suggestions with error: ${e.toString()}'));
+    final query = event.query;
+    if (query.isEmpty) {
+      emit(state.copyWith(isLoading: false, errorMessage: null, suggestions: []));
+      return;
     }
+    emit(state.copyWith(isLoading: true));
+    try {
+      final results = await apiService.getAutocompleteSuggestions(query);
+
+      if (results.predictions.isEmpty) {
+        emit(state.copyWith(
+          isLoading: false,
+          errorMessage: 'No results found. Please try a different query.',
+          suggestions: [],
+        ));
+      } else {
+        emit(state.copyWith(
+          isLoading: false,
+          suggestions: results.predictions,
+          errorMessage: null,
+        ));
+      }
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: 'Failed to load search results',
+      ));
+    }
+  }
+
+  Future<void> _onActivateTextField(ActivateTextFieldEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(activeField: event.field));
   }
 }

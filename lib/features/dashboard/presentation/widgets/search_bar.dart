@@ -1,3 +1,4 @@
+import 'package:charge_route/%20core/utilities/debouncer.dart';
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,10 +9,12 @@ class DashboardSearchBar extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.titleText,
+    required this.field,
   });
 
   final String hintText;
   final String titleText;
+  final String field;
 
   showSnackbar(String text, BuildContext context) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -26,6 +29,17 @@ class DashboardSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();
+    final debouncer = Debouncer(milliseconds: 400);
+    final FocusNode focusNode = FocusNode();
+    focusNode.addListener(
+      () {
+        if (focusNode.hasFocus) {
+          context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
+        } else {
+          context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
+        }
+      },
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -46,11 +60,14 @@ class DashboardSearchBar extends StatelessWidget {
           child: Column(
             children: [
               TextField(
+                focusNode: focusNode,
                 controller: controller,
                 onChanged: (input) {
-                  if (input.isNotEmpty) {
-                    context.read<DashboardBloc>().add(DashboardEvent.fetchAutocomplete(input));
-                  }
+                  debouncer.run(
+                    () {
+                      context.read<DashboardBloc>().add(FetchAutocompleteEvent(input));
+                    },
+                  );
                 },
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -67,9 +84,7 @@ class DashboardSearchBar extends StatelessWidget {
               ),
               BlocBuilder<DashboardBloc, DashboardState>(
                 builder: (context, state) {
-                  if (state.isLoading) {
-                    return const CircularProgressIndicator();
-                  } else if (state.suggestions.isNotEmpty) {
+                  if (state.suggestions.isNotEmpty && state.activeField == field) {
                     return ListView.builder(
                       shrinkWrap: true,
                       itemCount: state.suggestions.length,
@@ -79,18 +94,16 @@ class DashboardSearchBar extends StatelessWidget {
                           title: Text(suggestion.description),
                           onTap: () {
                             controller.text = suggestion.description;
+                            focusNode.unfocus();
                             // Add further actions on selection if needed
                           },
                         );
                       },
                     );
-                  } else if (state.errorMessage != null) {
-                    WidgetsBinding.instance.addPostFrameCallback(
-                      (_) {
-                        showSnackbar('Failed to load places', context);
-                      },
-                    );
+                  } else if (state.errorMessage != null && state.activeField == field) {
+                    return const Text('No results found');
                   }
+
                   return Container();
                 },
               ),

@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
-  String get query => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of DashboardEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DashboardEventCopyWith<DashboardEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +61,6 @@ abstract class $DashboardEventCopyWith<$Res> {
   factory $DashboardEventCopyWith(
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
-  @useResult
-  $Res call({String query});
 }
 
 /// @nodoc
@@ -78,28 +75,14 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
 
   /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_value.copyWith(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$FetchAutocompleteEventImplCopyWith<$Res>
-    implements $DashboardEventCopyWith<$Res> {
+abstract class _$$FetchAutocompleteEventImplCopyWith<$Res> {
   factory _$$FetchAutocompleteEventImplCopyWith(
           _$FetchAutocompleteEventImpl value,
           $Res Function(_$FetchAutocompleteEventImpl) then) =
       __$$FetchAutocompleteEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String query});
 }
@@ -166,6 +149,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
   }) {
     return fetchAutocomplete(query);
   }
@@ -174,6 +158,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -182,6 +167,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -194,6 +180,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
   }) {
     return fetchAutocomplete(this);
   }
@@ -202,6 +189,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -210,6 +198,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -223,14 +212,156 @@ abstract class FetchAutocompleteEvent implements DashboardEvent {
   const factory FetchAutocompleteEvent(final String query) =
       _$FetchAutocompleteEventImpl;
 
-  @override
   String get query;
 
   /// Create a copy of DashboardEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchAutocompleteEventImplCopyWith<_$FetchAutocompleteEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ActivateTextFieldEventImplCopyWith<$Res> {
+  factory _$$ActivateTextFieldEventImplCopyWith(
+          _$ActivateTextFieldEventImpl value,
+          $Res Function(_$ActivateTextFieldEventImpl) then) =
+      __$$ActivateTextFieldEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String field});
+}
+
+/// @nodoc
+class __$$ActivateTextFieldEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$ActivateTextFieldEventImpl>
+    implements _$$ActivateTextFieldEventImplCopyWith<$Res> {
+  __$$ActivateTextFieldEventImplCopyWithImpl(
+      _$ActivateTextFieldEventImpl _value,
+      $Res Function(_$ActivateTextFieldEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field = null,
+  }) {
+    return _then(_$ActivateTextFieldEventImpl(
+      null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
+  const _$ActivateTextFieldEventImpl(this.field);
+
+  @override
+  final String field;
+
+  @override
+  String toString() {
+    return 'DashboardEvent.activateTextField(field: $field)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ActivateTextFieldEventImpl &&
+            (identical(other.field, field) || other.field == field));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ActivateTextFieldEventImplCopyWith<_$ActivateTextFieldEventImpl>
+      get copyWith => __$$ActivateTextFieldEventImplCopyWithImpl<
+          _$ActivateTextFieldEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
+  }) {
+    return activateTextField(field);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
+  }) {
+    return activateTextField?.call(field);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
+    required TResult orElse(),
+  }) {
+    if (activateTextField != null) {
+      return activateTextField(field);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
+  }) {
+    return activateTextField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+  }) {
+    return activateTextField?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    required TResult orElse(),
+  }) {
+    if (activateTextField != null) {
+      return activateTextField(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ActivateTextFieldEvent implements DashboardEvent {
+  const factory ActivateTextFieldEvent(final String field) =
+      _$ActivateTextFieldEventImpl;
+
+  String get field;
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ActivateTextFieldEventImplCopyWith<_$ActivateTextFieldEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -238,6 +369,7 @@ abstract class FetchAutocompleteEvent implements DashboardEvent {
 mixin _$DashboardState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<Prediction> get suggestions => throw _privateConstructorUsedError;
+  String? get activeField => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of DashboardState
@@ -254,7 +386,10 @@ abstract class $DashboardStateCopyWith<$Res> {
       _$DashboardStateCopyWithImpl<$Res, DashboardState>;
   @useResult
   $Res call(
-      {bool isLoading, List<Prediction> suggestions, String? errorMessage});
+      {bool isLoading,
+      List<Prediction> suggestions,
+      String? activeField,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -274,6 +409,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   $Res call({
     Object? isLoading = null,
     Object? suggestions = null,
+    Object? activeField = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -285,6 +421,10 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<Prediction>,
+      activeField: freezed == activeField
+          ? _value.activeField
+          : activeField // ignore: cast_nullable_to_non_nullable
+              as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -302,7 +442,10 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, List<Prediction> suggestions, String? errorMessage});
+      {bool isLoading,
+      List<Prediction> suggestions,
+      String? activeField,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -320,6 +463,7 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? suggestions = null,
+    Object? activeField = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$DashboardStateImpl(
@@ -331,6 +475,10 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
           ? _value._suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<Prediction>,
+      activeField: freezed == activeField
+          ? _value.activeField
+          : activeField // ignore: cast_nullable_to_non_nullable
+              as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -345,6 +493,7 @@ class _$DashboardStateImpl implements _DashboardState {
   const _$DashboardStateImpl(
       {this.isLoading = false,
       final List<Prediction> suggestions = const [],
+      this.activeField,
       this.errorMessage})
       : _suggestions = suggestions;
 
@@ -361,11 +510,13 @@ class _$DashboardStateImpl implements _DashboardState {
   }
 
   @override
+  final String? activeField;
+  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'DashboardState(isLoading: $isLoading, suggestions: $suggestions, errorMessage: $errorMessage)';
+    return 'DashboardState(isLoading: $isLoading, suggestions: $suggestions, activeField: $activeField, errorMessage: $errorMessage)';
   }
 
   @override
@@ -377,13 +528,19 @@ class _$DashboardStateImpl implements _DashboardState {
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._suggestions, _suggestions) &&
+            (identical(other.activeField, activeField) ||
+                other.activeField == activeField) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_suggestions), errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_suggestions),
+      activeField,
+      errorMessage);
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
@@ -399,12 +556,15 @@ abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
       {final bool isLoading,
       final List<Prediction> suggestions,
+      final String? activeField,
       final String? errorMessage}) = _$DashboardStateImpl;
 
   @override
   bool get isLoading;
   @override
   List<Prediction> get suggestions;
+  @override
+  String? get activeField;
   @override
   String? get errorMessage;
 
