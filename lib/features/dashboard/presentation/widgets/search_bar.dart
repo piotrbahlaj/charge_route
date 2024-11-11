@@ -79,12 +79,26 @@ class DashboardSearchBar extends StatelessWidget {
                       fontSize: 15,
                     ),
                     suffixIcon: showLocationIcon
-                        ? IconButton(
-                            onPressed: () async {
-                              print('Location icon tapped');
-                              bloc.add(const FetchCurrentLocationEvent());
+                        ? BlocBuilder<DashboardBloc, DashboardState>(
+                            builder: (context, state) {
+                              if (state.isLoading) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Transform.scale(
+                                    scale: 0.8,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2.0,
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return IconButton(
+                                  onPressed: () => context.read<DashboardBloc>().add(const FetchCurrentLocationEvent()),
+                                  icon: const Icon(Icons.my_location),
+                                );
+                              }
                             },
-                            icon: const Icon(Icons.my_location),
                           )
                         : null,
                   ),
@@ -94,7 +108,6 @@ class DashboardSearchBar extends StatelessWidget {
                     if (state.userLocation != null && state.locationSet == false && field == 'currentLocation') {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         controller.text = state.userLocation!.name;
-                        context.read<DashboardBloc>().add(const LocationSetEvent());
                       });
                     }
                     if (state.suggestions.isNotEmpty && state.activeField == field) {

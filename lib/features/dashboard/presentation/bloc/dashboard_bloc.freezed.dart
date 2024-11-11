@@ -22,7 +22,6 @@ mixin _$DashboardEvent {
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
     required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +30,6 @@ mixin _$DashboardEvent {
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
     TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +38,6 @@ mixin _$DashboardEvent {
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
     TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,7 +48,6 @@ mixin _$DashboardEvent {
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
     required TResult Function(FetchCurrentLocationEvent value)
         fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,7 +56,6 @@ mixin _$DashboardEvent {
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,7 +64,6 @@ mixin _$DashboardEvent {
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,7 +165,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
     required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
   }) {
     return fetchAutocomplete(query);
   }
@@ -183,7 +176,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
     TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -195,7 +187,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
     TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -212,7 +203,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
     required TResult Function(FetchCurrentLocationEvent value)
         fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
   }) {
     return fetchAutocomplete(this);
   }
@@ -224,7 +214,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -236,7 +225,6 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -334,7 +322,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
     required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
   }) {
     return activateTextField(field);
   }
@@ -346,7 +333,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
     TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
   }) {
     return activateTextField?.call(field);
   }
@@ -358,7 +344,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
     TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -375,7 +360,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
     required TResult Function(FetchCurrentLocationEvent value)
         fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
   }) {
     return activateTextField(this);
   }
@@ -387,7 +371,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
   }) {
     return activateTextField?.call(this);
   }
@@ -399,7 +382,6 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -469,7 +451,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
     required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
   }) {
     return clearSuggestions();
   }
@@ -481,7 +462,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
     TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
   }) {
     return clearSuggestions?.call();
   }
@@ -493,7 +473,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
     TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -510,7 +489,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
     required TResult Function(FetchCurrentLocationEvent value)
         fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
   }) {
     return clearSuggestions(this);
   }
@@ -522,7 +500,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
   }) {
     return clearSuggestions?.call(this);
   }
@@ -534,7 +511,6 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -596,7 +572,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
     required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
   }) {
     return fetchCurrentLocation();
   }
@@ -608,7 +583,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
     TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
   }) {
     return fetchCurrentLocation?.call();
   }
@@ -620,7 +594,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
     TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -637,7 +610,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
     required TResult Function(FetchCurrentLocationEvent value)
         fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
   }) {
     return fetchCurrentLocation(this);
   }
@@ -649,7 +621,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
   }) {
     return fetchCurrentLocation?.call(this);
   }
@@ -661,7 +632,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -673,130 +643,6 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
 
 abstract class FetchCurrentLocationEvent implements DashboardEvent {
   const factory FetchCurrentLocationEvent() = _$FetchCurrentLocationEventImpl;
-}
-
-/// @nodoc
-abstract class _$$LocationSetEventImplCopyWith<$Res> {
-  factory _$$LocationSetEventImplCopyWith(_$LocationSetEventImpl value,
-          $Res Function(_$LocationSetEventImpl) then) =
-      __$$LocationSetEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LocationSetEventImplCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$LocationSetEventImpl>
-    implements _$$LocationSetEventImplCopyWith<$Res> {
-  __$$LocationSetEventImplCopyWithImpl(_$LocationSetEventImpl _value,
-      $Res Function(_$LocationSetEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DashboardEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LocationSetEventImpl implements LocationSetEvent {
-  const _$LocationSetEventImpl();
-
-  @override
-  String toString() {
-    return 'DashboardEvent.locationSet()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LocationSetEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) fetchAutocomplete,
-    required TResult Function(String field) activateTextField,
-    required TResult Function() clearSuggestions,
-    required TResult Function() fetchCurrentLocation,
-    required TResult Function() locationSet,
-  }) {
-    return locationSet();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? fetchAutocomplete,
-    TResult? Function(String field)? activateTextField,
-    TResult? Function()? clearSuggestions,
-    TResult? Function()? fetchCurrentLocation,
-    TResult? Function()? locationSet,
-  }) {
-    return locationSet?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? fetchAutocomplete,
-    TResult Function(String field)? activateTextField,
-    TResult Function()? clearSuggestions,
-    TResult Function()? fetchCurrentLocation,
-    TResult Function()? locationSet,
-    required TResult orElse(),
-  }) {
-    if (locationSet != null) {
-      return locationSet();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
-    required TResult Function(ActivateTextFieldEvent value) activateTextField,
-    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
-    required TResult Function(FetchCurrentLocationEvent value)
-        fetchCurrentLocation,
-    required TResult Function(LocationSetEvent value) locationSet,
-  }) {
-    return locationSet(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
-    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
-    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
-    TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult? Function(LocationSetEvent value)? locationSet,
-  }) {
-    return locationSet?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
-    TResult Function(ActivateTextFieldEvent value)? activateTextField,
-    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
-    TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
-    TResult Function(LocationSetEvent value)? locationSet,
-    required TResult orElse(),
-  }) {
-    if (locationSet != null) {
-      return locationSet(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LocationSetEvent implements DashboardEvent {
-  const factory LocationSetEvent() = _$LocationSetEventImpl;
 }
 
 /// @nodoc

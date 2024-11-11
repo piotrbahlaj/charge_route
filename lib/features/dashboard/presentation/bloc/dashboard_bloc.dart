@@ -19,7 +19,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);
     on<FetchCurrentLocationEvent>(_onFetchCurrentLocation);
-    on<LocationSetEvent>(_onLocationSet);
   }
 
   Future<void> _onFetchAutocomplete(FetchAutocompleteEvent event, Emitter<DashboardState> emit) async {
@@ -65,10 +64,15 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
   Future<void> _onFetchCurrentLocation(FetchCurrentLocationEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(
+      userLocation: null,
+      locationSet: false,
+      isLoading: true,
+    ));
     try {
       final Position position = await getIt<LocationService>().getCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
-      const int searchRadius = 10;
+      const int searchRadius = 25;
 
       final result = await apiService.getPlaceFromLocation(locationString, searchRadius);
 
@@ -76,6 +80,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         emit(state.copyWith(
           userLocation: result.results.first,
           errorMessage: null,
+          isLoading: false,
         ));
       } else {
         emit(state.copyWith(
@@ -87,9 +92,5 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       print('Stacktrace: $stacktrace');
       emit(state.copyWith(errorMessage: 'Failed to fetch location or place details.'));
     }
-  }
-
-  Future<void> _onLocationSet(LocationSetEvent event, Emitter<DashboardState> emit) async {
-    emit(state.copyWith(locationSet: true));
   }
 }

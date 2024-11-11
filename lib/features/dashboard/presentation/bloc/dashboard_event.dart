@@ -6,5 +6,4 @@ class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.activateTextField(String field) = ActivateTextFieldEvent;
   const factory DashboardEvent.clearSuggestions() = ClearSuggestionsEvent;
   const factory DashboardEvent.fetchCurrentLocation() = FetchCurrentLocationEvent;
-  const factory DashboardEvent.locationSet() = LocationSetEvent;
 }
