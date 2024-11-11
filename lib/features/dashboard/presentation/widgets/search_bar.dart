@@ -10,37 +10,32 @@ class DashboardSearchBar extends StatelessWidget {
     required this.hintText,
     required this.titleText,
     required this.field,
+    this.showLocationIcon = false,
   });
 
   final String hintText;
   final String titleText;
   final String field;
-
-  showSnackbar(String text, BuildContext context) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    return ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(text),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
+  final bool showLocationIcon;
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();
     final debouncer = Debouncer(milliseconds: 400);
     final FocusNode focusNode = FocusNode();
+    final bloc = context.read<DashboardBloc>();
+
     focusNode.addListener(
       () {
         if (focusNode.hasFocus) {
-          context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
+          bloc.add(ActivateTextFieldEvent(field));
         } else {
-          context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
-          context.read<DashboardBloc>().add(const ClearSuggestionsEvent());
+          bloc.add(ActivateTextFieldEvent(field));
+          bloc.add(const ClearSuggestionsEvent());
         }
       },
     );
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +63,7 @@ class DashboardSearchBar extends StatelessWidget {
                   onChanged: (input) {
                     debouncer.run(
                       () {
-                        context.read<DashboardBloc>().add(FetchAutocompleteEvent(input));
+                        bloc.add(FetchAutocompleteEvent(input));
                       },
                     );
                   },
@@ -83,10 +78,25 @@ class DashboardSearchBar extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 15,
                     ),
+                    suffixIcon: showLocationIcon
+                        ? IconButton(
+                            onPressed: () async {
+                              print('Location icon tapped');
+                              bloc.add(const FetchCurrentLocationEvent());
+                            },
+                            icon: const Icon(Icons.my_location),
+                          )
+                        : null,
                   ),
                 ),
                 BlocBuilder<DashboardBloc, DashboardState>(
                   builder: (context, state) {
+                    if (state.userLocation != null && state.locationSet == false && field == 'currentLocation') {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        controller.text = state.userLocation!.name;
+                        context.read<DashboardBloc>().add(const LocationSetEvent());
+                      });
+                    }
                     if (state.suggestions.isNotEmpty && state.activeField == field) {
                       return SizedBox(
                         height: 200,
@@ -100,7 +110,7 @@ class DashboardSearchBar extends StatelessWidget {
                               onTap: () {
                                 controller.text = suggestion.description;
                                 focusNode.unfocus();
-                                context.read<DashboardBloc>().add(const ClearSuggestionsEvent());
+                                bloc.add(const ClearSuggestionsEvent());
                                 // Add further actions on selection if needed
                               },
                             );

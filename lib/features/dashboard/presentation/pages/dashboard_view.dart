@@ -78,6 +78,7 @@ class DashboardView extends StatelessWidget {
                     titleText: 'Your current location',
                     hintText: 'Enter the starting location',
                     field: 'currentLocation',
+                    showLocationIcon: true,
                   ),
                   const SizedBox(height: 15),
                   const DashboardSearchBar(
