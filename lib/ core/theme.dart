@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    textSelectionTheme: TextSelectionThemeData(
+      selectionColor: Colors.grey[400],
+      selectionHandleColor: Colors.grey[600],
+    ),
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light().copyWith(
@@ -14,6 +18,10 @@ class AppTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+    textSelectionTheme: TextSelectionThemeData(
+      selectionColor: Colors.grey[600],
+      selectionHandleColor: Colors.grey[400],
+    ),
     useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark().copyWith(

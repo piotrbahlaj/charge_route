@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -13,7 +15,7 @@ class DashBoardMap extends StatefulWidget {
 class _DashBoardMapState extends State<DashBoardMap> {
   GoogleMapController? _controller;
   LatLng? _currentPosition;
-  Stream<Position>? _positionStream;
+  StreamSubscription<Position>? _positionStreamSubscription;
 
   @override
   void initState() {
@@ -23,7 +25,7 @@ class _DashBoardMapState extends State<DashBoardMap> {
 
   @override
   void dispose() {
-    _positionStream?.listen((_) {}).cancel();
+    _positionStreamSubscription?.cancel();
     super.dispose();
   }
 
@@ -40,15 +42,16 @@ class _DashBoardMapState extends State<DashBoardMap> {
     _controller?.animateCamera(CameraUpdate.newLatLng(_currentPosition!));
 
     // Start listening to the position stream for real-time updates
-    _positionStream = Geolocator.getPositionStream(
+    _positionStreamSubscription = Geolocator.getPositionStream(
       locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
-    );
-
-    _positionStream!.listen((Position position) {
+    ).listen((Position position) {
       LatLng newPosition = LatLng(position.latitude, position.longitude);
-      setState(() {
-        _currentPosition = newPosition;
-      });
+      if (mounted) {
+        // Check if the widget is still mounted before calling setState
+        setState(() {
+          _currentPosition = newPosition;
+        });
+      }
 
       // Animate the camera to the new position
       _controller?.animateCamera(CameraUpdate.newLatLng(newPosition));
@@ -57,37 +60,35 @@ class _DashBoardMapState extends State<DashBoardMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(13.0),
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(30),
-              top: Radius.circular(30),
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(13.0),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: const BorderRadius.vertical(
+            bottom: Radius.circular(30),
+            top: Radius.circular(30),
           ),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(30),
-              top: Radius.circular(30),
-            ),
-            child: _currentPosition == null
-                ? Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.onPrimary))
-                : GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                      target: _currentPosition!,
-                      zoom: 14,
-                    ),
-                    myLocationEnabled: true,
-                    myLocationButtonEnabled: true,
-                    onMapCreated: (controller) {
-                      _controller = controller;
-                    },
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.vertical(
+            bottom: Radius.circular(30),
+            top: Radius.circular(30),
+          ),
+          child: _currentPosition == null
+              ? Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.onPrimary))
+              : GoogleMap(
+                  initialCameraPosition: CameraPosition(
+                    target: _currentPosition!,
+                    zoom: 14,
                   ),
-          ),
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: true,
+                  onMapCreated: (controller) {
+                    _controller = controller;
+                  },
+                ),
         ),
       ),
     );

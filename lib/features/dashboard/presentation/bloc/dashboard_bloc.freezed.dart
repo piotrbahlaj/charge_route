@@ -20,18 +20,21 @@ mixin _$DashboardEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$DashboardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,6 +156,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
   }) {
     return fetchAutocomplete(query);
   }
@@ -159,6 +166,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -168,6 +176,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -181,6 +190,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
   }) {
     return fetchAutocomplete(this);
   }
@@ -190,6 +200,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -199,6 +210,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -294,6 +306,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
   }) {
     return activateTextField(field);
   }
@@ -303,6 +316,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
   }) {
     return activateTextField?.call(field);
   }
@@ -312,6 +326,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -325,6 +340,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
   }) {
     return activateTextField(this);
   }
@@ -334,6 +350,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
   }) {
     return activateTextField?.call(this);
   }
@@ -343,6 +360,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -363,6 +381,119 @@ abstract class ActivateTextFieldEvent implements DashboardEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ActivateTextFieldEventImplCopyWith<_$ActivateTextFieldEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearSuggestionsEventImplCopyWith<$Res> {
+  factory _$$ClearSuggestionsEventImplCopyWith(
+          _$ClearSuggestionsEventImpl value,
+          $Res Function(_$ClearSuggestionsEventImpl) then) =
+      __$$ClearSuggestionsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSuggestionsEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$ClearSuggestionsEventImpl>
+    implements _$$ClearSuggestionsEventImplCopyWith<$Res> {
+  __$$ClearSuggestionsEventImplCopyWithImpl(_$ClearSuggestionsEventImpl _value,
+      $Res Function(_$ClearSuggestionsEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
+  const _$ClearSuggestionsEventImpl();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.clearSuggestions()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearSuggestionsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
+  }) {
+    return clearSuggestions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
+  }) {
+    return clearSuggestions?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
+    required TResult orElse(),
+  }) {
+    if (clearSuggestions != null) {
+      return clearSuggestions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
+  }) {
+    return clearSuggestions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
+  }) {
+    return clearSuggestions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
+    required TResult orElse(),
+  }) {
+    if (clearSuggestions != null) {
+      return clearSuggestions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearSuggestionsEvent implements DashboardEvent {
+  const factory ClearSuggestionsEvent() = _$ClearSuggestionsEventImpl;
 }
 
 /// @nodoc

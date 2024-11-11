@@ -37,80 +37,88 @@ class DashboardSearchBar extends StatelessWidget {
           context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
         } else {
           context.read<DashboardBloc>().add(ActivateTextFieldEvent(field));
+          context.read<DashboardBloc>().add(const ClearSuggestionsEvent());
         }
       },
     );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Text(
-            titleText,
-            style: GoogleFonts.kanit(fontSize: 14),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(
+              titleText,
+              style: GoogleFonts.kanit(fontSize: 14),
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          padding: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            children: [
-              TextField(
-                focusNode: focusNode,
-                controller: controller,
-                onChanged: (input) {
-                  debouncer.run(
-                    () {
-                      context.read<DashboardBloc>().add(FetchAutocompleteEvent(input));
-                    },
-                  );
-                },
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-                  hintText: hintText,
-                  hintStyle: GoogleFonts.lato(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    fontSize: 15,
-                  ),
-                ),
-              ),
-              BlocBuilder<DashboardBloc, DashboardState>(
-                builder: (context, state) {
-                  if (state.suggestions.isNotEmpty && state.activeField == field) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: state.suggestions.length,
-                      itemBuilder: (context, index) {
-                        final suggestion = state.suggestions[index];
-                        return ListTile(
-                          title: Text(suggestion.description),
-                          onTap: () {
-                            controller.text = suggestion.description;
-                            focusNode.unfocus();
-                            // Add further actions on selection if needed
-                          },
-                        );
+          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              children: [
+                TextField(
+                  cursorColor: Theme.of(context).colorScheme.onSurface,
+                  focusNode: focusNode,
+                  controller: controller,
+                  onChanged: (input) {
+                    debouncer.run(
+                      () {
+                        context.read<DashboardBloc>().add(FetchAutocompleteEvent(input));
                       },
                     );
-                  } else if (state.errorMessage != null && state.activeField == field) {
-                    return const Text('No results found');
-                  }
+                  },
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                    hintText: hintText,
+                    hintStyle: GoogleFonts.lato(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                BlocBuilder<DashboardBloc, DashboardState>(
+                  builder: (context, state) {
+                    if (state.suggestions.isNotEmpty && state.activeField == field) {
+                      return SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: state.suggestions.length,
+                          itemBuilder: (context, index) {
+                            final suggestion = state.suggestions[index];
+                            return ListTile(
+                              title: Text(suggestion.description),
+                              onTap: () {
+                                controller.text = suggestion.description;
+                                focusNode.unfocus();
+                                context.read<DashboardBloc>().add(const ClearSuggestionsEvent());
+                                // Add further actions on selection if needed
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    } else if (state.errorMessage != null && state.activeField == field) {
+                      return Text(state.errorMessage!);
+                    }
 
-                  return Container();
-                },
-              ),
-            ],
+                    return Container();
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

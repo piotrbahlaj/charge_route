@@ -12,6 +12,7 @@ class DashboardScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => DashboardBloc(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: const CustomAppBar(),
         body: const DashboardView(),
