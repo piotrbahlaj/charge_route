@@ -21,8 +21,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);
     on<FetchCurrentLocationEvent>(_onFetchCurrentLocation);
-    on<SetStartLocationEvent>(_onSetStartLocation);
-    on<SetEndLocationEvent>(_onSetEndLocation);
+    on<FetchPlaceDetailsEvent>(_onFetchPlaceDetails);
     on<FetchRouteEvent>(_onFetchRoute);
   }
 
@@ -51,7 +50,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         emit(state.copyWith(
           isLoading: false,
           suggestions: results.predictions,
-          errorMessage: null,
         ));
       }
     } catch (e, stacktrace) {
@@ -76,6 +74,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(state.copyWith(
       userLocation: null,
       isLoading: true,
+      errorMessage: null,
     ));
     try {
       final Position position = await getIt<LocationService>().getCurrentLocation();
@@ -86,7 +85,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       if (result.results.isNotEmpty) {
         emit(state.copyWith(
           userLocation: result.results.first,
-          errorMessage: null,
           isLoading: false,
         ));
       } else {
@@ -101,19 +99,24 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     }
   }
 
-  Future<void> _onSetStartLocation(SetStartLocationEvent event, Emitter<DashboardState> emit) async {
-    if (event.location.lat != 0.0 && event.location.lng != 0.0) {
-      emit(state.copyWith(startLocation: event.location));
-    } else {
-      print("Invalid start location: ${event.location}");
-    }
-  }
+  Future<void> _onFetchPlaceDetails(FetchPlaceDetailsEvent event, Emitter<DashboardState> emit) async {
+    try {
+      final placeDetails = await apiService.getPlaceDetails(event.placeId);
+      final selectedLocation = Location(
+        lat: placeDetails.result.geometry.location.lat,
+        lng: placeDetails.result.geometry.location.lng,
+      );
 
-  Future<void> _onSetEndLocation(SetEndLocationEvent event, Emitter<DashboardState> emit) async {
-    if (event.location.lat != 0.0 && event.location.lng != 0.0) {
-      emit(state.copyWith(endLocation: event.location));
-    } else {
-      print("Invalid end location: ${event.location}");
+      if (event.field == 'currentLocation') {
+        emit(state.copyWith(startLocation: selectedLocation));
+      } else if (event.field == 'destination') {
+        emit(state.copyWith(endLocation: selectedLocation));
+      }
+
+      emit(state.copyWith(errorMessage: null));
+    } catch (e) {
+      print('Error fetching place details: $e');
+      emit(state.copyWith(errorMessage: 'Failed to fetch place details.'));
     }
   }
 
@@ -138,7 +141,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       emit(state.copyWith(
         isRouteLoading: false,
         route: result,
-        errorMessage: null,
       ));
     } catch (e, stacktrace) {
       print('Error in _onFetchRoute: $e');

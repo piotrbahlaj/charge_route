@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../ core/models/location/location_response.dart';
-
 class DashboardSearchBar extends StatelessWidget {
   const DashboardSearchBar({
     super.key,
@@ -112,7 +110,7 @@ class DashboardSearchBar extends StatelessWidget {
                 builder: (context, state) {
                   if (state.userLocation != null && !hasSetLocation && field == 'currentLocation') {
                     WidgetsBinding.instance.addPostFrameCallback((_) {
-                      bloc.add(SetStartLocationEvent(state.userLocation!.geometry.location));
+                      bloc.add(FetchPlaceDetailsEvent(state.userLocation!.placeId, 'currentLocation'));
                       controller.text = state.userLocation!.formattedAddress;
                       hasSetLocation = true;
                     });
@@ -128,20 +126,9 @@ class DashboardSearchBar extends StatelessWidget {
                           return ListTile(
                             title: Text(suggestion.description),
                             onTap: () async {
-                              final placeDetails = await bloc.apiService.getPlaceDetails(suggestion.placeId);
-                              final selectedLocation = Location(
-                                lat: placeDetails.result.geometry.location.lat,
-                                lng: placeDetails.result.geometry.location.lng,
-                              );
-                              print(
-                                  'Selected Location for ${field == "currentLocation" ? "Start" : "End"}: ${selectedLocation.lat}, ${selectedLocation.lng}');
-
+                              bloc.add(FetchPlaceDetailsEvent(suggestion.placeId, field));
                               controller.text = suggestion.description;
-                              if (field == 'currentLocation') {
-                                bloc.add(SetStartLocationEvent(selectedLocation));
-                              } else if (field == 'destination') {
-                                bloc.add(SetEndLocationEvent(selectedLocation));
-                              }
+                              print('Set place: ${suggestion.description}');
                               focusNode.unfocus();
                               bloc.add(const ClearSuggestionsEvent());
                             },

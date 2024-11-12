@@ -25,6 +25,7 @@ mixin _$DashboardEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$DashboardEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$DashboardEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +63,7 @@ mixin _$DashboardEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +75,7 @@ mixin _$DashboardEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +87,7 @@ mixin _$DashboardEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +192,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return fetchAutocomplete(query);
   }
@@ -200,6 +207,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -214,6 +222,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -233,6 +242,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return fetchAutocomplete(this);
   }
@@ -247,6 +257,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -261,6 +272,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -361,6 +373,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return activateTextField(field);
   }
@@ -375,6 +388,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return activateTextField?.call(field);
   }
@@ -389,6 +403,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -408,6 +423,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return activateTextField(this);
   }
@@ -422,6 +438,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return activateTextField?.call(this);
   }
@@ -436,6 +453,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -508,6 +526,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return clearSuggestions();
   }
@@ -522,6 +541,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return clearSuggestions?.call();
   }
@@ -536,6 +556,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -555,6 +576,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return clearSuggestions(this);
   }
@@ -569,6 +591,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return clearSuggestions?.call(this);
   }
@@ -583,6 +606,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -647,6 +671,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return fetchCurrentLocation();
   }
@@ -661,6 +686,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return fetchCurrentLocation?.call();
   }
@@ -675,6 +701,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -694,6 +721,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return fetchCurrentLocation(this);
   }
@@ -708,6 +736,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return fetchCurrentLocation?.call(this);
   }
@@ -722,6 +751,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -825,6 +855,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return setStartLocation(location);
   }
@@ -839,6 +870,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return setStartLocation?.call(location);
   }
@@ -853,6 +885,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (setStartLocation != null) {
@@ -872,6 +905,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return setStartLocation(this);
   }
@@ -886,6 +920,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return setStartLocation?.call(this);
   }
@@ -900,6 +935,7 @@ class _$SetStartLocationEventImpl implements SetStartLocationEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (setStartLocation != null) {
@@ -1011,6 +1047,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return setEndLocation(location);
   }
@@ -1025,6 +1062,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return setEndLocation?.call(location);
   }
@@ -1039,6 +1077,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (setEndLocation != null) {
@@ -1058,6 +1097,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return setEndLocation(this);
   }
@@ -1072,6 +1112,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return setEndLocation?.call(this);
   }
@@ -1086,6 +1127,7 @@ class _$SetEndLocationEventImpl implements SetEndLocationEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (setEndLocation != null) {
@@ -1156,6 +1198,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function(Location location) setStartLocation,
     required TResult Function(Location location) setEndLocation,
     required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
   }) {
     return fetchRoute();
   }
@@ -1170,6 +1213,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function(Location location)? setStartLocation,
     TResult? Function(Location location)? setEndLocation,
     TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
   }) {
     return fetchRoute?.call();
   }
@@ -1184,6 +1228,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function(Location location)? setStartLocation,
     TResult Function(Location location)? setEndLocation,
     TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1203,6 +1248,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function(SetStartLocationEvent value) setStartLocation,
     required TResult Function(SetEndLocationEvent value) setEndLocation,
     required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
   }) {
     return fetchRoute(this);
   }
@@ -1217,6 +1263,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function(SetStartLocationEvent value)? setStartLocation,
     TResult? Function(SetEndLocationEvent value)? setEndLocation,
     TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
   }) {
     return fetchRoute?.call(this);
   }
@@ -1231,6 +1278,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function(SetStartLocationEvent value)? setStartLocation,
     TResult Function(SetEndLocationEvent value)? setEndLocation,
     TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1242,6 +1290,196 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
 
 abstract class FetchRouteEvent implements DashboardEvent {
   const factory FetchRouteEvent() = _$FetchRouteEventImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchPlaceDetailsEventImplCopyWith<$Res> {
+  factory _$$FetchPlaceDetailsEventImplCopyWith(
+          _$FetchPlaceDetailsEventImpl value,
+          $Res Function(_$FetchPlaceDetailsEventImpl) then) =
+      __$$FetchPlaceDetailsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String placeId, String field});
+}
+
+/// @nodoc
+class __$$FetchPlaceDetailsEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$FetchPlaceDetailsEventImpl>
+    implements _$$FetchPlaceDetailsEventImplCopyWith<$Res> {
+  __$$FetchPlaceDetailsEventImplCopyWithImpl(
+      _$FetchPlaceDetailsEventImpl _value,
+      $Res Function(_$FetchPlaceDetailsEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? placeId = null,
+    Object? field = null,
+  }) {
+    return _then(_$FetchPlaceDetailsEventImpl(
+      null == placeId
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
+  const _$FetchPlaceDetailsEventImpl(this.placeId, this.field);
+
+  @override
+  final String placeId;
+  @override
+  final String field;
+
+  @override
+  String toString() {
+    return 'DashboardEvent.fetchPlaceDetails(placeId: $placeId, field: $field)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchPlaceDetailsEventImpl &&
+            (identical(other.placeId, placeId) || other.placeId == placeId) &&
+            (identical(other.field, field) || other.field == field));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, placeId, field);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchPlaceDetailsEventImplCopyWith<_$FetchPlaceDetailsEventImpl>
+      get copyWith => __$$FetchPlaceDetailsEventImplCopyWithImpl<
+          _$FetchPlaceDetailsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
+    required TResult Function() fetchCurrentLocation,
+    required TResult Function(Location location) setStartLocation,
+    required TResult Function(Location location) setEndLocation,
+    required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
+  }) {
+    return fetchPlaceDetails(placeId, field);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
+    TResult? Function()? fetchCurrentLocation,
+    TResult? Function(Location location)? setStartLocation,
+    TResult? Function(Location location)? setEndLocation,
+    TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
+  }) {
+    return fetchPlaceDetails?.call(placeId, field);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
+    TResult Function()? fetchCurrentLocation,
+    TResult Function(Location location)? setStartLocation,
+    TResult Function(Location location)? setEndLocation,
+    TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
+    required TResult orElse(),
+  }) {
+    if (fetchPlaceDetails != null) {
+      return fetchPlaceDetails(placeId, field);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
+    required TResult Function(FetchCurrentLocationEvent value)
+        fetchCurrentLocation,
+    required TResult Function(SetStartLocationEvent value) setStartLocation,
+    required TResult Function(SetEndLocationEvent value) setEndLocation,
+    required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
+  }) {
+    return fetchPlaceDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult? Function(SetStartLocationEvent value)? setStartLocation,
+    TResult? Function(SetEndLocationEvent value)? setEndLocation,
+    TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+  }) {
+    return fetchPlaceDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult Function(SetStartLocationEvent value)? setStartLocation,
+    TResult Function(SetEndLocationEvent value)? setEndLocation,
+    TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+    required TResult orElse(),
+  }) {
+    if (fetchPlaceDetails != null) {
+      return fetchPlaceDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchPlaceDetailsEvent implements DashboardEvent {
+  const factory FetchPlaceDetailsEvent(
+      final String placeId, final String field) = _$FetchPlaceDetailsEventImpl;
+
+  String get placeId;
+  String get field;
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchPlaceDetailsEventImplCopyWith<_$FetchPlaceDetailsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
