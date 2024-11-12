@@ -24,7 +24,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   Future<void> _onFetchAutocomplete(FetchAutocompleteEvent event, Emitter<DashboardState> emit) async {
     final query = event.query;
     if (query.isEmpty) {
-      emit(state.copyWith(isLoading: false, errorMessage: null, suggestions: []));
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: null,
+        suggestions: [],
+      ));
       return;
     }
     emit(state.copyWith(isLoading: true));
@@ -81,6 +85,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           userLocation: result.results.first,
           errorMessage: null,
           isLoading: false,
+          locationSet: true,
         ));
       } else {
         emit(state.copyWith(

@@ -1,8 +1,8 @@
 import 'package:charge_route/features/about/about_page.dart';
-import 'package:charge_route/features/bottom_navigation_bar/presentation/bottom_nav_bar.dart';
+import 'package:charge_route/features/bottom_navigation_bar/bottom_nav_bar.dart';
 import 'package:charge_route/features/car_details/presentation/pages/car_details_page.dart';
 import 'package:charge_route/features/dashboard/presentation/pages/dashboard_screen.dart';
-import 'package:charge_route/features/settings/presentation/pages/settings_page.dart';
+import 'package:charge_route/features/settings/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

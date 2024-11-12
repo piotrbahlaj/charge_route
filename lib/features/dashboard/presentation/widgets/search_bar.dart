@@ -24,6 +24,7 @@ class DashboardSearchBar extends StatelessWidget {
     final debouncer = Debouncer(milliseconds: 400);
     final FocusNode focusNode = FocusNode();
     final bloc = context.read<DashboardBloc>();
+    bool hasSetLocation = false;
 
     focusNode.addListener(
       () {
@@ -94,7 +95,10 @@ class DashboardSearchBar extends StatelessWidget {
                                 );
                               } else {
                                 return IconButton(
-                                  onPressed: () => context.read<DashboardBloc>().add(const FetchCurrentLocationEvent()),
+                                  onPressed: () {
+                                    hasSetLocation = false;
+                                    context.read<DashboardBloc>().add(const FetchCurrentLocationEvent());
+                                  },
                                   icon: const Icon(Icons.my_location),
                                 );
                               }
@@ -105,9 +109,10 @@ class DashboardSearchBar extends StatelessWidget {
                 ),
                 BlocBuilder<DashboardBloc, DashboardState>(
                   builder: (context, state) {
-                    if (state.userLocation != null && state.locationSet == false && field == 'currentLocation') {
+                    if (state.userLocation != null && !hasSetLocation && field == 'currentLocation') {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         controller.text = state.userLocation!.name;
+                        hasSetLocation = true;
                       });
                     }
                     if (state.suggestions.isNotEmpty && state.activeField == field) {
