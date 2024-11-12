@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/di/service_locator.dart';
-import 'package:charge_route/%20core/models/nearby_search/nearby_search_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
+import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
 import 'package:charge_route/%20core/services/api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -50,7 +50,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         ));
       }
     } catch (e, stacktrace) {
-      print('Error during API call: $e'); // Log the error
+      print('Error during API call: $e');
       print('Stacktrace: $stacktrace');
       emit(state.copyWith(
         isLoading: false,
@@ -75,9 +75,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     try {
       final Position position = await getIt<LocationService>().getCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
-      const int searchRadius = 25;
+      // const int searchRadius = 25;
 
-      final result = await apiService.getPlaceFromLocation(locationString, searchRadius);
+      final result = await apiService.getAddressFromLocation(locationString);
 
       if (result.results.isNotEmpty) {
         emit(state.copyWith(

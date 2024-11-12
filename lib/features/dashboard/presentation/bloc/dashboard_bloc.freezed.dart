@@ -649,7 +649,7 @@ abstract class FetchCurrentLocationEvent implements DashboardEvent {
 mixin _$DashboardState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<Prediction> get suggestions => throw _privateConstructorUsedError;
-  NearbyResult? get userLocation => throw _privateConstructorUsedError;
+  GeocodingResult? get userLocation => throw _privateConstructorUsedError;
   String? get activeField => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -669,11 +669,11 @@ abstract class $DashboardStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       List<Prediction> suggestions,
-      NearbyResult? userLocation,
+      GeocodingResult? userLocation,
       String? activeField,
       String? errorMessage});
 
-  $NearbyResultCopyWith<$Res>? get userLocation;
+  $GeocodingResultCopyWith<$Res>? get userLocation;
 }
 
 /// @nodoc
@@ -709,7 +709,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
-              as NearbyResult?,
+              as GeocodingResult?,
       activeField: freezed == activeField
           ? _value.activeField
           : activeField // ignore: cast_nullable_to_non_nullable
@@ -725,12 +725,12 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $NearbyResultCopyWith<$Res>? get userLocation {
+  $GeocodingResultCopyWith<$Res>? get userLocation {
     if (_value.userLocation == null) {
       return null;
     }
 
-    return $NearbyResultCopyWith<$Res>(_value.userLocation!, (value) {
+    return $GeocodingResultCopyWith<$Res>(_value.userLocation!, (value) {
       return _then(_value.copyWith(userLocation: value) as $Val);
     });
   }
@@ -747,12 +747,12 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       List<Prediction> suggestions,
-      NearbyResult? userLocation,
+      GeocodingResult? userLocation,
       String? activeField,
       String? errorMessage});
 
   @override
-  $NearbyResultCopyWith<$Res>? get userLocation;
+  $GeocodingResultCopyWith<$Res>? get userLocation;
 }
 
 /// @nodoc
@@ -786,7 +786,7 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
-              as NearbyResult?,
+              as GeocodingResult?,
       activeField: freezed == activeField
           ? _value.activeField
           : activeField // ignore: cast_nullable_to_non_nullable
@@ -823,7 +823,7 @@ class _$DashboardStateImpl implements _DashboardState {
   }
 
   @override
-  final NearbyResult? userLocation;
+  final GeocodingResult? userLocation;
   @override
   final String? activeField;
   @override
@@ -874,7 +874,7 @@ abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
       {final bool isLoading,
       final List<Prediction> suggestions,
-      final NearbyResult? userLocation,
+      final GeocodingResult? userLocation,
       final String? activeField,
       final String? errorMessage}) = _$DashboardStateImpl;
 
@@ -883,7 +883,7 @@ abstract class _DashboardState implements DashboardState {
   @override
   List<Prediction> get suggestions;
   @override
-  NearbyResult? get userLocation;
+  GeocodingResult? get userLocation;
   @override
   String? get activeField;
   @override

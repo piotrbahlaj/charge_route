@@ -1,0 +1,974 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'precise_location_response.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+GeocodingResponse _$GeocodingResponseFromJson(Map<String, dynamic> json) {
+  return _GeocodingResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GeocodingResponse {
+  List<GeocodingResult> get results => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+
+  /// Serializes this GeocodingResponse to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of GeocodingResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GeocodingResponseCopyWith<GeocodingResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GeocodingResponseCopyWith<$Res> {
+  factory $GeocodingResponseCopyWith(
+          GeocodingResponse value, $Res Function(GeocodingResponse) then) =
+      _$GeocodingResponseCopyWithImpl<$Res, GeocodingResponse>;
+  @useResult
+  $Res call({List<GeocodingResult> results, String status});
+}
+
+/// @nodoc
+class _$GeocodingResponseCopyWithImpl<$Res, $Val extends GeocodingResponse>
+    implements $GeocodingResponseCopyWith<$Res> {
+  _$GeocodingResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GeocodingResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? results = null,
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      results: null == results
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<GeocodingResult>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GeocodingResponseImplCopyWith<$Res>
+    implements $GeocodingResponseCopyWith<$Res> {
+  factory _$$GeocodingResponseImplCopyWith(_$GeocodingResponseImpl value,
+          $Res Function(_$GeocodingResponseImpl) then) =
+      __$$GeocodingResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<GeocodingResult> results, String status});
+}
+
+/// @nodoc
+class __$$GeocodingResponseImplCopyWithImpl<$Res>
+    extends _$GeocodingResponseCopyWithImpl<$Res, _$GeocodingResponseImpl>
+    implements _$$GeocodingResponseImplCopyWith<$Res> {
+  __$$GeocodingResponseImplCopyWithImpl(_$GeocodingResponseImpl _value,
+      $Res Function(_$GeocodingResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GeocodingResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? results = null,
+    Object? status = null,
+  }) {
+    return _then(_$GeocodingResponseImpl(
+      results: null == results
+          ? _value._results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<GeocodingResult>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GeocodingResponseImpl implements _GeocodingResponse {
+  const _$GeocodingResponseImpl(
+      {required final List<GeocodingResult> results, required this.status})
+      : _results = results;
+
+  factory _$GeocodingResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GeocodingResponseImplFromJson(json);
+
+  final List<GeocodingResult> _results;
+  @override
+  List<GeocodingResult> get results {
+    if (_results is EqualUnmodifiableListView) return _results;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_results);
+  }
+
+  @override
+  final String status;
+
+  @override
+  String toString() {
+    return 'GeocodingResponse(results: $results, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GeocodingResponseImpl &&
+            const DeepCollectionEquality().equals(other._results, _results) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_results), status);
+
+  /// Create a copy of GeocodingResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GeocodingResponseImplCopyWith<_$GeocodingResponseImpl> get copyWith =>
+      __$$GeocodingResponseImplCopyWithImpl<_$GeocodingResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GeocodingResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GeocodingResponse implements GeocodingResponse {
+  const factory _GeocodingResponse(
+      {required final List<GeocodingResult> results,
+      required final String status}) = _$GeocodingResponseImpl;
+
+  factory _GeocodingResponse.fromJson(Map<String, dynamic> json) =
+      _$GeocodingResponseImpl.fromJson;
+
+  @override
+  List<GeocodingResult> get results;
+  @override
+  String get status;
+
+  /// Create a copy of GeocodingResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GeocodingResponseImplCopyWith<_$GeocodingResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GeocodingResult _$GeocodingResultFromJson(Map<String, dynamic> json) {
+  return _GeocodingResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GeocodingResult {
+  @JsonKey(name: 'formatted_address')
+  String get formattedAddress => throw _privateConstructorUsedError;
+  Geometry get geometry => throw _privateConstructorUsedError;
+  @JsonKey(name: 'place_id')
+  String get placeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'address_components')
+  List<AddressComponent> get addressComponents =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this GeocodingResult to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GeocodingResultCopyWith<GeocodingResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GeocodingResultCopyWith<$Res> {
+  factory $GeocodingResultCopyWith(
+          GeocodingResult value, $Res Function(GeocodingResult) then) =
+      _$GeocodingResultCopyWithImpl<$Res, GeocodingResult>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'formatted_address') String formattedAddress,
+      Geometry geometry,
+      @JsonKey(name: 'place_id') String placeId,
+      @JsonKey(name: 'address_components')
+      List<AddressComponent> addressComponents});
+
+  $GeometryCopyWith<$Res> get geometry;
+}
+
+/// @nodoc
+class _$GeocodingResultCopyWithImpl<$Res, $Val extends GeocodingResult>
+    implements $GeocodingResultCopyWith<$Res> {
+  _$GeocodingResultCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formattedAddress = null,
+    Object? geometry = null,
+    Object? placeId = null,
+    Object? addressComponents = null,
+  }) {
+    return _then(_value.copyWith(
+      formattedAddress: null == formattedAddress
+          ? _value.formattedAddress
+          : formattedAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      geometry: null == geometry
+          ? _value.geometry
+          : geometry // ignore: cast_nullable_to_non_nullable
+              as Geometry,
+      placeId: null == placeId
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressComponents: null == addressComponents
+          ? _value.addressComponents
+          : addressComponents // ignore: cast_nullable_to_non_nullable
+              as List<AddressComponent>,
+    ) as $Val);
+  }
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GeometryCopyWith<$Res> get geometry {
+    return $GeometryCopyWith<$Res>(_value.geometry, (value) {
+      return _then(_value.copyWith(geometry: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$GeocodingResultImplCopyWith<$Res>
+    implements $GeocodingResultCopyWith<$Res> {
+  factory _$$GeocodingResultImplCopyWith(_$GeocodingResultImpl value,
+          $Res Function(_$GeocodingResultImpl) then) =
+      __$$GeocodingResultImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'formatted_address') String formattedAddress,
+      Geometry geometry,
+      @JsonKey(name: 'place_id') String placeId,
+      @JsonKey(name: 'address_components')
+      List<AddressComponent> addressComponents});
+
+  @override
+  $GeometryCopyWith<$Res> get geometry;
+}
+
+/// @nodoc
+class __$$GeocodingResultImplCopyWithImpl<$Res>
+    extends _$GeocodingResultCopyWithImpl<$Res, _$GeocodingResultImpl>
+    implements _$$GeocodingResultImplCopyWith<$Res> {
+  __$$GeocodingResultImplCopyWithImpl(
+      _$GeocodingResultImpl _value, $Res Function(_$GeocodingResultImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? formattedAddress = null,
+    Object? geometry = null,
+    Object? placeId = null,
+    Object? addressComponents = null,
+  }) {
+    return _then(_$GeocodingResultImpl(
+      formattedAddress: null == formattedAddress
+          ? _value.formattedAddress
+          : formattedAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      geometry: null == geometry
+          ? _value.geometry
+          : geometry // ignore: cast_nullable_to_non_nullable
+              as Geometry,
+      placeId: null == placeId
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressComponents: null == addressComponents
+          ? _value._addressComponents
+          : addressComponents // ignore: cast_nullable_to_non_nullable
+              as List<AddressComponent>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GeocodingResultImpl implements _GeocodingResult {
+  const _$GeocodingResultImpl(
+      {@JsonKey(name: 'formatted_address') required this.formattedAddress,
+      required this.geometry,
+      @JsonKey(name: 'place_id') required this.placeId,
+      @JsonKey(name: 'address_components')
+      required final List<AddressComponent> addressComponents})
+      : _addressComponents = addressComponents;
+
+  factory _$GeocodingResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GeocodingResultImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'formatted_address')
+  final String formattedAddress;
+  @override
+  final Geometry geometry;
+  @override
+  @JsonKey(name: 'place_id')
+  final String placeId;
+  final List<AddressComponent> _addressComponents;
+  @override
+  @JsonKey(name: 'address_components')
+  List<AddressComponent> get addressComponents {
+    if (_addressComponents is EqualUnmodifiableListView)
+      return _addressComponents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_addressComponents);
+  }
+
+  @override
+  String toString() {
+    return 'GeocodingResult(formattedAddress: $formattedAddress, geometry: $geometry, placeId: $placeId, addressComponents: $addressComponents)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GeocodingResultImpl &&
+            (identical(other.formattedAddress, formattedAddress) ||
+                other.formattedAddress == formattedAddress) &&
+            (identical(other.geometry, geometry) ||
+                other.geometry == geometry) &&
+            (identical(other.placeId, placeId) || other.placeId == placeId) &&
+            const DeepCollectionEquality()
+                .equals(other._addressComponents, _addressComponents));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, formattedAddress, geometry,
+      placeId, const DeepCollectionEquality().hash(_addressComponents));
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GeocodingResultImplCopyWith<_$GeocodingResultImpl> get copyWith =>
+      __$$GeocodingResultImplCopyWithImpl<_$GeocodingResultImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GeocodingResultImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GeocodingResult implements GeocodingResult {
+  const factory _GeocodingResult(
+          {@JsonKey(name: 'formatted_address')
+          required final String formattedAddress,
+          required final Geometry geometry,
+          @JsonKey(name: 'place_id') required final String placeId,
+          @JsonKey(name: 'address_components')
+          required final List<AddressComponent> addressComponents}) =
+      _$GeocodingResultImpl;
+
+  factory _GeocodingResult.fromJson(Map<String, dynamic> json) =
+      _$GeocodingResultImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'formatted_address')
+  String get formattedAddress;
+  @override
+  Geometry get geometry;
+  @override
+  @JsonKey(name: 'place_id')
+  String get placeId;
+  @override
+  @JsonKey(name: 'address_components')
+  List<AddressComponent> get addressComponents;
+
+  /// Create a copy of GeocodingResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GeocodingResultImplCopyWith<_$GeocodingResultImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Geometry _$GeometryFromJson(Map<String, dynamic> json) {
+  return _Geometry.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Geometry {
+  Location get location => throw _privateConstructorUsedError;
+
+  /// Serializes this Geometry to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GeometryCopyWith<Geometry> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GeometryCopyWith<$Res> {
+  factory $GeometryCopyWith(Geometry value, $Res Function(Geometry) then) =
+      _$GeometryCopyWithImpl<$Res, Geometry>;
+  @useResult
+  $Res call({Location location});
+
+  $LocationCopyWith<$Res> get location;
+}
+
+/// @nodoc
+class _$GeometryCopyWithImpl<$Res, $Val extends Geometry>
+    implements $GeometryCopyWith<$Res> {
+  _$GeometryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? location = null,
+  }) {
+    return _then(_value.copyWith(
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
+    ) as $Val);
+  }
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationCopyWith<$Res> get location {
+    return $LocationCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$GeometryImplCopyWith<$Res>
+    implements $GeometryCopyWith<$Res> {
+  factory _$$GeometryImplCopyWith(
+          _$GeometryImpl value, $Res Function(_$GeometryImpl) then) =
+      __$$GeometryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Location location});
+
+  @override
+  $LocationCopyWith<$Res> get location;
+}
+
+/// @nodoc
+class __$$GeometryImplCopyWithImpl<$Res>
+    extends _$GeometryCopyWithImpl<$Res, _$GeometryImpl>
+    implements _$$GeometryImplCopyWith<$Res> {
+  __$$GeometryImplCopyWithImpl(
+      _$GeometryImpl _value, $Res Function(_$GeometryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? location = null,
+  }) {
+    return _then(_$GeometryImpl(
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GeometryImpl implements _Geometry {
+  const _$GeometryImpl({required this.location});
+
+  factory _$GeometryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GeometryImplFromJson(json);
+
+  @override
+  final Location location;
+
+  @override
+  String toString() {
+    return 'Geometry(location: $location)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GeometryImpl &&
+            (identical(other.location, location) ||
+                other.location == location));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, location);
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GeometryImplCopyWith<_$GeometryImpl> get copyWith =>
+      __$$GeometryImplCopyWithImpl<_$GeometryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GeometryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Geometry implements Geometry {
+  const factory _Geometry({required final Location location}) = _$GeometryImpl;
+
+  factory _Geometry.fromJson(Map<String, dynamic> json) =
+      _$GeometryImpl.fromJson;
+
+  @override
+  Location get location;
+
+  /// Create a copy of Geometry
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GeometryImplCopyWith<_$GeometryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Location _$LocationFromJson(Map<String, dynamic> json) {
+  return _Location.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Location {
+  double get lat => throw _privateConstructorUsedError;
+  double get lng => throw _privateConstructorUsedError;
+
+  /// Serializes this Location to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Location
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $LocationCopyWith<Location> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocationCopyWith<$Res> {
+  factory $LocationCopyWith(Location value, $Res Function(Location) then) =
+      _$LocationCopyWithImpl<$Res, Location>;
+  @useResult
+  $Res call({double lat, double lng});
+}
+
+/// @nodoc
+class _$LocationCopyWithImpl<$Res, $Val extends Location>
+    implements $LocationCopyWith<$Res> {
+  _$LocationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Location
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lat = null,
+    Object? lng = null,
+  }) {
+    return _then(_value.copyWith(
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      lng: null == lng
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LocationImplCopyWith<$Res>
+    implements $LocationCopyWith<$Res> {
+  factory _$$LocationImplCopyWith(
+          _$LocationImpl value, $Res Function(_$LocationImpl) then) =
+      __$$LocationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double lat, double lng});
+}
+
+/// @nodoc
+class __$$LocationImplCopyWithImpl<$Res>
+    extends _$LocationCopyWithImpl<$Res, _$LocationImpl>
+    implements _$$LocationImplCopyWith<$Res> {
+  __$$LocationImplCopyWithImpl(
+      _$LocationImpl _value, $Res Function(_$LocationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Location
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lat = null,
+    Object? lng = null,
+  }) {
+    return _then(_$LocationImpl(
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      lng: null == lng
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LocationImpl implements _Location {
+  const _$LocationImpl({required this.lat, required this.lng});
+
+  factory _$LocationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocationImplFromJson(json);
+
+  @override
+  final double lat;
+  @override
+  final double lng;
+
+  @override
+  String toString() {
+    return 'Location(lat: $lat, lng: $lng)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocationImpl &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lng, lng) || other.lng == lng));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, lat, lng);
+
+  /// Create a copy of Location
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
+      __$$LocationImplCopyWithImpl<_$LocationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LocationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Location implements Location {
+  const factory _Location(
+      {required final double lat, required final double lng}) = _$LocationImpl;
+
+  factory _Location.fromJson(Map<String, dynamic> json) =
+      _$LocationImpl.fromJson;
+
+  @override
+  double get lat;
+  @override
+  double get lng;
+
+  /// Create a copy of Location
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AddressComponent _$AddressComponentFromJson(Map<String, dynamic> json) {
+  return _AddressComponent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AddressComponent {
+  String get long_name => throw _privateConstructorUsedError;
+  String get short_name => throw _privateConstructorUsedError;
+  List<String> get types => throw _privateConstructorUsedError;
+
+  /// Serializes this AddressComponent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of AddressComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AddressComponentCopyWith<AddressComponent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddressComponentCopyWith<$Res> {
+  factory $AddressComponentCopyWith(
+          AddressComponent value, $Res Function(AddressComponent) then) =
+      _$AddressComponentCopyWithImpl<$Res, AddressComponent>;
+  @useResult
+  $Res call({String long_name, String short_name, List<String> types});
+}
+
+/// @nodoc
+class _$AddressComponentCopyWithImpl<$Res, $Val extends AddressComponent>
+    implements $AddressComponentCopyWith<$Res> {
+  _$AddressComponentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of AddressComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? long_name = null,
+    Object? short_name = null,
+    Object? types = null,
+  }) {
+    return _then(_value.copyWith(
+      long_name: null == long_name
+          ? _value.long_name
+          : long_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      short_name: null == short_name
+          ? _value.short_name
+          : short_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      types: null == types
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AddressComponentImplCopyWith<$Res>
+    implements $AddressComponentCopyWith<$Res> {
+  factory _$$AddressComponentImplCopyWith(_$AddressComponentImpl value,
+          $Res Function(_$AddressComponentImpl) then) =
+      __$$AddressComponentImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String long_name, String short_name, List<String> types});
+}
+
+/// @nodoc
+class __$$AddressComponentImplCopyWithImpl<$Res>
+    extends _$AddressComponentCopyWithImpl<$Res, _$AddressComponentImpl>
+    implements _$$AddressComponentImplCopyWith<$Res> {
+  __$$AddressComponentImplCopyWithImpl(_$AddressComponentImpl _value,
+      $Res Function(_$AddressComponentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddressComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? long_name = null,
+    Object? short_name = null,
+    Object? types = null,
+  }) {
+    return _then(_$AddressComponentImpl(
+      long_name: null == long_name
+          ? _value.long_name
+          : long_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      short_name: null == short_name
+          ? _value.short_name
+          : short_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      types: null == types
+          ? _value._types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AddressComponentImpl implements _AddressComponent {
+  const _$AddressComponentImpl(
+      {required this.long_name,
+      required this.short_name,
+      required final List<String> types})
+      : _types = types;
+
+  factory _$AddressComponentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressComponentImplFromJson(json);
+
+  @override
+  final String long_name;
+  @override
+  final String short_name;
+  final List<String> _types;
+  @override
+  List<String> get types {
+    if (_types is EqualUnmodifiableListView) return _types;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_types);
+  }
+
+  @override
+  String toString() {
+    return 'AddressComponent(long_name: $long_name, short_name: $short_name, types: $types)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddressComponentImpl &&
+            (identical(other.long_name, long_name) ||
+                other.long_name == long_name) &&
+            (identical(other.short_name, short_name) ||
+                other.short_name == short_name) &&
+            const DeepCollectionEquality().equals(other._types, _types));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, long_name, short_name,
+      const DeepCollectionEquality().hash(_types));
+
+  /// Create a copy of AddressComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddressComponentImplCopyWith<_$AddressComponentImpl> get copyWith =>
+      __$$AddressComponentImplCopyWithImpl<_$AddressComponentImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AddressComponentImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AddressComponent implements AddressComponent {
+  const factory _AddressComponent(
+      {required final String long_name,
+      required final String short_name,
+      required final List<String> types}) = _$AddressComponentImpl;
+
+  factory _AddressComponent.fromJson(Map<String, dynamic> json) =
+      _$AddressComponentImpl.fromJson;
+
+  @override
+  String get long_name;
+  @override
+  String get short_name;
+  @override
+  List<String> get types;
+
+  /// Create a copy of AddressComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddressComponentImplCopyWith<_$AddressComponentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

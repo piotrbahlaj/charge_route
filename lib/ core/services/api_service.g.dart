@@ -35,7 +35,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'autocomplete/json',
+          'place/autocomplete/json',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -74,7 +74,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'nearbysearch/json',
+          'place/nearbysearch/json',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -87,6 +87,39 @@ class _ApiService implements ApiService {
     late NearbySearchResponse _value;
     try {
       _value = NearbySearchResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GeocodingResponse> getAddressFromLocation(String latLng) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'latlng': latLng};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GeocodingResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'geocode/json',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GeocodingResponse _value;
+    try {
+      _value = GeocodingResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -111,7 +111,7 @@ class DashboardSearchBar extends StatelessWidget {
                   builder: (context, state) {
                     if (state.userLocation != null && !hasSetLocation && field == 'currentLocation') {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
-                        controller.text = state.userLocation!.name;
+                        controller.text = state.userLocation!.formattedAddress;
                         hasSetLocation = true;
                       });
                     }
