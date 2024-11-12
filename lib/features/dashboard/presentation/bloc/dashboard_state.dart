@@ -4,9 +4,13 @@ part of 'dashboard_bloc.dart';
 class DashboardState with _$DashboardState {
   const factory DashboardState({
     @Default(false) bool isLoading,
+    @Default(false) bool isRouteLoading,
     @Default([]) List<Prediction> suggestions,
     GeocodingResult? userLocation,
     String? activeField,
     String? errorMessage,
+    Location? startLocation,
+    Location? endLocation,
+    RouteResponse? route,
   }) = _DashboardState;
 }

@@ -30,6 +30,8 @@ _$PredictionImpl _$$PredictionImplFromJson(Map<String, dynamic> json) =>
           ? null
           : StructuredFormatting.fromJson(
               json['structuredFormatting'] as Map<String, dynamic>),
+      lat: (json['lat'] as num?)?.toDouble(),
+      lng: (json['lng'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$PredictionImplToJson(_$PredictionImpl instance) =>
@@ -37,6 +39,8 @@ Map<String, dynamic> _$$PredictionImplToJson(_$PredictionImpl instance) =>
       'description': instance.description,
       'place_id': instance.placeId,
       'structuredFormatting': instance.structuredFormatting,
+      'lat': instance.lat,
+      'lng': instance.lng,
     };
 
 _$StructuredFormattingImpl _$$StructuredFormattingImplFromJson(

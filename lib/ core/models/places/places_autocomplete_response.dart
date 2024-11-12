@@ -21,6 +21,8 @@ class Prediction with _$Prediction {
     required String description,
     @JsonKey(name: 'place_id') required String placeId,
     required StructuredFormatting? structuredFormatting,
+    double? lat,
+    double? lng,
   }) = _Prediction;
 
   factory Prediction.fromJson(Map<String, dynamic> json) => _$PredictionFromJson(json);

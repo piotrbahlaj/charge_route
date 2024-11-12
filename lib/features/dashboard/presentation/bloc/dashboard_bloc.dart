@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/di/service_locator.dart';
+import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
+import 'package:charge_route/%20core/models/route/route_response.dart';
 import 'package:charge_route/%20core/services/api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,6 +21,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);
     on<FetchCurrentLocationEvent>(_onFetchCurrentLocation);
+    on<SetStartLocationEvent>(_onSetStartLocation);
+    on<SetEndLocationEvent>(_onSetEndLocation);
+    on<FetchRouteEvent>(_onFetchRoute);
   }
 
   Future<void> _onFetchAutocomplete(FetchAutocompleteEvent event, Emitter<DashboardState> emit) async {
@@ -75,7 +80,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     try {
       final Position position = await getIt<LocationService>().getCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
-      // const int searchRadius = 25;
 
       final result = await apiService.getAddressFromLocation(locationString);
 
@@ -94,6 +98,55 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       print('Error in _onFetchCurrentLocation: $e');
       print('Stacktrace: $stacktrace');
       emit(state.copyWith(errorMessage: 'Failed to fetch location or place details.'));
+    }
+  }
+
+  Future<void> _onSetStartLocation(SetStartLocationEvent event, Emitter<DashboardState> emit) async {
+    if (event.location.lat != 0.0 && event.location.lng != 0.0) {
+      emit(state.copyWith(startLocation: event.location));
+    } else {
+      print("Invalid start location: ${event.location}");
+    }
+  }
+
+  Future<void> _onSetEndLocation(SetEndLocationEvent event, Emitter<DashboardState> emit) async {
+    if (event.location.lat != 0.0 && event.location.lng != 0.0) {
+      emit(state.copyWith(endLocation: event.location));
+    } else {
+      print("Invalid end location: ${event.location}");
+    }
+  }
+
+  Future<void> _onFetchRoute(FetchRouteEvent event, Emitter<DashboardState> emit) async {
+    final start = state.startLocation;
+    final end = state.endLocation;
+
+    if (start == null || end == null) {
+      emit(state.copyWith(errorMessage: 'Please select both start and end locations.'));
+      return;
+    }
+
+    emit(state.copyWith(
+      isRouteLoading: true,
+      errorMessage: null,
+    ));
+    try {
+      final result = await apiService.getRoute(
+        '${start.lat},${start.lng}',
+        '${end.lat},${end.lng}',
+      );
+      emit(state.copyWith(
+        isRouteLoading: false,
+        route: result,
+        errorMessage: null,
+      ));
+    } catch (e, stacktrace) {
+      print('Error in _onFetchRoute: $e');
+      print('Stacktrace: $stacktrace');
+      emit(state.copyWith(
+        isRouteLoading: false,
+        errorMessage: 'Failed to fetch route. Please try again.',
+      ));
     }
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'precise_location_response.freezed.dart';
@@ -34,16 +35,6 @@ class Geometry with _$Geometry {
   }) = _Geometry;
 
   factory Geometry.fromJson(Map<String, dynamic> json) => _$GeometryFromJson(json);
-}
-
-@freezed
-class Location with _$Location {
-  const factory Location({
-    required double lat,
-    required double lng,
-  }) = _Location;
-
-  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
 }
 
 @freezed

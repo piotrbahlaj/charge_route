@@ -211,6 +211,8 @@ mixin _$Prediction {
   String get placeId => throw _privateConstructorUsedError;
   StructuredFormatting? get structuredFormatting =>
       throw _privateConstructorUsedError;
+  double? get lat => throw _privateConstructorUsedError;
+  double? get lng => throw _privateConstructorUsedError;
 
   /// Serializes this Prediction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -231,7 +233,9 @@ abstract class $PredictionCopyWith<$Res> {
   $Res call(
       {String description,
       @JsonKey(name: 'place_id') String placeId,
-      StructuredFormatting? structuredFormatting});
+      StructuredFormatting? structuredFormatting,
+      double? lat,
+      double? lng});
 
   $StructuredFormattingCopyWith<$Res>? get structuredFormatting;
 }
@@ -254,6 +258,8 @@ class _$PredictionCopyWithImpl<$Res, $Val extends Prediction>
     Object? description = null,
     Object? placeId = null,
     Object? structuredFormatting = freezed,
+    Object? lat = freezed,
+    Object? lng = freezed,
   }) {
     return _then(_value.copyWith(
       description: null == description
@@ -268,6 +274,14 @@ class _$PredictionCopyWithImpl<$Res, $Val extends Prediction>
           ? _value.structuredFormatting
           : structuredFormatting // ignore: cast_nullable_to_non_nullable
               as StructuredFormatting?,
+      lat: freezed == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lng: freezed == lng
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 
@@ -298,7 +312,9 @@ abstract class _$$PredictionImplCopyWith<$Res>
   $Res call(
       {String description,
       @JsonKey(name: 'place_id') String placeId,
-      StructuredFormatting? structuredFormatting});
+      StructuredFormatting? structuredFormatting,
+      double? lat,
+      double? lng});
 
   @override
   $StructuredFormattingCopyWith<$Res>? get structuredFormatting;
@@ -320,6 +336,8 @@ class __$$PredictionImplCopyWithImpl<$Res>
     Object? description = null,
     Object? placeId = null,
     Object? structuredFormatting = freezed,
+    Object? lat = freezed,
+    Object? lng = freezed,
   }) {
     return _then(_$PredictionImpl(
       description: null == description
@@ -334,6 +352,14 @@ class __$$PredictionImplCopyWithImpl<$Res>
           ? _value.structuredFormatting
           : structuredFormatting // ignore: cast_nullable_to_non_nullable
               as StructuredFormatting?,
+      lat: freezed == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double?,
+      lng: freezed == lng
+          ? _value.lng
+          : lng // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -344,7 +370,9 @@ class _$PredictionImpl implements _Prediction {
   const _$PredictionImpl(
       {required this.description,
       @JsonKey(name: 'place_id') required this.placeId,
-      required this.structuredFormatting});
+      required this.structuredFormatting,
+      this.lat,
+      this.lng});
 
   factory _$PredictionImpl.fromJson(Map<String, dynamic> json) =>
       _$$PredictionImplFromJson(json);
@@ -356,10 +384,14 @@ class _$PredictionImpl implements _Prediction {
   final String placeId;
   @override
   final StructuredFormatting? structuredFormatting;
+  @override
+  final double? lat;
+  @override
+  final double? lng;
 
   @override
   String toString() {
-    return 'Prediction(description: $description, placeId: $placeId, structuredFormatting: $structuredFormatting)';
+    return 'Prediction(description: $description, placeId: $placeId, structuredFormatting: $structuredFormatting, lat: $lat, lng: $lng)';
   }
 
   @override
@@ -371,13 +403,15 @@ class _$PredictionImpl implements _Prediction {
                 other.description == description) &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.structuredFormatting, structuredFormatting) ||
-                other.structuredFormatting == structuredFormatting));
+                other.structuredFormatting == structuredFormatting) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lng, lng) || other.lng == lng));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, description, placeId, structuredFormatting);
+  int get hashCode => Object.hash(
+      runtimeType, description, placeId, structuredFormatting, lat, lng);
 
   /// Create a copy of Prediction
   /// with the given fields replaced by the non-null parameter values.
@@ -397,10 +431,11 @@ class _$PredictionImpl implements _Prediction {
 
 abstract class _Prediction implements Prediction {
   const factory _Prediction(
-          {required final String description,
-          @JsonKey(name: 'place_id') required final String placeId,
-          required final StructuredFormatting? structuredFormatting}) =
-      _$PredictionImpl;
+      {required final String description,
+      @JsonKey(name: 'place_id') required final String placeId,
+      required final StructuredFormatting? structuredFormatting,
+      final double? lat,
+      final double? lng}) = _$PredictionImpl;
 
   factory _Prediction.fromJson(Map<String, dynamic> json) =
       _$PredictionImpl.fromJson;
@@ -412,6 +447,10 @@ abstract class _Prediction implements Prediction {
   String get placeId;
   @override
   StructuredFormatting? get structuredFormatting;
+  @override
+  double? get lat;
+  @override
+  double? get lng;
 
   /// Create a copy of Prediction
   /// with the given fields replaced by the non-null parameter values.
