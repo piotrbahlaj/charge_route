@@ -649,7 +649,6 @@ abstract class FetchCurrentLocationEvent implements DashboardEvent {
 mixin _$DashboardState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<Prediction> get suggestions => throw _privateConstructorUsedError;
-  bool get locationSet => throw _privateConstructorUsedError;
   NearbyResult? get userLocation => throw _privateConstructorUsedError;
   String? get activeField => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -670,7 +669,6 @@ abstract class $DashboardStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       List<Prediction> suggestions,
-      bool locationSet,
       NearbyResult? userLocation,
       String? activeField,
       String? errorMessage});
@@ -695,7 +693,6 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   $Res call({
     Object? isLoading = null,
     Object? suggestions = null,
-    Object? locationSet = null,
     Object? userLocation = freezed,
     Object? activeField = freezed,
     Object? errorMessage = freezed,
@@ -709,10 +706,6 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<Prediction>,
-      locationSet: null == locationSet
-          ? _value.locationSet
-          : locationSet // ignore: cast_nullable_to_non_nullable
-              as bool,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -754,7 +747,6 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       List<Prediction> suggestions,
-      bool locationSet,
       NearbyResult? userLocation,
       String? activeField,
       String? errorMessage});
@@ -778,7 +770,6 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? suggestions = null,
-    Object? locationSet = null,
     Object? userLocation = freezed,
     Object? activeField = freezed,
     Object? errorMessage = freezed,
@@ -792,10 +783,6 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
           ? _value._suggestions
           : suggestions // ignore: cast_nullable_to_non_nullable
               as List<Prediction>,
-      locationSet: null == locationSet
-          ? _value.locationSet
-          : locationSet // ignore: cast_nullable_to_non_nullable
-              as bool,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -818,7 +805,6 @@ class _$DashboardStateImpl implements _DashboardState {
   const _$DashboardStateImpl(
       {this.isLoading = false,
       final List<Prediction> suggestions = const [],
-      this.locationSet = false,
       this.userLocation,
       this.activeField,
       this.errorMessage})
@@ -837,9 +823,6 @@ class _$DashboardStateImpl implements _DashboardState {
   }
 
   @override
-  @JsonKey()
-  final bool locationSet;
-  @override
   final NearbyResult? userLocation;
   @override
   final String? activeField;
@@ -848,7 +831,7 @@ class _$DashboardStateImpl implements _DashboardState {
 
   @override
   String toString() {
-    return 'DashboardState(isLoading: $isLoading, suggestions: $suggestions, locationSet: $locationSet, userLocation: $userLocation, activeField: $activeField, errorMessage: $errorMessage)';
+    return 'DashboardState(isLoading: $isLoading, suggestions: $suggestions, userLocation: $userLocation, activeField: $activeField, errorMessage: $errorMessage)';
   }
 
   @override
@@ -860,8 +843,6 @@ class _$DashboardStateImpl implements _DashboardState {
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._suggestions, _suggestions) &&
-            (identical(other.locationSet, locationSet) ||
-                other.locationSet == locationSet) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation) &&
             (identical(other.activeField, activeField) ||
@@ -875,7 +856,6 @@ class _$DashboardStateImpl implements _DashboardState {
       runtimeType,
       isLoading,
       const DeepCollectionEquality().hash(_suggestions),
-      locationSet,
       userLocation,
       activeField,
       errorMessage);
@@ -894,7 +874,6 @@ abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
       {final bool isLoading,
       final List<Prediction> suggestions,
-      final bool locationSet,
       final NearbyResult? userLocation,
       final String? activeField,
       final String? errorMessage}) = _$DashboardStateImpl;
@@ -903,8 +882,6 @@ abstract class _DashboardState implements DashboardState {
   bool get isLoading;
   @override
   List<Prediction> get suggestions;
-  @override
-  bool get locationSet;
   @override
   NearbyResult? get userLocation;
   @override

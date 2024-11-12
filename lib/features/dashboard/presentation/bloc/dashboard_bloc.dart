@@ -70,7 +70,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   Future<void> _onFetchCurrentLocation(FetchCurrentLocationEvent event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(
       userLocation: null,
-      locationSet: false,
       isLoading: true,
     ));
     try {
@@ -85,7 +84,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           userLocation: result.results.first,
           errorMessage: null,
           isLoading: false,
-          locationSet: true,
         ));
       } else {
         emit(state.copyWith(
