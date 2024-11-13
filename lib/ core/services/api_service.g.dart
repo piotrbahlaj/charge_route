@@ -23,9 +23,17 @@ class _ApiService implements ApiService {
 
   @override
   Future<PlacesAutocompleteResponse> getAutocompleteSuggestions(
-      String input) async {
+    String input,
+    String? location,
+    int? radius,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'input': input};
+    final queryParameters = <String, dynamic>{
+      r'input': input,
+      r'location': location,
+      r'radius': radius,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<PlacesAutocompleteResponse>(Options(
