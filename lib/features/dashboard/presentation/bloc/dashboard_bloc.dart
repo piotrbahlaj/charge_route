@@ -17,12 +17,38 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final ApiService apiService = getIt<ApiService>();
 
   DashboardBloc() : super(const DashboardState()) {
+    on<FetchInitialLocationEvent>(_onFetchInitialLocation);
+    add(const FetchInitialLocationEvent());
     on<FetchAutocompleteEvent>(_onFetchAutocomplete);
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);
     on<FetchCurrentLocationEvent>(_onFetchCurrentLocation);
     on<FetchPlaceDetailsEvent>(_onFetchPlaceDetails);
     on<FetchRouteEvent>(_onFetchRoute);
+  }
+
+  Future<void> _onFetchInitialLocation(FetchInitialLocationEvent event, Emitter<DashboardState> emit) async {
+    try {
+      final Position position = await getIt<LocationService>().getCurrentLocation();
+      final String locationString = '${position.latitude},${position.longitude}';
+
+      final result = await apiService.getAddressFromLocation(locationString);
+
+      if (result.results.isNotEmpty) {
+        emit(state.copyWith(
+          initialLocation: result.results.first,
+          errorMessage: null,
+        ));
+      } else {
+        emit(state.copyWith(
+          errorMessage: 'Failed to get initial location.',
+        ));
+      }
+    } catch (e) {
+      emit(state.copyWith(
+        errorMessage: 'Failed to fetch initial location.',
+      ));
+    }
   }
 
   Future<void> _onFetchAutocomplete(FetchAutocompleteEvent event, Emitter<DashboardState> emit) async {
@@ -38,7 +64,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(state.copyWith(isLoading: true));
 
     try {
-      final results = await apiService.getAutocompleteSuggestions(query);
+      final location = state.initialLocation?.geometry.location;
+      final locationString = location != null ? '${location.lat},${location.lng}' : null;
+      const int searchRadius = 20000;
+      final results = await apiService.getAutocompleteSuggestions(query, locationString, searchRadius);
 
       if (results.predictions.isEmpty) {
         emit(state.copyWith(

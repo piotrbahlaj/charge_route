@@ -15,6 +15,8 @@ abstract class ApiService {
   @GET("place/autocomplete/json")
   Future<PlacesAutocompleteResponse> getAutocompleteSuggestions(
     @Query("input") String input,
+    @Query("location") String? location,
+    @Query("radius") int? radius,
   );
 
   @GET("place/nearbysearch/json")

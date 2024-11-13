@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../../../ core/di/service_locator.dart';
+
 class DashBoardMap extends StatefulWidget {
   const DashBoardMap({super.key});
 
@@ -20,7 +22,7 @@ class _DashBoardMapState extends State<DashBoardMap> {
   @override
   void initState() {
     super.initState();
-    _startLocationTracking();
+    Future.delayed(const Duration(milliseconds: 200), _startLocationTracking);
   }
 
   @override
@@ -30,30 +32,26 @@ class _DashBoardMapState extends State<DashBoardMap> {
   }
 
   Future<void> _startLocationTracking() async {
-    final locationService = LocationService();
+    //TODO switch to bloc state mangagement
+    final locationService = getIt<LocationService>();
 
-    // Get initial location
     Position initialPosition = await locationService.getCurrentLocation();
     setState(() {
       _currentPosition = LatLng(initialPosition.latitude, initialPosition.longitude);
     });
 
-    // Move the camera to the initial position
     _controller?.animateCamera(CameraUpdate.newLatLng(_currentPosition!));
 
-    // Start listening to the position stream for real-time updates
     _positionStreamSubscription = Geolocator.getPositionStream(
       locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
     ).listen((Position position) {
       LatLng newPosition = LatLng(position.latitude, position.longitude);
       if (mounted) {
-        // Check if the widget is still mounted before calling setState
         setState(() {
           _currentPosition = newPosition;
         });
       }
 
-      // Animate the camera to the new position
       _controller?.animateCamera(CameraUpdate.newLatLng(newPosition));
     });
   }
@@ -77,7 +75,7 @@ class _DashBoardMapState extends State<DashBoardMap> {
             top: Radius.circular(30),
           ),
           child: _currentPosition == null
-              ? Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.onPrimary))
+              ? Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.secondary))
               : GoogleMap(
                   initialCameraPosition: CameraPosition(
                     target: _currentPosition!,
