@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 60),
               CircularProgressIndicator(
                 color: Theme.of(context).colorScheme.secondary,
               ),
