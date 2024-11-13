@@ -20,7 +20,9 @@ RouteResponse _$RouteResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RouteResponse {
-  List<Route> get routes => throw _privateConstructorUsedError;
+  List<Route>? get routes => throw _privateConstructorUsedError;
+  List<GeocodedWaypoint>? get geocodedWaypoints =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this RouteResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +40,7 @@ abstract class $RouteResponseCopyWith<$Res> {
           RouteResponse value, $Res Function(RouteResponse) then) =
       _$RouteResponseCopyWithImpl<$Res, RouteResponse>;
   @useResult
-  $Res call({List<Route> routes});
+  $Res call({List<Route>? routes, List<GeocodedWaypoint>? geocodedWaypoints});
 }
 
 /// @nodoc
@@ -56,13 +58,18 @@ class _$RouteResponseCopyWithImpl<$Res, $Val extends RouteResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? routes = null,
+    Object? routes = freezed,
+    Object? geocodedWaypoints = freezed,
   }) {
     return _then(_value.copyWith(
-      routes: null == routes
+      routes: freezed == routes
           ? _value.routes
           : routes // ignore: cast_nullable_to_non_nullable
-              as List<Route>,
+              as List<Route>?,
+      geocodedWaypoints: freezed == geocodedWaypoints
+          ? _value.geocodedWaypoints
+          : geocodedWaypoints // ignore: cast_nullable_to_non_nullable
+              as List<GeocodedWaypoint>?,
     ) as $Val);
   }
 }
@@ -75,7 +82,7 @@ abstract class _$$RouteResponseImplCopyWith<$Res>
       __$$RouteResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Route> routes});
+  $Res call({List<Route>? routes, List<GeocodedWaypoint>? geocodedWaypoints});
 }
 
 /// @nodoc
@@ -91,13 +98,18 @@ class __$$RouteResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? routes = null,
+    Object? routes = freezed,
+    Object? geocodedWaypoints = freezed,
   }) {
     return _then(_$RouteResponseImpl(
-      routes: null == routes
+      routes: freezed == routes
           ? _value._routes
           : routes // ignore: cast_nullable_to_non_nullable
-              as List<Route>,
+              as List<Route>?,
+      geocodedWaypoints: freezed == geocodedWaypoints
+          ? _value._geocodedWaypoints
+          : geocodedWaypoints // ignore: cast_nullable_to_non_nullable
+              as List<GeocodedWaypoint>?,
     ));
   }
 }
@@ -105,23 +117,39 @@ class __$$RouteResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RouteResponseImpl implements _RouteResponse {
-  const _$RouteResponseImpl({required final List<Route> routes})
-      : _routes = routes;
+  const _$RouteResponseImpl(
+      {required final List<Route>? routes,
+      required final List<GeocodedWaypoint>? geocodedWaypoints})
+      : _routes = routes,
+        _geocodedWaypoints = geocodedWaypoints;
 
   factory _$RouteResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RouteResponseImplFromJson(json);
 
-  final List<Route> _routes;
+  final List<Route>? _routes;
   @override
-  List<Route> get routes {
+  List<Route>? get routes {
+    final value = _routes;
+    if (value == null) return null;
     if (_routes is EqualUnmodifiableListView) return _routes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_routes);
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<GeocodedWaypoint>? _geocodedWaypoints;
+  @override
+  List<GeocodedWaypoint>? get geocodedWaypoints {
+    final value = _geocodedWaypoints;
+    if (value == null) return null;
+    if (_geocodedWaypoints is EqualUnmodifiableListView)
+      return _geocodedWaypoints;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'RouteResponse(routes: $routes)';
+    return 'RouteResponse(routes: $routes, geocodedWaypoints: $geocodedWaypoints)';
   }
 
   @override
@@ -129,13 +157,17 @@ class _$RouteResponseImpl implements _RouteResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RouteResponseImpl &&
-            const DeepCollectionEquality().equals(other._routes, _routes));
+            const DeepCollectionEquality().equals(other._routes, _routes) &&
+            const DeepCollectionEquality()
+                .equals(other._geocodedWaypoints, _geocodedWaypoints));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_routes));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_routes),
+      const DeepCollectionEquality().hash(_geocodedWaypoints));
 
   /// Create a copy of RouteResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -154,14 +186,18 @@ class _$RouteResponseImpl implements _RouteResponse {
 }
 
 abstract class _RouteResponse implements RouteResponse {
-  const factory _RouteResponse({required final List<Route> routes}) =
+  const factory _RouteResponse(
+          {required final List<Route>? routes,
+          required final List<GeocodedWaypoint>? geocodedWaypoints}) =
       _$RouteResponseImpl;
 
   factory _RouteResponse.fromJson(Map<String, dynamic> json) =
       _$RouteResponseImpl.fromJson;
 
   @override
-  List<Route> get routes;
+  List<Route>? get routes;
+  @override
+  List<GeocodedWaypoint>? get geocodedWaypoints;
 
   /// Create a copy of RouteResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -171,15 +207,212 @@ abstract class _RouteResponse implements RouteResponse {
       throw _privateConstructorUsedError;
 }
 
+GeocodedWaypoint _$GeocodedWaypointFromJson(Map<String, dynamic> json) {
+  return _GeocodedWaypoint.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GeocodedWaypoint {
+  String get geocoderStatus => throw _privateConstructorUsedError;
+  String get placeId => throw _privateConstructorUsedError;
+  List<String> get types => throw _privateConstructorUsedError;
+
+  /// Serializes this GeocodedWaypoint to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of GeocodedWaypoint
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GeocodedWaypointCopyWith<GeocodedWaypoint> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GeocodedWaypointCopyWith<$Res> {
+  factory $GeocodedWaypointCopyWith(
+          GeocodedWaypoint value, $Res Function(GeocodedWaypoint) then) =
+      _$GeocodedWaypointCopyWithImpl<$Res, GeocodedWaypoint>;
+  @useResult
+  $Res call({String geocoderStatus, String placeId, List<String> types});
+}
+
+/// @nodoc
+class _$GeocodedWaypointCopyWithImpl<$Res, $Val extends GeocodedWaypoint>
+    implements $GeocodedWaypointCopyWith<$Res> {
+  _$GeocodedWaypointCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of GeocodedWaypoint
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? geocoderStatus = null,
+    Object? placeId = null,
+    Object? types = null,
+  }) {
+    return _then(_value.copyWith(
+      geocoderStatus: null == geocoderStatus
+          ? _value.geocoderStatus
+          : geocoderStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      placeId: null == placeId
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      types: null == types
+          ? _value.types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GeocodedWaypointImplCopyWith<$Res>
+    implements $GeocodedWaypointCopyWith<$Res> {
+  factory _$$GeocodedWaypointImplCopyWith(_$GeocodedWaypointImpl value,
+          $Res Function(_$GeocodedWaypointImpl) then) =
+      __$$GeocodedWaypointImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String geocoderStatus, String placeId, List<String> types});
+}
+
+/// @nodoc
+class __$$GeocodedWaypointImplCopyWithImpl<$Res>
+    extends _$GeocodedWaypointCopyWithImpl<$Res, _$GeocodedWaypointImpl>
+    implements _$$GeocodedWaypointImplCopyWith<$Res> {
+  __$$GeocodedWaypointImplCopyWithImpl(_$GeocodedWaypointImpl _value,
+      $Res Function(_$GeocodedWaypointImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GeocodedWaypoint
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? geocoderStatus = null,
+    Object? placeId = null,
+    Object? types = null,
+  }) {
+    return _then(_$GeocodedWaypointImpl(
+      geocoderStatus: null == geocoderStatus
+          ? _value.geocoderStatus
+          : geocoderStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      placeId: null == placeId
+          ? _value.placeId
+          : placeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      types: null == types
+          ? _value._types
+          : types // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GeocodedWaypointImpl implements _GeocodedWaypoint {
+  const _$GeocodedWaypointImpl(
+      {required this.geocoderStatus,
+      required this.placeId,
+      required final List<String> types})
+      : _types = types;
+
+  factory _$GeocodedWaypointImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GeocodedWaypointImplFromJson(json);
+
+  @override
+  final String geocoderStatus;
+  @override
+  final String placeId;
+  final List<String> _types;
+  @override
+  List<String> get types {
+    if (_types is EqualUnmodifiableListView) return _types;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_types);
+  }
+
+  @override
+  String toString() {
+    return 'GeocodedWaypoint(geocoderStatus: $geocoderStatus, placeId: $placeId, types: $types)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GeocodedWaypointImpl &&
+            (identical(other.geocoderStatus, geocoderStatus) ||
+                other.geocoderStatus == geocoderStatus) &&
+            (identical(other.placeId, placeId) || other.placeId == placeId) &&
+            const DeepCollectionEquality().equals(other._types, _types));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, geocoderStatus, placeId,
+      const DeepCollectionEquality().hash(_types));
+
+  /// Create a copy of GeocodedWaypoint
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GeocodedWaypointImplCopyWith<_$GeocodedWaypointImpl> get copyWith =>
+      __$$GeocodedWaypointImplCopyWithImpl<_$GeocodedWaypointImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GeocodedWaypointImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GeocodedWaypoint implements GeocodedWaypoint {
+  const factory _GeocodedWaypoint(
+      {required final String geocoderStatus,
+      required final String placeId,
+      required final List<String> types}) = _$GeocodedWaypointImpl;
+
+  factory _GeocodedWaypoint.fromJson(Map<String, dynamic> json) =
+      _$GeocodedWaypointImpl.fromJson;
+
+  @override
+  String get geocoderStatus;
+  @override
+  String get placeId;
+  @override
+  List<String> get types;
+
+  /// Create a copy of GeocodedWaypoint
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GeocodedWaypointImplCopyWith<_$GeocodedWaypointImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Route _$RouteFromJson(Map<String, dynamic> json) {
   return _Route.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Route {
-  Polyline get overviewPolyline => throw _privateConstructorUsedError;
-  List<Leg> get legs => throw _privateConstructorUsedError;
-  Bounds get bounds => throw _privateConstructorUsedError;
+  Bounds? get bounds => throw _privateConstructorUsedError;
+  List<Leg>? get legs => throw _privateConstructorUsedError;
+  Polyline? get overviewPolyline => throw _privateConstructorUsedError;
+  String? get copyrights => throw _privateConstructorUsedError;
 
   /// Serializes this Route to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -195,10 +428,14 @@ abstract class $RouteCopyWith<$Res> {
   factory $RouteCopyWith(Route value, $Res Function(Route) then) =
       _$RouteCopyWithImpl<$Res, Route>;
   @useResult
-  $Res call({Polyline overviewPolyline, List<Leg> legs, Bounds bounds});
+  $Res call(
+      {Bounds? bounds,
+      List<Leg>? legs,
+      Polyline? overviewPolyline,
+      String? copyrights});
 
-  $PolylineCopyWith<$Res> get overviewPolyline;
-  $BoundsCopyWith<$Res> get bounds;
+  $BoundsCopyWith<$Res>? get bounds;
+  $PolylineCopyWith<$Res>? get overviewPolyline;
 }
 
 /// @nodoc
@@ -216,23 +453,28 @@ class _$RouteCopyWithImpl<$Res, $Val extends Route>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? overviewPolyline = null,
-    Object? legs = null,
-    Object? bounds = null,
+    Object? bounds = freezed,
+    Object? legs = freezed,
+    Object? overviewPolyline = freezed,
+    Object? copyrights = freezed,
   }) {
     return _then(_value.copyWith(
-      overviewPolyline: null == overviewPolyline
-          ? _value.overviewPolyline
-          : overviewPolyline // ignore: cast_nullable_to_non_nullable
-              as Polyline,
-      legs: null == legs
-          ? _value.legs
-          : legs // ignore: cast_nullable_to_non_nullable
-              as List<Leg>,
-      bounds: null == bounds
+      bounds: freezed == bounds
           ? _value.bounds
           : bounds // ignore: cast_nullable_to_non_nullable
-              as Bounds,
+              as Bounds?,
+      legs: freezed == legs
+          ? _value.legs
+          : legs // ignore: cast_nullable_to_non_nullable
+              as List<Leg>?,
+      overviewPolyline: freezed == overviewPolyline
+          ? _value.overviewPolyline
+          : overviewPolyline // ignore: cast_nullable_to_non_nullable
+              as Polyline?,
+      copyrights: freezed == copyrights
+          ? _value.copyrights
+          : copyrights // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -240,9 +482,13 @@ class _$RouteCopyWithImpl<$Res, $Val extends Route>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PolylineCopyWith<$Res> get overviewPolyline {
-    return $PolylineCopyWith<$Res>(_value.overviewPolyline, (value) {
-      return _then(_value.copyWith(overviewPolyline: value) as $Val);
+  $BoundsCopyWith<$Res>? get bounds {
+    if (_value.bounds == null) {
+      return null;
+    }
+
+    return $BoundsCopyWith<$Res>(_value.bounds!, (value) {
+      return _then(_value.copyWith(bounds: value) as $Val);
     });
   }
 
@@ -250,9 +496,13 @@ class _$RouteCopyWithImpl<$Res, $Val extends Route>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BoundsCopyWith<$Res> get bounds {
-    return $BoundsCopyWith<$Res>(_value.bounds, (value) {
-      return _then(_value.copyWith(bounds: value) as $Val);
+  $PolylineCopyWith<$Res>? get overviewPolyline {
+    if (_value.overviewPolyline == null) {
+      return null;
+    }
+
+    return $PolylineCopyWith<$Res>(_value.overviewPolyline!, (value) {
+      return _then(_value.copyWith(overviewPolyline: value) as $Val);
     });
   }
 }
@@ -264,12 +514,16 @@ abstract class _$$RouteImplCopyWith<$Res> implements $RouteCopyWith<$Res> {
       __$$RouteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Polyline overviewPolyline, List<Leg> legs, Bounds bounds});
+  $Res call(
+      {Bounds? bounds,
+      List<Leg>? legs,
+      Polyline? overviewPolyline,
+      String? copyrights});
 
   @override
-  $PolylineCopyWith<$Res> get overviewPolyline;
+  $BoundsCopyWith<$Res>? get bounds;
   @override
-  $BoundsCopyWith<$Res> get bounds;
+  $PolylineCopyWith<$Res>? get overviewPolyline;
 }
 
 /// @nodoc
@@ -285,23 +539,28 @@ class __$$RouteImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? overviewPolyline = null,
-    Object? legs = null,
-    Object? bounds = null,
+    Object? bounds = freezed,
+    Object? legs = freezed,
+    Object? overviewPolyline = freezed,
+    Object? copyrights = freezed,
   }) {
     return _then(_$RouteImpl(
-      overviewPolyline: null == overviewPolyline
-          ? _value.overviewPolyline
-          : overviewPolyline // ignore: cast_nullable_to_non_nullable
-              as Polyline,
-      legs: null == legs
-          ? _value._legs
-          : legs // ignore: cast_nullable_to_non_nullable
-              as List<Leg>,
-      bounds: null == bounds
+      bounds: freezed == bounds
           ? _value.bounds
           : bounds // ignore: cast_nullable_to_non_nullable
-              as Bounds,
+              as Bounds?,
+      legs: freezed == legs
+          ? _value._legs
+          : legs // ignore: cast_nullable_to_non_nullable
+              as List<Leg>?,
+      overviewPolyline: freezed == overviewPolyline
+          ? _value.overviewPolyline
+          : overviewPolyline // ignore: cast_nullable_to_non_nullable
+              as Polyline?,
+      copyrights: freezed == copyrights
+          ? _value.copyrights
+          : copyrights // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -310,30 +569,35 @@ class __$$RouteImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RouteImpl implements _Route {
   const _$RouteImpl(
-      {required this.overviewPolyline,
-      required final List<Leg> legs,
-      required this.bounds})
+      {required this.bounds,
+      required final List<Leg>? legs,
+      required this.overviewPolyline,
+      this.copyrights})
       : _legs = legs;
 
   factory _$RouteImpl.fromJson(Map<String, dynamic> json) =>
       _$$RouteImplFromJson(json);
 
   @override
-  final Polyline overviewPolyline;
-  final List<Leg> _legs;
+  final Bounds? bounds;
+  final List<Leg>? _legs;
   @override
-  List<Leg> get legs {
+  List<Leg>? get legs {
+    final value = _legs;
+    if (value == null) return null;
     if (_legs is EqualUnmodifiableListView) return _legs;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_legs);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final Bounds bounds;
+  final Polyline? overviewPolyline;
+  @override
+  final String? copyrights;
 
   @override
   String toString() {
-    return 'Route(overviewPolyline: $overviewPolyline, legs: $legs, bounds: $bounds)';
+    return 'Route(bounds: $bounds, legs: $legs, overviewPolyline: $overviewPolyline, copyrights: $copyrights)';
   }
 
   @override
@@ -341,16 +605,18 @@ class _$RouteImpl implements _Route {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RouteImpl &&
+            (identical(other.bounds, bounds) || other.bounds == bounds) &&
+            const DeepCollectionEquality().equals(other._legs, _legs) &&
             (identical(other.overviewPolyline, overviewPolyline) ||
                 other.overviewPolyline == overviewPolyline) &&
-            const DeepCollectionEquality().equals(other._legs, _legs) &&
-            (identical(other.bounds, bounds) || other.bounds == bounds));
+            (identical(other.copyrights, copyrights) ||
+                other.copyrights == copyrights));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, overviewPolyline,
-      const DeepCollectionEquality().hash(_legs), bounds);
+  int get hashCode => Object.hash(runtimeType, bounds,
+      const DeepCollectionEquality().hash(_legs), overviewPolyline, copyrights);
 
   /// Create a copy of Route
   /// with the given fields replaced by the non-null parameter values.
@@ -370,18 +636,21 @@ class _$RouteImpl implements _Route {
 
 abstract class _Route implements Route {
   const factory _Route(
-      {required final Polyline overviewPolyline,
-      required final List<Leg> legs,
-      required final Bounds bounds}) = _$RouteImpl;
+      {required final Bounds? bounds,
+      required final List<Leg>? legs,
+      required final Polyline? overviewPolyline,
+      final String? copyrights}) = _$RouteImpl;
 
   factory _Route.fromJson(Map<String, dynamic> json) = _$RouteImpl.fromJson;
 
   @override
-  Polyline get overviewPolyline;
+  Bounds? get bounds;
   @override
-  List<Leg> get legs;
+  List<Leg>? get legs;
   @override
-  Bounds get bounds;
+  Polyline? get overviewPolyline;
+  @override
+  String? get copyrights;
 
   /// Create a copy of Route
   /// with the given fields replaced by the non-null parameter values.
@@ -397,13 +666,17 @@ Leg _$LegFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Leg {
-  String get startAddress => throw _privateConstructorUsedError;
-  String get endAddress => throw _privateConstructorUsedError;
-  Location get startLocation => throw _privateConstructorUsedError;
-  Location get endLocation => throw _privateConstructorUsedError;
-  Distance get distance => throw _privateConstructorUsedError;
-  Duration get duration => throw _privateConstructorUsedError;
-  List<Step> get steps => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_address')
+  String? get startAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_address')
+  String? get endAddress => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_location')
+  Location? get startLocation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_location')
+  Location? get endLocation => throw _privateConstructorUsedError;
+  Distance? get distance => throw _privateConstructorUsedError;
+  Duration? get duration => throw _privateConstructorUsedError;
+  List<Step>? get steps => throw _privateConstructorUsedError;
 
   /// Serializes this Leg to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -420,18 +693,18 @@ abstract class $LegCopyWith<$Res> {
       _$LegCopyWithImpl<$Res, Leg>;
   @useResult
   $Res call(
-      {String startAddress,
-      String endAddress,
-      Location startLocation,
-      Location endLocation,
-      Distance distance,
-      Duration duration,
-      List<Step> steps});
+      {@JsonKey(name: 'start_address') String? startAddress,
+      @JsonKey(name: 'end_address') String? endAddress,
+      @JsonKey(name: 'start_location') Location? startLocation,
+      @JsonKey(name: 'end_location') Location? endLocation,
+      Distance? distance,
+      Duration? duration,
+      List<Step>? steps});
 
-  $LocationCopyWith<$Res> get startLocation;
-  $LocationCopyWith<$Res> get endLocation;
-  $DistanceCopyWith<$Res> get distance;
-  $DurationCopyWith<$Res> get duration;
+  $LocationCopyWith<$Res>? get startLocation;
+  $LocationCopyWith<$Res>? get endLocation;
+  $DistanceCopyWith<$Res>? get distance;
+  $DurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -448,43 +721,43 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startAddress = null,
-    Object? endAddress = null,
-    Object? startLocation = null,
-    Object? endLocation = null,
-    Object? distance = null,
-    Object? duration = null,
-    Object? steps = null,
+    Object? startAddress = freezed,
+    Object? endAddress = freezed,
+    Object? startLocation = freezed,
+    Object? endLocation = freezed,
+    Object? distance = freezed,
+    Object? duration = freezed,
+    Object? steps = freezed,
   }) {
     return _then(_value.copyWith(
-      startAddress: null == startAddress
+      startAddress: freezed == startAddress
           ? _value.startAddress
           : startAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      endAddress: null == endAddress
+              as String?,
+      endAddress: freezed == endAddress
           ? _value.endAddress
           : endAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      startLocation: null == startLocation
+              as String?,
+      startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      endLocation: null == endLocation
+              as Location?,
+      endLocation: freezed == endLocation
           ? _value.endLocation
           : endLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      distance: null == distance
+              as Location?,
+      distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as Distance,
-      duration: null == duration
+              as Distance?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      steps: null == steps
+              as Duration?,
+      steps: freezed == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as List<Step>,
+              as List<Step>?,
     ) as $Val);
   }
 
@@ -492,8 +765,12 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get startLocation {
-    return $LocationCopyWith<$Res>(_value.startLocation, (value) {
+  $LocationCopyWith<$Res>? get startLocation {
+    if (_value.startLocation == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.startLocation!, (value) {
       return _then(_value.copyWith(startLocation: value) as $Val);
     });
   }
@@ -502,8 +779,12 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get endLocation {
-    return $LocationCopyWith<$Res>(_value.endLocation, (value) {
+  $LocationCopyWith<$Res>? get endLocation {
+    if (_value.endLocation == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.endLocation!, (value) {
       return _then(_value.copyWith(endLocation: value) as $Val);
     });
   }
@@ -512,8 +793,12 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DistanceCopyWith<$Res> get distance {
-    return $DistanceCopyWith<$Res>(_value.distance, (value) {
+  $DistanceCopyWith<$Res>? get distance {
+    if (_value.distance == null) {
+      return null;
+    }
+
+    return $DistanceCopyWith<$Res>(_value.distance!, (value) {
       return _then(_value.copyWith(distance: value) as $Val);
     });
   }
@@ -522,8 +807,12 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res> get duration {
-    return $DurationCopyWith<$Res>(_value.duration, (value) {
+  $DurationCopyWith<$Res>? get duration {
+    if (_value.duration == null) {
+      return null;
+    }
+
+    return $DurationCopyWith<$Res>(_value.duration!, (value) {
       return _then(_value.copyWith(duration: value) as $Val);
     });
   }
@@ -536,22 +825,22 @@ abstract class _$$LegImplCopyWith<$Res> implements $LegCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String startAddress,
-      String endAddress,
-      Location startLocation,
-      Location endLocation,
-      Distance distance,
-      Duration duration,
-      List<Step> steps});
+      {@JsonKey(name: 'start_address') String? startAddress,
+      @JsonKey(name: 'end_address') String? endAddress,
+      @JsonKey(name: 'start_location') Location? startLocation,
+      @JsonKey(name: 'end_location') Location? endLocation,
+      Distance? distance,
+      Duration? duration,
+      List<Step>? steps});
 
   @override
-  $LocationCopyWith<$Res> get startLocation;
+  $LocationCopyWith<$Res>? get startLocation;
   @override
-  $LocationCopyWith<$Res> get endLocation;
+  $LocationCopyWith<$Res>? get endLocation;
   @override
-  $DistanceCopyWith<$Res> get distance;
+  $DistanceCopyWith<$Res>? get distance;
   @override
-  $DurationCopyWith<$Res> get duration;
+  $DurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -565,43 +854,43 @@ class __$$LegImplCopyWithImpl<$Res> extends _$LegCopyWithImpl<$Res, _$LegImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startAddress = null,
-    Object? endAddress = null,
-    Object? startLocation = null,
-    Object? endLocation = null,
-    Object? distance = null,
-    Object? duration = null,
-    Object? steps = null,
+    Object? startAddress = freezed,
+    Object? endAddress = freezed,
+    Object? startLocation = freezed,
+    Object? endLocation = freezed,
+    Object? distance = freezed,
+    Object? duration = freezed,
+    Object? steps = freezed,
   }) {
     return _then(_$LegImpl(
-      startAddress: null == startAddress
+      startAddress: freezed == startAddress
           ? _value.startAddress
           : startAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      endAddress: null == endAddress
+              as String?,
+      endAddress: freezed == endAddress
           ? _value.endAddress
           : endAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      startLocation: null == startLocation
+              as String?,
+      startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      endLocation: null == endLocation
+              as Location?,
+      endLocation: freezed == endLocation
           ? _value.endLocation
           : endLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      distance: null == distance
+              as Location?,
+      distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as Distance,
-      duration: null == duration
+              as Distance?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      steps: null == steps
+              as Duration?,
+      steps: freezed == steps
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as List<Step>,
+              as List<Step>?,
     ));
   }
 }
@@ -610,36 +899,42 @@ class __$$LegImplCopyWithImpl<$Res> extends _$LegCopyWithImpl<$Res, _$LegImpl>
 @JsonSerializable()
 class _$LegImpl implements _Leg {
   const _$LegImpl(
-      {required this.startAddress,
-      required this.endAddress,
-      required this.startLocation,
-      required this.endLocation,
+      {@JsonKey(name: 'start_address') required this.startAddress,
+      @JsonKey(name: 'end_address') required this.endAddress,
+      @JsonKey(name: 'start_location') required this.startLocation,
+      @JsonKey(name: 'end_location') required this.endLocation,
       required this.distance,
       required this.duration,
-      required final List<Step> steps})
+      required final List<Step>? steps})
       : _steps = steps;
 
   factory _$LegImpl.fromJson(Map<String, dynamic> json) =>
       _$$LegImplFromJson(json);
 
   @override
-  final String startAddress;
+  @JsonKey(name: 'start_address')
+  final String? startAddress;
   @override
-  final String endAddress;
+  @JsonKey(name: 'end_address')
+  final String? endAddress;
   @override
-  final Location startLocation;
+  @JsonKey(name: 'start_location')
+  final Location? startLocation;
   @override
-  final Location endLocation;
+  @JsonKey(name: 'end_location')
+  final Location? endLocation;
   @override
-  final Distance distance;
+  final Distance? distance;
   @override
-  final Duration duration;
-  final List<Step> _steps;
+  final Duration? duration;
+  final List<Step>? _steps;
   @override
-  List<Step> get steps {
+  List<Step>? get steps {
+    final value = _steps;
+    if (value == null) return null;
     if (_steps is EqualUnmodifiableListView) return _steps;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_steps);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -697,30 +992,34 @@ class _$LegImpl implements _Leg {
 
 abstract class _Leg implements Leg {
   const factory _Leg(
-      {required final String startAddress,
-      required final String endAddress,
-      required final Location startLocation,
-      required final Location endLocation,
-      required final Distance distance,
-      required final Duration duration,
-      required final List<Step> steps}) = _$LegImpl;
+      {@JsonKey(name: 'start_address') required final String? startAddress,
+      @JsonKey(name: 'end_address') required final String? endAddress,
+      @JsonKey(name: 'start_location') required final Location? startLocation,
+      @JsonKey(name: 'end_location') required final Location? endLocation,
+      required final Distance? distance,
+      required final Duration? duration,
+      required final List<Step>? steps}) = _$LegImpl;
 
   factory _Leg.fromJson(Map<String, dynamic> json) = _$LegImpl.fromJson;
 
   @override
-  String get startAddress;
+  @JsonKey(name: 'start_address')
+  String? get startAddress;
   @override
-  String get endAddress;
+  @JsonKey(name: 'end_address')
+  String? get endAddress;
   @override
-  Location get startLocation;
+  @JsonKey(name: 'start_location')
+  Location? get startLocation;
   @override
-  Location get endLocation;
+  @JsonKey(name: 'end_location')
+  Location? get endLocation;
   @override
-  Distance get distance;
+  Distance? get distance;
   @override
-  Duration get duration;
+  Duration? get duration;
   @override
-  List<Step> get steps;
+  List<Step>? get steps;
 
   /// Create a copy of Leg
   /// with the given fields replaced by the non-null parameter values.
@@ -736,13 +1035,18 @@ Step _$StepFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Step {
+  Distance? get distance => throw _privateConstructorUsedError;
+  Duration? get duration => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_location')
+  Location? get startLocation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_location')
+  Location? get endLocation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'polyline')
+  Polyline? get polyline => throw _privateConstructorUsedError;
   @JsonKey(name: 'html_instructions')
-  String get instruction => throw _privateConstructorUsedError;
-  Distance get distance => throw _privateConstructorUsedError;
-  Duration get duration => throw _privateConstructorUsedError;
-  Location get startLocation => throw _privateConstructorUsedError;
-  Location get endLocation => throw _privateConstructorUsedError;
-  Polyline get polyline => throw _privateConstructorUsedError;
+  String? get instruction => throw _privateConstructorUsedError;
+  @JsonKey(name: 'travel_mode')
+  String? get travelMode => throw _privateConstructorUsedError;
 
   /// Serializes this Step to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -759,18 +1063,19 @@ abstract class $StepCopyWith<$Res> {
       _$StepCopyWithImpl<$Res, Step>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'html_instructions') String instruction,
-      Distance distance,
-      Duration duration,
-      Location startLocation,
-      Location endLocation,
-      Polyline polyline});
+      {Distance? distance,
+      Duration? duration,
+      @JsonKey(name: 'start_location') Location? startLocation,
+      @JsonKey(name: 'end_location') Location? endLocation,
+      @JsonKey(name: 'polyline') Polyline? polyline,
+      @JsonKey(name: 'html_instructions') String? instruction,
+      @JsonKey(name: 'travel_mode') String? travelMode});
 
-  $DistanceCopyWith<$Res> get distance;
-  $DurationCopyWith<$Res> get duration;
-  $LocationCopyWith<$Res> get startLocation;
-  $LocationCopyWith<$Res> get endLocation;
-  $PolylineCopyWith<$Res> get polyline;
+  $DistanceCopyWith<$Res>? get distance;
+  $DurationCopyWith<$Res>? get duration;
+  $LocationCopyWith<$Res>? get startLocation;
+  $LocationCopyWith<$Res>? get endLocation;
+  $PolylineCopyWith<$Res>? get polyline;
 }
 
 /// @nodoc
@@ -788,38 +1093,43 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? instruction = null,
-    Object? distance = null,
-    Object? duration = null,
-    Object? startLocation = null,
-    Object? endLocation = null,
-    Object? polyline = null,
+    Object? distance = freezed,
+    Object? duration = freezed,
+    Object? startLocation = freezed,
+    Object? endLocation = freezed,
+    Object? polyline = freezed,
+    Object? instruction = freezed,
+    Object? travelMode = freezed,
   }) {
     return _then(_value.copyWith(
-      instruction: null == instruction
-          ? _value.instruction
-          : instruction // ignore: cast_nullable_to_non_nullable
-              as String,
-      distance: null == distance
+      distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as Distance,
-      duration: null == duration
+              as Distance?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      startLocation: null == startLocation
+              as Duration?,
+      startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      endLocation: null == endLocation
+              as Location?,
+      endLocation: freezed == endLocation
           ? _value.endLocation
           : endLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      polyline: null == polyline
+              as Location?,
+      polyline: freezed == polyline
           ? _value.polyline
           : polyline // ignore: cast_nullable_to_non_nullable
-              as Polyline,
+              as Polyline?,
+      instruction: freezed == instruction
+          ? _value.instruction
+          : instruction // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelMode: freezed == travelMode
+          ? _value.travelMode
+          : travelMode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -827,8 +1137,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DistanceCopyWith<$Res> get distance {
-    return $DistanceCopyWith<$Res>(_value.distance, (value) {
+  $DistanceCopyWith<$Res>? get distance {
+    if (_value.distance == null) {
+      return null;
+    }
+
+    return $DistanceCopyWith<$Res>(_value.distance!, (value) {
       return _then(_value.copyWith(distance: value) as $Val);
     });
   }
@@ -837,8 +1151,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res> get duration {
-    return $DurationCopyWith<$Res>(_value.duration, (value) {
+  $DurationCopyWith<$Res>? get duration {
+    if (_value.duration == null) {
+      return null;
+    }
+
+    return $DurationCopyWith<$Res>(_value.duration!, (value) {
       return _then(_value.copyWith(duration: value) as $Val);
     });
   }
@@ -847,8 +1165,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get startLocation {
-    return $LocationCopyWith<$Res>(_value.startLocation, (value) {
+  $LocationCopyWith<$Res>? get startLocation {
+    if (_value.startLocation == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.startLocation!, (value) {
       return _then(_value.copyWith(startLocation: value) as $Val);
     });
   }
@@ -857,8 +1179,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get endLocation {
-    return $LocationCopyWith<$Res>(_value.endLocation, (value) {
+  $LocationCopyWith<$Res>? get endLocation {
+    if (_value.endLocation == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.endLocation!, (value) {
       return _then(_value.copyWith(endLocation: value) as $Val);
     });
   }
@@ -867,8 +1193,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PolylineCopyWith<$Res> get polyline {
-    return $PolylineCopyWith<$Res>(_value.polyline, (value) {
+  $PolylineCopyWith<$Res>? get polyline {
+    if (_value.polyline == null) {
+      return null;
+    }
+
+    return $PolylineCopyWith<$Res>(_value.polyline!, (value) {
       return _then(_value.copyWith(polyline: value) as $Val);
     });
   }
@@ -882,23 +1212,24 @@ abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'html_instructions') String instruction,
-      Distance distance,
-      Duration duration,
-      Location startLocation,
-      Location endLocation,
-      Polyline polyline});
+      {Distance? distance,
+      Duration? duration,
+      @JsonKey(name: 'start_location') Location? startLocation,
+      @JsonKey(name: 'end_location') Location? endLocation,
+      @JsonKey(name: 'polyline') Polyline? polyline,
+      @JsonKey(name: 'html_instructions') String? instruction,
+      @JsonKey(name: 'travel_mode') String? travelMode});
 
   @override
-  $DistanceCopyWith<$Res> get distance;
+  $DistanceCopyWith<$Res>? get distance;
   @override
-  $DurationCopyWith<$Res> get duration;
+  $DurationCopyWith<$Res>? get duration;
   @override
-  $LocationCopyWith<$Res> get startLocation;
+  $LocationCopyWith<$Res>? get startLocation;
   @override
-  $LocationCopyWith<$Res> get endLocation;
+  $LocationCopyWith<$Res>? get endLocation;
   @override
-  $PolylineCopyWith<$Res> get polyline;
+  $PolylineCopyWith<$Res>? get polyline;
 }
 
 /// @nodoc
@@ -913,38 +1244,43 @@ class __$$StepImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? instruction = null,
-    Object? distance = null,
-    Object? duration = null,
-    Object? startLocation = null,
-    Object? endLocation = null,
-    Object? polyline = null,
+    Object? distance = freezed,
+    Object? duration = freezed,
+    Object? startLocation = freezed,
+    Object? endLocation = freezed,
+    Object? polyline = freezed,
+    Object? instruction = freezed,
+    Object? travelMode = freezed,
   }) {
     return _then(_$StepImpl(
-      instruction: null == instruction
-          ? _value.instruction
-          : instruction // ignore: cast_nullable_to_non_nullable
-              as String,
-      distance: null == distance
+      distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as Distance,
-      duration: null == duration
+              as Distance?,
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      startLocation: null == startLocation
+              as Duration?,
+      startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      endLocation: null == endLocation
+              as Location?,
+      endLocation: freezed == endLocation
           ? _value.endLocation
           : endLocation // ignore: cast_nullable_to_non_nullable
-              as Location,
-      polyline: null == polyline
+              as Location?,
+      polyline: freezed == polyline
           ? _value.polyline
           : polyline // ignore: cast_nullable_to_non_nullable
-              as Polyline,
+              as Polyline?,
+      instruction: freezed == instruction
+          ? _value.instruction
+          : instruction // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelMode: freezed == travelMode
+          ? _value.travelMode
+          : travelMode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -953,33 +1289,40 @@ class __$$StepImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StepImpl implements _Step {
   const _$StepImpl(
-      {@JsonKey(name: 'html_instructions') required this.instruction,
-      required this.distance,
+      {required this.distance,
       required this.duration,
-      required this.startLocation,
-      required this.endLocation,
-      required this.polyline});
+      @JsonKey(name: 'start_location') required this.startLocation,
+      @JsonKey(name: 'end_location') required this.endLocation,
+      @JsonKey(name: 'polyline') required this.polyline,
+      @JsonKey(name: 'html_instructions') required this.instruction,
+      @JsonKey(name: 'travel_mode') required this.travelMode});
 
   factory _$StepImpl.fromJson(Map<String, dynamic> json) =>
       _$$StepImplFromJson(json);
 
   @override
+  final Distance? distance;
+  @override
+  final Duration? duration;
+  @override
+  @JsonKey(name: 'start_location')
+  final Location? startLocation;
+  @override
+  @JsonKey(name: 'end_location')
+  final Location? endLocation;
+  @override
+  @JsonKey(name: 'polyline')
+  final Polyline? polyline;
+  @override
   @JsonKey(name: 'html_instructions')
-  final String instruction;
+  final String? instruction;
   @override
-  final Distance distance;
-  @override
-  final Duration duration;
-  @override
-  final Location startLocation;
-  @override
-  final Location endLocation;
-  @override
-  final Polyline polyline;
+  @JsonKey(name: 'travel_mode')
+  final String? travelMode;
 
   @override
   String toString() {
-    return 'Step(instruction: $instruction, distance: $distance, duration: $duration, startLocation: $startLocation, endLocation: $endLocation, polyline: $polyline)';
+    return 'Step(distance: $distance, duration: $duration, startLocation: $startLocation, endLocation: $endLocation, polyline: $polyline, instruction: $instruction, travelMode: $travelMode)';
   }
 
   @override
@@ -987,8 +1330,6 @@ class _$StepImpl implements _Step {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StepImpl &&
-            (identical(other.instruction, instruction) ||
-                other.instruction == instruction) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
             (identical(other.duration, duration) ||
@@ -998,13 +1339,17 @@ class _$StepImpl implements _Step {
             (identical(other.endLocation, endLocation) ||
                 other.endLocation == endLocation) &&
             (identical(other.polyline, polyline) ||
-                other.polyline == polyline));
+                other.polyline == polyline) &&
+            (identical(other.instruction, instruction) ||
+                other.instruction == instruction) &&
+            (identical(other.travelMode, travelMode) ||
+                other.travelMode == travelMode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, instruction, distance, duration,
-      startLocation, endLocation, polyline);
+  int get hashCode => Object.hash(runtimeType, distance, duration,
+      startLocation, endLocation, polyline, instruction, travelMode);
 
   /// Create a copy of Step
   /// with the given fields replaced by the non-null parameter values.
@@ -1024,28 +1369,36 @@ class _$StepImpl implements _Step {
 
 abstract class _Step implements Step {
   const factory _Step(
-      {@JsonKey(name: 'html_instructions') required final String instruction,
-      required final Distance distance,
-      required final Duration duration,
-      required final Location startLocation,
-      required final Location endLocation,
-      required final Polyline polyline}) = _$StepImpl;
+      {required final Distance? distance,
+      required final Duration? duration,
+      @JsonKey(name: 'start_location') required final Location? startLocation,
+      @JsonKey(name: 'end_location') required final Location? endLocation,
+      @JsonKey(name: 'polyline') required final Polyline? polyline,
+      @JsonKey(name: 'html_instructions') required final String? instruction,
+      @JsonKey(name: 'travel_mode')
+      required final String? travelMode}) = _$StepImpl;
 
   factory _Step.fromJson(Map<String, dynamic> json) = _$StepImpl.fromJson;
 
   @override
+  Distance? get distance;
+  @override
+  Duration? get duration;
+  @override
+  @JsonKey(name: 'start_location')
+  Location? get startLocation;
+  @override
+  @JsonKey(name: 'end_location')
+  Location? get endLocation;
+  @override
+  @JsonKey(name: 'polyline')
+  Polyline? get polyline;
+  @override
   @JsonKey(name: 'html_instructions')
-  String get instruction;
+  String? get instruction;
   @override
-  Distance get distance;
-  @override
-  Duration get duration;
-  @override
-  Location get startLocation;
-  @override
-  Location get endLocation;
-  @override
-  Polyline get polyline;
+  @JsonKey(name: 'travel_mode')
+  String? get travelMode;
 
   /// Create a copy of Step
   /// with the given fields replaced by the non-null parameter values.
@@ -1061,8 +1414,8 @@ Bounds _$BoundsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Bounds {
-  Location get northeast => throw _privateConstructorUsedError;
-  Location get southwest => throw _privateConstructorUsedError;
+  Location? get northeast => throw _privateConstructorUsedError;
+  Location? get southwest => throw _privateConstructorUsedError;
 
   /// Serializes this Bounds to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1078,10 +1431,10 @@ abstract class $BoundsCopyWith<$Res> {
   factory $BoundsCopyWith(Bounds value, $Res Function(Bounds) then) =
       _$BoundsCopyWithImpl<$Res, Bounds>;
   @useResult
-  $Res call({Location northeast, Location southwest});
+  $Res call({Location? northeast, Location? southwest});
 
-  $LocationCopyWith<$Res> get northeast;
-  $LocationCopyWith<$Res> get southwest;
+  $LocationCopyWith<$Res>? get northeast;
+  $LocationCopyWith<$Res>? get southwest;
 }
 
 /// @nodoc
@@ -1099,18 +1452,18 @@ class _$BoundsCopyWithImpl<$Res, $Val extends Bounds>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? northeast = null,
-    Object? southwest = null,
+    Object? northeast = freezed,
+    Object? southwest = freezed,
   }) {
     return _then(_value.copyWith(
-      northeast: null == northeast
+      northeast: freezed == northeast
           ? _value.northeast
           : northeast // ignore: cast_nullable_to_non_nullable
-              as Location,
-      southwest: null == southwest
+              as Location?,
+      southwest: freezed == southwest
           ? _value.southwest
           : southwest // ignore: cast_nullable_to_non_nullable
-              as Location,
+              as Location?,
     ) as $Val);
   }
 
@@ -1118,8 +1471,12 @@ class _$BoundsCopyWithImpl<$Res, $Val extends Bounds>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get northeast {
-    return $LocationCopyWith<$Res>(_value.northeast, (value) {
+  $LocationCopyWith<$Res>? get northeast {
+    if (_value.northeast == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.northeast!, (value) {
       return _then(_value.copyWith(northeast: value) as $Val);
     });
   }
@@ -1128,8 +1485,12 @@ class _$BoundsCopyWithImpl<$Res, $Val extends Bounds>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get southwest {
-    return $LocationCopyWith<$Res>(_value.southwest, (value) {
+  $LocationCopyWith<$Res>? get southwest {
+    if (_value.southwest == null) {
+      return null;
+    }
+
+    return $LocationCopyWith<$Res>(_value.southwest!, (value) {
       return _then(_value.copyWith(southwest: value) as $Val);
     });
   }
@@ -1142,12 +1503,12 @@ abstract class _$$BoundsImplCopyWith<$Res> implements $BoundsCopyWith<$Res> {
       __$$BoundsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Location northeast, Location southwest});
+  $Res call({Location? northeast, Location? southwest});
 
   @override
-  $LocationCopyWith<$Res> get northeast;
+  $LocationCopyWith<$Res>? get northeast;
   @override
-  $LocationCopyWith<$Res> get southwest;
+  $LocationCopyWith<$Res>? get southwest;
 }
 
 /// @nodoc
@@ -1163,18 +1524,18 @@ class __$$BoundsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? northeast = null,
-    Object? southwest = null,
+    Object? northeast = freezed,
+    Object? southwest = freezed,
   }) {
     return _then(_$BoundsImpl(
-      northeast: null == northeast
+      northeast: freezed == northeast
           ? _value.northeast
           : northeast // ignore: cast_nullable_to_non_nullable
-              as Location,
-      southwest: null == southwest
+              as Location?,
+      southwest: freezed == southwest
           ? _value.southwest
           : southwest // ignore: cast_nullable_to_non_nullable
-              as Location,
+              as Location?,
     ));
   }
 }
@@ -1188,9 +1549,9 @@ class _$BoundsImpl implements _Bounds {
       _$$BoundsImplFromJson(json);
 
   @override
-  final Location northeast;
+  final Location? northeast;
   @override
-  final Location southwest;
+  final Location? southwest;
 
   @override
   String toString() {
@@ -1230,15 +1591,15 @@ class _$BoundsImpl implements _Bounds {
 
 abstract class _Bounds implements Bounds {
   const factory _Bounds(
-      {required final Location northeast,
-      required final Location southwest}) = _$BoundsImpl;
+      {required final Location? northeast,
+      required final Location? southwest}) = _$BoundsImpl;
 
   factory _Bounds.fromJson(Map<String, dynamic> json) = _$BoundsImpl.fromJson;
 
   @override
-  Location get northeast;
+  Location? get northeast;
   @override
-  Location get southwest;
+  Location? get southwest;
 
   /// Create a copy of Bounds
   /// with the given fields replaced by the non-null parameter values.
@@ -1254,7 +1615,7 @@ Polyline _$PolylineFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Polyline {
-  String get points => throw _privateConstructorUsedError;
+  String? get points => throw _privateConstructorUsedError;
 
   /// Serializes this Polyline to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1271,7 +1632,7 @@ abstract class $PolylineCopyWith<$Res> {
   factory $PolylineCopyWith(Polyline value, $Res Function(Polyline) then) =
       _$PolylineCopyWithImpl<$Res, Polyline>;
   @useResult
-  $Res call({String points});
+  $Res call({String? points});
 }
 
 /// @nodoc
@@ -1289,13 +1650,13 @@ class _$PolylineCopyWithImpl<$Res, $Val extends Polyline>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? points = null,
+    Object? points = freezed,
   }) {
     return _then(_value.copyWith(
-      points: null == points
+      points: freezed == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1308,7 +1669,7 @@ abstract class _$$PolylineImplCopyWith<$Res>
       __$$PolylineImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String points});
+  $Res call({String? points});
 }
 
 /// @nodoc
@@ -1324,13 +1685,13 @@ class __$$PolylineImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? points = null,
+    Object? points = freezed,
   }) {
     return _then(_$PolylineImpl(
-      points: null == points
+      points: freezed == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1344,7 +1705,7 @@ class _$PolylineImpl implements _Polyline {
       _$$PolylineImplFromJson(json);
 
   @override
-  final String points;
+  final String? points;
 
   @override
   String toString() {
@@ -1380,13 +1741,13 @@ class _$PolylineImpl implements _Polyline {
 }
 
 abstract class _Polyline implements Polyline {
-  const factory _Polyline({required final String points}) = _$PolylineImpl;
+  const factory _Polyline({required final String? points}) = _$PolylineImpl;
 
   factory _Polyline.fromJson(Map<String, dynamic> json) =
       _$PolylineImpl.fromJson;
 
   @override
-  String get points;
+  String? get points;
 
   /// Create a copy of Polyline
   /// with the given fields replaced by the non-null parameter values.
@@ -1402,8 +1763,8 @@ Distance _$DistanceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Distance {
-  String get text => throw _privateConstructorUsedError;
-  int get value => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+  int? get value => throw _privateConstructorUsedError;
 
   /// Serializes this Distance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1420,7 +1781,7 @@ abstract class $DistanceCopyWith<$Res> {
   factory $DistanceCopyWith(Distance value, $Res Function(Distance) then) =
       _$DistanceCopyWithImpl<$Res, Distance>;
   @useResult
-  $Res call({String text, int value});
+  $Res call({String? text, int? value});
 }
 
 /// @nodoc
@@ -1438,18 +1799,18 @@ class _$DistanceCopyWithImpl<$Res, $Val extends Distance>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
-    Object? value = null,
+    Object? text = freezed,
+    Object? value = freezed,
   }) {
     return _then(_value.copyWith(
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
+              as String?,
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -1462,7 +1823,7 @@ abstract class _$$DistanceImplCopyWith<$Res>
       __$$DistanceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, int value});
+  $Res call({String? text, int? value});
 }
 
 /// @nodoc
@@ -1478,18 +1839,18 @@ class __$$DistanceImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
-    Object? value = null,
+    Object? text = freezed,
+    Object? value = freezed,
   }) {
     return _then(_$DistanceImpl(
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
+              as String?,
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1503,9 +1864,9 @@ class _$DistanceImpl implements _Distance {
       _$$DistanceImplFromJson(json);
 
   @override
-  final String text;
+  final String? text;
   @override
-  final int value;
+  final int? value;
 
   @override
   String toString() {
@@ -1543,15 +1904,16 @@ class _$DistanceImpl implements _Distance {
 
 abstract class _Distance implements Distance {
   const factory _Distance(
-      {required final String text, required final int value}) = _$DistanceImpl;
+      {required final String? text,
+      required final int? value}) = _$DistanceImpl;
 
   factory _Distance.fromJson(Map<String, dynamic> json) =
       _$DistanceImpl.fromJson;
 
   @override
-  String get text;
+  String? get text;
   @override
-  int get value;
+  int? get value;
 
   /// Create a copy of Distance
   /// with the given fields replaced by the non-null parameter values.
@@ -1567,8 +1929,8 @@ Duration _$DurationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Duration {
-  String get text => throw _privateConstructorUsedError;
-  int get value => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+  int? get value => throw _privateConstructorUsedError;
 
   /// Serializes this Duration to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1585,7 +1947,7 @@ abstract class $DurationCopyWith<$Res> {
   factory $DurationCopyWith(Duration value, $Res Function(Duration) then) =
       _$DurationCopyWithImpl<$Res, Duration>;
   @useResult
-  $Res call({String text, int value});
+  $Res call({String? text, int? value});
 }
 
 /// @nodoc
@@ -1603,18 +1965,18 @@ class _$DurationCopyWithImpl<$Res, $Val extends Duration>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
-    Object? value = null,
+    Object? text = freezed,
+    Object? value = freezed,
   }) {
     return _then(_value.copyWith(
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
+              as String?,
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -1627,7 +1989,7 @@ abstract class _$$DurationImplCopyWith<$Res>
       __$$DurationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String text, int value});
+  $Res call({String? text, int? value});
 }
 
 /// @nodoc
@@ -1643,18 +2005,18 @@ class __$$DurationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? text = null,
-    Object? value = null,
+    Object? text = freezed,
+    Object? value = freezed,
   }) {
     return _then(_$DurationImpl(
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
+              as String?,
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1668,9 +2030,9 @@ class _$DurationImpl implements _Duration {
       _$$DurationImplFromJson(json);
 
   @override
-  final String text;
+  final String? text;
   @override
-  final int value;
+  final int? value;
 
   @override
   String toString() {
@@ -1708,15 +2070,16 @@ class _$DurationImpl implements _Duration {
 
 abstract class _Duration implements Duration {
   const factory _Duration(
-      {required final String text, required final int value}) = _$DurationImpl;
+      {required final String? text,
+      required final int? value}) = _$DurationImpl;
 
   factory _Duration.fromJson(Map<String, dynamic> json) =
       _$DurationImpl.fromJson;
 
   @override
-  String get text;
+  String? get text;
   @override
-  int get value;
+  int? get value;
 
   /// Create a copy of Duration
   /// with the given fields replaced by the non-null parameter values.

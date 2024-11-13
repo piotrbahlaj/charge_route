@@ -3,6 +3,8 @@
     "Bahłaj",
     "Debouncer",
     "geocode",
+    "Geocoded",
+    "geocoder",
     "geolocator",
     "kanit",
     "latlng",
