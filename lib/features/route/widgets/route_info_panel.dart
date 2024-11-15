@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RouteInfoPanel extends StatelessWidget {
   const RouteInfoPanel({Key? key}) : super(key: key);
 
+  // Utility to remove HTML tags from the instruction
   String stripHtml(String htmlString) {
     return htmlString.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), '');
   }
@@ -17,36 +18,41 @@ class RouteInfoPanel extends StatelessWidget {
           return Container();
         }
 
-        final duration = state.duration;
-        final distance = state.distance;
-        final nextStep = state.steps.first.instruction;
+        // Get the current step's details
+        final currentInstruction = state.steps[state.currentStepIndex].instruction;
+        final currentStepDistance = state.currentStepDistance?.text ?? '';
+        final currentStepDuration = state.currentStepDuration?.text ?? '';
 
         return Positioned(
-          top: 60,
+          top: 45,
           left: 20,
           right: 20,
           child: Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withOpacity(0.1),
                   spreadRadius: 2,
                   blurRadius: 6,
                 ),
               ],
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // Display the instruction without HTML tags
                 Text(
-                  stripHtml(nextStep ?? ''),
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  stripHtml(currentInstruction ?? ''),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
                 ),
                 const SizedBox(height: 4),
-                Text('Distance: ${distance?.text}, ETA: ${duration?.text}'),
+                // Display the current step's distance and ETA
+                Text('Distance: $currentStepDistance, ETA: $currentStepDuration'),
               ],
             ),
           ),

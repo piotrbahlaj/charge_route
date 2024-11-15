@@ -17,18 +17,14 @@ class RouteMap extends StatelessWidget {
         final startLocation = state.steps.first.startLocation;
         final endLocation = state.steps.last.endLocation;
 
-        // Decode polyline and create Polyline set
-        final List<LatLng> polylineCoordinates = decodePolyline(state.polyline ?? '');
-        print('Decoded polyline coordinates: $polylineCoordinates');
         final polylines = {
           Polyline(
             polylineId: const PolylineId('route'),
-            points: polylineCoordinates,
+            points: state.polylinePoints,
             color: Colors.blue,
             width: 5,
           ),
         };
-        print('Encoded polyline: ${state.polyline}');
 
         return GoogleMap(
           initialCameraPosition: CameraPosition(
@@ -50,52 +46,11 @@ class RouteMap extends StatelessWidget {
           },
           myLocationEnabled: true,
           onMapCreated: (GoogleMapController controller) {
-            _moveCameraToBounds(controller, polylineCoordinates);
+            _moveCameraToBounds(controller, state.polylinePoints);
           },
         );
       },
     );
-  }
-
-  // Helper function to decode polyline
-  List<LatLng> decodePolyline(String encoded) {
-    List<LatLng> polylineCoordinates = [];
-    int index = 0;
-    int len = encoded.length;
-    int lat = 0;
-    int lng = 0;
-
-    while (index < len) {
-      int shift = 0;
-      int result = 0;
-      int b;
-
-      do {
-        b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1F) << shift;
-        shift += 5;
-      } while (b >= 0x20);
-
-      int deltaLat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-      lat += deltaLat;
-
-      shift = 0;
-      result = 0;
-
-      do {
-        b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1F) << shift;
-        shift += 5;
-      } while (b >= 0x20);
-
-      int deltaLng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-      lng += deltaLng;
-
-      polylineCoordinates.add(
-        LatLng(lat / 1E5, lng / 1E5),
-      );
-    }
-    return polylineCoordinates;
   }
 
   // Adjust camera to fit the entire route

@@ -4,8 +4,11 @@ part of 'route_bloc.dart';
 class RouteState with _$RouteState {
   const factory RouteState({
     RouteResponse? route,
-    String? polyline,
+    @Default([]) List<LatLng> polylinePoints,
     @Default([]) List<Step> steps,
+    @Default(0) int currentStepIndex,
+    Distance? currentStepDistance,
+    Duration? currentStepDuration,
     Distance? distance,
     Duration? duration,
     String? errorMessage,

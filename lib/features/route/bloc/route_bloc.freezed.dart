@@ -19,19 +19,19 @@ mixin _$RouteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RouteResponse? routeData) initalizeRoute,
-    required TResult Function() updateRouteProgress,
+    required TResult Function(int stepIndex) updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RouteResponse? routeData)? initalizeRoute,
-    TResult? Function()? updateRouteProgress,
+    TResult? Function(int stepIndex)? updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RouteResponse? routeData)? initalizeRoute,
-    TResult Function()? updateRouteProgress,
+    TResult Function(int stepIndex)? updateRouteProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,7 +165,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RouteResponse? routeData) initalizeRoute,
-    required TResult Function() updateRouteProgress,
+    required TResult Function(int stepIndex) updateRouteProgress,
   }) {
     return initalizeRoute(routeData);
   }
@@ -174,7 +174,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RouteResponse? routeData)? initalizeRoute,
-    TResult? Function()? updateRouteProgress,
+    TResult? Function(int stepIndex)? updateRouteProgress,
   }) {
     return initalizeRoute?.call(routeData);
   }
@@ -183,7 +183,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RouteResponse? routeData)? initalizeRoute,
-    TResult Function()? updateRouteProgress,
+    TResult Function(int stepIndex)? updateRouteProgress,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -244,6 +244,8 @@ abstract class _$$UpdateRouteProgressEventImplCopyWith<$Res> {
           _$UpdateRouteProgressEventImpl value,
           $Res Function(_$UpdateRouteProgressEventImpl) then) =
       __$$UpdateRouteProgressEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int stepIndex});
 }
 
 /// @nodoc
@@ -257,55 +259,81 @@ class __$$UpdateRouteProgressEventImplCopyWithImpl<$Res>
 
   /// Create a copy of RouteEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stepIndex = null,
+  }) {
+    return _then(_$UpdateRouteProgressEventImpl(
+      null == stepIndex
+          ? _value.stepIndex
+          : stepIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
-  const _$UpdateRouteProgressEventImpl();
+  const _$UpdateRouteProgressEventImpl(this.stepIndex);
+
+  @override
+  final int stepIndex;
 
   @override
   String toString() {
-    return 'RouteEvent.updateRouteProgress()';
+    return 'RouteEvent.updateRouteProgress(stepIndex: $stepIndex)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateRouteProgressEventImpl);
+            other is _$UpdateRouteProgressEventImpl &&
+            (identical(other.stepIndex, stepIndex) ||
+                other.stepIndex == stepIndex));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, stepIndex);
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateRouteProgressEventImplCopyWith<_$UpdateRouteProgressEventImpl>
+      get copyWith => __$$UpdateRouteProgressEventImplCopyWithImpl<
+          _$UpdateRouteProgressEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RouteResponse? routeData) initalizeRoute,
-    required TResult Function() updateRouteProgress,
+    required TResult Function(int stepIndex) updateRouteProgress,
   }) {
-    return updateRouteProgress();
+    return updateRouteProgress(stepIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RouteResponse? routeData)? initalizeRoute,
-    TResult? Function()? updateRouteProgress,
+    TResult? Function(int stepIndex)? updateRouteProgress,
   }) {
-    return updateRouteProgress?.call();
+    return updateRouteProgress?.call(stepIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RouteResponse? routeData)? initalizeRoute,
-    TResult Function()? updateRouteProgress,
+    TResult Function(int stepIndex)? updateRouteProgress,
     required TResult orElse(),
   }) {
     if (updateRouteProgress != null) {
-      return updateRouteProgress();
+      return updateRouteProgress(stepIndex);
     }
     return orElse();
   }
@@ -344,14 +372,26 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
 }
 
 abstract class UpdateRouteProgressEvent implements RouteEvent {
-  const factory UpdateRouteProgressEvent() = _$UpdateRouteProgressEventImpl;
+  const factory UpdateRouteProgressEvent(final int stepIndex) =
+      _$UpdateRouteProgressEventImpl;
+
+  int get stepIndex;
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateRouteProgressEventImplCopyWith<_$UpdateRouteProgressEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$RouteState {
   RouteResponse? get route => throw _privateConstructorUsedError;
-  String? get polyline => throw _privateConstructorUsedError;
+  List<LatLng> get polylinePoints => throw _privateConstructorUsedError;
   List<Step> get steps => throw _privateConstructorUsedError;
+  int get currentStepIndex => throw _privateConstructorUsedError;
+  Distance? get currentStepDistance => throw _privateConstructorUsedError;
+  Duration? get currentStepDuration => throw _privateConstructorUsedError;
   Distance? get distance => throw _privateConstructorUsedError;
   Duration? get duration => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -371,13 +411,18 @@ abstract class $RouteStateCopyWith<$Res> {
   @useResult
   $Res call(
       {RouteResponse? route,
-      String? polyline,
+      List<LatLng> polylinePoints,
       List<Step> steps,
+      int currentStepIndex,
+      Distance? currentStepDistance,
+      Duration? currentStepDuration,
       Distance? distance,
       Duration? duration,
       String? errorMessage});
 
   $RouteResponseCopyWith<$Res>? get route;
+  $DistanceCopyWith<$Res>? get currentStepDistance;
+  $DurationCopyWith<$Res>? get currentStepDuration;
   $DistanceCopyWith<$Res>? get distance;
   $DurationCopyWith<$Res>? get duration;
 }
@@ -398,8 +443,11 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
   @override
   $Res call({
     Object? route = freezed,
-    Object? polyline = freezed,
+    Object? polylinePoints = null,
     Object? steps = null,
+    Object? currentStepIndex = null,
+    Object? currentStepDistance = freezed,
+    Object? currentStepDuration = freezed,
     Object? distance = freezed,
     Object? duration = freezed,
     Object? errorMessage = freezed,
@@ -409,14 +457,26 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as RouteResponse?,
-      polyline: freezed == polyline
-          ? _value.polyline
-          : polyline // ignore: cast_nullable_to_non_nullable
-              as String?,
+      polylinePoints: null == polylinePoints
+          ? _value.polylinePoints
+          : polylinePoints // ignore: cast_nullable_to_non_nullable
+              as List<LatLng>,
       steps: null == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<Step>,
+      currentStepIndex: null == currentStepIndex
+          ? _value.currentStepIndex
+          : currentStepIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentStepDistance: freezed == currentStepDistance
+          ? _value.currentStepDistance
+          : currentStepDistance // ignore: cast_nullable_to_non_nullable
+              as Distance?,
+      currentStepDuration: freezed == currentStepDuration
+          ? _value.currentStepDuration
+          : currentStepDuration // ignore: cast_nullable_to_non_nullable
+              as Duration?,
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
@@ -443,6 +503,34 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
 
     return $RouteResponseCopyWith<$Res>(_value.route!, (value) {
       return _then(_value.copyWith(route: value) as $Val);
+    });
+  }
+
+  /// Create a copy of RouteState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DistanceCopyWith<$Res>? get currentStepDistance {
+    if (_value.currentStepDistance == null) {
+      return null;
+    }
+
+    return $DistanceCopyWith<$Res>(_value.currentStepDistance!, (value) {
+      return _then(_value.copyWith(currentStepDistance: value) as $Val);
+    });
+  }
+
+  /// Create a copy of RouteState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DurationCopyWith<$Res>? get currentStepDuration {
+    if (_value.currentStepDuration == null) {
+      return null;
+    }
+
+    return $DurationCopyWith<$Res>(_value.currentStepDuration!, (value) {
+      return _then(_value.copyWith(currentStepDuration: value) as $Val);
     });
   }
 
@@ -485,14 +573,21 @@ abstract class _$$RouteStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {RouteResponse? route,
-      String? polyline,
+      List<LatLng> polylinePoints,
       List<Step> steps,
+      int currentStepIndex,
+      Distance? currentStepDistance,
+      Duration? currentStepDuration,
       Distance? distance,
       Duration? duration,
       String? errorMessage});
 
   @override
   $RouteResponseCopyWith<$Res>? get route;
+  @override
+  $DistanceCopyWith<$Res>? get currentStepDistance;
+  @override
+  $DurationCopyWith<$Res>? get currentStepDuration;
   @override
   $DistanceCopyWith<$Res>? get distance;
   @override
@@ -513,8 +608,11 @@ class __$$RouteStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? route = freezed,
-    Object? polyline = freezed,
+    Object? polylinePoints = null,
     Object? steps = null,
+    Object? currentStepIndex = null,
+    Object? currentStepDistance = freezed,
+    Object? currentStepDuration = freezed,
     Object? distance = freezed,
     Object? duration = freezed,
     Object? errorMessage = freezed,
@@ -524,14 +622,26 @@ class __$$RouteStateImplCopyWithImpl<$Res>
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as RouteResponse?,
-      polyline: freezed == polyline
-          ? _value.polyline
-          : polyline // ignore: cast_nullable_to_non_nullable
-              as String?,
+      polylinePoints: null == polylinePoints
+          ? _value._polylinePoints
+          : polylinePoints // ignore: cast_nullable_to_non_nullable
+              as List<LatLng>,
       steps: null == steps
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
               as List<Step>,
+      currentStepIndex: null == currentStepIndex
+          ? _value.currentStepIndex
+          : currentStepIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentStepDistance: freezed == currentStepDistance
+          ? _value.currentStepDistance
+          : currentStepDistance // ignore: cast_nullable_to_non_nullable
+              as Distance?,
+      currentStepDuration: freezed == currentStepDuration
+          ? _value.currentStepDuration
+          : currentStepDuration // ignore: cast_nullable_to_non_nullable
+              as Duration?,
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
@@ -553,17 +663,28 @@ class __$$RouteStateImplCopyWithImpl<$Res>
 class _$RouteStateImpl implements _RouteState {
   const _$RouteStateImpl(
       {this.route,
-      this.polyline,
+      final List<LatLng> polylinePoints = const [],
       final List<Step> steps = const [],
+      this.currentStepIndex = 0,
+      this.currentStepDistance,
+      this.currentStepDuration,
       this.distance,
       this.duration,
       this.errorMessage})
-      : _steps = steps;
+      : _polylinePoints = polylinePoints,
+        _steps = steps;
 
   @override
   final RouteResponse? route;
+  final List<LatLng> _polylinePoints;
   @override
-  final String? polyline;
+  @JsonKey()
+  List<LatLng> get polylinePoints {
+    if (_polylinePoints is EqualUnmodifiableListView) return _polylinePoints;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_polylinePoints);
+  }
+
   final List<Step> _steps;
   @override
   @JsonKey()
@@ -574,6 +695,13 @@ class _$RouteStateImpl implements _RouteState {
   }
 
   @override
+  @JsonKey()
+  final int currentStepIndex;
+  @override
+  final Distance? currentStepDistance;
+  @override
+  final Duration? currentStepDuration;
+  @override
   final Distance? distance;
   @override
   final Duration? duration;
@@ -582,7 +710,7 @@ class _$RouteStateImpl implements _RouteState {
 
   @override
   String toString() {
-    return 'RouteState(route: $route, polyline: $polyline, steps: $steps, distance: $distance, duration: $duration, errorMessage: $errorMessage)';
+    return 'RouteState(route: $route, polylinePoints: $polylinePoints, steps: $steps, currentStepIndex: $currentStepIndex, currentStepDistance: $currentStepDistance, currentStepDuration: $currentStepDuration, distance: $distance, duration: $duration, errorMessage: $errorMessage)';
   }
 
   @override
@@ -591,9 +719,15 @@ class _$RouteStateImpl implements _RouteState {
         (other.runtimeType == runtimeType &&
             other is _$RouteStateImpl &&
             (identical(other.route, route) || other.route == route) &&
-            (identical(other.polyline, polyline) ||
-                other.polyline == polyline) &&
+            const DeepCollectionEquality()
+                .equals(other._polylinePoints, _polylinePoints) &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
+            (identical(other.currentStepIndex, currentStepIndex) ||
+                other.currentStepIndex == currentStepIndex) &&
+            (identical(other.currentStepDistance, currentStepDistance) ||
+                other.currentStepDistance == currentStepDistance) &&
+            (identical(other.currentStepDuration, currentStepDuration) ||
+                other.currentStepDuration == currentStepDuration) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
             (identical(other.duration, duration) ||
@@ -606,8 +740,11 @@ class _$RouteStateImpl implements _RouteState {
   int get hashCode => Object.hash(
       runtimeType,
       route,
-      polyline,
+      const DeepCollectionEquality().hash(_polylinePoints),
       const DeepCollectionEquality().hash(_steps),
+      currentStepIndex,
+      currentStepDistance,
+      currentStepDuration,
       distance,
       duration,
       errorMessage);
@@ -624,8 +761,11 @@ class _$RouteStateImpl implements _RouteState {
 abstract class _RouteState implements RouteState {
   const factory _RouteState(
       {final RouteResponse? route,
-      final String? polyline,
+      final List<LatLng> polylinePoints,
       final List<Step> steps,
+      final int currentStepIndex,
+      final Distance? currentStepDistance,
+      final Duration? currentStepDuration,
       final Distance? distance,
       final Duration? duration,
       final String? errorMessage}) = _$RouteStateImpl;
@@ -633,9 +773,15 @@ abstract class _RouteState implements RouteState {
   @override
   RouteResponse? get route;
   @override
-  String? get polyline;
+  List<LatLng> get polylinePoints;
   @override
   List<Step> get steps;
+  @override
+  int get currentStepIndex;
+  @override
+  Distance? get currentStepDistance;
+  @override
+  Duration? get currentStepDuration;
   @override
   Distance? get distance;
   @override
