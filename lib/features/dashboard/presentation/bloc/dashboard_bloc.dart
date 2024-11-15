@@ -25,6 +25,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<FetchCurrentLocationEvent>(_onFetchCurrentLocation);
     on<FetchPlaceDetailsEvent>(_onFetchPlaceDetails);
     on<FetchRouteEvent>(_onFetchRoute);
+    on<ClearRouteEvent>(_onClearRoute);
   }
 
   Future<void> _onFetchInitialLocation(FetchInitialLocationEvent event, Emitter<DashboardState> emit) async {
@@ -161,6 +162,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(state.copyWith(
       isRouteLoading: true,
       errorMessage: null,
+      shouldNavigateToRoute: false,
     ));
     try {
       final result = await apiService.getRoute(
@@ -170,6 +172,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       emit(state.copyWith(
         isRouteLoading: false,
         route: result,
+        shouldNavigateToRoute: true,
       ));
     } catch (e, stacktrace) {
       print('Error in _onFetchRoute: $e');
@@ -179,5 +182,9 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         errorMessage: 'Failed to fetch route. Please try again.',
       ));
     }
+  }
+
+  Future<void> _onClearRoute(ClearRouteEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(route: null));
   }
 }

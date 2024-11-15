@@ -6,6 +6,7 @@ class DashboardState with _$DashboardState {
     @Default(false) bool isLoading,
     @Default(false) bool isRouteLoading,
     @Default([]) List<Prediction> suggestions,
+    @Default(false) bool shouldNavigateToRoute,
     GeocodingResult? userLocation,
     GeocodingResult? initialLocation,
     String? activeField,
