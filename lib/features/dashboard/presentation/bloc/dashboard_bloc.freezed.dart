@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DashboardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -26,11 +26,12 @@ mixin _$DashboardEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -38,11 +39,12 @@ mixin _$DashboardEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -50,13 +52,13 @@ mixin _$DashboardEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -65,11 +67,12 @@ mixin _$DashboardEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -77,11 +80,12 @@ mixin _$DashboardEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -89,6 +93,7 @@ mixin _$DashboardEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -116,20 +121,20 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
 }
 
 /// @nodoc
-abstract class _$$FetchInitialLocationEventImplCopyWith<$Res> {
-  factory _$$FetchInitialLocationEventImplCopyWith(
-          _$FetchInitialLocationEventImpl value,
-          $Res Function(_$FetchInitialLocationEventImpl) then) =
-      __$$FetchInitialLocationEventImplCopyWithImpl<$Res>;
+abstract class _$$LoadDashboardDataEventImplCopyWith<$Res> {
+  factory _$$LoadDashboardDataEventImplCopyWith(
+          _$LoadDashboardDataEventImpl value,
+          $Res Function(_$LoadDashboardDataEventImpl) then) =
+      __$$LoadDashboardDataEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchInitialLocationEventImplCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$FetchInitialLocationEventImpl>
-    implements _$$FetchInitialLocationEventImplCopyWith<$Res> {
-  __$$FetchInitialLocationEventImplCopyWithImpl(
-      _$FetchInitialLocationEventImpl _value,
-      $Res Function(_$FetchInitialLocationEventImpl) _then)
+class __$$LoadDashboardDataEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$LoadDashboardDataEventImpl>
+    implements _$$LoadDashboardDataEventImplCopyWith<$Res> {
+  __$$LoadDashboardDataEventImplCopyWithImpl(
+      _$LoadDashboardDataEventImpl _value,
+      $Res Function(_$LoadDashboardDataEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DashboardEvent
@@ -138,19 +143,19 @@ class __$$FetchInitialLocationEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
-  const _$FetchInitialLocationEventImpl();
+class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
+  const _$LoadDashboardDataEventImpl();
 
   @override
   String toString() {
-    return 'DashboardEvent.fetchInitialLocation()';
+    return 'DashboardEvent.loadDashboardData()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FetchInitialLocationEventImpl);
+            other is _$LoadDashboardDataEventImpl);
   }
 
   @override
@@ -159,7 +164,7 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -167,14 +172,15 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
-    return fetchInitialLocation();
+    return loadDashboardData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -182,14 +188,15 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
-    return fetchInitialLocation?.call();
+    return loadDashboardData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -197,10 +204,11 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
-    if (fetchInitialLocation != null) {
-      return fetchInitialLocation();
+    if (loadDashboardData != null) {
+      return loadDashboardData();
     }
     return orElse();
   }
@@ -208,8 +216,7 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -218,14 +225,15 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
-    return fetchInitialLocation(this);
+    return loadDashboardData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -233,14 +241,15 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
-    return fetchInitialLocation?.call(this);
+    return loadDashboardData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -248,17 +257,18 @@ class _$FetchInitialLocationEventImpl implements FetchInitialLocationEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
-    if (fetchInitialLocation != null) {
-      return fetchInitialLocation(this);
+    if (loadDashboardData != null) {
+      return loadDashboardData(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchInitialLocationEvent implements DashboardEvent {
-  const factory FetchInitialLocationEvent() = _$FetchInitialLocationEventImpl;
+abstract class LoadDashboardDataEvent implements DashboardEvent {
+  const factory LoadDashboardDataEvent() = _$LoadDashboardDataEventImpl;
 }
 
 /// @nodoc
@@ -332,7 +342,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -340,6 +350,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return fetchAutocomplete(query);
   }
@@ -347,7 +358,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -355,6 +366,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -362,7 +374,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -370,6 +382,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -381,8 +394,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -391,6 +403,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return fetchAutocomplete(this);
   }
@@ -398,7 +411,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -406,6 +419,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -413,7 +427,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -421,6 +435,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -514,7 +529,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -522,6 +537,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return activateTextField(field);
   }
@@ -529,7 +545,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -537,6 +553,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return activateTextField?.call(field);
   }
@@ -544,7 +561,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -552,6 +569,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -563,8 +581,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -573,6 +590,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return activateTextField(this);
   }
@@ -580,7 +598,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -588,6 +606,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return activateTextField?.call(this);
   }
@@ -595,7 +614,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -603,6 +622,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -668,7 +688,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -676,6 +696,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return clearSuggestions();
   }
@@ -683,7 +704,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -691,6 +712,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return clearSuggestions?.call();
   }
@@ -698,7 +720,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -706,6 +728,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -717,8 +740,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -727,6 +749,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return clearSuggestions(this);
   }
@@ -734,7 +757,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -742,6 +765,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return clearSuggestions?.call(this);
   }
@@ -749,7 +773,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -757,6 +781,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -814,7 +839,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -822,6 +847,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return fetchCurrentLocation();
   }
@@ -829,7 +855,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -837,6 +863,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return fetchCurrentLocation?.call();
   }
@@ -844,7 +871,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -852,6 +879,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -863,8 +891,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -873,6 +900,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return fetchCurrentLocation(this);
   }
@@ -880,7 +908,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -888,6 +916,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return fetchCurrentLocation?.call(this);
   }
@@ -895,7 +924,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -903,6 +932,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -957,7 +987,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -965,6 +995,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return fetchRoute();
   }
@@ -972,7 +1003,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -980,6 +1011,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return fetchRoute?.call();
   }
@@ -987,7 +1019,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -995,6 +1027,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1006,8 +1039,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -1016,6 +1048,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return fetchRoute(this);
   }
@@ -1023,7 +1056,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1031,6 +1064,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return fetchRoute?.call(this);
   }
@@ -1038,7 +1072,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1046,6 +1080,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1138,7 +1173,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -1146,6 +1181,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return fetchPlaceDetails(placeId, field);
   }
@@ -1153,7 +1189,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -1161,6 +1197,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return fetchPlaceDetails?.call(placeId, field);
   }
@@ -1168,7 +1205,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -1176,6 +1213,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchPlaceDetails != null) {
@@ -1187,8 +1225,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -1197,6 +1234,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return fetchPlaceDetails(this);
   }
@@ -1204,7 +1242,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1212,6 +1250,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return fetchPlaceDetails?.call(this);
   }
@@ -1219,7 +1258,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1227,6 +1266,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (fetchPlaceDetails != null) {
@@ -1291,7 +1331,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchInitialLocation,
+    required TResult Function() loadDashboardData,
     required TResult Function(String query) fetchAutocomplete,
     required TResult Function(String field) activateTextField,
     required TResult Function() clearSuggestions,
@@ -1299,6 +1339,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     required TResult Function() fetchRoute,
     required TResult Function(String placeId, String field) fetchPlaceDetails,
     required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
   }) {
     return clearRoute();
   }
@@ -1306,7 +1347,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchInitialLocation,
+    TResult? Function()? loadDashboardData,
     TResult? Function(String query)? fetchAutocomplete,
     TResult? Function(String field)? activateTextField,
     TResult? Function()? clearSuggestions,
@@ -1314,6 +1355,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult? Function()? fetchRoute,
     TResult? Function(String placeId, String field)? fetchPlaceDetails,
     TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
   }) {
     return clearRoute?.call();
   }
@@ -1321,7 +1363,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchInitialLocation,
+    TResult Function()? loadDashboardData,
     TResult Function(String query)? fetchAutocomplete,
     TResult Function(String field)? activateTextField,
     TResult Function()? clearSuggestions,
@@ -1329,6 +1371,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult Function()? fetchRoute,
     TResult Function(String placeId, String field)? fetchPlaceDetails,
     TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
     required TResult orElse(),
   }) {
     if (clearRoute != null) {
@@ -1340,8 +1383,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchInitialLocationEvent value)
-        fetchInitialLocation,
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
     required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
     required TResult Function(ActivateTextFieldEvent value) activateTextField,
     required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
@@ -1350,6 +1392,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     required TResult Function(FetchRouteEvent value) fetchRoute,
     required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
     required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
   }) {
     return clearRoute(this);
   }
@@ -1357,7 +1400,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult? Function(ActivateTextFieldEvent value)? activateTextField,
     TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1365,6 +1408,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult? Function(FetchRouteEvent value)? fetchRoute,
     TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
   }) {
     return clearRoute?.call(this);
   }
@@ -1372,7 +1416,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchInitialLocationEvent value)? fetchInitialLocation,
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
     TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
     TResult Function(ActivateTextFieldEvent value)? activateTextField,
     TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
@@ -1380,6 +1424,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult Function(FetchRouteEvent value)? fetchRoute,
     TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
     TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
     required TResult orElse(),
   }) {
     if (clearRoute != null) {
@@ -1391,6 +1436,154 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
 
 abstract class ClearRouteEvent implements DashboardEvent {
   const factory ClearRouteEvent() = _$ClearRouteEventImpl;
+}
+
+/// @nodoc
+abstract class _$$InitializeMapEventImplCopyWith<$Res> {
+  factory _$$InitializeMapEventImplCopyWith(_$InitializeMapEventImpl value,
+          $Res Function(_$InitializeMapEventImpl) then) =
+      __$$InitializeMapEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeMapEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$InitializeMapEventImpl>
+    implements _$$InitializeMapEventImplCopyWith<$Res> {
+  __$$InitializeMapEventImplCopyWithImpl(_$InitializeMapEventImpl _value,
+      $Res Function(_$InitializeMapEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitializeMapEventImpl implements InitializeMapEvent {
+  const _$InitializeMapEventImpl();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.initializeMap()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitializeMapEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadDashboardData,
+    required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
+    required TResult Function() fetchCurrentLocation,
+    required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
+    required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
+  }) {
+    return initializeMap();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadDashboardData,
+    TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
+    TResult? Function()? fetchCurrentLocation,
+    TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
+    TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
+  }) {
+    return initializeMap?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadDashboardData,
+    TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
+    TResult Function()? fetchCurrentLocation,
+    TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
+    TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
+    required TResult orElse(),
+  }) {
+    if (initializeMap != null) {
+      return initializeMap();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
+    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
+    required TResult Function(FetchCurrentLocationEvent value)
+        fetchCurrentLocation,
+    required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
+    required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
+  }) {
+    return initializeMap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
+    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+    TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
+  }) {
+    return initializeMap?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
+    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+    TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
+    required TResult orElse(),
+  }) {
+    if (initializeMap != null) {
+      return initializeMap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitializeMapEvent implements DashboardEvent {
+  const factory InitializeMapEvent() = _$InitializeMapEventImpl;
 }
 
 /// @nodoc
@@ -1406,6 +1599,8 @@ mixin _$DashboardState {
   Location? get startLocation => throw _privateConstructorUsedError;
   Location? get endLocation => throw _privateConstructorUsedError;
   RouteResponse? get route => throw _privateConstructorUsedError;
+  LatLng? get initialMapPosition => throw _privateConstructorUsedError;
+  dynamic get isMapLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
@@ -1431,7 +1626,9 @@ abstract class $DashboardStateCopyWith<$Res> {
       String? errorMessage,
       Location? startLocation,
       Location? endLocation,
-      RouteResponse? route});
+      RouteResponse? route,
+      LatLng? initialMapPosition,
+      dynamic isMapLoading});
 
   $GeocodingResultCopyWith<$Res>? get userLocation;
   $GeocodingResultCopyWith<$Res>? get initialLocation;
@@ -1466,6 +1663,8 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
     Object? startLocation = freezed,
     Object? endLocation = freezed,
     Object? route = freezed,
+    Object? initialMapPosition = freezed,
+    Object? isMapLoading = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -1512,6 +1711,14 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as RouteResponse?,
+      initialMapPosition: freezed == initialMapPosition
+          ? _value.initialMapPosition
+          : initialMapPosition // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      isMapLoading: freezed == isMapLoading
+          ? _value.isMapLoading
+          : isMapLoading // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 
@@ -1605,7 +1812,9 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
       String? errorMessage,
       Location? startLocation,
       Location? endLocation,
-      RouteResponse? route});
+      RouteResponse? route,
+      LatLng? initialMapPosition,
+      dynamic isMapLoading});
 
   @override
   $GeocodingResultCopyWith<$Res>? get userLocation;
@@ -1643,6 +1852,8 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
     Object? startLocation = freezed,
     Object? endLocation = freezed,
     Object? route = freezed,
+    Object? initialMapPosition = freezed,
+    Object? isMapLoading = freezed,
   }) {
     return _then(_$DashboardStateImpl(
       isLoading: null == isLoading
@@ -1689,6 +1900,12 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as RouteResponse?,
+      initialMapPosition: freezed == initialMapPosition
+          ? _value.initialMapPosition
+          : initialMapPosition // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      isMapLoading:
+          freezed == isMapLoading ? _value.isMapLoading! : isMapLoading,
     ));
   }
 }
@@ -1707,7 +1924,9 @@ class _$DashboardStateImpl implements _DashboardState {
       this.errorMessage,
       this.startLocation,
       this.endLocation,
-      this.route})
+      this.route,
+      this.initialMapPosition,
+      this.isMapLoading = true})
       : _suggestions = suggestions;
 
   @override
@@ -1742,10 +1961,15 @@ class _$DashboardStateImpl implements _DashboardState {
   final Location? endLocation;
   @override
   final RouteResponse? route;
+  @override
+  final LatLng? initialMapPosition;
+  @override
+  @JsonKey()
+  final dynamic isMapLoading;
 
   @override
   String toString() {
-    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route)';
+    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route, initialMapPosition: $initialMapPosition, isMapLoading: $isMapLoading)';
   }
 
   @override
@@ -1773,7 +1997,11 @@ class _$DashboardStateImpl implements _DashboardState {
                 other.startLocation == startLocation) &&
             (identical(other.endLocation, endLocation) ||
                 other.endLocation == endLocation) &&
-            (identical(other.route, route) || other.route == route));
+            (identical(other.route, route) || other.route == route) &&
+            (identical(other.initialMapPosition, initialMapPosition) ||
+                other.initialMapPosition == initialMapPosition) &&
+            const DeepCollectionEquality()
+                .equals(other.isMapLoading, isMapLoading));
   }
 
   @override
@@ -1789,7 +2017,9 @@ class _$DashboardStateImpl implements _DashboardState {
       errorMessage,
       startLocation,
       endLocation,
-      route);
+      route,
+      initialMapPosition,
+      const DeepCollectionEquality().hash(isMapLoading));
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
@@ -1813,7 +2043,9 @@ abstract class _DashboardState implements DashboardState {
       final String? errorMessage,
       final Location? startLocation,
       final Location? endLocation,
-      final RouteResponse? route}) = _$DashboardStateImpl;
+      final RouteResponse? route,
+      final LatLng? initialMapPosition,
+      final dynamic isMapLoading}) = _$DashboardStateImpl;
 
   @override
   bool get isLoading;
@@ -1837,6 +2069,10 @@ abstract class _DashboardState implements DashboardState {
   Location? get endLocation;
   @override
   RouteResponse? get route;
+  @override
+  LatLng? get initialMapPosition;
+  @override
+  dynamic get isMapLoading;
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.

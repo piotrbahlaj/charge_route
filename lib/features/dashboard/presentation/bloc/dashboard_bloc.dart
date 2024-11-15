@@ -8,6 +8,7 @@ import 'package:charge_route/%20core/services/api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 part 'dashboard_bloc.freezed.dart';
 part 'dashboard_event.dart';
@@ -17,8 +18,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final ApiService apiService = getIt<ApiService>();
 
   DashboardBloc() : super(const DashboardState()) {
-    on<FetchInitialLocationEvent>(_onFetchInitialLocation);
-    add(const FetchInitialLocationEvent());
+    on<LoadDashboardDataEvent>(_onLoadDashboardData);
+    add(const LoadDashboardDataEvent());
     on<FetchAutocompleteEvent>(_onFetchAutocomplete);
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);
@@ -28,26 +29,35 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ClearRouteEvent>(_onClearRoute);
   }
 
-  Future<void> _onFetchInitialLocation(FetchInitialLocationEvent event, Emitter<DashboardState> emit) async {
+  Future<void> _onLoadDashboardData(LoadDashboardDataEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(isMapLoading: true));
     try {
       final Position position = await getIt<LocationService>().getCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
+      final LatLng initialPosition = LatLng(position.latitude, position.longitude);
 
       final result = await apiService.getAddressFromLocation(locationString);
 
       if (result.results.isNotEmpty) {
         emit(state.copyWith(
+          isLoading: false,
           initialLocation: result.results.first,
           errorMessage: null,
+          initialMapPosition: initialPosition,
+          isMapLoading: false,
         ));
       } else {
         emit(state.copyWith(
           errorMessage: 'Failed to get initial location.',
+          isLoading: false,
+          isMapLoading: false,
         ));
       }
     } catch (e) {
       emit(state.copyWith(
         errorMessage: 'Failed to fetch initial location.',
+        isLoading: false,
+        isMapLoading: false,
       ));
     }
   }
