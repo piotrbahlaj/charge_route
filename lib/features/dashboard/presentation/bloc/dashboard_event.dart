@@ -9,4 +9,5 @@ class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.fetchCurrentLocation() = FetchCurrentLocationEvent;
   const factory DashboardEvent.fetchRoute() = FetchRouteEvent;
   const factory DashboardEvent.fetchPlaceDetails(String placeId, String field) = FetchPlaceDetailsEvent;
+  const factory DashboardEvent.clearRoute() = ClearRouteEvent;
 }

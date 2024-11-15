@@ -18,10 +18,41 @@ class RouteSummaryPanel extends StatelessWidget {
         final fullDuration = state.duration?.text ?? '';
         final fullDistance = state.distance?.text ?? '';
 
+        Future<void> showStopTripConfirmationDialog(BuildContext context) async {
+          return showDialog<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Cancel Trip'),
+                content: const Text('Are you sure you want to cancel the trip and go back to dashboard?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      context.pop();
+                    },
+                    child: Text(
+                      'Yes',
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(
+                      'No',
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+
         return Positioned(
           bottom: 70,
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
           child: Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -53,14 +84,12 @@ class RouteSummaryPanel extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Finish trip button
                 IconButton(
-                  onPressed: () {
-                    context.go('/dashboard'); // Adjust this route if necessary to navigate to the correct screen
-                  },
+                  onPressed: () => showStopTripConfirmationDialog(context),
                   icon: Icon(
-                    Icons.close,
+                    Icons.stop_circle_outlined,
                     color: Theme.of(context).colorScheme.onSurface,
+                    size: 40,
                   ),
                   tooltip: 'End Trip',
                 ),

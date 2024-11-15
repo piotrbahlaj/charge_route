@@ -9,7 +9,7 @@ class RouteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
       child: Stack(
         children: [
           RouteMap(),

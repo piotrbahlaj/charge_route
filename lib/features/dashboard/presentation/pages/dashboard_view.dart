@@ -19,8 +19,9 @@ class DashboardView extends StatelessWidget {
       listenWhen: (previous, current) =>
           previous.route == null && current.route != null && current.errorMessage == null,
       listener: (context, state) {
-        if (state.route != null && state.errorMessage == null) {
-          context.go('/route', extra: state.route);
+        if (state.route != null && state.shouldNavigateToRoute) {
+          context.push('/route', extra: state.route);
+          context.read<DashboardBloc>().add(const ClearRouteEvent());
         }
       },
       child: SafeArea(
