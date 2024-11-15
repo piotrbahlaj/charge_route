@@ -9,6 +9,7 @@ part 'route_state.dart';
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
   RouteBloc() : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
+    on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
   }
 
   Future<void> _onInitializeRoute(InitalizeRouteEvent event, Emitter<RouteState> emit) async {
@@ -27,4 +28,6 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
       emit(state.copyWith(errorMessage: 'Route data is empty.'));
     }
   }
+
+  Future<void> _onUpdateRouteProgress(UpdateRouteProgressEvent event, Emitter<RouteState> emit) async {}
 }

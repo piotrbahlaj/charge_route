@@ -16,44 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RouteEvent {
-  RouteResponse? get routeData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RouteResponse? routeData) initalizeRoute,
+    required TResult Function() updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RouteResponse? routeData)? initalizeRoute,
+    TResult? Function()? updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RouteResponse? routeData)? initalizeRoute,
+    TResult Function()? updateRouteProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitalizeRouteEvent value) initalizeRoute,
+    required TResult Function(UpdateRouteProgressEvent value)
+        updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult? Function(UpdateRouteProgressEvent value)? updateRouteProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult Function(UpdateRouteProgressEvent value)? updateRouteProgress,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of RouteEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RouteEventCopyWith<RouteEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,10 +62,6 @@ abstract class $RouteEventCopyWith<$Res> {
   factory $RouteEventCopyWith(
           RouteEvent value, $Res Function(RouteEvent) then) =
       _$RouteEventCopyWithImpl<$Res, RouteEvent>;
-  @useResult
-  $Res call({RouteResponse? routeData});
-
-  $RouteResponseCopyWith<$Res>? get routeData;
 }
 
 /// @nodoc
@@ -80,45 +76,16 @@ class _$RouteEventCopyWithImpl<$Res, $Val extends RouteEvent>
 
   /// Create a copy of RouteEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? routeData = freezed,
-  }) {
-    return _then(_value.copyWith(
-      routeData: freezed == routeData
-          ? _value.routeData
-          : routeData // ignore: cast_nullable_to_non_nullable
-              as RouteResponse?,
-    ) as $Val);
-  }
-
-  /// Create a copy of RouteEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RouteResponseCopyWith<$Res>? get routeData {
-    if (_value.routeData == null) {
-      return null;
-    }
-
-    return $RouteResponseCopyWith<$Res>(_value.routeData!, (value) {
-      return _then(_value.copyWith(routeData: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$InitalizeRouteEventImplCopyWith<$Res>
-    implements $RouteEventCopyWith<$Res> {
+abstract class _$$InitalizeRouteEventImplCopyWith<$Res> {
   factory _$$InitalizeRouteEventImplCopyWith(_$InitalizeRouteEventImpl value,
           $Res Function(_$InitalizeRouteEventImpl) then) =
       __$$InitalizeRouteEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({RouteResponse? routeData});
 
-  @override
   $RouteResponseCopyWith<$Res>? get routeData;
 }
 
@@ -143,6 +110,20 @@ class __$$InitalizeRouteEventImplCopyWithImpl<$Res>
           : routeData // ignore: cast_nullable_to_non_nullable
               as RouteResponse?,
     ));
+  }
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RouteResponseCopyWith<$Res>? get routeData {
+    if (_value.routeData == null) {
+      return null;
+    }
+
+    return $RouteResponseCopyWith<$Res>(_value.routeData!, (value) {
+      return _then(_value.copyWith(routeData: value));
+    });
   }
 }
 
@@ -184,6 +165,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RouteResponse? routeData) initalizeRoute,
+    required TResult Function() updateRouteProgress,
   }) {
     return initalizeRoute(routeData);
   }
@@ -192,6 +174,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RouteResponse? routeData)? initalizeRoute,
+    TResult? Function()? updateRouteProgress,
   }) {
     return initalizeRoute?.call(routeData);
   }
@@ -200,6 +183,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RouteResponse? routeData)? initalizeRoute,
+    TResult Function()? updateRouteProgress,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -212,6 +196,8 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitalizeRouteEvent value) initalizeRoute,
+    required TResult Function(UpdateRouteProgressEvent value)
+        updateRouteProgress,
   }) {
     return initalizeRoute(this);
   }
@@ -220,6 +206,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult? Function(UpdateRouteProgressEvent value)? updateRouteProgress,
   }) {
     return initalizeRoute?.call(this);
   }
@@ -228,6 +215,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult Function(UpdateRouteProgressEvent value)? updateRouteProgress,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -241,15 +229,122 @@ abstract class InitalizeRouteEvent implements RouteEvent {
   const factory InitalizeRouteEvent(final RouteResponse? routeData) =
       _$InitalizeRouteEventImpl;
 
-  @override
   RouteResponse? get routeData;
 
   /// Create a copy of RouteEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitalizeRouteEventImplCopyWith<_$InitalizeRouteEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateRouteProgressEventImplCopyWith<$Res> {
+  factory _$$UpdateRouteProgressEventImplCopyWith(
+          _$UpdateRouteProgressEventImpl value,
+          $Res Function(_$UpdateRouteProgressEventImpl) then) =
+      __$$UpdateRouteProgressEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateRouteProgressEventImplCopyWithImpl<$Res>
+    extends _$RouteEventCopyWithImpl<$Res, _$UpdateRouteProgressEventImpl>
+    implements _$$UpdateRouteProgressEventImplCopyWith<$Res> {
+  __$$UpdateRouteProgressEventImplCopyWithImpl(
+      _$UpdateRouteProgressEventImpl _value,
+      $Res Function(_$UpdateRouteProgressEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
+  const _$UpdateRouteProgressEventImpl();
+
+  @override
+  String toString() {
+    return 'RouteEvent.updateRouteProgress()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateRouteProgressEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RouteResponse? routeData) initalizeRoute,
+    required TResult Function() updateRouteProgress,
+  }) {
+    return updateRouteProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RouteResponse? routeData)? initalizeRoute,
+    TResult? Function()? updateRouteProgress,
+  }) {
+    return updateRouteProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RouteResponse? routeData)? initalizeRoute,
+    TResult Function()? updateRouteProgress,
+    required TResult orElse(),
+  }) {
+    if (updateRouteProgress != null) {
+      return updateRouteProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitalizeRouteEvent value) initalizeRoute,
+    required TResult Function(UpdateRouteProgressEvent value)
+        updateRouteProgress,
+  }) {
+    return updateRouteProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult? Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+  }) {
+    return updateRouteProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+    required TResult orElse(),
+  }) {
+    if (updateRouteProgress != null) {
+      return updateRouteProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateRouteProgressEvent implements RouteEvent {
+  const factory UpdateRouteProgressEvent() = _$UpdateRouteProgressEventImpl;
 }
 
 /// @nodoc
