@@ -14,5 +14,7 @@ class DashboardState with _$DashboardState {
     Location? startLocation,
     Location? endLocation,
     RouteResponse? route,
+    LatLng? initialMapPosition,
+    @Default(true) isMapLoading,
   }) = _DashboardState;
 }

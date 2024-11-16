@@ -10,9 +10,13 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<DashboardBloc, DashboardState>(
-      listenWhen: (previous, current) => previous.initialLocation == null && current.initialLocation != null,
+      listenWhen: (previous, current) =>
+          previous.isMapLoading == true &&
+          current.isMapLoading == false &&
+          current.initialLocation != null &&
+          current.initialMapPosition != null,
       listener: (context, state) {
-        if (state.initialLocation != null) {
+        if (!state.isMapLoading && state.initialLocation != null) {
           context.go('/dashboard');
         }
       },
