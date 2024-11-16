@@ -1592,6 +1592,8 @@ mixin _$DashboardState {
   bool get isRouteLoading => throw _privateConstructorUsedError;
   List<Prediction> get suggestions => throw _privateConstructorUsedError;
   bool get shouldNavigateToRoute => throw _privateConstructorUsedError;
+  List<ChargingStation> get chargingStations =>
+      throw _privateConstructorUsedError;
   GeocodingResult? get userLocation => throw _privateConstructorUsedError;
   GeocodingResult? get initialLocation => throw _privateConstructorUsedError;
   String? get activeField => throw _privateConstructorUsedError;
@@ -1620,6 +1622,7 @@ abstract class $DashboardStateCopyWith<$Res> {
       bool isRouteLoading,
       List<Prediction> suggestions,
       bool shouldNavigateToRoute,
+      List<ChargingStation> chargingStations,
       GeocodingResult? userLocation,
       GeocodingResult? initialLocation,
       String? activeField,
@@ -1656,6 +1659,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
     Object? isRouteLoading = null,
     Object? suggestions = null,
     Object? shouldNavigateToRoute = null,
+    Object? chargingStations = null,
     Object? userLocation = freezed,
     Object? initialLocation = freezed,
     Object? activeField = freezed,
@@ -1683,6 +1687,10 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.shouldNavigateToRoute
           : shouldNavigateToRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      chargingStations: null == chargingStations
+          ? _value.chargingStations
+          : chargingStations // ignore: cast_nullable_to_non_nullable
+              as List<ChargingStation>,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -1806,6 +1814,7 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
       bool isRouteLoading,
       List<Prediction> suggestions,
       bool shouldNavigateToRoute,
+      List<ChargingStation> chargingStations,
       GeocodingResult? userLocation,
       GeocodingResult? initialLocation,
       String? activeField,
@@ -1845,6 +1854,7 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
     Object? isRouteLoading = null,
     Object? suggestions = null,
     Object? shouldNavigateToRoute = null,
+    Object? chargingStations = null,
     Object? userLocation = freezed,
     Object? initialLocation = freezed,
     Object? activeField = freezed,
@@ -1872,6 +1882,10 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
           ? _value.shouldNavigateToRoute
           : shouldNavigateToRoute // ignore: cast_nullable_to_non_nullable
               as bool,
+      chargingStations: null == chargingStations
+          ? _value._chargingStations
+          : chargingStations // ignore: cast_nullable_to_non_nullable
+              as List<ChargingStation>,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -1918,6 +1932,7 @@ class _$DashboardStateImpl implements _DashboardState {
       this.isRouteLoading = false,
       final List<Prediction> suggestions = const [],
       this.shouldNavigateToRoute = false,
+      final List<ChargingStation> chargingStations = const [],
       this.userLocation,
       this.initialLocation,
       this.activeField,
@@ -1927,7 +1942,8 @@ class _$DashboardStateImpl implements _DashboardState {
       this.route,
       this.initialMapPosition,
       this.isMapLoading = true})
-      : _suggestions = suggestions;
+      : _suggestions = suggestions,
+        _chargingStations = chargingStations;
 
   @override
   @JsonKey()
@@ -1947,6 +1963,16 @@ class _$DashboardStateImpl implements _DashboardState {
   @override
   @JsonKey()
   final bool shouldNavigateToRoute;
+  final List<ChargingStation> _chargingStations;
+  @override
+  @JsonKey()
+  List<ChargingStation> get chargingStations {
+    if (_chargingStations is EqualUnmodifiableListView)
+      return _chargingStations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chargingStations);
+  }
+
   @override
   final GeocodingResult? userLocation;
   @override
@@ -1969,7 +1995,7 @@ class _$DashboardStateImpl implements _DashboardState {
 
   @override
   String toString() {
-    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route, initialMapPosition: $initialMapPosition, isMapLoading: $isMapLoading)';
+    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, chargingStations: $chargingStations, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route, initialMapPosition: $initialMapPosition, isMapLoading: $isMapLoading)';
   }
 
   @override
@@ -1985,6 +2011,8 @@ class _$DashboardStateImpl implements _DashboardState {
                 .equals(other._suggestions, _suggestions) &&
             (identical(other.shouldNavigateToRoute, shouldNavigateToRoute) ||
                 other.shouldNavigateToRoute == shouldNavigateToRoute) &&
+            const DeepCollectionEquality()
+                .equals(other._chargingStations, _chargingStations) &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation) &&
             (identical(other.initialLocation, initialLocation) ||
@@ -2011,6 +2039,7 @@ class _$DashboardStateImpl implements _DashboardState {
       isRouteLoading,
       const DeepCollectionEquality().hash(_suggestions),
       shouldNavigateToRoute,
+      const DeepCollectionEquality().hash(_chargingStations),
       userLocation,
       initialLocation,
       activeField,
@@ -2037,6 +2066,7 @@ abstract class _DashboardState implements DashboardState {
       final bool isRouteLoading,
       final List<Prediction> suggestions,
       final bool shouldNavigateToRoute,
+      final List<ChargingStation> chargingStations,
       final GeocodingResult? userLocation,
       final GeocodingResult? initialLocation,
       final String? activeField,
@@ -2055,6 +2085,8 @@ abstract class _DashboardState implements DashboardState {
   List<Prediction> get suggestions;
   @override
   bool get shouldNavigateToRoute;
+  @override
+  List<ChargingStation> get chargingStations;
   @override
   GeocodingResult? get userLocation;
   @override

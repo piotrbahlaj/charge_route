@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/di/service_locator.dart';
+import 'package:charge_route/%20core/models/charging_stations/charging_stations_response.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
@@ -36,15 +37,22 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       final String locationString = '${position.latitude},${position.longitude}';
       final LatLng initialPosition = LatLng(position.latitude, position.longitude);
 
-      final result = await apiService.getAddressFromLocation(locationString);
+      final addressResult = await apiService.getAddressFromLocation(locationString);
 
-      if (result.results.isNotEmpty) {
+      final chargingStationsResult = await apiService.getNearbyChargingStations(
+        latitude: position.latitude,
+        longitude: position.longitude,
+        radius: 10000,
+      );
+
+      if (addressResult.results.isNotEmpty) {
         emit(state.copyWith(
           isLoading: false,
-          initialLocation: result.results.first,
+          initialLocation: addressResult.results.first,
           errorMessage: null,
           initialMapPosition: initialPosition,
           isMapLoading: false,
+          chargingStations: chargingStationsResult.stations,
         ));
       } else {
         emit(state.copyWith(
