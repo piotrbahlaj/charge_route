@@ -24,6 +24,7 @@ abstract class ApiService {
     @Query("location") String location,
     @Query("radius") int radius,
     @Query('type') String type,
+    @Query('pagetoken') String? pageToken,
   );
 
   @GET("geocode/json")
@@ -40,5 +41,13 @@ abstract class ApiService {
   @GET("place/details/json")
   Future<PlaceDetailsResponse> getPlaceDetails(
     @Query("place_id") String placeId,
+  );
+
+  @GET('place/textsearch/json')
+  Future<NearbySearchResponse> getTextSearchResults(
+    @Query('query') String query,
+    @Query('location') String location,
+    @Query('radius') int radius,
+    @Query('pagetoken') String? pageToken,
   );
 }

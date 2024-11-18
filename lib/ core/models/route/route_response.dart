@@ -47,7 +47,7 @@ class Leg with _$Leg {
     @JsonKey(name: 'start_location') required Location? startLocation,
     @JsonKey(name: 'end_location') required Location? endLocation,
     required Distance? distance,
-    required Duration? duration,
+    required FullDuration? duration,
     required List<Step>? steps,
   }) = _Leg;
 
@@ -58,7 +58,7 @@ class Leg with _$Leg {
 class Step with _$Step {
   const factory Step({
     required Distance? distance,
-    required Duration? duration,
+    required FullDuration? duration,
     @JsonKey(name: 'start_location') required Location? startLocation,
     @JsonKey(name: 'end_location') required Location? endLocation,
     @JsonKey(name: 'polyline') required Polyline? polyline,
@@ -99,11 +99,11 @@ class Distance with _$Distance {
 }
 
 @freezed
-class Duration with _$Duration {
-  const factory Duration({
+class FullDuration with _$FullDuration {
+  const factory FullDuration({
     required String? text,
     required int? value,
-  }) = _Duration;
+  }) = _FullDuration;
 
-  factory Duration.fromJson(Map<String, dynamic> json) => _$DurationFromJson(json);
+  factory FullDuration.fromJson(Map<String, dynamic> json) => _$FullDurationFromJson(json);
 }

@@ -11,6 +11,7 @@ class NearbySearchResponse with _$NearbySearchResponse {
   const factory NearbySearchResponse({
     required List<NearbyResult> results,
     required String status,
+    @JsonKey(name: 'next_page_token') String? nextPageToken,
   }) = _NearbySearchResponse;
 
   factory NearbySearchResponse.fromJson(Map<String, dynamic> json) => _$NearbySearchResponseFromJson(json);
@@ -22,6 +23,7 @@ class NearbyResult with _$NearbyResult {
     required String name,
     @JsonKey(name: 'place_id') required String placeId,
     String? vicinity,
+    @JsonKey(name: 'formatted_address') String? formattedAddress,
     Geometry? geometry,
   }) = _NearbyResult;
 

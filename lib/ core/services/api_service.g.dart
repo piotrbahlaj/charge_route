@@ -68,13 +68,16 @@ class _ApiService implements ApiService {
     String location,
     int radius,
     String type,
+    String? pageToken,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'location': location,
       r'radius': radius,
       r'type': type,
+      r'pagetoken': pageToken,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<NearbySearchResponse>(Options(
@@ -202,6 +205,50 @@ class _ApiService implements ApiService {
     late PlaceDetailsResponse _value;
     try {
       _value = PlaceDetailsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<NearbySearchResponse> getTextSearchResults(
+    String query,
+    String location,
+    int radius,
+    String? pageToken,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'query': query,
+      r'location': location,
+      r'radius': radius,
+      r'pagetoken': pageToken,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<NearbySearchResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'place/textsearch/json',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late NearbySearchResponse _value;
+    try {
+      _value = NearbySearchResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

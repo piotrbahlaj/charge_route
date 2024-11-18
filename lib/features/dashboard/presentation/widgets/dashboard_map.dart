@@ -13,8 +13,8 @@ class DashBoardMap extends StatelessWidget {
     final ByteData imageData = await rootBundle.load('assets/images/ev_marker.png');
     final ui.Codec codec = await ui.instantiateImageCodec(
       imageData.buffer.asUint8List(),
-      targetWidth: 150, // Set the desired width
-      targetHeight: 150, // Set the desired height
+      targetWidth: 120,
+      targetHeight: 120,
     );
     final ui.FrameInfo frameInfo = await codec.getNextFrame();
     final ByteData? resizedBytes = await frameInfo.image.toByteData(format: ui.ImageByteFormat.png);
@@ -34,13 +34,14 @@ class DashBoardMap extends StatelessWidget {
         for (var station in state.chargingStations) {
           if (station.geometry?.location != null) {
             final location = station.geometry!.location!;
+            final address = station.vicinity ?? station.formattedAddress ?? "Address unavailable";
             markers.add(
               Marker(
                 markerId: MarkerId(station.placeId),
                 position: LatLng(location.lat, location.lng),
                 infoWindow: InfoWindow(
                   title: station.name,
-                  snippet: 'Charging station by: ${station.vicinity}',
+                  snippet: 'Charging station by: $address',
                 ),
                 icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen), // Fallback for custom icon
               ),

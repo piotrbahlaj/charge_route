@@ -39,11 +39,25 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
       final addressResult = await apiService.getAddressFromLocation(locationString);
 
-      final chargingStationsResult = await apiService.getPlaceFromLocation(
-        '${position.latitude},${position.longitude}',
-        300000,
-        'electric_vehicle_charging_station',
-      );
+      List<NearbyResult> chargingStationsResult = [];
+      String? nextPageToken;
+
+      do {
+        final textSearchResult = await apiService.getTextSearchResults(
+          'EV charging station',
+          locationString,
+          20000,
+          nextPageToken,
+        );
+
+        chargingStationsResult.addAll(textSearchResult.results);
+
+        nextPageToken = textSearchResult.nextPageToken;
+
+        if (nextPageToken != null) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
+      } while (nextPageToken != null);
 
       if (addressResult.results.isNotEmpty) {
         emit(state.copyWith(
@@ -52,7 +66,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           errorMessage: null,
           initialMapPosition: initialPosition,
           isMapLoading: false,
-          chargingStations: chargingStationsResult.results,
+          chargingStations: chargingStationsResult,
         ));
       } else {
         emit(state.copyWith(

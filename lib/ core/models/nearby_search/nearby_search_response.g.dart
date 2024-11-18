@@ -13,6 +13,7 @@ _$NearbySearchResponseImpl _$$NearbySearchResponseImplFromJson(
           .map((e) => NearbyResult.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as String,
+      nextPageToken: json['next_page_token'] as String?,
     );
 
 Map<String, dynamic> _$$NearbySearchResponseImplToJson(
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$NearbySearchResponseImplToJson(
     <String, dynamic>{
       'results': instance.results,
       'status': instance.status,
+      'next_page_token': instance.nextPageToken,
     };
 
 _$NearbyResultImpl _$$NearbyResultImplFromJson(Map<String, dynamic> json) =>
@@ -27,6 +29,7 @@ _$NearbyResultImpl _$$NearbyResultImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       placeId: json['place_id'] as String,
       vicinity: json['vicinity'] as String?,
+      formattedAddress: json['formatted_address'] as String?,
       geometry: json['geometry'] == null
           ? null
           : Geometry.fromJson(json['geometry'] as Map<String, dynamic>),
@@ -37,6 +40,7 @@ Map<String, dynamic> _$$NearbyResultImplToJson(_$NearbyResultImpl instance) =>
       'name': instance.name,
       'place_id': instance.placeId,
       'vicinity': instance.vicinity,
+      'formatted_address': instance.formattedAddress,
       'geometry': instance.geometry,
     };
 

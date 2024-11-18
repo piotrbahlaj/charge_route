@@ -8,9 +8,9 @@ class RouteState with _$RouteState {
     @Default([]) List<Step> steps,
     @Default(0) int currentStepIndex,
     Distance? currentStepDistance,
-    Duration? currentStepDuration,
+    FullDuration? currentStepDuration,
     Distance? distance,
-    Duration? duration,
+    FullDuration? duration,
     String? errorMessage,
   }) = _RouteState;
 }
