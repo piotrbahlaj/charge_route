@@ -391,9 +391,9 @@ mixin _$RouteState {
   List<Step> get steps => throw _privateConstructorUsedError;
   int get currentStepIndex => throw _privateConstructorUsedError;
   Distance? get currentStepDistance => throw _privateConstructorUsedError;
-  Duration? get currentStepDuration => throw _privateConstructorUsedError;
+  FullDuration? get currentStepDuration => throw _privateConstructorUsedError;
   Distance? get distance => throw _privateConstructorUsedError;
-  Duration? get duration => throw _privateConstructorUsedError;
+  FullDuration? get duration => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of RouteState
@@ -415,16 +415,16 @@ abstract class $RouteStateCopyWith<$Res> {
       List<Step> steps,
       int currentStepIndex,
       Distance? currentStepDistance,
-      Duration? currentStepDuration,
+      FullDuration? currentStepDuration,
       Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       String? errorMessage});
 
   $RouteResponseCopyWith<$Res>? get route;
   $DistanceCopyWith<$Res>? get currentStepDistance;
-  $DurationCopyWith<$Res>? get currentStepDuration;
+  $FullDurationCopyWith<$Res>? get currentStepDuration;
   $DistanceCopyWith<$Res>? get distance;
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -476,7 +476,7 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
       currentStepDuration: freezed == currentStepDuration
           ? _value.currentStepDuration
           : currentStepDuration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
@@ -484,7 +484,7 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -524,12 +524,12 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res>? get currentStepDuration {
+  $FullDurationCopyWith<$Res>? get currentStepDuration {
     if (_value.currentStepDuration == null) {
       return null;
     }
 
-    return $DurationCopyWith<$Res>(_value.currentStepDuration!, (value) {
+    return $FullDurationCopyWith<$Res>(_value.currentStepDuration!, (value) {
       return _then(_value.copyWith(currentStepDuration: value) as $Val);
     });
   }
@@ -552,12 +552,12 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res>? get duration {
+  $FullDurationCopyWith<$Res>? get duration {
     if (_value.duration == null) {
       return null;
     }
 
-    return $DurationCopyWith<$Res>(_value.duration!, (value) {
+    return $FullDurationCopyWith<$Res>(_value.duration!, (value) {
       return _then(_value.copyWith(duration: value) as $Val);
     });
   }
@@ -577,9 +577,9 @@ abstract class _$$RouteStateImplCopyWith<$Res>
       List<Step> steps,
       int currentStepIndex,
       Distance? currentStepDistance,
-      Duration? currentStepDuration,
+      FullDuration? currentStepDuration,
       Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       String? errorMessage});
 
   @override
@@ -587,11 +587,11 @@ abstract class _$$RouteStateImplCopyWith<$Res>
   @override
   $DistanceCopyWith<$Res>? get currentStepDistance;
   @override
-  $DurationCopyWith<$Res>? get currentStepDuration;
+  $FullDurationCopyWith<$Res>? get currentStepDuration;
   @override
   $DistanceCopyWith<$Res>? get distance;
   @override
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -641,7 +641,7 @@ class __$$RouteStateImplCopyWithImpl<$Res>
       currentStepDuration: freezed == currentStepDuration
           ? _value.currentStepDuration
           : currentStepDuration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
@@ -649,7 +649,7 @@ class __$$RouteStateImplCopyWithImpl<$Res>
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -700,11 +700,11 @@ class _$RouteStateImpl implements _RouteState {
   @override
   final Distance? currentStepDistance;
   @override
-  final Duration? currentStepDuration;
+  final FullDuration? currentStepDuration;
   @override
   final Distance? distance;
   @override
-  final Duration? duration;
+  final FullDuration? duration;
   @override
   final String? errorMessage;
 
@@ -765,9 +765,9 @@ abstract class _RouteState implements RouteState {
       final List<Step> steps,
       final int currentStepIndex,
       final Distance? currentStepDistance,
-      final Duration? currentStepDuration,
+      final FullDuration? currentStepDuration,
       final Distance? distance,
-      final Duration? duration,
+      final FullDuration? duration,
       final String? errorMessage}) = _$RouteStateImpl;
 
   @override
@@ -781,11 +781,11 @@ abstract class _RouteState implements RouteState {
   @override
   Distance? get currentStepDistance;
   @override
-  Duration? get currentStepDuration;
+  FullDuration? get currentStepDuration;
   @override
   Distance? get distance;
   @override
-  Duration? get duration;
+  FullDuration? get duration;
   @override
   String? get errorMessage;
 

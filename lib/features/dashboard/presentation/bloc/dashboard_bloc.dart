@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
+import 'package:charge_route/%20core/models/nearby_search/nearby_search_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
@@ -27,6 +28,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<FetchPlaceDetailsEvent>(_onFetchPlaceDetails);
     on<FetchRouteEvent>(_onFetchRoute);
     on<ClearRouteEvent>(_onClearRoute);
+    on<SetDestinationLocationEvent>(_onSetDestinationLocation);
   }
 
   Future<void> _onLoadDashboardData(LoadDashboardDataEvent event, Emitter<DashboardState> emit) async {
@@ -36,15 +38,36 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       final String locationString = '${position.latitude},${position.longitude}';
       final LatLng initialPosition = LatLng(position.latitude, position.longitude);
 
-      final result = await apiService.getAddressFromLocation(locationString);
+      final addressResult = await apiService.getAddressFromLocation(locationString);
 
-      if (result.results.isNotEmpty) {
+      List<NearbyResult> chargingStationsResult = [];
+      String? nextPageToken;
+
+      do {
+        final textSearchResult = await apiService.getTextSearchResults(
+          'EV charging station',
+          locationString,
+          20000,
+          nextPageToken,
+        );
+
+        chargingStationsResult.addAll(textSearchResult.results);
+
+        nextPageToken = textSearchResult.nextPageToken;
+
+        if (nextPageToken != null) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
+      } while (nextPageToken != null);
+
+      if (addressResult.results.isNotEmpty) {
         emit(state.copyWith(
           isLoading: false,
-          initialLocation: result.results.first,
+          initialLocation: addressResult.results.first,
           errorMessage: null,
           initialMapPosition: initialPosition,
           isMapLoading: false,
+          chargingStations: chargingStationsResult,
         ));
       } else {
         emit(state.copyWith(
@@ -196,5 +219,12 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   Future<void> _onClearRoute(ClearRouteEvent event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(route: null));
+  }
+
+  Future<void> _onSetDestinationLocation(SetDestinationLocationEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(
+      endLocation: event.location,
+      destinationAddress: event.address,
+    ));
   }
 }

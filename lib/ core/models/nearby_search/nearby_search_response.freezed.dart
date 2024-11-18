@@ -22,6 +22,8 @@ NearbySearchResponse _$NearbySearchResponseFromJson(Map<String, dynamic> json) {
 mixin _$NearbySearchResponse {
   List<NearbyResult> get results => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  @JsonKey(name: 'next_page_token')
+  String? get nextPageToken => throw _privateConstructorUsedError;
 
   /// Serializes this NearbySearchResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +41,10 @@ abstract class $NearbySearchResponseCopyWith<$Res> {
           $Res Function(NearbySearchResponse) then) =
       _$NearbySearchResponseCopyWithImpl<$Res, NearbySearchResponse>;
   @useResult
-  $Res call({List<NearbyResult> results, String status});
+  $Res call(
+      {List<NearbyResult> results,
+      String status,
+      @JsonKey(name: 'next_page_token') String? nextPageToken});
 }
 
 /// @nodoc
@@ -60,6 +65,7 @@ class _$NearbySearchResponseCopyWithImpl<$Res,
   $Res call({
     Object? results = null,
     Object? status = null,
+    Object? nextPageToken = freezed,
   }) {
     return _then(_value.copyWith(
       results: null == results
@@ -70,6 +76,10 @@ class _$NearbySearchResponseCopyWithImpl<$Res,
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      nextPageToken: freezed == nextPageToken
+          ? _value.nextPageToken
+          : nextPageToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -82,7 +92,10 @@ abstract class _$$NearbySearchResponseImplCopyWith<$Res>
       __$$NearbySearchResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<NearbyResult> results, String status});
+  $Res call(
+      {List<NearbyResult> results,
+      String status,
+      @JsonKey(name: 'next_page_token') String? nextPageToken});
 }
 
 /// @nodoc
@@ -100,6 +113,7 @@ class __$$NearbySearchResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? results = null,
     Object? status = null,
+    Object? nextPageToken = freezed,
   }) {
     return _then(_$NearbySearchResponseImpl(
       results: null == results
@@ -110,6 +124,10 @@ class __$$NearbySearchResponseImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      nextPageToken: freezed == nextPageToken
+          ? _value.nextPageToken
+          : nextPageToken // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -118,7 +136,9 @@ class __$$NearbySearchResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NearbySearchResponseImpl implements _NearbySearchResponse {
   const _$NearbySearchResponseImpl(
-      {required final List<NearbyResult> results, required this.status})
+      {required final List<NearbyResult> results,
+      required this.status,
+      @JsonKey(name: 'next_page_token') this.nextPageToken})
       : _results = results;
 
   factory _$NearbySearchResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -134,10 +154,13 @@ class _$NearbySearchResponseImpl implements _NearbySearchResponse {
 
   @override
   final String status;
+  @override
+  @JsonKey(name: 'next_page_token')
+  final String? nextPageToken;
 
   @override
   String toString() {
-    return 'NearbySearchResponse(results: $results, status: $status)';
+    return 'NearbySearchResponse(results: $results, status: $status, nextPageToken: $nextPageToken)';
   }
 
   @override
@@ -146,13 +169,15 @@ class _$NearbySearchResponseImpl implements _NearbySearchResponse {
         (other.runtimeType == runtimeType &&
             other is _$NearbySearchResponseImpl &&
             const DeepCollectionEquality().equals(other._results, _results) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.nextPageToken, nextPageToken) ||
+                other.nextPageToken == nextPageToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_results), status);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_results), status, nextPageToken);
 
   /// Create a copy of NearbySearchResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -174,8 +199,10 @@ class _$NearbySearchResponseImpl implements _NearbySearchResponse {
 
 abstract class _NearbySearchResponse implements NearbySearchResponse {
   const factory _NearbySearchResponse(
-      {required final List<NearbyResult> results,
-      required final String status}) = _$NearbySearchResponseImpl;
+          {required final List<NearbyResult> results,
+          required final String status,
+          @JsonKey(name: 'next_page_token') final String? nextPageToken}) =
+      _$NearbySearchResponseImpl;
 
   factory _NearbySearchResponse.fromJson(Map<String, dynamic> json) =
       _$NearbySearchResponseImpl.fromJson;
@@ -184,6 +211,9 @@ abstract class _NearbySearchResponse implements NearbySearchResponse {
   List<NearbyResult> get results;
   @override
   String get status;
+  @override
+  @JsonKey(name: 'next_page_token')
+  String? get nextPageToken;
 
   /// Create a copy of NearbySearchResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -203,6 +233,8 @@ mixin _$NearbyResult {
   @JsonKey(name: 'place_id')
   String get placeId => throw _privateConstructorUsedError;
   String? get vicinity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'formatted_address')
+  String? get formattedAddress => throw _privateConstructorUsedError;
   Geometry? get geometry => throw _privateConstructorUsedError;
 
   /// Serializes this NearbyResult to a JSON map.
@@ -225,6 +257,7 @@ abstract class $NearbyResultCopyWith<$Res> {
       {String name,
       @JsonKey(name: 'place_id') String placeId,
       String? vicinity,
+      @JsonKey(name: 'formatted_address') String? formattedAddress,
       Geometry? geometry});
 
   $GeometryCopyWith<$Res>? get geometry;
@@ -248,6 +281,7 @@ class _$NearbyResultCopyWithImpl<$Res, $Val extends NearbyResult>
     Object? name = null,
     Object? placeId = null,
     Object? vicinity = freezed,
+    Object? formattedAddress = freezed,
     Object? geometry = freezed,
   }) {
     return _then(_value.copyWith(
@@ -262,6 +296,10 @@ class _$NearbyResultCopyWithImpl<$Res, $Val extends NearbyResult>
       vicinity: freezed == vicinity
           ? _value.vicinity
           : vicinity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formattedAddress: freezed == formattedAddress
+          ? _value.formattedAddress
+          : formattedAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       geometry: freezed == geometry
           ? _value.geometry
@@ -297,6 +335,7 @@ abstract class _$$NearbyResultImplCopyWith<$Res>
       {String name,
       @JsonKey(name: 'place_id') String placeId,
       String? vicinity,
+      @JsonKey(name: 'formatted_address') String? formattedAddress,
       Geometry? geometry});
 
   @override
@@ -319,6 +358,7 @@ class __$$NearbyResultImplCopyWithImpl<$Res>
     Object? name = null,
     Object? placeId = null,
     Object? vicinity = freezed,
+    Object? formattedAddress = freezed,
     Object? geometry = freezed,
   }) {
     return _then(_$NearbyResultImpl(
@@ -333,6 +373,10 @@ class __$$NearbyResultImplCopyWithImpl<$Res>
       vicinity: freezed == vicinity
           ? _value.vicinity
           : vicinity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formattedAddress: freezed == formattedAddress
+          ? _value.formattedAddress
+          : formattedAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       geometry: freezed == geometry
           ? _value.geometry
@@ -349,6 +393,7 @@ class _$NearbyResultImpl implements _NearbyResult {
       {required this.name,
       @JsonKey(name: 'place_id') required this.placeId,
       this.vicinity,
+      @JsonKey(name: 'formatted_address') this.formattedAddress,
       this.geometry});
 
   factory _$NearbyResultImpl.fromJson(Map<String, dynamic> json) =>
@@ -362,11 +407,14 @@ class _$NearbyResultImpl implements _NearbyResult {
   @override
   final String? vicinity;
   @override
+  @JsonKey(name: 'formatted_address')
+  final String? formattedAddress;
+  @override
   final Geometry? geometry;
 
   @override
   String toString() {
-    return 'NearbyResult(name: $name, placeId: $placeId, vicinity: $vicinity, geometry: $geometry)';
+    return 'NearbyResult(name: $name, placeId: $placeId, vicinity: $vicinity, formattedAddress: $formattedAddress, geometry: $geometry)';
   }
 
   @override
@@ -378,14 +426,16 @@ class _$NearbyResultImpl implements _NearbyResult {
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.vicinity, vicinity) ||
                 other.vicinity == vicinity) &&
+            (identical(other.formattedAddress, formattedAddress) ||
+                other.formattedAddress == formattedAddress) &&
             (identical(other.geometry, geometry) ||
                 other.geometry == geometry));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, placeId, vicinity, geometry);
+  int get hashCode => Object.hash(
+      runtimeType, name, placeId, vicinity, formattedAddress, geometry);
 
   /// Create a copy of NearbyResult
   /// with the given fields replaced by the non-null parameter values.
@@ -408,6 +458,7 @@ abstract class _NearbyResult implements NearbyResult {
       {required final String name,
       @JsonKey(name: 'place_id') required final String placeId,
       final String? vicinity,
+      @JsonKey(name: 'formatted_address') final String? formattedAddress,
       final Geometry? geometry}) = _$NearbyResultImpl;
 
   factory _NearbyResult.fromJson(Map<String, dynamic> json) =
@@ -420,6 +471,9 @@ abstract class _NearbyResult implements NearbyResult {
   String get placeId;
   @override
   String? get vicinity;
+  @override
+  @JsonKey(name: 'formatted_address')
+  String? get formattedAddress;
   @override
   Geometry? get geometry;
 

@@ -115,6 +115,11 @@ class DashboardSearchBar extends StatelessWidget {
                       hasSetLocation = true;
                     });
                   }
+                  if (state.destinationAddress != null && field == 'destination') {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      controller.text = state.destinationAddress ?? '';
+                    });
+                  }
                   if (state.suggestions.isNotEmpty && state.activeField == field) {
                     return SizedBox(
                       height: 200,

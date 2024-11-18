@@ -11,4 +11,5 @@ class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.fetchPlaceDetails(String placeId, String field) = FetchPlaceDetailsEvent;
   const factory DashboardEvent.clearRoute() = ClearRouteEvent;
   const factory DashboardEvent.initializeMap() = InitializeMapEvent;
+  const factory DashboardEvent.setDestinationLocation(Location location, String address) = SetDestinationLocationEvent;
 }

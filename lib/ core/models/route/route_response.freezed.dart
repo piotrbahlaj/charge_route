@@ -675,7 +675,7 @@ mixin _$Leg {
   @JsonKey(name: 'end_location')
   Location? get endLocation => throw _privateConstructorUsedError;
   Distance? get distance => throw _privateConstructorUsedError;
-  Duration? get duration => throw _privateConstructorUsedError;
+  FullDuration? get duration => throw _privateConstructorUsedError;
   List<Step>? get steps => throw _privateConstructorUsedError;
 
   /// Serializes this Leg to a JSON map.
@@ -698,13 +698,13 @@ abstract class $LegCopyWith<$Res> {
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
       Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       List<Step>? steps});
 
   $LocationCopyWith<$Res>? get startLocation;
   $LocationCopyWith<$Res>? get endLocation;
   $DistanceCopyWith<$Res>? get distance;
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -753,7 +753,7 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       steps: freezed == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
@@ -807,12 +807,12 @@ class _$LegCopyWithImpl<$Res, $Val extends Leg> implements $LegCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res>? get duration {
+  $FullDurationCopyWith<$Res>? get duration {
     if (_value.duration == null) {
       return null;
     }
 
-    return $DurationCopyWith<$Res>(_value.duration!, (value) {
+    return $FullDurationCopyWith<$Res>(_value.duration!, (value) {
       return _then(_value.copyWith(duration: value) as $Val);
     });
   }
@@ -830,7 +830,7 @@ abstract class _$$LegImplCopyWith<$Res> implements $LegCopyWith<$Res> {
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
       Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       List<Step>? steps});
 
   @override
@@ -840,7 +840,7 @@ abstract class _$$LegImplCopyWith<$Res> implements $LegCopyWith<$Res> {
   @override
   $DistanceCopyWith<$Res>? get distance;
   @override
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
 }
 
 /// @nodoc
@@ -886,7 +886,7 @@ class __$$LegImplCopyWithImpl<$Res> extends _$LegCopyWithImpl<$Res, _$LegImpl>
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       steps: freezed == steps
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
@@ -926,7 +926,7 @@ class _$LegImpl implements _Leg {
   @override
   final Distance? distance;
   @override
-  final Duration? duration;
+  final FullDuration? duration;
   final List<Step>? _steps;
   @override
   List<Step>? get steps {
@@ -997,7 +997,7 @@ abstract class _Leg implements Leg {
       @JsonKey(name: 'start_location') required final Location? startLocation,
       @JsonKey(name: 'end_location') required final Location? endLocation,
       required final Distance? distance,
-      required final Duration? duration,
+      required final FullDuration? duration,
       required final List<Step>? steps}) = _$LegImpl;
 
   factory _Leg.fromJson(Map<String, dynamic> json) = _$LegImpl.fromJson;
@@ -1017,7 +1017,7 @@ abstract class _Leg implements Leg {
   @override
   Distance? get distance;
   @override
-  Duration? get duration;
+  FullDuration? get duration;
   @override
   List<Step>? get steps;
 
@@ -1036,7 +1036,7 @@ Step _$StepFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Step {
   Distance? get distance => throw _privateConstructorUsedError;
-  Duration? get duration => throw _privateConstructorUsedError;
+  FullDuration? get duration => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_location')
   Location? get startLocation => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_location')
@@ -1064,7 +1064,7 @@ abstract class $StepCopyWith<$Res> {
   @useResult
   $Res call(
       {Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
       @JsonKey(name: 'polyline') Polyline? polyline,
@@ -1072,7 +1072,7 @@ abstract class $StepCopyWith<$Res> {
       @JsonKey(name: 'travel_mode') String? travelMode});
 
   $DistanceCopyWith<$Res>? get distance;
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
   $LocationCopyWith<$Res>? get startLocation;
   $LocationCopyWith<$Res>? get endLocation;
   $PolylineCopyWith<$Res>? get polyline;
@@ -1109,7 +1109,7 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
@@ -1151,12 +1151,12 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DurationCopyWith<$Res>? get duration {
+  $FullDurationCopyWith<$Res>? get duration {
     if (_value.duration == null) {
       return null;
     }
 
-    return $DurationCopyWith<$Res>(_value.duration!, (value) {
+    return $FullDurationCopyWith<$Res>(_value.duration!, (value) {
       return _then(_value.copyWith(duration: value) as $Val);
     });
   }
@@ -1213,7 +1213,7 @@ abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
   @useResult
   $Res call(
       {Distance? distance,
-      Duration? duration,
+      FullDuration? duration,
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
       @JsonKey(name: 'polyline') Polyline? polyline,
@@ -1223,7 +1223,7 @@ abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
   @override
   $DistanceCopyWith<$Res>? get distance;
   @override
-  $DurationCopyWith<$Res>? get duration;
+  $FullDurationCopyWith<$Res>? get duration;
   @override
   $LocationCopyWith<$Res>? get startLocation;
   @override
@@ -1260,7 +1260,7 @@ class __$$StepImplCopyWithImpl<$Res>
       duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as Duration?,
+              as FullDuration?,
       startLocation: freezed == startLocation
           ? _value.startLocation
           : startLocation // ignore: cast_nullable_to_non_nullable
@@ -1303,7 +1303,7 @@ class _$StepImpl implements _Step {
   @override
   final Distance? distance;
   @override
-  final Duration? duration;
+  final FullDuration? duration;
   @override
   @JsonKey(name: 'start_location')
   final Location? startLocation;
@@ -1370,7 +1370,7 @@ class _$StepImpl implements _Step {
 abstract class _Step implements Step {
   const factory _Step(
       {required final Distance? distance,
-      required final Duration? duration,
+      required final FullDuration? duration,
       @JsonKey(name: 'start_location') required final Location? startLocation,
       @JsonKey(name: 'end_location') required final Location? endLocation,
       @JsonKey(name: 'polyline') required final Polyline? polyline,
@@ -1383,7 +1383,7 @@ abstract class _Step implements Step {
   @override
   Distance? get distance;
   @override
-  Duration? get duration;
+  FullDuration? get duration;
   @override
   @JsonKey(name: 'start_location')
   Location? get startLocation;
@@ -1923,44 +1923,45 @@ abstract class _Distance implements Distance {
       throw _privateConstructorUsedError;
 }
 
-Duration _$DurationFromJson(Map<String, dynamic> json) {
-  return _Duration.fromJson(json);
+FullDuration _$FullDurationFromJson(Map<String, dynamic> json) {
+  return _FullDuration.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Duration {
+mixin _$FullDuration {
   String? get text => throw _privateConstructorUsedError;
   int? get value => throw _privateConstructorUsedError;
 
-  /// Serializes this Duration to a JSON map.
+  /// Serializes this FullDuration to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Duration
+  /// Create a copy of FullDuration
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DurationCopyWith<Duration> get copyWith =>
+  $FullDurationCopyWith<FullDuration> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DurationCopyWith<$Res> {
-  factory $DurationCopyWith(Duration value, $Res Function(Duration) then) =
-      _$DurationCopyWithImpl<$Res, Duration>;
+abstract class $FullDurationCopyWith<$Res> {
+  factory $FullDurationCopyWith(
+          FullDuration value, $Res Function(FullDuration) then) =
+      _$FullDurationCopyWithImpl<$Res, FullDuration>;
   @useResult
   $Res call({String? text, int? value});
 }
 
 /// @nodoc
-class _$DurationCopyWithImpl<$Res, $Val extends Duration>
-    implements $DurationCopyWith<$Res> {
-  _$DurationCopyWithImpl(this._value, this._then);
+class _$FullDurationCopyWithImpl<$Res, $Val extends FullDuration>
+    implements $FullDurationCopyWith<$Res> {
+  _$FullDurationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Duration
+  /// Create a copy of FullDuration
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1982,25 +1983,25 @@ class _$DurationCopyWithImpl<$Res, $Val extends Duration>
 }
 
 /// @nodoc
-abstract class _$$DurationImplCopyWith<$Res>
-    implements $DurationCopyWith<$Res> {
-  factory _$$DurationImplCopyWith(
-          _$DurationImpl value, $Res Function(_$DurationImpl) then) =
-      __$$DurationImplCopyWithImpl<$Res>;
+abstract class _$$FullDurationImplCopyWith<$Res>
+    implements $FullDurationCopyWith<$Res> {
+  factory _$$FullDurationImplCopyWith(
+          _$FullDurationImpl value, $Res Function(_$FullDurationImpl) then) =
+      __$$FullDurationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? text, int? value});
 }
 
 /// @nodoc
-class __$$DurationImplCopyWithImpl<$Res>
-    extends _$DurationCopyWithImpl<$Res, _$DurationImpl>
-    implements _$$DurationImplCopyWith<$Res> {
-  __$$DurationImplCopyWithImpl(
-      _$DurationImpl _value, $Res Function(_$DurationImpl) _then)
+class __$$FullDurationImplCopyWithImpl<$Res>
+    extends _$FullDurationCopyWithImpl<$Res, _$FullDurationImpl>
+    implements _$$FullDurationImplCopyWith<$Res> {
+  __$$FullDurationImplCopyWithImpl(
+      _$FullDurationImpl _value, $Res Function(_$FullDurationImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Duration
+  /// Create a copy of FullDuration
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -2008,7 +2009,7 @@ class __$$DurationImplCopyWithImpl<$Res>
     Object? text = freezed,
     Object? value = freezed,
   }) {
-    return _then(_$DurationImpl(
+    return _then(_$FullDurationImpl(
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -2023,11 +2024,11 @@ class __$$DurationImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DurationImpl implements _Duration {
-  const _$DurationImpl({required this.text, required this.value});
+class _$FullDurationImpl implements _FullDuration {
+  const _$FullDurationImpl({required this.text, required this.value});
 
-  factory _$DurationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DurationImplFromJson(json);
+  factory _$FullDurationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FullDurationImplFromJson(json);
 
   @override
   final String? text;
@@ -2036,14 +2037,14 @@ class _$DurationImpl implements _Duration {
 
   @override
   String toString() {
-    return 'Duration(text: $text, value: $value)';
+    return 'FullDuration(text: $text, value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DurationImpl &&
+            other is _$FullDurationImpl &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.value, value) || other.value == value));
   }
@@ -2052,39 +2053,39 @@ class _$DurationImpl implements _Duration {
   @override
   int get hashCode => Object.hash(runtimeType, text, value);
 
-  /// Create a copy of Duration
+  /// Create a copy of FullDuration
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DurationImplCopyWith<_$DurationImpl> get copyWith =>
-      __$$DurationImplCopyWithImpl<_$DurationImpl>(this, _$identity);
+  _$$FullDurationImplCopyWith<_$FullDurationImpl> get copyWith =>
+      __$$FullDurationImplCopyWithImpl<_$FullDurationImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DurationImplToJson(
+    return _$$FullDurationImplToJson(
       this,
     );
   }
 }
 
-abstract class _Duration implements Duration {
-  const factory _Duration(
+abstract class _FullDuration implements FullDuration {
+  const factory _FullDuration(
       {required final String? text,
-      required final int? value}) = _$DurationImpl;
+      required final int? value}) = _$FullDurationImpl;
 
-  factory _Duration.fromJson(Map<String, dynamic> json) =
-      _$DurationImpl.fromJson;
+  factory _FullDuration.fromJson(Map<String, dynamic> json) =
+      _$FullDurationImpl.fromJson;
 
   @override
   String? get text;
   @override
   int? get value;
 
-  /// Create a copy of Duration
+  /// Create a copy of FullDuration
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DurationImplCopyWith<_$DurationImpl> get copyWith =>
+  _$$FullDurationImplCopyWith<_$FullDurationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

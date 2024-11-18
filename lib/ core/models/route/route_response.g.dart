@@ -73,7 +73,7 @@ _$LegImpl _$$LegImplFromJson(Map<String, dynamic> json) => _$LegImpl(
           : Distance.fromJson(json['distance'] as Map<String, dynamic>),
       duration: json['duration'] == null
           ? null
-          : Duration.fromJson(json['duration'] as Map<String, dynamic>),
+          : FullDuration.fromJson(json['duration'] as Map<String, dynamic>),
       steps: (json['steps'] as List<dynamic>?)
           ?.map((e) => Step.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -95,7 +95,7 @@ _$StepImpl _$$StepImplFromJson(Map<String, dynamic> json) => _$StepImpl(
           : Distance.fromJson(json['distance'] as Map<String, dynamic>),
       duration: json['duration'] == null
           ? null
-          : Duration.fromJson(json['duration'] as Map<String, dynamic>),
+          : FullDuration.fromJson(json['duration'] as Map<String, dynamic>),
       startLocation: json['start_location'] == null
           ? null
           : Location.fromJson(json['start_location'] as Map<String, dynamic>),
@@ -157,13 +157,13 @@ Map<String, dynamic> _$$DistanceImplToJson(_$DistanceImpl instance) =>
       'value': instance.value,
     };
 
-_$DurationImpl _$$DurationImplFromJson(Map<String, dynamic> json) =>
-    _$DurationImpl(
+_$FullDurationImpl _$$FullDurationImplFromJson(Map<String, dynamic> json) =>
+    _$FullDurationImpl(
       text: json['text'] as String?,
       value: (json['value'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$DurationImplToJson(_$DurationImpl instance) =>
+Map<String, dynamic> _$$FullDurationImplToJson(_$FullDurationImpl instance) =>
     <String, dynamic>{
       'text': instance.text,
       'value': instance.value,

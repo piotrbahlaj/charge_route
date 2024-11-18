@@ -7,6 +7,7 @@ class DashboardState with _$DashboardState {
     @Default(false) bool isRouteLoading,
     @Default([]) List<Prediction> suggestions,
     @Default(false) bool shouldNavigateToRoute,
+    @Default([]) List<NearbyResult> chargingStations,
     GeocodingResult? userLocation,
     GeocodingResult? initialLocation,
     String? activeField,
@@ -16,5 +17,6 @@ class DashboardState with _$DashboardState {
     RouteResponse? route,
     LatLng? initialMapPosition,
     @Default(true) isMapLoading,
+    String? destinationAddress,
   }) = _DashboardState;
 }
