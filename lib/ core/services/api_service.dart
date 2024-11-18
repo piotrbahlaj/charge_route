@@ -1,4 +1,3 @@
-import 'package:charge_route/%20core/models/charging_stations/charging_stations_response.dart';
 import 'package:charge_route/%20core/models/nearby_search/nearby_search_response.dart';
 import 'package:charge_route/%20core/models/place_details/place_details_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
@@ -24,6 +23,7 @@ abstract class ApiService {
   Future<NearbySearchResponse> getPlaceFromLocation(
     @Query("location") String location,
     @Query("radius") int radius,
+    @Query('type') String type,
   );
 
   @GET("geocode/json")
@@ -41,11 +41,4 @@ abstract class ApiService {
   Future<PlaceDetailsResponse> getPlaceDetails(
     @Query("place_id") String placeId,
   );
-
-  @GET('/charging-stations')
-  Future<ChargingStationsResponse> getNearbyChargingStations({
-    @Query('latitude') required double latitude,
-    @Query('longitude') required double longitude,
-    @Query('radius') required int radius,
-  });
 }

@@ -67,11 +67,13 @@ class _ApiService implements ApiService {
   Future<NearbySearchResponse> getPlaceFromLocation(
     String location,
     int radius,
+    String type,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'location': location,
       r'radius': radius,
+      r'type': type,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -200,47 +202,6 @@ class _ApiService implements ApiService {
     late PlaceDetailsResponse _value;
     try {
       _value = PlaceDetailsResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<ChargingStationsResponse> getNearbyChargingStations({
-    required double latitude,
-    required double longitude,
-    required int radius,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'latitude': latitude,
-      r'longitude': longitude,
-      r'radius': radius,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ChargingStationsResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/charging-stations',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ChargingStationsResponse _value;
-    try {
-      _value = ChargingStationsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

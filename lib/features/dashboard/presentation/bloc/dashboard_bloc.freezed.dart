@@ -1592,8 +1592,7 @@ mixin _$DashboardState {
   bool get isRouteLoading => throw _privateConstructorUsedError;
   List<Prediction> get suggestions => throw _privateConstructorUsedError;
   bool get shouldNavigateToRoute => throw _privateConstructorUsedError;
-  List<ChargingStation> get chargingStations =>
-      throw _privateConstructorUsedError;
+  List<NearbyResult> get chargingStations => throw _privateConstructorUsedError;
   GeocodingResult? get userLocation => throw _privateConstructorUsedError;
   GeocodingResult? get initialLocation => throw _privateConstructorUsedError;
   String? get activeField => throw _privateConstructorUsedError;
@@ -1622,7 +1621,7 @@ abstract class $DashboardStateCopyWith<$Res> {
       bool isRouteLoading,
       List<Prediction> suggestions,
       bool shouldNavigateToRoute,
-      List<ChargingStation> chargingStations,
+      List<NearbyResult> chargingStations,
       GeocodingResult? userLocation,
       GeocodingResult? initialLocation,
       String? activeField,
@@ -1690,7 +1689,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
       chargingStations: null == chargingStations
           ? _value.chargingStations
           : chargingStations // ignore: cast_nullable_to_non_nullable
-              as List<ChargingStation>,
+              as List<NearbyResult>,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -1814,7 +1813,7 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
       bool isRouteLoading,
       List<Prediction> suggestions,
       bool shouldNavigateToRoute,
-      List<ChargingStation> chargingStations,
+      List<NearbyResult> chargingStations,
       GeocodingResult? userLocation,
       GeocodingResult? initialLocation,
       String? activeField,
@@ -1885,7 +1884,7 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
       chargingStations: null == chargingStations
           ? _value._chargingStations
           : chargingStations // ignore: cast_nullable_to_non_nullable
-              as List<ChargingStation>,
+              as List<NearbyResult>,
       userLocation: freezed == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -1932,7 +1931,7 @@ class _$DashboardStateImpl implements _DashboardState {
       this.isRouteLoading = false,
       final List<Prediction> suggestions = const [],
       this.shouldNavigateToRoute = false,
-      final List<ChargingStation> chargingStations = const [],
+      final List<NearbyResult> chargingStations = const [],
       this.userLocation,
       this.initialLocation,
       this.activeField,
@@ -1963,10 +1962,10 @@ class _$DashboardStateImpl implements _DashboardState {
   @override
   @JsonKey()
   final bool shouldNavigateToRoute;
-  final List<ChargingStation> _chargingStations;
+  final List<NearbyResult> _chargingStations;
   @override
   @JsonKey()
-  List<ChargingStation> get chargingStations {
+  List<NearbyResult> get chargingStations {
     if (_chargingStations is EqualUnmodifiableListView)
       return _chargingStations;
     // ignore: implicit_dynamic_type
@@ -2066,7 +2065,7 @@ abstract class _DashboardState implements DashboardState {
       final bool isRouteLoading,
       final List<Prediction> suggestions,
       final bool shouldNavigateToRoute,
-      final List<ChargingStation> chargingStations,
+      final List<NearbyResult> chargingStations,
       final GeocodingResult? userLocation,
       final GeocodingResult? initialLocation,
       final String? activeField,
@@ -2086,7 +2085,7 @@ abstract class _DashboardState implements DashboardState {
   @override
   bool get shouldNavigateToRoute;
   @override
-  List<ChargingStation> get chargingStations;
+  List<NearbyResult> get chargingStations;
   @override
   GeocodingResult? get userLocation;
   @override

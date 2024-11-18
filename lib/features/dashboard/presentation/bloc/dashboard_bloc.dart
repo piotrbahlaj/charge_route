@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/di/service_locator.dart';
-import 'package:charge_route/%20core/models/charging_stations/charging_stations_response.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
+import 'package:charge_route/%20core/models/nearby_search/nearby_search_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
@@ -39,10 +39,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
       final addressResult = await apiService.getAddressFromLocation(locationString);
 
-      final chargingStationsResult = await apiService.getNearbyChargingStations(
-        latitude: position.latitude,
-        longitude: position.longitude,
-        radius: 10000,
+      final chargingStationsResult = await apiService.getPlaceFromLocation(
+        '${position.latitude},${position.longitude}',
+        300000,
+        'electric_vehicle_charging_station',
       );
 
       if (addressResult.results.isNotEmpty) {
@@ -52,7 +52,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           errorMessage: null,
           initialMapPosition: initialPosition,
           isMapLoading: false,
-          chargingStations: chargingStationsResult.stations,
+          chargingStations: chargingStationsResult.results,
         ));
       } else {
         emit(state.copyWith(
