@@ -8,6 +8,7 @@ class DashboardState with _$DashboardState {
     @Default([]) List<Prediction> suggestions,
     @Default(false) bool shouldNavigateToRoute,
     @Default([]) List<NearbyResult> chargingStations,
+    @Default(false) bool hasSetDestination,
     GeocodingResult? userLocation,
     GeocodingResult? initialLocation,
     String? activeField,

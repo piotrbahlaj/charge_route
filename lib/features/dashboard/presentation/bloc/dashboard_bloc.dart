@@ -29,6 +29,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<FetchRouteEvent>(_onFetchRoute);
     on<ClearRouteEvent>(_onClearRoute);
     on<SetDestinationLocationEvent>(_onSetDestinationLocation);
+    on<ResetDestinationEvent>(_onResetDestination);
   }
 
   Future<void> _onLoadDashboardData(LoadDashboardDataEvent event, Emitter<DashboardState> emit) async {
@@ -225,6 +226,13 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     emit(state.copyWith(
       endLocation: event.location,
       destinationAddress: event.address,
+      hasSetDestination: true,
+    ));
+  }
+
+  Future<void> _onResetDestination(ResetDestinationEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(
+      hasSetDestination: false,
     ));
   }
 }

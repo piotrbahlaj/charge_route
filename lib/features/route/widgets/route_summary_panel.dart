@@ -14,7 +14,6 @@ class RouteSummaryPanel extends StatelessWidget {
           return Container();
         }
 
-        // Access the full route duration and distance
         final fullDuration = state.duration?.text ?? '';
         final fullDistance = state.distance?.text ?? '';
 
@@ -49,6 +48,23 @@ class RouteSummaryPanel extends StatelessWidget {
           );
         }
 
+        String simplifyAddress(String fullAddress) {
+          List<String> addressParts = fullAddress.split(',');
+
+          if (addressParts.length >= 2) {
+            return '${addressParts[0].trim()}, ${addressParts[1].trim()}';
+          } else if (addressParts.isNotEmpty) {
+            return addressParts[0].trim();
+          } else {
+            return fullAddress;
+          }
+        }
+
+        final endLocationName =
+            (state.route?.routes?.isNotEmpty ?? false) && (state.route?.routes?.first.legs?.isNotEmpty ?? false)
+                ? simplifyAddress(state.route!.routes!.first.legs!.last.endAddress ?? 'Unknown destination')
+                : 'Unknown destination';
+
         return Positioned(
           bottom: 70,
           left: 10,
@@ -69,20 +85,33 @@ class RouteSummaryPanel extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Display the total route distance and ETA
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Total Distance: $fullDistance',
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'ETA: $fullDuration',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ],
+                // Display the total route distance and ETA and destination address
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Total Distance: $fullDistance',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'ETA: $fullDuration',
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        endLocationName,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: null,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
                 ),
                 IconButton(
                   onPressed: () => showStopTripConfirmationDialog(context),
