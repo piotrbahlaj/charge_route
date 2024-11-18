@@ -1,8 +1,6 @@
-import 'dart:ui' as ui;
-
+import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show ByteData, rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -10,15 +8,12 @@ class DashBoardMap extends StatelessWidget {
   const DashBoardMap({Key? key}) : super(key: key);
 
   Future<BitmapDescriptor> _getCustomMarkerIcon() async {
-    final ByteData imageData = await rootBundle.load('assets/images/ev_marker.png');
-    final ui.Codec codec = await ui.instantiateImageCodec(
-      imageData.buffer.asUint8List(),
-      targetWidth: 120,
-      targetHeight: 120,
+    return BitmapDescriptor.asset(
+      const ImageConfiguration(
+        size: Size(45, 45),
+      ),
+      'assets/images/ev_marker.png',
     );
-    final ui.FrameInfo frameInfo = await codec.getNextFrame();
-    final ByteData? resizedBytes = await frameInfo.image.toByteData(format: ui.ImageByteFormat.png);
-    return BitmapDescriptor.fromBytes(resizedBytes!.buffer.asUint8List());
   }
 
   @override
@@ -40,6 +35,15 @@ class DashBoardMap extends StatelessWidget {
                 markerId: MarkerId(station.placeId),
                 position: LatLng(location.lat, location.lng),
                 infoWindow: InfoWindow(
+                  onTap: () {
+                    context.read<DashboardBloc>().add(SetDestinationLocationEvent(
+                          Location(
+                            lat: location.lat,
+                            lng: location.lng,
+                          ),
+                          address,
+                        ));
+                  },
                   title: station.name,
                   snippet: 'Charging station by: $address',
                 ),
