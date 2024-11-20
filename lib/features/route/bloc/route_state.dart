@@ -12,5 +12,6 @@ class RouteState with _$RouteState {
     Distance? distance,
     FullDuration? duration,
     String? errorMessage,
+    String? currentInstruction,
   }) = _RouteState;
 }
