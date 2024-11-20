@@ -48,15 +48,13 @@ class RouteMap extends StatelessWidget {
     );
   }
 
-  // Adjust camera to fit the entire route
   Future<void> _moveCameraToBounds(GoogleMapController controller, List<LatLng> polylineCoordinates) async {
     if (polylineCoordinates.isEmpty) return;
 
     final LatLngBounds bounds = _getBoundsFromLatLngList(polylineCoordinates);
-    controller.animateCamera(CameraUpdate.newLatLngBounds(bounds, 50)); // 50 for padding
+    controller.animateCamera(CameraUpdate.newLatLngBounds(bounds, 50));
   }
 
-  // Helper to calculate bounds from LatLng list
   LatLngBounds _getBoundsFromLatLngList(List<LatLng> list) {
     final southwestLat = list.map((p) => p.latitude).reduce((value, element) => value < element ? value : element);
     final southwestLng = list.map((p) => p.longitude).reduce((value, element) => value < element ? value : element);
