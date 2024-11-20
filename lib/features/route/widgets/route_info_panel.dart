@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RouteInfoPanel extends StatelessWidget {
   const RouteInfoPanel({Key? key}) : super(key: key);
 
-  // Utility to remove HTML tags from the instruction
   String stripHtml(String htmlString) {
     return htmlString.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), '');
   }
@@ -14,14 +13,9 @@ class RouteInfoPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RouteBloc, RouteState>(
       builder: (context, state) {
-        if (state.route == null || state.steps.isEmpty) {
+        if (state.route == null || state.steps.isEmpty || state.currentInstruction == null) {
           return Container();
         }
-
-        // Get the current step's details
-        final currentInstruction = state.steps[state.currentStepIndex].instruction;
-        final currentStepDistance = state.currentStepDistance?.text ?? '';
-        final currentStepDuration = state.currentStepDuration?.text ?? '';
 
         return Positioned(
           top: 45,
@@ -43,16 +37,20 @@ class RouteInfoPanel extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Display the instruction without HTML tags
                 Text(
-                  stripHtml(currentInstruction ?? ''),
+                  stripHtml(state.currentInstruction ?? 'You have arrived at your destination'),
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
                 const SizedBox(height: 4),
-                // Display the current step's distance and ETA
-                Text('Distance: $currentStepDistance, ETA: $currentStepDuration'),
+                Text(
+                  'Distance: ${state.currentStepDistance?.text ?? ''}, ETA: ${state.currentStepDuration?.text ?? ''}',
+                  style: const TextStyle(fontSize: 14),
+                ),
               ],
             ),
           ),
