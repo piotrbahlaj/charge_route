@@ -13,5 +13,6 @@ class RouteState with _$RouteState {
     FullDuration? duration,
     String? errorMessage,
     String? currentInstruction,
+    @Default(false) bool isRecalculating,
   }) = _RouteState;
 }

@@ -22,6 +22,7 @@ mixin _$RouteEvent {
     required TResult Function(int stepIndex) updateRouteProgress,
     required TResult Function() startTrackingUserLocation,
     required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$RouteEvent {
     TResult? Function(int stepIndex)? updateRouteProgress,
     TResult? Function()? startTrackingUserLocation,
     TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$RouteEvent {
     TResult Function(int stepIndex)? updateRouteProgress,
     TResult Function()? startTrackingUserLocation,
     TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,6 +53,7 @@ mixin _$RouteEvent {
         startTrackingUserLocation,
     required TResult Function(StopTrackingUserLocationEvent value)
         stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$RouteEvent {
         startTrackingUserLocation,
     TResult? Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$RouteEvent {
         startTrackingUserLocation,
     TResult Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +192,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     required TResult Function(int stepIndex) updateRouteProgress,
     required TResult Function() startTrackingUserLocation,
     required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
   }) {
     return initalizeRoute(routeData);
   }
@@ -197,6 +204,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     TResult? Function(int stepIndex)? updateRouteProgress,
     TResult? Function()? startTrackingUserLocation,
     TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
   }) {
     return initalizeRoute?.call(routeData);
   }
@@ -208,6 +216,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     TResult Function(int stepIndex)? updateRouteProgress,
     TResult Function()? startTrackingUserLocation,
     TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -226,6 +235,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
         startTrackingUserLocation,
     required TResult Function(StopTrackingUserLocationEvent value)
         stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
   }) {
     return initalizeRoute(this);
   }
@@ -239,6 +249,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
         startTrackingUserLocation,
     TResult? Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
   }) {
     return initalizeRoute?.call(this);
   }
@@ -252,6 +263,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
         startTrackingUserLocation,
     TResult Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -350,6 +362,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     required TResult Function(int stepIndex) updateRouteProgress,
     required TResult Function() startTrackingUserLocation,
     required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
   }) {
     return updateRouteProgress(stepIndex);
   }
@@ -361,6 +374,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     TResult? Function(int stepIndex)? updateRouteProgress,
     TResult? Function()? startTrackingUserLocation,
     TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
   }) {
     return updateRouteProgress?.call(stepIndex);
   }
@@ -372,6 +386,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     TResult Function(int stepIndex)? updateRouteProgress,
     TResult Function()? startTrackingUserLocation,
     TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
     required TResult orElse(),
   }) {
     if (updateRouteProgress != null) {
@@ -390,6 +405,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
         startTrackingUserLocation,
     required TResult Function(StopTrackingUserLocationEvent value)
         stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
   }) {
     return updateRouteProgress(this);
   }
@@ -403,6 +419,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
         startTrackingUserLocation,
     TResult? Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
   }) {
     return updateRouteProgress?.call(this);
   }
@@ -416,6 +433,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
         startTrackingUserLocation,
     TResult Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
     required TResult orElse(),
   }) {
     if (updateRouteProgress != null) {
@@ -487,6 +505,7 @@ class _$StartTrackingUserLocationEventImpl
     required TResult Function(int stepIndex) updateRouteProgress,
     required TResult Function() startTrackingUserLocation,
     required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
   }) {
     return startTrackingUserLocation();
   }
@@ -498,6 +517,7 @@ class _$StartTrackingUserLocationEventImpl
     TResult? Function(int stepIndex)? updateRouteProgress,
     TResult? Function()? startTrackingUserLocation,
     TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
   }) {
     return startTrackingUserLocation?.call();
   }
@@ -509,6 +529,7 @@ class _$StartTrackingUserLocationEventImpl
     TResult Function(int stepIndex)? updateRouteProgress,
     TResult Function()? startTrackingUserLocation,
     TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
     required TResult orElse(),
   }) {
     if (startTrackingUserLocation != null) {
@@ -527,6 +548,7 @@ class _$StartTrackingUserLocationEventImpl
         startTrackingUserLocation,
     required TResult Function(StopTrackingUserLocationEvent value)
         stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
   }) {
     return startTrackingUserLocation(this);
   }
@@ -540,6 +562,7 @@ class _$StartTrackingUserLocationEventImpl
         startTrackingUserLocation,
     TResult? Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
   }) {
     return startTrackingUserLocation?.call(this);
   }
@@ -553,6 +576,7 @@ class _$StartTrackingUserLocationEventImpl
         startTrackingUserLocation,
     TResult Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
     required TResult orElse(),
   }) {
     if (startTrackingUserLocation != null) {
@@ -616,6 +640,7 @@ class _$StopTrackingUserLocationEventImpl
     required TResult Function(int stepIndex) updateRouteProgress,
     required TResult Function() startTrackingUserLocation,
     required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
   }) {
     return stopTrackingUserLocation();
   }
@@ -627,6 +652,7 @@ class _$StopTrackingUserLocationEventImpl
     TResult? Function(int stepIndex)? updateRouteProgress,
     TResult? Function()? startTrackingUserLocation,
     TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
   }) {
     return stopTrackingUserLocation?.call();
   }
@@ -638,6 +664,7 @@ class _$StopTrackingUserLocationEventImpl
     TResult Function(int stepIndex)? updateRouteProgress,
     TResult Function()? startTrackingUserLocation,
     TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
     required TResult orElse(),
   }) {
     if (stopTrackingUserLocation != null) {
@@ -656,6 +683,7 @@ class _$StopTrackingUserLocationEventImpl
         startTrackingUserLocation,
     required TResult Function(StopTrackingUserLocationEvent value)
         stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
   }) {
     return stopTrackingUserLocation(this);
   }
@@ -669,6 +697,7 @@ class _$StopTrackingUserLocationEventImpl
         startTrackingUserLocation,
     TResult? Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
   }) {
     return stopTrackingUserLocation?.call(this);
   }
@@ -682,6 +711,7 @@ class _$StopTrackingUserLocationEventImpl
         startTrackingUserLocation,
     TResult Function(StopTrackingUserLocationEvent value)?
         stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
     required TResult orElse(),
   }) {
     if (stopTrackingUserLocation != null) {
@@ -697,6 +727,174 @@ abstract class StopTrackingUserLocationEvent implements RouteEvent {
 }
 
 /// @nodoc
+abstract class _$$UserOffRouteEventImplCopyWith<$Res> {
+  factory _$$UserOffRouteEventImplCopyWith(_$UserOffRouteEventImpl value,
+          $Res Function(_$UserOffRouteEventImpl) then) =
+      __$$UserOffRouteEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LatLng userPosition});
+}
+
+/// @nodoc
+class __$$UserOffRouteEventImplCopyWithImpl<$Res>
+    extends _$RouteEventCopyWithImpl<$Res, _$UserOffRouteEventImpl>
+    implements _$$UserOffRouteEventImplCopyWith<$Res> {
+  __$$UserOffRouteEventImplCopyWithImpl(_$UserOffRouteEventImpl _value,
+      $Res Function(_$UserOffRouteEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userPosition = null,
+  }) {
+    return _then(_$UserOffRouteEventImpl(
+      null == userPosition
+          ? _value.userPosition
+          : userPosition // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserOffRouteEventImpl implements UserOffRouteEvent {
+  const _$UserOffRouteEventImpl(this.userPosition);
+
+  @override
+  final LatLng userPosition;
+
+  @override
+  String toString() {
+    return 'RouteEvent.userOffRoute(userPosition: $userPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserOffRouteEventImpl &&
+            (identical(other.userPosition, userPosition) ||
+                other.userPosition == userPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userPosition);
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserOffRouteEventImplCopyWith<_$UserOffRouteEventImpl> get copyWith =>
+      __$$UserOffRouteEventImplCopyWithImpl<_$UserOffRouteEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RouteResponse? routeData) initalizeRoute,
+    required TResult Function(int stepIndex) updateRouteProgress,
+    required TResult Function() startTrackingUserLocation,
+    required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
+  }) {
+    return userOffRoute(userPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RouteResponse? routeData)? initalizeRoute,
+    TResult? Function(int stepIndex)? updateRouteProgress,
+    TResult? Function()? startTrackingUserLocation,
+    TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
+  }) {
+    return userOffRoute?.call(userPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RouteResponse? routeData)? initalizeRoute,
+    TResult Function(int stepIndex)? updateRouteProgress,
+    TResult Function()? startTrackingUserLocation,
+    TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
+    required TResult orElse(),
+  }) {
+    if (userOffRoute != null) {
+      return userOffRoute(userPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitalizeRouteEvent value) initalizeRoute,
+    required TResult Function(UpdateRouteProgressEvent value)
+        updateRouteProgress,
+    required TResult Function(StartTrackingUserLocationEvent value)
+        startTrackingUserLocation,
+    required TResult Function(StopTrackingUserLocationEvent value)
+        stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
+  }) {
+    return userOffRoute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult? Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+    TResult? Function(StartTrackingUserLocationEvent value)?
+        startTrackingUserLocation,
+    TResult? Function(StopTrackingUserLocationEvent value)?
+        stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
+  }) {
+    return userOffRoute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+    TResult Function(StartTrackingUserLocationEvent value)?
+        startTrackingUserLocation,
+    TResult Function(StopTrackingUserLocationEvent value)?
+        stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
+    required TResult orElse(),
+  }) {
+    if (userOffRoute != null) {
+      return userOffRoute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserOffRouteEvent implements RouteEvent {
+  const factory UserOffRouteEvent(final LatLng userPosition) =
+      _$UserOffRouteEventImpl;
+
+  LatLng get userPosition;
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserOffRouteEventImplCopyWith<_$UserOffRouteEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RouteState {
   RouteResponse? get route => throw _privateConstructorUsedError;
   List<LatLng> get polylinePoints => throw _privateConstructorUsedError;
@@ -708,6 +906,7 @@ mixin _$RouteState {
   FullDuration? get duration => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   String? get currentInstruction => throw _privateConstructorUsedError;
+  bool get isRecalculating => throw _privateConstructorUsedError;
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.
@@ -732,7 +931,8 @@ abstract class $RouteStateCopyWith<$Res> {
       Distance? distance,
       FullDuration? duration,
       String? errorMessage,
-      String? currentInstruction});
+      String? currentInstruction,
+      bool isRecalculating});
 
   $RouteResponseCopyWith<$Res>? get route;
   $DistanceCopyWith<$Res>? get currentStepDistance;
@@ -766,6 +966,7 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
     Object? duration = freezed,
     Object? errorMessage = freezed,
     Object? currentInstruction = freezed,
+    Object? isRecalculating = null,
   }) {
     return _then(_value.copyWith(
       route: freezed == route
@@ -808,6 +1009,10 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
           ? _value.currentInstruction
           : currentInstruction // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRecalculating: null == isRecalculating
+          ? _value.isRecalculating
+          : isRecalculating // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -900,7 +1105,8 @@ abstract class _$$RouteStateImplCopyWith<$Res>
       Distance? distance,
       FullDuration? duration,
       String? errorMessage,
-      String? currentInstruction});
+      String? currentInstruction,
+      bool isRecalculating});
 
   @override
   $RouteResponseCopyWith<$Res>? get route;
@@ -937,6 +1143,7 @@ class __$$RouteStateImplCopyWithImpl<$Res>
     Object? duration = freezed,
     Object? errorMessage = freezed,
     Object? currentInstruction = freezed,
+    Object? isRecalculating = null,
   }) {
     return _then(_$RouteStateImpl(
       route: freezed == route
@@ -979,6 +1186,10 @@ class __$$RouteStateImplCopyWithImpl<$Res>
           ? _value.currentInstruction
           : currentInstruction // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRecalculating: null == isRecalculating
+          ? _value.isRecalculating
+          : isRecalculating // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -996,7 +1207,8 @@ class _$RouteStateImpl implements _RouteState {
       this.distance,
       this.duration,
       this.errorMessage,
-      this.currentInstruction})
+      this.currentInstruction,
+      this.isRecalculating = false})
       : _polylinePoints = polylinePoints,
         _steps = steps;
 
@@ -1035,10 +1247,13 @@ class _$RouteStateImpl implements _RouteState {
   final String? errorMessage;
   @override
   final String? currentInstruction;
+  @override
+  @JsonKey()
+  final bool isRecalculating;
 
   @override
   String toString() {
-    return 'RouteState(route: $route, polylinePoints: $polylinePoints, steps: $steps, currentStepIndex: $currentStepIndex, currentStepDistance: $currentStepDistance, currentStepDuration: $currentStepDuration, distance: $distance, duration: $duration, errorMessage: $errorMessage, currentInstruction: $currentInstruction)';
+    return 'RouteState(route: $route, polylinePoints: $polylinePoints, steps: $steps, currentStepIndex: $currentStepIndex, currentStepDistance: $currentStepDistance, currentStepDuration: $currentStepDuration, distance: $distance, duration: $duration, errorMessage: $errorMessage, currentInstruction: $currentInstruction, isRecalculating: $isRecalculating)';
   }
 
   @override
@@ -1063,7 +1278,9 @@ class _$RouteStateImpl implements _RouteState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.currentInstruction, currentInstruction) ||
-                other.currentInstruction == currentInstruction));
+                other.currentInstruction == currentInstruction) &&
+            (identical(other.isRecalculating, isRecalculating) ||
+                other.isRecalculating == isRecalculating));
   }
 
   @override
@@ -1078,7 +1295,8 @@ class _$RouteStateImpl implements _RouteState {
       distance,
       duration,
       errorMessage,
-      currentInstruction);
+      currentInstruction,
+      isRecalculating);
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.
@@ -1100,7 +1318,8 @@ abstract class _RouteState implements RouteState {
       final Distance? distance,
       final FullDuration? duration,
       final String? errorMessage,
-      final String? currentInstruction}) = _$RouteStateImpl;
+      final String? currentInstruction,
+      final bool isRecalculating}) = _$RouteStateImpl;
 
   @override
   RouteResponse? get route;
@@ -1122,6 +1341,8 @@ abstract class _RouteState implements RouteState {
   String? get errorMessage;
   @override
   String? get currentInstruction;
+  @override
+  bool get isRecalculating;
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.
