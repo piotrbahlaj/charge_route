@@ -34,11 +34,6 @@ class RouteMap extends StatelessWidget {
           polylines: polylines,
           markers: {
             Marker(
-              markerId: const MarkerId('start'),
-              position: LatLng(startLocation.lat, startLocation.lng),
-              infoWindow: const InfoWindow(title: 'Start Location'),
-            ),
-            Marker(
               markerId: const MarkerId('end'),
               position: LatLng(endLocation!.lat, endLocation.lng),
               infoWindow: const InfoWindow(title: 'End Location'),
