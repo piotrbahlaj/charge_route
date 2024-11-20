@@ -34,25 +34,37 @@ class RouteInfoPanel extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  stripHtml(state.currentInstruction ?? 'You have arrived at your destination'),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
+            child: state.isRecalculating
+                ? const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(strokeWidth: 2),
+                      SizedBox(width: 12),
+                      Text(
+                        'Recalculating route...',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        stripHtml(state.currentInstruction ?? 'You have arrived at your destination'),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Distance: ${state.currentStepDistance?.text ?? ''}, ETA: ${state.currentStepDuration?.text ?? ''}',
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Distance: ${state.currentStepDistance?.text ?? ''}, ETA: ${state.currentStepDuration?.text ?? ''}',
-                  style: const TextStyle(fontSize: 14),
-                ),
-              ],
-            ),
           ),
         );
       },

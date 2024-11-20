@@ -18,9 +18,9 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   StreamSubscription<Position>? _positionStreamSubscription;
   RouteBloc() : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
-    on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
     on<StopTrackingUserLocationEvent>(_onStopTrackingUserLocation);
+    on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
     on<UserOffRouteEvent>(_onUserOffRoute);
   }
 
