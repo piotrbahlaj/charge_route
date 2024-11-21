@@ -1,4 +1,5 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationService {
   Future<Position> getCurrentLocation() async {
@@ -23,6 +24,21 @@ class LocationService {
       locationSettings: AppleSettings(
         accuracy: LocationAccuracy.high,
       ),
+    );
+  }
+
+  Stream<Position> getPositionStream({LocationAccuracy accuracy = LocationAccuracy.high}) {
+    return Geolocator.getPositionStream(
+      locationSettings: LocationSettings(accuracy: accuracy),
+    );
+  }
+
+  double calculateDistance(LatLng start, LatLng end) {
+    return Geolocator.distanceBetween(
+      start.latitude,
+      start.longitude,
+      end.latitude,
+      end.longitude,
     );
   }
 }

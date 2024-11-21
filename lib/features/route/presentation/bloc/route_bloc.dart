@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/%20core/services/api_service.dart';
 import 'package:charge_route/%20core/utilities/polyline_decoder.dart';
+import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,9 +13,9 @@ part 'route_event.dart';
 part 'route_state.dart';
 
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
-  final ApiService apiService = getIt<ApiService>();
+  RouteRepositoryInterface repository;
   StreamSubscription<Position>? _positionStreamSubscription;
-  RouteBloc() : super(const RouteState()) {
+  RouteBloc(this.repository) : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
     on<StopTrackingUserLocationEvent>(_onStopTrackingUserLocation);
@@ -36,7 +35,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     final currentStep = state.steps[state.currentStepIndex];
     final nextStep = state.currentStepIndex + 1 < state.steps.length ? state.steps[state.currentStepIndex + 1] : null;
 
-    final distanceToCurrentStepEnd = _calculateDistance(
+    final distanceToCurrentStepEnd = repository.calculateDistance(
       userPosition,
       LatLng(currentStep.endLocation?.lat ?? 0, currentStep.endLocation?.lng ?? 0),
     );
@@ -50,19 +49,10 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     }
   }
 
-  double _calculateDistance(LatLng start, LatLng end) {
-    return Geolocator.distanceBetween(
-      start.latitude,
-      start.longitude,
-      end.latitude,
-      end.longitude,
-    );
-  }
-
   bool _isUserOffRoute(LatLng userPosition) {
     const double deviationThreshold = 50.0;
     for (var polylinePoint in state.polylinePoints) {
-      final distanceToPolylinePoint = _calculateDistance(userPosition, polylinePoint);
+      final distanceToPolylinePoint = repository.calculateDistance(userPosition, polylinePoint);
       if (distanceToPolylinePoint <= deviationThreshold) {
         return false;
       }
@@ -73,9 +63,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   Future<void> _onStartTrackingUserLocation(StartTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
     _positionStreamSubscription?.cancel();
 
-    _positionStreamSubscription = Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
-    ).listen((Position position) {
+    _positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
       _evaluateUserProgress(LatLng(position.latitude, position.longitude));
     });
   }
@@ -139,9 +127,9 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     emit(state.copyWith(isRecalculating: true));
 
     try {
-      final newRoute = await apiService.getRoute(
-        '${userPosition.latitude},${userPosition.longitude}',
-        '${destination.lat},${destination.lng}',
+      final newRoute = await repository.fetchRoute(
+        userPosition,
+        LatLng(destination.lat, destination.lng),
       );
 
       add(InitalizeRouteEvent(newRoute));

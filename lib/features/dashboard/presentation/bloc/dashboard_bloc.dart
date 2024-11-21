@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/%20core/models/nearby_search/nearby_search_response.dart';
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/%20core/services/api_service.dart';
-import 'package:charge_route/%20core/services/location_service.dart';
+import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -16,9 +14,9 @@ part 'dashboard_event.dart';
 part 'dashboard_state.dart';
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
-  final ApiService apiService = getIt<ApiService>();
+  final DashboardRepositoryInterface repository;
 
-  DashboardBloc() : super(const DashboardState()) {
+  DashboardBloc(this.repository) : super(const DashboardState()) {
     on<LoadDashboardDataEvent>(_onLoadDashboardData);
     add(const LoadDashboardDataEvent());
     on<FetchAutocompleteEvent>(_onFetchAutocomplete);
@@ -35,31 +33,12 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   Future<void> _onLoadDashboardData(LoadDashboardDataEvent event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(isMapLoading: true));
     try {
-      final Position position = await getIt<LocationService>().getCurrentLocation();
+      final Position position = await repository.fetchCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
       final LatLng initialPosition = LatLng(position.latitude, position.longitude);
 
-      final addressResult = await apiService.getAddressFromLocation(locationString);
-
-      List<NearbyResult> chargingStationsResult = [];
-      String? nextPageToken;
-
-      do {
-        final textSearchResult = await apiService.getTextSearchResults(
-          'EV charging station',
-          locationString,
-          20000,
-          nextPageToken,
-        );
-
-        chargingStationsResult.addAll(textSearchResult.results);
-
-        nextPageToken = textSearchResult.nextPageToken;
-
-        if (nextPageToken != null) {
-          await Future.delayed(const Duration(seconds: 2));
-        }
-      } while (nextPageToken != null);
+      final addressResult = await repository.fetchAddressFromLocation(locationString);
+      final chargingStationsResult = await repository.fetchChargingStations(locationString);
 
       if (addressResult.results.isNotEmpty) {
         emit(state.copyWith(
@@ -102,7 +81,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       final location = state.initialLocation?.geometry.location;
       final locationString = location != null ? '${location.lat},${location.lng}' : null;
       const int searchRadius = 20000;
-      final results = await apiService.getAutocompleteSuggestions(query, locationString, searchRadius);
+
+      final results = await repository.fetchAutocompleteSuggestions(query, locationString, searchRadius);
 
       if (results.predictions.isEmpty) {
         emit(state.copyWith(
@@ -141,10 +121,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       errorMessage: null,
     ));
     try {
-      final Position position = await getIt<LocationService>().getCurrentLocation();
+      final Position position = await repository.fetchCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
 
-      final result = await apiService.getAddressFromLocation(locationString);
+      final result = await repository.fetchAddressFromLocation(locationString);
 
       if (result.results.isNotEmpty) {
         emit(state.copyWith(
@@ -165,7 +145,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   Future<void> _onFetchPlaceDetails(FetchPlaceDetailsEvent event, Emitter<DashboardState> emit) async {
     try {
-      final placeDetails = await apiService.getPlaceDetails(event.placeId);
+      final placeDetails = await repository.fetchPlaceDetails(event.placeId);
+
       final selectedLocation = Location(
         lat: placeDetails.result.geometry.location.lat,
         lng: placeDetails.result.geometry.location.lng,
@@ -199,7 +180,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       shouldNavigateToRoute: false,
     ));
     try {
-      final result = await apiService.getRoute(
+      final result = await repository.fetchRoute(
         '${start.lat},${start.lng}',
         '${end.lat},${end.lng}',
       );
