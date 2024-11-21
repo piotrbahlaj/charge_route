@@ -18,6 +18,7 @@ class CarDetailsPage extends StatelessWidget {
               style: GoogleFonts.kanit(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
             const SizedBox(height: 30),
