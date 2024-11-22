@@ -1,4 +1,4 @@
-import 'package:charge_route/config/environment_config_interface.dart';
+import 'package:charge_route/config/google_env_config/environment_config_interface.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EnvironmentConfig implements EnvironmentConfigInterface {

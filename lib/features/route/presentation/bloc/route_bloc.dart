@@ -89,6 +89,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
       final firstStep = legs?.steps?.isNotEmpty == true ? legs!.steps?.first : null;
 
       emit(state.copyWith(
+        isRecalculating: false,
         route: event.routeData,
         polylinePoints: polylinePoints,
         steps: legs?.steps ?? [],

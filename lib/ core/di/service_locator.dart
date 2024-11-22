@@ -1,8 +1,8 @@
 import 'package:charge_route/%20core/network/api_client.dart';
 import 'package:charge_route/%20core/services/api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
-import 'package:charge_route/config/environment_config.dart';
-import 'package:charge_route/config/environment_config_interface.dart';
+import 'package:charge_route/config/google_env_config/environment_config.dart';
+import 'package:charge_route/config/google_env_config/environment_config_interface.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository.dart';
