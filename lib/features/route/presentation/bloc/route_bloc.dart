@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
 import 'package:charge_route/%20core/utilities/polyline_decoder.dart';
+import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -12,12 +13,14 @@ part 'route_event.dart';
 part 'route_state.dart';
 
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
+  RouteRepositoryInterface repository;
   StreamSubscription<Position>? _positionStreamSubscription;
-  RouteBloc() : super(const RouteState()) {
+  RouteBloc(this.repository) : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
-    on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
     on<StopTrackingUserLocationEvent>(_onStopTrackingUserLocation);
+    on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
+    on<UserOffRouteEvent>(_onUserOffRoute);
   }
 
   @override
@@ -26,44 +29,47 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     return super.close();
   }
 
-  Future<void> _onStartTrackingUserLocation(StartTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
-
-    _positionStreamSubscription = Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
-    ).listen((Position position) {
-      _evaluateUserProgress(LatLng(position.latitude, position.longitude));
-    });
-  }
-
-  Future<void> _onStopTrackingUserLocation(StopTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
-  }
-
   void _evaluateUserProgress(LatLng userPosition) {
     if (state.steps.isEmpty || state.currentStepIndex >= state.steps.length) return;
 
     final currentStep = state.steps[state.currentStepIndex];
     final nextStep = state.currentStepIndex + 1 < state.steps.length ? state.steps[state.currentStepIndex + 1] : null;
 
-    final distanceToCurrentStepEnd = _calculateDistance(
+    final distanceToCurrentStepEnd = repository.calculateDistance(
       userPosition,
       LatLng(currentStep.endLocation?.lat ?? 0, currentStep.endLocation?.lng ?? 0),
     );
 
-    if (distanceToCurrentStepEnd < 30 && nextStep != null) {
-      // Move to the next step
+    final isOffRoute = _isUserOffRoute(userPosition);
+
+    if (isOffRoute) {
+      add(UserOffRouteEvent(userPosition));
+    } else if (distanceToCurrentStepEnd < 30 && nextStep != null) {
       add(UpdateRouteProgressEvent(state.currentStepIndex + 1));
     }
   }
 
-  double _calculateDistance(LatLng start, LatLng end) {
-    return Geolocator.distanceBetween(
-      start.latitude,
-      start.longitude,
-      end.latitude,
-      end.longitude,
-    );
+  bool _isUserOffRoute(LatLng userPosition) {
+    const double deviationThreshold = 50.0;
+    for (var polylinePoint in state.polylinePoints) {
+      final distanceToPolylinePoint = repository.calculateDistance(userPosition, polylinePoint);
+      if (distanceToPolylinePoint <= deviationThreshold) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  Future<void> _onStartTrackingUserLocation(StartTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
+    _positionStreamSubscription?.cancel();
+
+    _positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
+      _evaluateUserProgress(LatLng(position.latitude, position.longitude));
+    });
+  }
+
+  Future<void> _onStopTrackingUserLocation(StopTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
+    _positionStreamSubscription?.cancel();
   }
 
   Future<void> _onInitializeRoute(InitalizeRouteEvent event, Emitter<RouteState> emit) async {
@@ -83,6 +89,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
       final firstStep = legs?.steps?.isNotEmpty == true ? legs!.steps?.first : null;
 
       emit(state.copyWith(
+        isRecalculating: false,
         route: event.routeData,
         polylinePoints: polylinePoints,
         steps: legs?.steps ?? [],
@@ -108,6 +115,29 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
         currentStepDistance: step.distance,
         currentStepDuration: step.duration,
         currentInstruction: step.instruction,
+      ));
+    }
+  }
+
+  Future<void> _onUserOffRoute(UserOffRouteEvent event, Emitter<RouteState> emit) async {
+    final userPosition = event.userPosition;
+    final destination = state.steps.last.endLocation;
+
+    if (destination == null) return;
+
+    emit(state.copyWith(isRecalculating: true));
+
+    try {
+      final newRoute = await repository.fetchRoute(
+        userPosition,
+        LatLng(destination.lat, destination.lng),
+      );
+
+      add(InitalizeRouteEvent(newRoute));
+    } catch (e) {
+      emit(state.copyWith(
+        errorMessage: 'Failed to recalculate the route.',
+        isRecalculating: false,
       ));
     }
   }
