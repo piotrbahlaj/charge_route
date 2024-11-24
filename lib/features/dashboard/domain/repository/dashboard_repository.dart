@@ -3,13 +3,13 @@ import 'package:charge_route/%20core/models/place_details/place_details_response
 import 'package:charge_route/%20core/models/places/places_autocomplete_response.dart';
 import 'package:charge_route/%20core/models/precise_location/precise_location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/%20core/services/api_service.dart';
+import 'package:charge_route/%20core/services/google_api_service/google_api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
 import 'package:geolocator/geolocator.dart';
 
 class DashboardRepository implements DashboardRepositoryInterface {
-  final ApiService apiService;
+  final GoogleApiService apiService;
   final LocationService locationService;
 
   DashboardRepository(this.apiService, this.locationService);
