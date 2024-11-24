@@ -30,6 +30,8 @@ class ApiClient {
         onError: (DioException e, handler) {
           // Log errors
           print("Error: ${e.message}");
+          print("URI: ${e.requestOptions.uri}");
+          handler.next(e);
           return handler.next(e);
         },
       ),

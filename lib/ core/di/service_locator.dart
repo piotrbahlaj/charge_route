@@ -6,6 +6,8 @@ import 'package:charge_route/config/ev_env_config/ev_environment_config.dart';
 import 'package:charge_route/config/ev_env_config/ev_environment_config_interface.dart';
 import 'package:charge_route/config/google_env_config/google_environment_config.dart';
 import 'package:charge_route/config/google_env_config/google_environment_config_interface.dart';
+import 'package:charge_route/features/car_details/domain/repository/car_details_repository.dart';
+import 'package:charge_route/features/car_details/domain/repository/car_details_repository_interface.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository.dart';
@@ -83,6 +85,13 @@ void setupLocator() {
     () => RouteRepository(
       getIt<GoogleApiService>(instanceName: 'GoogleApiService'),
       getIt<LocationService>(),
+    ),
+  );
+
+  // EV Repository
+  getIt.registerLazySingleton<CarDetailsRepositoryInterface>(
+    () => CarDetailsRepository(
+      getIt<EvApiService>(instanceName: 'EvApiService'),
     ),
   );
 }
