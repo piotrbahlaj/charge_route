@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
     "Bahłaj",
+    "BROWSABLE",
+    "chargetrip",
     "Debouncer",
     "geocode",
     "Geocoded",
@@ -8,11 +10,13 @@
     "geolocator",
     "kanit",
     "latlng",
+    "myapp",
     "nearbysearch",
     "pagetoken",
     "Piotr",
     "polyline",
     "polylines",
+    "roboto",
     "SMARTCAR",
     "textsearch",
     "typeahead",

@@ -6,7 +6,7 @@ class EvEnvironmentConfig implements EvEnvironmentConfigInterface {
   String get clientId => dotenv.get('EV_CLIENT_ID');
 
   @override
-  String get clientSecret => dotenv.get('EV_CLIENT_SECRET');
+  String get appId => dotenv.get('EV_APP_ID');
 
   @override
   String get baseUrl => dotenv.get('EV_BASE_URL');

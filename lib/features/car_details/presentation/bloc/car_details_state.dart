@@ -7,5 +7,6 @@ class CarDetailsState with _$CarDetailsState {
     Vehicle? selectedVehicle,
     @Default(false) bool isLoading,
     String? errorMessage,
+    @Default(false) bool hasSearched,
   }) = _CarDetailsState;
 }

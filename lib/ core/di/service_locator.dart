@@ -45,7 +45,7 @@ void setupLocator() {
     () {
       final evConfig = getIt<EvEnvironmentConfigInterface>(instanceName: 'EvConfig');
       final client = ApiClient(baseUrl: evConfig.baseUrl);
-      client.setOAuthCredentials(evConfig.clientId, evConfig.clientSecret);
+      client.setCredentials(evConfig.clientId, evConfig.appId);
       return client;
     },
     instanceName: 'EvApiClient',
@@ -92,6 +92,7 @@ void setupLocator() {
   getIt.registerLazySingleton<CarDetailsRepositoryInterface>(
     () => CarDetailsRepository(
       getIt<EvApiService>(instanceName: 'EvApiService'),
+      getIt<ApiClient>(instanceName: 'EvApiClient'),
     ),
   );
 }

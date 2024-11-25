@@ -13,7 +13,7 @@ class CarDetailsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => CarDetailsBloc(getIt<CarDetailsRepositoryInterface>()),
       child: const Scaffold(
-        body: CarDetailsView(),
+        body: SingleChildScrollView(child: CarDetailsView()),
       ),
     );
   }

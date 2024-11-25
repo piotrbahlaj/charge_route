@@ -8,8 +8,8 @@ part 'ev_api_service.g.dart';
 abstract class EvApiService {
   factory EvApiService(Dio dio) = _EvApiService;
 
-  @GET('/vehicles')
+  @POST('')
   Future<VehicleDetailResponse> getVehicleDetail(
-    @Query("query") String query,
+    @Body() Map<String, dynamic> body,
   );
 }

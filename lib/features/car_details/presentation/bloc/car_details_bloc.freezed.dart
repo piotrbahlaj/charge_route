@@ -20,18 +20,24 @@ mixin _$CarDetailsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) searchVehicle,
     required TResult Function(Vehicle vehicle) selectVehicle,
+    required TResult Function() clearVehicleSuggestions,
+    required TResult Function() clearSelectedVehicle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? searchVehicle,
     TResult? Function(Vehicle vehicle)? selectVehicle,
+    TResult? Function()? clearVehicleSuggestions,
+    TResult? Function()? clearSelectedVehicle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? searchVehicle,
     TResult Function(Vehicle vehicle)? selectVehicle,
+    TResult Function()? clearVehicleSuggestions,
+    TResult Function()? clearSelectedVehicle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,28 @@ mixin _$CarDetailsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(SearchVehicleEvent value) searchVehicle,
     required TResult Function(SelectVehicleEvent value) selectVehicle,
+    required TResult Function(ClearVehicleSuggestionsEvent value)
+        clearVehicleSuggestions,
+    required TResult Function(ClearSelectedVehicleEvent value)
+        clearSelectedVehicle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchVehicleEvent value)? searchVehicle,
     TResult? Function(SelectVehicleEvent value)? selectVehicle,
+    TResult? Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult? Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchVehicleEvent value)? searchVehicle,
     TResult Function(SelectVehicleEvent value)? selectVehicle,
+    TResult Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +164,8 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) searchVehicle,
     required TResult Function(Vehicle vehicle) selectVehicle,
+    required TResult Function() clearVehicleSuggestions,
+    required TResult Function() clearSelectedVehicle,
   }) {
     return searchVehicle(query);
   }
@@ -157,6 +175,8 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? searchVehicle,
     TResult? Function(Vehicle vehicle)? selectVehicle,
+    TResult? Function()? clearVehicleSuggestions,
+    TResult? Function()? clearSelectedVehicle,
   }) {
     return searchVehicle?.call(query);
   }
@@ -166,6 +186,8 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? searchVehicle,
     TResult Function(Vehicle vehicle)? selectVehicle,
+    TResult Function()? clearVehicleSuggestions,
+    TResult Function()? clearSelectedVehicle,
     required TResult orElse(),
   }) {
     if (searchVehicle != null) {
@@ -179,6 +201,10 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(SearchVehicleEvent value) searchVehicle,
     required TResult Function(SelectVehicleEvent value) selectVehicle,
+    required TResult Function(ClearVehicleSuggestionsEvent value)
+        clearVehicleSuggestions,
+    required TResult Function(ClearSelectedVehicleEvent value)
+        clearSelectedVehicle,
   }) {
     return searchVehicle(this);
   }
@@ -188,6 +214,9 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchVehicleEvent value)? searchVehicle,
     TResult? Function(SelectVehicleEvent value)? selectVehicle,
+    TResult? Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult? Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
   }) {
     return searchVehicle?.call(this);
   }
@@ -197,6 +226,9 @@ class _$SearchVehicleEventImpl implements SearchVehicleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchVehicleEvent value)? searchVehicle,
     TResult Function(SelectVehicleEvent value)? selectVehicle,
+    TResult Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
     required TResult orElse(),
   }) {
     if (searchVehicle != null) {
@@ -302,6 +334,8 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String query) searchVehicle,
     required TResult Function(Vehicle vehicle) selectVehicle,
+    required TResult Function() clearVehicleSuggestions,
+    required TResult Function() clearSelectedVehicle,
   }) {
     return selectVehicle(vehicle);
   }
@@ -311,6 +345,8 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? searchVehicle,
     TResult? Function(Vehicle vehicle)? selectVehicle,
+    TResult? Function()? clearVehicleSuggestions,
+    TResult? Function()? clearSelectedVehicle,
   }) {
     return selectVehicle?.call(vehicle);
   }
@@ -320,6 +356,8 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? searchVehicle,
     TResult Function(Vehicle vehicle)? selectVehicle,
+    TResult Function()? clearVehicleSuggestions,
+    TResult Function()? clearSelectedVehicle,
     required TResult orElse(),
   }) {
     if (selectVehicle != null) {
@@ -333,6 +371,10 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(SearchVehicleEvent value) searchVehicle,
     required TResult Function(SelectVehicleEvent value) selectVehicle,
+    required TResult Function(ClearVehicleSuggestionsEvent value)
+        clearVehicleSuggestions,
+    required TResult Function(ClearSelectedVehicleEvent value)
+        clearSelectedVehicle,
   }) {
     return selectVehicle(this);
   }
@@ -342,6 +384,9 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchVehicleEvent value)? searchVehicle,
     TResult? Function(SelectVehicleEvent value)? selectVehicle,
+    TResult? Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult? Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
   }) {
     return selectVehicle?.call(this);
   }
@@ -351,6 +396,9 @@ class _$SelectVehicleEventImpl implements SelectVehicleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchVehicleEvent value)? searchVehicle,
     TResult Function(SelectVehicleEvent value)? selectVehicle,
+    TResult Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
     required TResult orElse(),
   }) {
     if (selectVehicle != null) {
@@ -374,11 +422,263 @@ abstract class SelectVehicleEvent implements CarDetailsEvent {
 }
 
 /// @nodoc
+abstract class _$$ClearVehicleSuggestionsEventImplCopyWith<$Res> {
+  factory _$$ClearVehicleSuggestionsEventImplCopyWith(
+          _$ClearVehicleSuggestionsEventImpl value,
+          $Res Function(_$ClearVehicleSuggestionsEventImpl) then) =
+      __$$ClearVehicleSuggestionsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearVehicleSuggestionsEventImplCopyWithImpl<$Res>
+    extends _$CarDetailsEventCopyWithImpl<$Res,
+        _$ClearVehicleSuggestionsEventImpl>
+    implements _$$ClearVehicleSuggestionsEventImplCopyWith<$Res> {
+  __$$ClearVehicleSuggestionsEventImplCopyWithImpl(
+      _$ClearVehicleSuggestionsEventImpl _value,
+      $Res Function(_$ClearVehicleSuggestionsEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CarDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearVehicleSuggestionsEventImpl
+    implements ClearVehicleSuggestionsEvent {
+  const _$ClearVehicleSuggestionsEventImpl();
+
+  @override
+  String toString() {
+    return 'CarDetailsEvent.clearVehicleSuggestions()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearVehicleSuggestionsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) searchVehicle,
+    required TResult Function(Vehicle vehicle) selectVehicle,
+    required TResult Function() clearVehicleSuggestions,
+    required TResult Function() clearSelectedVehicle,
+  }) {
+    return clearVehicleSuggestions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? searchVehicle,
+    TResult? Function(Vehicle vehicle)? selectVehicle,
+    TResult? Function()? clearVehicleSuggestions,
+    TResult? Function()? clearSelectedVehicle,
+  }) {
+    return clearVehicleSuggestions?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? searchVehicle,
+    TResult Function(Vehicle vehicle)? selectVehicle,
+    TResult Function()? clearVehicleSuggestions,
+    TResult Function()? clearSelectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (clearVehicleSuggestions != null) {
+      return clearVehicleSuggestions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SearchVehicleEvent value) searchVehicle,
+    required TResult Function(SelectVehicleEvent value) selectVehicle,
+    required TResult Function(ClearVehicleSuggestionsEvent value)
+        clearVehicleSuggestions,
+    required TResult Function(ClearSelectedVehicleEvent value)
+        clearSelectedVehicle,
+  }) {
+    return clearVehicleSuggestions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SearchVehicleEvent value)? searchVehicle,
+    TResult? Function(SelectVehicleEvent value)? selectVehicle,
+    TResult? Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult? Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
+  }) {
+    return clearVehicleSuggestions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SearchVehicleEvent value)? searchVehicle,
+    TResult Function(SelectVehicleEvent value)? selectVehicle,
+    TResult Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (clearVehicleSuggestions != null) {
+      return clearVehicleSuggestions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearVehicleSuggestionsEvent implements CarDetailsEvent {
+  const factory ClearVehicleSuggestionsEvent() =
+      _$ClearVehicleSuggestionsEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearSelectedVehicleEventImplCopyWith<$Res> {
+  factory _$$ClearSelectedVehicleEventImplCopyWith(
+          _$ClearSelectedVehicleEventImpl value,
+          $Res Function(_$ClearSelectedVehicleEventImpl) then) =
+      __$$ClearSelectedVehicleEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSelectedVehicleEventImplCopyWithImpl<$Res>
+    extends _$CarDetailsEventCopyWithImpl<$Res, _$ClearSelectedVehicleEventImpl>
+    implements _$$ClearSelectedVehicleEventImplCopyWith<$Res> {
+  __$$ClearSelectedVehicleEventImplCopyWithImpl(
+      _$ClearSelectedVehicleEventImpl _value,
+      $Res Function(_$ClearSelectedVehicleEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CarDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearSelectedVehicleEventImpl implements ClearSelectedVehicleEvent {
+  const _$ClearSelectedVehicleEventImpl();
+
+  @override
+  String toString() {
+    return 'CarDetailsEvent.clearSelectedVehicle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearSelectedVehicleEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) searchVehicle,
+    required TResult Function(Vehicle vehicle) selectVehicle,
+    required TResult Function() clearVehicleSuggestions,
+    required TResult Function() clearSelectedVehicle,
+  }) {
+    return clearSelectedVehicle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? searchVehicle,
+    TResult? Function(Vehicle vehicle)? selectVehicle,
+    TResult? Function()? clearVehicleSuggestions,
+    TResult? Function()? clearSelectedVehicle,
+  }) {
+    return clearSelectedVehicle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? searchVehicle,
+    TResult Function(Vehicle vehicle)? selectVehicle,
+    TResult Function()? clearVehicleSuggestions,
+    TResult Function()? clearSelectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedVehicle != null) {
+      return clearSelectedVehicle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SearchVehicleEvent value) searchVehicle,
+    required TResult Function(SelectVehicleEvent value) selectVehicle,
+    required TResult Function(ClearVehicleSuggestionsEvent value)
+        clearVehicleSuggestions,
+    required TResult Function(ClearSelectedVehicleEvent value)
+        clearSelectedVehicle,
+  }) {
+    return clearSelectedVehicle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SearchVehicleEvent value)? searchVehicle,
+    TResult? Function(SelectVehicleEvent value)? selectVehicle,
+    TResult? Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult? Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
+  }) {
+    return clearSelectedVehicle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SearchVehicleEvent value)? searchVehicle,
+    TResult Function(SelectVehicleEvent value)? selectVehicle,
+    TResult Function(ClearVehicleSuggestionsEvent value)?
+        clearVehicleSuggestions,
+    TResult Function(ClearSelectedVehicleEvent value)? clearSelectedVehicle,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedVehicle != null) {
+      return clearSelectedVehicle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearSelectedVehicleEvent implements CarDetailsEvent {
+  const factory ClearSelectedVehicleEvent() = _$ClearSelectedVehicleEventImpl;
+}
+
+/// @nodoc
 mixin _$CarDetailsState {
   List<Vehicle> get suggestions => throw _privateConstructorUsedError;
   Vehicle? get selectedVehicle => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  bool get hasSearched => throw _privateConstructorUsedError;
 
   /// Create a copy of CarDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -397,7 +697,8 @@ abstract class $CarDetailsStateCopyWith<$Res> {
       {List<Vehicle> suggestions,
       Vehicle? selectedVehicle,
       bool isLoading,
-      String? errorMessage});
+      String? errorMessage,
+      bool hasSearched});
 
   $VehicleCopyWith<$Res>? get selectedVehicle;
 }
@@ -421,6 +722,7 @@ class _$CarDetailsStateCopyWithImpl<$Res, $Val extends CarDetailsState>
     Object? selectedVehicle = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? hasSearched = null,
   }) {
     return _then(_value.copyWith(
       suggestions: null == suggestions
@@ -439,6 +741,10 @@ class _$CarDetailsStateCopyWithImpl<$Res, $Val extends CarDetailsState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      hasSearched: null == hasSearched
+          ? _value.hasSearched
+          : hasSearched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -469,7 +775,8 @@ abstract class _$$CarDetailsStateImplCopyWith<$Res>
       {List<Vehicle> suggestions,
       Vehicle? selectedVehicle,
       bool isLoading,
-      String? errorMessage});
+      String? errorMessage,
+      bool hasSearched});
 
   @override
   $VehicleCopyWith<$Res>? get selectedVehicle;
@@ -492,6 +799,7 @@ class __$$CarDetailsStateImplCopyWithImpl<$Res>
     Object? selectedVehicle = freezed,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? hasSearched = null,
   }) {
     return _then(_$CarDetailsStateImpl(
       suggestions: null == suggestions
@@ -510,6 +818,10 @@ class __$$CarDetailsStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      hasSearched: null == hasSearched
+          ? _value.hasSearched
+          : hasSearched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -521,7 +833,8 @@ class _$CarDetailsStateImpl implements _CarDetailsState {
       {final List<Vehicle> suggestions = const [],
       this.selectedVehicle,
       this.isLoading = false,
-      this.errorMessage})
+      this.errorMessage,
+      this.hasSearched = false})
       : _suggestions = suggestions;
 
   final List<Vehicle> _suggestions;
@@ -540,10 +853,13 @@ class _$CarDetailsStateImpl implements _CarDetailsState {
   final bool isLoading;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool hasSearched;
 
   @override
   String toString() {
-    return 'CarDetailsState(suggestions: $suggestions, selectedVehicle: $selectedVehicle, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'CarDetailsState(suggestions: $suggestions, selectedVehicle: $selectedVehicle, isLoading: $isLoading, errorMessage: $errorMessage, hasSearched: $hasSearched)';
   }
 
   @override
@@ -558,7 +874,9 @@ class _$CarDetailsStateImpl implements _CarDetailsState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.hasSearched, hasSearched) ||
+                other.hasSearched == hasSearched));
   }
 
   @override
@@ -567,7 +885,8 @@ class _$CarDetailsStateImpl implements _CarDetailsState {
       const DeepCollectionEquality().hash(_suggestions),
       selectedVehicle,
       isLoading,
-      errorMessage);
+      errorMessage,
+      hasSearched);
 
   /// Create a copy of CarDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -584,7 +903,8 @@ abstract class _CarDetailsState implements CarDetailsState {
       {final List<Vehicle> suggestions,
       final Vehicle? selectedVehicle,
       final bool isLoading,
-      final String? errorMessage}) = _$CarDetailsStateImpl;
+      final String? errorMessage,
+      final bool hasSearched}) = _$CarDetailsStateImpl;
 
   @override
   List<Vehicle> get suggestions;
@@ -594,6 +914,8 @@ abstract class _CarDetailsState implements CarDetailsState {
   bool get isLoading;
   @override
   String? get errorMessage;
+  @override
+  bool get hasSearched;
 
   /// Create a copy of CarDetailsState
   /// with the given fields replaced by the non-null parameter values.

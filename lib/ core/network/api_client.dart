@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 
 class ApiClient {
@@ -18,20 +16,19 @@ class ApiClient {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          // Log request
           print("Request: ${options.method} ${options.uri}");
+          print("Headers: ${options.headers}");
+          print("Body: ${options.data}");
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          // Log response
           print("Response: ${response.statusCode} ${response.data}");
           return handler.next(response);
         },
         onError: (DioException e, handler) {
-          // Log errors
           print("Error: ${e.message}");
           print("URI: ${e.requestOptions.uri}");
-          handler.next(e);
+          print("Response Data: ${e.response?.data}");
           return handler.next(e);
         },
       ),
@@ -42,12 +39,8 @@ class ApiClient {
     dio.options.queryParameters['key'] = apiKey;
   }
 
-  void setOAuthCredentials(String clientId, String clientSecret) {
-    final basicAuth = base64Encode(utf8.encode('$clientId:$clientSecret'));
-    dio.options.headers['Authorization'] = 'Basic $basicAuth';
-  }
-
-  void setBearerToken(String token) {
-    dio.options.headers['Authorization'] = 'Bearer $token';
+  void setCredentials(String clientId, String appId) {
+    dio.options.headers['x-client-id'] = clientId;
+    dio.options.headers['x-app-id'] = appId;
   }
 }
