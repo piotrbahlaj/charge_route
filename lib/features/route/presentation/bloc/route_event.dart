@@ -7,4 +7,5 @@ class RouteEvent with _$RouteEvent {
   const factory RouteEvent.startTrackingUserLocation() = StartTrackingUserLocationEvent;
   const factory RouteEvent.stopTrackingUserLocation() = StopTrackingUserLocationEvent;
   const factory RouteEvent.userOffRoute(LatLng userPosition) = UserOffRouteEvent;
+  const factory RouteEvent.arrivedAtDestination() = ArrivedAtDestinationEvent;
 }
