@@ -31,21 +31,54 @@ class CarDetailsBloc extends Bloc<CarDetailsEvent, CarDetailsState> {
       hasSearched: true,
     ));
     const query = '''
-    query vehicleList(\$search: String!) {
+    query vehicleListAll(\$search: String!) {
       vehicleList (search: \$search) {
         id
         naming {
           make
           model
+          version
+        }
+        drivetrain {
+          type
+        }
+        connectors {
+          standard
         }
         battery {
           usable_kwh
+        }
+        body {
+          seats
         }
         range {
           chargetrip_range {
             best
             worst
           }
+        }
+        media {
+          image {
+            id
+            url
+            height
+            width
+            thumbnail_url
+            thumbnail_height
+            thumbnail_width
+          }
+          brand {
+            id
+            url
+            height
+            width
+            thumbnail_url
+            thumbnail_height
+            thumbnail_width
+          }
+        }
+        routing {
+          fast_charging_support
         }
       }
     }
@@ -54,10 +87,10 @@ class CarDetailsBloc extends Bloc<CarDetailsEvent, CarDetailsState> {
       print('Search query: ${event.query}');
       final variables = {"search": event.query};
       final response = await repository.fetchVehicleDetails(query, variables);
-      print("Mapped Suggestions in Bloc: ${response.vehicles}");
+      print("Mapped Suggestions in Bloc: ${response.vehiclesList}");
       emit(state.copyWith(
         isLoading: false,
-        suggestions: event.query == '' ? [] : response.vehicles ?? [],
+        suggestions: event.query == '' ? [] : response.vehiclesList ?? [],
         errorMessage: null,
       ));
       print("Updated suggestions: ${state.suggestions}");

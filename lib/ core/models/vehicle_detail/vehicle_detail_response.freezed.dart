@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$VehicleDetailResponse {
   @JsonKey(name: 'vehicleList')
-  List<Vehicle>? get vehicles => throw _privateConstructorUsedError;
+  List<Vehicle>? get vehiclesList => throw _privateConstructorUsedError;
 
   /// Create a copy of VehicleDetailResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +32,7 @@ abstract class $VehicleDetailResponseCopyWith<$Res> {
           $Res Function(VehicleDetailResponse) then) =
       _$VehicleDetailResponseCopyWithImpl<$Res, VehicleDetailResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'vehicleList') List<Vehicle>? vehicles});
+  $Res call({@JsonKey(name: 'vehicleList') List<Vehicle>? vehiclesList});
 }
 
 /// @nodoc
@@ -51,12 +51,12 @@ class _$VehicleDetailResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vehicles = freezed,
+    Object? vehiclesList = freezed,
   }) {
     return _then(_value.copyWith(
-      vehicles: freezed == vehicles
-          ? _value.vehicles
-          : vehicles // ignore: cast_nullable_to_non_nullable
+      vehiclesList: freezed == vehiclesList
+          ? _value.vehiclesList
+          : vehiclesList // ignore: cast_nullable_to_non_nullable
               as List<Vehicle>?,
     ) as $Val);
   }
@@ -71,7 +71,7 @@ abstract class _$$VehicleDetailResponseImplCopyWith<$Res>
       __$$VehicleDetailResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'vehicleList') List<Vehicle>? vehicles});
+  $Res call({@JsonKey(name: 'vehicleList') List<Vehicle>? vehiclesList});
 }
 
 /// @nodoc
@@ -88,12 +88,12 @@ class __$$VehicleDetailResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vehicles = freezed,
+    Object? vehiclesList = freezed,
   }) {
     return _then(_$VehicleDetailResponseImpl(
-      vehicles: freezed == vehicles
-          ? _value._vehicles
-          : vehicles // ignore: cast_nullable_to_non_nullable
+      vehiclesList: freezed == vehiclesList
+          ? _value._vehiclesList
+          : vehiclesList // ignore: cast_nullable_to_non_nullable
               as List<Vehicle>?,
     ));
   }
@@ -103,23 +103,23 @@ class __$$VehicleDetailResponseImplCopyWithImpl<$Res>
 
 class _$VehicleDetailResponseImpl implements _VehicleDetailResponse {
   const _$VehicleDetailResponseImpl(
-      {@JsonKey(name: 'vehicleList') final List<Vehicle>? vehicles})
-      : _vehicles = vehicles;
+      {@JsonKey(name: 'vehicleList') final List<Vehicle>? vehiclesList})
+      : _vehiclesList = vehiclesList;
 
-  final List<Vehicle>? _vehicles;
+  final List<Vehicle>? _vehiclesList;
   @override
   @JsonKey(name: 'vehicleList')
-  List<Vehicle>? get vehicles {
-    final value = _vehicles;
+  List<Vehicle>? get vehiclesList {
+    final value = _vehiclesList;
     if (value == null) return null;
-    if (_vehicles is EqualUnmodifiableListView) return _vehicles;
+    if (_vehiclesList is EqualUnmodifiableListView) return _vehiclesList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'VehicleDetailResponse(vehicles: $vehicles)';
+    return 'VehicleDetailResponse(vehiclesList: $vehiclesList)';
   }
 
   @override
@@ -127,12 +127,13 @@ class _$VehicleDetailResponseImpl implements _VehicleDetailResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VehicleDetailResponseImpl &&
-            const DeepCollectionEquality().equals(other._vehicles, _vehicles));
+            const DeepCollectionEquality()
+                .equals(other._vehiclesList, _vehiclesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_vehicles));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_vehiclesList));
 
   /// Create a copy of VehicleDetailResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -146,12 +147,12 @@ class _$VehicleDetailResponseImpl implements _VehicleDetailResponse {
 
 abstract class _VehicleDetailResponse implements VehicleDetailResponse {
   const factory _VehicleDetailResponse(
-          {@JsonKey(name: 'vehicleList') final List<Vehicle>? vehicles}) =
+          {@JsonKey(name: 'vehicleList') final List<Vehicle>? vehiclesList}) =
       _$VehicleDetailResponseImpl;
 
   @override
   @JsonKey(name: 'vehicleList')
-  List<Vehicle>? get vehicles;
+  List<Vehicle>? get vehiclesList;
 
   /// Create a copy of VehicleDetailResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -169,13 +170,13 @@ Vehicle _$VehicleFromJson(Map<String, dynamic> json) {
 mixin _$Vehicle {
   String get id => throw _privateConstructorUsedError;
   Naming? get naming => throw _privateConstructorUsedError;
+  Drivetrain? get drivetrain => throw _privateConstructorUsedError;
+  List<Connectors>? get connectors => throw _privateConstructorUsedError;
   Battery? get battery => throw _privateConstructorUsedError;
   Range? get range => throw _privateConstructorUsedError;
-  Performance? get performance =>
-      throw _privateConstructorUsedError; // Add performance
-  VehicleBody? get body =>
-      throw _privateConstructorUsedError; // Add body dimensions and seats
+  VehicleBody? get body => throw _privateConstructorUsedError;
   Routing? get routing => throw _privateConstructorUsedError;
+  Media? get media => throw _privateConstructorUsedError;
 
   /// Serializes this Vehicle to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -194,18 +195,21 @@ abstract class $VehicleCopyWith<$Res> {
   $Res call(
       {String id,
       Naming? naming,
+      Drivetrain? drivetrain,
+      List<Connectors>? connectors,
       Battery? battery,
       Range? range,
-      Performance? performance,
       VehicleBody? body,
-      Routing? routing});
+      Routing? routing,
+      Media? media});
 
   $NamingCopyWith<$Res>? get naming;
+  $DrivetrainCopyWith<$Res>? get drivetrain;
   $BatteryCopyWith<$Res>? get battery;
   $RangeCopyWith<$Res>? get range;
-  $PerformanceCopyWith<$Res>? get performance;
   $VehicleBodyCopyWith<$Res>? get body;
   $RoutingCopyWith<$Res>? get routing;
+  $MediaCopyWith<$Res>? get media;
 }
 
 /// @nodoc
@@ -225,11 +229,13 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
   $Res call({
     Object? id = null,
     Object? naming = freezed,
+    Object? drivetrain = freezed,
+    Object? connectors = freezed,
     Object? battery = freezed,
     Object? range = freezed,
-    Object? performance = freezed,
     Object? body = freezed,
     Object? routing = freezed,
+    Object? media = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -240,6 +246,14 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
           ? _value.naming
           : naming // ignore: cast_nullable_to_non_nullable
               as Naming?,
+      drivetrain: freezed == drivetrain
+          ? _value.drivetrain
+          : drivetrain // ignore: cast_nullable_to_non_nullable
+              as Drivetrain?,
+      connectors: freezed == connectors
+          ? _value.connectors
+          : connectors // ignore: cast_nullable_to_non_nullable
+              as List<Connectors>?,
       battery: freezed == battery
           ? _value.battery
           : battery // ignore: cast_nullable_to_non_nullable
@@ -248,10 +262,6 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
           ? _value.range
           : range // ignore: cast_nullable_to_non_nullable
               as Range?,
-      performance: freezed == performance
-          ? _value.performance
-          : performance // ignore: cast_nullable_to_non_nullable
-              as Performance?,
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -260,6 +270,10 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
           ? _value.routing
           : routing // ignore: cast_nullable_to_non_nullable
               as Routing?,
+      media: freezed == media
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
+              as Media?,
     ) as $Val);
   }
 
@@ -274,6 +288,20 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
 
     return $NamingCopyWith<$Res>(_value.naming!, (value) {
       return _then(_value.copyWith(naming: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Vehicle
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DrivetrainCopyWith<$Res>? get drivetrain {
+    if (_value.drivetrain == null) {
+      return null;
+    }
+
+    return $DrivetrainCopyWith<$Res>(_value.drivetrain!, (value) {
+      return _then(_value.copyWith(drivetrain: value) as $Val);
     });
   }
 
@@ -309,20 +337,6 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PerformanceCopyWith<$Res>? get performance {
-    if (_value.performance == null) {
-      return null;
-    }
-
-    return $PerformanceCopyWith<$Res>(_value.performance!, (value) {
-      return _then(_value.copyWith(performance: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $VehicleBodyCopyWith<$Res>? get body {
     if (_value.body == null) {
       return null;
@@ -346,6 +360,20 @@ class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
       return _then(_value.copyWith(routing: value) as $Val);
     });
   }
+
+  /// Create a copy of Vehicle
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MediaCopyWith<$Res>? get media {
+    if (_value.media == null) {
+      return null;
+    }
+
+    return $MediaCopyWith<$Res>(_value.media!, (value) {
+      return _then(_value.copyWith(media: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -358,24 +386,28 @@ abstract class _$$VehicleImplCopyWith<$Res> implements $VehicleCopyWith<$Res> {
   $Res call(
       {String id,
       Naming? naming,
+      Drivetrain? drivetrain,
+      List<Connectors>? connectors,
       Battery? battery,
       Range? range,
-      Performance? performance,
       VehicleBody? body,
-      Routing? routing});
+      Routing? routing,
+      Media? media});
 
   @override
   $NamingCopyWith<$Res>? get naming;
+  @override
+  $DrivetrainCopyWith<$Res>? get drivetrain;
   @override
   $BatteryCopyWith<$Res>? get battery;
   @override
   $RangeCopyWith<$Res>? get range;
   @override
-  $PerformanceCopyWith<$Res>? get performance;
-  @override
   $VehicleBodyCopyWith<$Res>? get body;
   @override
   $RoutingCopyWith<$Res>? get routing;
+  @override
+  $MediaCopyWith<$Res>? get media;
 }
 
 /// @nodoc
@@ -393,11 +425,13 @@ class __$$VehicleImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? naming = freezed,
+    Object? drivetrain = freezed,
+    Object? connectors = freezed,
     Object? battery = freezed,
     Object? range = freezed,
-    Object? performance = freezed,
     Object? body = freezed,
     Object? routing = freezed,
+    Object? media = freezed,
   }) {
     return _then(_$VehicleImpl(
       id: null == id
@@ -408,6 +442,14 @@ class __$$VehicleImplCopyWithImpl<$Res>
           ? _value.naming
           : naming // ignore: cast_nullable_to_non_nullable
               as Naming?,
+      drivetrain: freezed == drivetrain
+          ? _value.drivetrain
+          : drivetrain // ignore: cast_nullable_to_non_nullable
+              as Drivetrain?,
+      connectors: freezed == connectors
+          ? _value._connectors
+          : connectors // ignore: cast_nullable_to_non_nullable
+              as List<Connectors>?,
       battery: freezed == battery
           ? _value.battery
           : battery // ignore: cast_nullable_to_non_nullable
@@ -416,10 +458,6 @@ class __$$VehicleImplCopyWithImpl<$Res>
           ? _value.range
           : range // ignore: cast_nullable_to_non_nullable
               as Range?,
-      performance: freezed == performance
-          ? _value.performance
-          : performance // ignore: cast_nullable_to_non_nullable
-              as Performance?,
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -428,6 +466,10 @@ class __$$VehicleImplCopyWithImpl<$Res>
           ? _value.routing
           : routing // ignore: cast_nullable_to_non_nullable
               as Routing?,
+      media: freezed == media
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
+              as Media?,
     ));
   }
 }
@@ -438,11 +480,14 @@ class _$VehicleImpl implements _Vehicle {
   const _$VehicleImpl(
       {required this.id,
       required this.naming,
+      required this.drivetrain,
+      required final List<Connectors>? connectors,
       required this.battery,
       required this.range,
-      required this.performance,
       required this.body,
-      required this.routing});
+      required this.routing,
+      required this.media})
+      : _connectors = connectors;
 
   factory _$VehicleImpl.fromJson(Map<String, dynamic> json) =>
       _$$VehicleImplFromJson(json);
@@ -452,21 +497,31 @@ class _$VehicleImpl implements _Vehicle {
   @override
   final Naming? naming;
   @override
+  final Drivetrain? drivetrain;
+  final List<Connectors>? _connectors;
+  @override
+  List<Connectors>? get connectors {
+    final value = _connectors;
+    if (value == null) return null;
+    if (_connectors is EqualUnmodifiableListView) return _connectors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
   final Battery? battery;
   @override
   final Range? range;
   @override
-  final Performance? performance;
-// Add performance
-  @override
   final VehicleBody? body;
-// Add body dimensions and seats
   @override
   final Routing? routing;
+  @override
+  final Media? media;
 
   @override
   String toString() {
-    return 'Vehicle(id: $id, naming: $naming, battery: $battery, range: $range, performance: $performance, body: $body, routing: $routing)';
+    return 'Vehicle(id: $id, naming: $naming, drivetrain: $drivetrain, connectors: $connectors, battery: $battery, range: $range, body: $body, routing: $routing, media: $media)';
   }
 
   @override
@@ -476,18 +531,30 @@ class _$VehicleImpl implements _Vehicle {
             other is _$VehicleImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.naming, naming) || other.naming == naming) &&
+            (identical(other.drivetrain, drivetrain) ||
+                other.drivetrain == drivetrain) &&
+            const DeepCollectionEquality()
+                .equals(other._connectors, _connectors) &&
             (identical(other.battery, battery) || other.battery == battery) &&
             (identical(other.range, range) || other.range == range) &&
-            (identical(other.performance, performance) ||
-                other.performance == performance) &&
             (identical(other.body, body) || other.body == body) &&
-            (identical(other.routing, routing) || other.routing == routing));
+            (identical(other.routing, routing) || other.routing == routing) &&
+            (identical(other.media, media) || other.media == media));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, naming, battery, range, performance, body, routing);
+      runtimeType,
+      id,
+      naming,
+      drivetrain,
+      const DeepCollectionEquality().hash(_connectors),
+      battery,
+      range,
+      body,
+      routing,
+      media);
 
   /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
@@ -509,11 +576,13 @@ abstract class _Vehicle implements Vehicle {
   const factory _Vehicle(
       {required final String id,
       required final Naming? naming,
+      required final Drivetrain? drivetrain,
+      required final List<Connectors>? connectors,
       required final Battery? battery,
       required final Range? range,
-      required final Performance? performance,
       required final VehicleBody? body,
-      required final Routing? routing}) = _$VehicleImpl;
+      required final Routing? routing,
+      required final Media? media}) = _$VehicleImpl;
 
   factory _Vehicle.fromJson(Map<String, dynamic> json) = _$VehicleImpl.fromJson;
 
@@ -522,15 +591,19 @@ abstract class _Vehicle implements Vehicle {
   @override
   Naming? get naming;
   @override
+  Drivetrain? get drivetrain;
+  @override
+  List<Connectors>? get connectors;
+  @override
   Battery? get battery;
   @override
   Range? get range;
   @override
-  Performance? get performance; // Add performance
-  @override
-  VehicleBody? get body; // Add body dimensions and seats
+  VehicleBody? get body;
   @override
   Routing? get routing;
+  @override
+  Media? get media;
 
   /// Create a copy of Vehicle
   /// with the given fields replaced by the non-null parameter values.
@@ -548,6 +621,7 @@ Naming _$NamingFromJson(Map<String, dynamic> json) {
 mixin _$Naming {
   String? get make => throw _privateConstructorUsedError;
   String? get model => throw _privateConstructorUsedError;
+  String? get version => throw _privateConstructorUsedError;
 
   /// Serializes this Naming to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -563,7 +637,7 @@ abstract class $NamingCopyWith<$Res> {
   factory $NamingCopyWith(Naming value, $Res Function(Naming) then) =
       _$NamingCopyWithImpl<$Res, Naming>;
   @useResult
-  $Res call({String? make, String? model});
+  $Res call({String? make, String? model, String? version});
 }
 
 /// @nodoc
@@ -583,6 +657,7 @@ class _$NamingCopyWithImpl<$Res, $Val extends Naming>
   $Res call({
     Object? make = freezed,
     Object? model = freezed,
+    Object? version = freezed,
   }) {
     return _then(_value.copyWith(
       make: freezed == make
@@ -592,6 +667,10 @@ class _$NamingCopyWithImpl<$Res, $Val extends Naming>
       model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -604,7 +683,7 @@ abstract class _$$NamingImplCopyWith<$Res> implements $NamingCopyWith<$Res> {
       __$$NamingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? make, String? model});
+  $Res call({String? make, String? model, String? version});
 }
 
 /// @nodoc
@@ -622,6 +701,7 @@ class __$$NamingImplCopyWithImpl<$Res>
   $Res call({
     Object? make = freezed,
     Object? model = freezed,
+    Object? version = freezed,
   }) {
     return _then(_$NamingImpl(
       make: freezed == make
@@ -632,6 +712,10 @@ class __$$NamingImplCopyWithImpl<$Res>
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String?,
+      version: freezed == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -639,7 +723,8 @@ class __$$NamingImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NamingImpl implements _Naming {
-  const _$NamingImpl({required this.make, required this.model});
+  const _$NamingImpl(
+      {required this.make, required this.model, required this.version});
 
   factory _$NamingImpl.fromJson(Map<String, dynamic> json) =>
       _$$NamingImplFromJson(json);
@@ -648,10 +733,12 @@ class _$NamingImpl implements _Naming {
   final String? make;
   @override
   final String? model;
+  @override
+  final String? version;
 
   @override
   String toString() {
-    return 'Naming(make: $make, model: $model)';
+    return 'Naming(make: $make, model: $model, version: $version)';
   }
 
   @override
@@ -660,12 +747,13 @@ class _$NamingImpl implements _Naming {
         (other.runtimeType == runtimeType &&
             other is _$NamingImpl &&
             (identical(other.make, make) || other.make == make) &&
-            (identical(other.model, model) || other.model == model));
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.version, version) || other.version == version));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, make, model);
+  int get hashCode => Object.hash(runtimeType, make, model, version);
 
   /// Create a copy of Naming
   /// with the given fields replaced by the non-null parameter values.
@@ -686,7 +774,8 @@ class _$NamingImpl implements _Naming {
 abstract class _Naming implements Naming {
   const factory _Naming(
       {required final String? make,
-      required final String? model}) = _$NamingImpl;
+      required final String? model,
+      required final String? version}) = _$NamingImpl;
 
   factory _Naming.fromJson(Map<String, dynamic> json) = _$NamingImpl.fromJson;
 
@@ -694,12 +783,314 @@ abstract class _Naming implements Naming {
   String? get make;
   @override
   String? get model;
+  @override
+  String? get version;
 
   /// Create a copy of Naming
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NamingImplCopyWith<_$NamingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Drivetrain _$DrivetrainFromJson(Map<String, dynamic> json) {
+  return _Drivetrain.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Drivetrain {
+  String? get type => throw _privateConstructorUsedError;
+
+  /// Serializes this Drivetrain to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Drivetrain
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DrivetrainCopyWith<Drivetrain> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DrivetrainCopyWith<$Res> {
+  factory $DrivetrainCopyWith(
+          Drivetrain value, $Res Function(Drivetrain) then) =
+      _$DrivetrainCopyWithImpl<$Res, Drivetrain>;
+  @useResult
+  $Res call({String? type});
+}
+
+/// @nodoc
+class _$DrivetrainCopyWithImpl<$Res, $Val extends Drivetrain>
+    implements $DrivetrainCopyWith<$Res> {
+  _$DrivetrainCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Drivetrain
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DrivetrainImplCopyWith<$Res>
+    implements $DrivetrainCopyWith<$Res> {
+  factory _$$DrivetrainImplCopyWith(
+          _$DrivetrainImpl value, $Res Function(_$DrivetrainImpl) then) =
+      __$$DrivetrainImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? type});
+}
+
+/// @nodoc
+class __$$DrivetrainImplCopyWithImpl<$Res>
+    extends _$DrivetrainCopyWithImpl<$Res, _$DrivetrainImpl>
+    implements _$$DrivetrainImplCopyWith<$Res> {
+  __$$DrivetrainImplCopyWithImpl(
+      _$DrivetrainImpl _value, $Res Function(_$DrivetrainImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Drivetrain
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_$DrivetrainImpl(
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DrivetrainImpl implements _Drivetrain {
+  const _$DrivetrainImpl({required this.type});
+
+  factory _$DrivetrainImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DrivetrainImplFromJson(json);
+
+  @override
+  final String? type;
+
+  @override
+  String toString() {
+    return 'Drivetrain(type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DrivetrainImpl &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  /// Create a copy of Drivetrain
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DrivetrainImplCopyWith<_$DrivetrainImpl> get copyWith =>
+      __$$DrivetrainImplCopyWithImpl<_$DrivetrainImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DrivetrainImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Drivetrain implements Drivetrain {
+  const factory _Drivetrain({required final String? type}) = _$DrivetrainImpl;
+
+  factory _Drivetrain.fromJson(Map<String, dynamic> json) =
+      _$DrivetrainImpl.fromJson;
+
+  @override
+  String? get type;
+
+  /// Create a copy of Drivetrain
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DrivetrainImplCopyWith<_$DrivetrainImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Connectors _$ConnectorsFromJson(Map<String, dynamic> json) {
+  return _Connectors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Connectors {
+  String? get standard => throw _privateConstructorUsedError;
+
+  /// Serializes this Connectors to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Connectors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ConnectorsCopyWith<Connectors> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ConnectorsCopyWith<$Res> {
+  factory $ConnectorsCopyWith(
+          Connectors value, $Res Function(Connectors) then) =
+      _$ConnectorsCopyWithImpl<$Res, Connectors>;
+  @useResult
+  $Res call({String? standard});
+}
+
+/// @nodoc
+class _$ConnectorsCopyWithImpl<$Res, $Val extends Connectors>
+    implements $ConnectorsCopyWith<$Res> {
+  _$ConnectorsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Connectors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? standard = freezed,
+  }) {
+    return _then(_value.copyWith(
+      standard: freezed == standard
+          ? _value.standard
+          : standard // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ConnectorsImplCopyWith<$Res>
+    implements $ConnectorsCopyWith<$Res> {
+  factory _$$ConnectorsImplCopyWith(
+          _$ConnectorsImpl value, $Res Function(_$ConnectorsImpl) then) =
+      __$$ConnectorsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? standard});
+}
+
+/// @nodoc
+class __$$ConnectorsImplCopyWithImpl<$Res>
+    extends _$ConnectorsCopyWithImpl<$Res, _$ConnectorsImpl>
+    implements _$$ConnectorsImplCopyWith<$Res> {
+  __$$ConnectorsImplCopyWithImpl(
+      _$ConnectorsImpl _value, $Res Function(_$ConnectorsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Connectors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? standard = freezed,
+  }) {
+    return _then(_$ConnectorsImpl(
+      standard: freezed == standard
+          ? _value.standard
+          : standard // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ConnectorsImpl implements _Connectors {
+  const _$ConnectorsImpl({required this.standard});
+
+  factory _$ConnectorsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConnectorsImplFromJson(json);
+
+  @override
+  final String? standard;
+
+  @override
+  String toString() {
+    return 'Connectors(standard: $standard)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectorsImpl &&
+            (identical(other.standard, standard) ||
+                other.standard == standard));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, standard);
+
+  /// Create a copy of Connectors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConnectorsImplCopyWith<_$ConnectorsImpl> get copyWith =>
+      __$$ConnectorsImplCopyWithImpl<_$ConnectorsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ConnectorsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Connectors implements Connectors {
+  const factory _Connectors({required final String? standard}) =
+      _$ConnectorsImpl;
+
+  factory _Connectors.fromJson(Map<String, dynamic> json) =
+      _$ConnectorsImpl.fromJson;
+
+  @override
+  String? get standard;
+
+  /// Create a copy of Connectors
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConnectorsImplCopyWith<_$ConnectorsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1027,175 +1418,6 @@ abstract class _Range implements Range {
       throw _privateConstructorUsedError;
 }
 
-Performance _$PerformanceFromJson(Map<String, dynamic> json) {
-  return _Performance.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Performance {
-  double? get acceleration => throw _privateConstructorUsedError;
-  int? get topSpeed => throw _privateConstructorUsedError;
-
-  /// Serializes this Performance to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Performance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PerformanceCopyWith<Performance> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PerformanceCopyWith<$Res> {
-  factory $PerformanceCopyWith(
-          Performance value, $Res Function(Performance) then) =
-      _$PerformanceCopyWithImpl<$Res, Performance>;
-  @useResult
-  $Res call({double? acceleration, int? topSpeed});
-}
-
-/// @nodoc
-class _$PerformanceCopyWithImpl<$Res, $Val extends Performance>
-    implements $PerformanceCopyWith<$Res> {
-  _$PerformanceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Performance
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acceleration = freezed,
-    Object? topSpeed = freezed,
-  }) {
-    return _then(_value.copyWith(
-      acceleration: freezed == acceleration
-          ? _value.acceleration
-          : acceleration // ignore: cast_nullable_to_non_nullable
-              as double?,
-      topSpeed: freezed == topSpeed
-          ? _value.topSpeed
-          : topSpeed // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PerformanceImplCopyWith<$Res>
-    implements $PerformanceCopyWith<$Res> {
-  factory _$$PerformanceImplCopyWith(
-          _$PerformanceImpl value, $Res Function(_$PerformanceImpl) then) =
-      __$$PerformanceImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double? acceleration, int? topSpeed});
-}
-
-/// @nodoc
-class __$$PerformanceImplCopyWithImpl<$Res>
-    extends _$PerformanceCopyWithImpl<$Res, _$PerformanceImpl>
-    implements _$$PerformanceImplCopyWith<$Res> {
-  __$$PerformanceImplCopyWithImpl(
-      _$PerformanceImpl _value, $Res Function(_$PerformanceImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Performance
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acceleration = freezed,
-    Object? topSpeed = freezed,
-  }) {
-    return _then(_$PerformanceImpl(
-      acceleration: freezed == acceleration
-          ? _value.acceleration
-          : acceleration // ignore: cast_nullable_to_non_nullable
-              as double?,
-      topSpeed: freezed == topSpeed
-          ? _value.topSpeed
-          : topSpeed // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PerformanceImpl implements _Performance {
-  const _$PerformanceImpl({required this.acceleration, required this.topSpeed});
-
-  factory _$PerformanceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PerformanceImplFromJson(json);
-
-  @override
-  final double? acceleration;
-  @override
-  final int? topSpeed;
-
-  @override
-  String toString() {
-    return 'Performance(acceleration: $acceleration, topSpeed: $topSpeed)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PerformanceImpl &&
-            (identical(other.acceleration, acceleration) ||
-                other.acceleration == acceleration) &&
-            (identical(other.topSpeed, topSpeed) ||
-                other.topSpeed == topSpeed));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, acceleration, topSpeed);
-
-  /// Create a copy of Performance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PerformanceImplCopyWith<_$PerformanceImpl> get copyWith =>
-      __$$PerformanceImplCopyWithImpl<_$PerformanceImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PerformanceImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Performance implements Performance {
-  const factory _Performance(
-      {required final double? acceleration,
-      required final int? topSpeed}) = _$PerformanceImpl;
-
-  factory _Performance.fromJson(Map<String, dynamic> json) =
-      _$PerformanceImpl.fromJson;
-
-  @override
-  double? get acceleration;
-  @override
-  int? get topSpeed;
-
-  /// Create a copy of Performance
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PerformanceImplCopyWith<_$PerformanceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 VehicleBody _$VehicleBodyFromJson(Map<String, dynamic> json) {
   return _VehicleBody.fromJson(json);
 }
@@ -1203,9 +1425,6 @@ VehicleBody _$VehicleBodyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VehicleBody {
   int? get seats => throw _privateConstructorUsedError;
-  int? get width => throw _privateConstructorUsedError;
-  int? get height => throw _privateConstructorUsedError;
-  Weight? get weight => throw _privateConstructorUsedError;
 
   /// Serializes this VehicleBody to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1223,9 +1442,7 @@ abstract class $VehicleBodyCopyWith<$Res> {
           VehicleBody value, $Res Function(VehicleBody) then) =
       _$VehicleBodyCopyWithImpl<$Res, VehicleBody>;
   @useResult
-  $Res call({int? seats, int? width, int? height, Weight? weight});
-
-  $WeightCopyWith<$Res>? get weight;
+  $Res call({int? seats});
 }
 
 /// @nodoc
@@ -1244,42 +1461,13 @@ class _$VehicleBodyCopyWithImpl<$Res, $Val extends VehicleBody>
   @override
   $Res call({
     Object? seats = freezed,
-    Object? width = freezed,
-    Object? height = freezed,
-    Object? weight = freezed,
   }) {
     return _then(_value.copyWith(
       seats: freezed == seats
           ? _value.seats
           : seats // ignore: cast_nullable_to_non_nullable
               as int?,
-      width: freezed == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int?,
-      height: freezed == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int?,
-      weight: freezed == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Weight?,
     ) as $Val);
-  }
-
-  /// Create a copy of VehicleBody
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $WeightCopyWith<$Res>? get weight {
-    if (_value.weight == null) {
-      return null;
-    }
-
-    return $WeightCopyWith<$Res>(_value.weight!, (value) {
-      return _then(_value.copyWith(weight: value) as $Val);
-    });
   }
 }
 
@@ -1291,10 +1479,7 @@ abstract class _$$VehicleBodyImplCopyWith<$Res>
       __$$VehicleBodyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? seats, int? width, int? height, Weight? weight});
-
-  @override
-  $WeightCopyWith<$Res>? get weight;
+  $Res call({int? seats});
 }
 
 /// @nodoc
@@ -1311,27 +1496,12 @@ class __$$VehicleBodyImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? seats = freezed,
-    Object? width = freezed,
-    Object? height = freezed,
-    Object? weight = freezed,
   }) {
     return _then(_$VehicleBodyImpl(
       seats: freezed == seats
           ? _value.seats
           : seats // ignore: cast_nullable_to_non_nullable
               as int?,
-      width: freezed == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int?,
-      height: freezed == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int?,
-      weight: freezed == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as Weight?,
     ));
   }
 }
@@ -1339,27 +1509,17 @@ class __$$VehicleBodyImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VehicleBodyImpl implements _VehicleBody {
-  const _$VehicleBodyImpl(
-      {required this.seats,
-      required this.width,
-      required this.height,
-      required this.weight});
+  const _$VehicleBodyImpl({required this.seats});
 
   factory _$VehicleBodyImpl.fromJson(Map<String, dynamic> json) =>
       _$$VehicleBodyImplFromJson(json);
 
   @override
   final int? seats;
-  @override
-  final int? width;
-  @override
-  final int? height;
-  @override
-  final Weight? weight;
 
   @override
   String toString() {
-    return 'VehicleBody(seats: $seats, width: $width, height: $height, weight: $weight)';
+    return 'VehicleBody(seats: $seats)';
   }
 
   @override
@@ -1367,15 +1527,12 @@ class _$VehicleBodyImpl implements _VehicleBody {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VehicleBodyImpl &&
-            (identical(other.seats, seats) || other.seats == seats) &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.weight, weight) || other.weight == weight));
+            (identical(other.seats, seats) || other.seats == seats));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, seats, width, height, weight);
+  int get hashCode => Object.hash(runtimeType, seats);
 
   /// Create a copy of VehicleBody
   /// with the given fields replaced by the non-null parameter values.
@@ -1394,210 +1551,19 @@ class _$VehicleBodyImpl implements _VehicleBody {
 }
 
 abstract class _VehicleBody implements VehicleBody {
-  const factory _VehicleBody(
-      {required final int? seats,
-      required final int? width,
-      required final int? height,
-      required final Weight? weight}) = _$VehicleBodyImpl;
+  const factory _VehicleBody({required final int? seats}) = _$VehicleBodyImpl;
 
   factory _VehicleBody.fromJson(Map<String, dynamic> json) =
       _$VehicleBodyImpl.fromJson;
 
   @override
   int? get seats;
-  @override
-  int? get width;
-  @override
-  int? get height;
-  @override
-  Weight? get weight;
 
   /// Create a copy of VehicleBody
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VehicleBodyImplCopyWith<_$VehicleBodyImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Weight _$WeightFromJson(Map<String, dynamic> json) {
-  return _Weight.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Weight {
-  int? get minimum => throw _privateConstructorUsedError;
-  int? get nominal => throw _privateConstructorUsedError;
-  int? get maximal => throw _privateConstructorUsedError;
-
-  /// Serializes this Weight to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Weight
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $WeightCopyWith<Weight> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeightCopyWith<$Res> {
-  factory $WeightCopyWith(Weight value, $Res Function(Weight) then) =
-      _$WeightCopyWithImpl<$Res, Weight>;
-  @useResult
-  $Res call({int? minimum, int? nominal, int? maximal});
-}
-
-/// @nodoc
-class _$WeightCopyWithImpl<$Res, $Val extends Weight>
-    implements $WeightCopyWith<$Res> {
-  _$WeightCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Weight
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? minimum = freezed,
-    Object? nominal = freezed,
-    Object? maximal = freezed,
-  }) {
-    return _then(_value.copyWith(
-      minimum: freezed == minimum
-          ? _value.minimum
-          : minimum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      nominal: freezed == nominal
-          ? _value.nominal
-          : nominal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      maximal: freezed == maximal
-          ? _value.maximal
-          : maximal // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WeightImplCopyWith<$Res> implements $WeightCopyWith<$Res> {
-  factory _$$WeightImplCopyWith(
-          _$WeightImpl value, $Res Function(_$WeightImpl) then) =
-      __$$WeightImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? minimum, int? nominal, int? maximal});
-}
-
-/// @nodoc
-class __$$WeightImplCopyWithImpl<$Res>
-    extends _$WeightCopyWithImpl<$Res, _$WeightImpl>
-    implements _$$WeightImplCopyWith<$Res> {
-  __$$WeightImplCopyWithImpl(
-      _$WeightImpl _value, $Res Function(_$WeightImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Weight
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? minimum = freezed,
-    Object? nominal = freezed,
-    Object? maximal = freezed,
-  }) {
-    return _then(_$WeightImpl(
-      minimum: freezed == minimum
-          ? _value.minimum
-          : minimum // ignore: cast_nullable_to_non_nullable
-              as int?,
-      nominal: freezed == nominal
-          ? _value.nominal
-          : nominal // ignore: cast_nullable_to_non_nullable
-              as int?,
-      maximal: freezed == maximal
-          ? _value.maximal
-          : maximal // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WeightImpl implements _Weight {
-  const _$WeightImpl(
-      {required this.minimum, required this.nominal, required this.maximal});
-
-  factory _$WeightImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WeightImplFromJson(json);
-
-  @override
-  final int? minimum;
-  @override
-  final int? nominal;
-  @override
-  final int? maximal;
-
-  @override
-  String toString() {
-    return 'Weight(minimum: $minimum, nominal: $nominal, maximal: $maximal)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WeightImpl &&
-            (identical(other.minimum, minimum) || other.minimum == minimum) &&
-            (identical(other.nominal, nominal) || other.nominal == nominal) &&
-            (identical(other.maximal, maximal) || other.maximal == maximal));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, minimum, nominal, maximal);
-
-  /// Create a copy of Weight
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WeightImplCopyWith<_$WeightImpl> get copyWith =>
-      __$$WeightImplCopyWithImpl<_$WeightImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WeightImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Weight implements Weight {
-  const factory _Weight(
-      {required final int? minimum,
-      required final int? nominal,
-      required final int? maximal}) = _$WeightImpl;
-
-  factory _Weight.fromJson(Map<String, dynamic> json) = _$WeightImpl.fromJson;
-
-  @override
-  int? get minimum;
-  @override
-  int? get nominal;
-  @override
-  int? get maximal;
-
-  /// Create a copy of Weight
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WeightImplCopyWith<_$WeightImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1921,5 +1887,491 @@ abstract class _ChargeTripRange implements ChargeTripRange {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChargeTripRangeImplCopyWith<_$ChargeTripRangeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Media _$MediaFromJson(Map<String, dynamic> json) {
+  return _Media.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Media {
+  MediaContent? get image => throw _privateConstructorUsedError;
+  MediaContent? get brand => throw _privateConstructorUsedError;
+
+  /// Serializes this Media to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $MediaCopyWith<Media> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MediaCopyWith<$Res> {
+  factory $MediaCopyWith(Media value, $Res Function(Media) then) =
+      _$MediaCopyWithImpl<$Res, Media>;
+  @useResult
+  $Res call({MediaContent? image, MediaContent? brand});
+
+  $MediaContentCopyWith<$Res>? get image;
+  $MediaContentCopyWith<$Res>? get brand;
+}
+
+/// @nodoc
+class _$MediaCopyWithImpl<$Res, $Val extends Media>
+    implements $MediaCopyWith<$Res> {
+  _$MediaCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = freezed,
+    Object? brand = freezed,
+  }) {
+    return _then(_value.copyWith(
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as MediaContent?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as MediaContent?,
+    ) as $Val);
+  }
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MediaContentCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $MediaContentCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MediaContentCopyWith<$Res>? get brand {
+    if (_value.brand == null) {
+      return null;
+    }
+
+    return $MediaContentCopyWith<$Res>(_value.brand!, (value) {
+      return _then(_value.copyWith(brand: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$MediaImplCopyWith<$Res> implements $MediaCopyWith<$Res> {
+  factory _$$MediaImplCopyWith(
+          _$MediaImpl value, $Res Function(_$MediaImpl) then) =
+      __$$MediaImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MediaContent? image, MediaContent? brand});
+
+  @override
+  $MediaContentCopyWith<$Res>? get image;
+  @override
+  $MediaContentCopyWith<$Res>? get brand;
+}
+
+/// @nodoc
+class __$$MediaImplCopyWithImpl<$Res>
+    extends _$MediaCopyWithImpl<$Res, _$MediaImpl>
+    implements _$$MediaImplCopyWith<$Res> {
+  __$$MediaImplCopyWithImpl(
+      _$MediaImpl _value, $Res Function(_$MediaImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = freezed,
+    Object? brand = freezed,
+  }) {
+    return _then(_$MediaImpl(
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as MediaContent?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as MediaContent?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MediaImpl implements _Media {
+  const _$MediaImpl({required this.image, required this.brand});
+
+  factory _$MediaImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MediaImplFromJson(json);
+
+  @override
+  final MediaContent? image;
+  @override
+  final MediaContent? brand;
+
+  @override
+  String toString() {
+    return 'Media(image: $image, brand: $brand)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MediaImpl &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.brand, brand) || other.brand == brand));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, image, brand);
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MediaImplCopyWith<_$MediaImpl> get copyWith =>
+      __$$MediaImplCopyWithImpl<_$MediaImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MediaImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Media implements Media {
+  const factory _Media(
+      {required final MediaContent? image,
+      required final MediaContent? brand}) = _$MediaImpl;
+
+  factory _Media.fromJson(Map<String, dynamic> json) = _$MediaImpl.fromJson;
+
+  @override
+  MediaContent? get image;
+  @override
+  MediaContent? get brand;
+
+  /// Create a copy of Media
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MediaImplCopyWith<_$MediaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MediaContent _$MediaContentFromJson(Map<String, dynamic> json) {
+  return _MediaContent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MediaContent {
+  String? get id => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+  int? get height => throw _privateConstructorUsedError;
+  int? get width => throw _privateConstructorUsedError;
+  @JsonKey(name: 'thumbnail_url')
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'thumbnail_height')
+  int? get thumbnailHeight => throw _privateConstructorUsedError;
+  @JsonKey(name: 'thumbnail_width')
+  int? get thumbnailWidth => throw _privateConstructorUsedError;
+
+  /// Serializes this MediaContent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of MediaContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $MediaContentCopyWith<MediaContent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MediaContentCopyWith<$Res> {
+  factory $MediaContentCopyWith(
+          MediaContent value, $Res Function(MediaContent) then) =
+      _$MediaContentCopyWithImpl<$Res, MediaContent>;
+  @useResult
+  $Res call(
+      {String? id,
+      String? url,
+      int? height,
+      int? width,
+      @JsonKey(name: 'thumbnail_url') String? thumbnailUrl,
+      @JsonKey(name: 'thumbnail_height') int? thumbnailHeight,
+      @JsonKey(name: 'thumbnail_width') int? thumbnailWidth});
+}
+
+/// @nodoc
+class _$MediaContentCopyWithImpl<$Res, $Val extends MediaContent>
+    implements $MediaContentCopyWith<$Res> {
+  _$MediaContentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of MediaContent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? url = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? thumbnailHeight = freezed,
+    Object? thumbnailWidth = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnailHeight: freezed == thumbnailHeight
+          ? _value.thumbnailHeight
+          : thumbnailHeight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailWidth: freezed == thumbnailWidth
+          ? _value.thumbnailWidth
+          : thumbnailWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MediaContentImplCopyWith<$Res>
+    implements $MediaContentCopyWith<$Res> {
+  factory _$$MediaContentImplCopyWith(
+          _$MediaContentImpl value, $Res Function(_$MediaContentImpl) then) =
+      __$$MediaContentImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? id,
+      String? url,
+      int? height,
+      int? width,
+      @JsonKey(name: 'thumbnail_url') String? thumbnailUrl,
+      @JsonKey(name: 'thumbnail_height') int? thumbnailHeight,
+      @JsonKey(name: 'thumbnail_width') int? thumbnailWidth});
+}
+
+/// @nodoc
+class __$$MediaContentImplCopyWithImpl<$Res>
+    extends _$MediaContentCopyWithImpl<$Res, _$MediaContentImpl>
+    implements _$$MediaContentImplCopyWith<$Res> {
+  __$$MediaContentImplCopyWithImpl(
+      _$MediaContentImpl _value, $Res Function(_$MediaContentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MediaContent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? url = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? thumbnailHeight = freezed,
+    Object? thumbnailWidth = freezed,
+  }) {
+    return _then(_$MediaContentImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      height: freezed == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int?,
+      width: freezed == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnailHeight: freezed == thumbnailHeight
+          ? _value.thumbnailHeight
+          : thumbnailHeight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailWidth: freezed == thumbnailWidth
+          ? _value.thumbnailWidth
+          : thumbnailWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MediaContentImpl implements _MediaContent {
+  const _$MediaContentImpl(
+      {required this.id,
+      required this.url,
+      required this.height,
+      required this.width,
+      @JsonKey(name: 'thumbnail_url') required this.thumbnailUrl,
+      @JsonKey(name: 'thumbnail_height') required this.thumbnailHeight,
+      @JsonKey(name: 'thumbnail_width') required this.thumbnailWidth});
+
+  factory _$MediaContentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MediaContentImplFromJson(json);
+
+  @override
+  final String? id;
+  @override
+  final String? url;
+  @override
+  final int? height;
+  @override
+  final int? width;
+  @override
+  @JsonKey(name: 'thumbnail_url')
+  final String? thumbnailUrl;
+  @override
+  @JsonKey(name: 'thumbnail_height')
+  final int? thumbnailHeight;
+  @override
+  @JsonKey(name: 'thumbnail_width')
+  final int? thumbnailWidth;
+
+  @override
+  String toString() {
+    return 'MediaContent(id: $id, url: $url, height: $height, width: $width, thumbnailUrl: $thumbnailUrl, thumbnailHeight: $thumbnailHeight, thumbnailWidth: $thumbnailWidth)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MediaContentImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                other.thumbnailUrl == thumbnailUrl) &&
+            (identical(other.thumbnailHeight, thumbnailHeight) ||
+                other.thumbnailHeight == thumbnailHeight) &&
+            (identical(other.thumbnailWidth, thumbnailWidth) ||
+                other.thumbnailWidth == thumbnailWidth));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, url, height, width,
+      thumbnailUrl, thumbnailHeight, thumbnailWidth);
+
+  /// Create a copy of MediaContent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MediaContentImplCopyWith<_$MediaContentImpl> get copyWith =>
+      __$$MediaContentImplCopyWithImpl<_$MediaContentImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MediaContentImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MediaContent implements MediaContent {
+  const factory _MediaContent(
+      {required final String? id,
+      required final String? url,
+      required final int? height,
+      required final int? width,
+      @JsonKey(name: 'thumbnail_url') required final String? thumbnailUrl,
+      @JsonKey(name: 'thumbnail_height') required final int? thumbnailHeight,
+      @JsonKey(name: 'thumbnail_width')
+      required final int? thumbnailWidth}) = _$MediaContentImpl;
+
+  factory _MediaContent.fromJson(Map<String, dynamic> json) =
+      _$MediaContentImpl.fromJson;
+
+  @override
+  String? get id;
+  @override
+  String? get url;
+  @override
+  int? get height;
+  @override
+  int? get width;
+  @override
+  @JsonKey(name: 'thumbnail_url')
+  String? get thumbnailUrl;
+  @override
+  @JsonKey(name: 'thumbnail_height')
+  int? get thumbnailHeight;
+  @override
+  @JsonKey(name: 'thumbnail_width')
+  int? get thumbnailWidth;
+
+  /// Create a copy of MediaContent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MediaContentImplCopyWith<_$MediaContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

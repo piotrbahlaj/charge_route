@@ -9,14 +9,14 @@ part 'vehicle_detail_response.g.dart';
 @JsonSerializable(explicitToJson: true)
 class VehicleDetailResponse with _$VehicleDetailResponse {
   const factory VehicleDetailResponse({
-    @JsonKey(name: 'vehicleList') List<Vehicle>? vehicles,
+    @JsonKey(name: 'vehicleList') List<Vehicle>? vehiclesList,
   }) = _VehicleDetailResponse;
 
   factory VehicleDetailResponse.fromJson(Map<String, dynamic> json) {
     final data = json['data'] as Map<String, dynamic>?;
 
     if (data == null || data['vehicleList'] == null) {
-      return const VehicleDetailResponse(vehicles: []);
+      return const VehicleDetailResponse(vehiclesList: []);
     }
 
     return _$VehicleDetailResponseFromJson(data);
@@ -28,11 +28,13 @@ class Vehicle with _$Vehicle {
   const factory Vehicle({
     required String id,
     required Naming? naming,
+    required Drivetrain? drivetrain,
+    required List<Connectors>? connectors,
     required Battery? battery,
     required Range? range,
-    required Performance? performance, // Add performance
-    required VehicleBody? body, // Add body dimensions and seats
+    required VehicleBody? body,
     required Routing? routing,
+    required Media? media,
   }) = _Vehicle;
 
   factory Vehicle.fromJson(Map<String, dynamic> json) => _$VehicleFromJson(json);
@@ -43,9 +45,28 @@ class Naming with _$Naming {
   const factory Naming({
     required String? make,
     required String? model,
+    required String? version,
   }) = _Naming;
 
   factory Naming.fromJson(Map<String, dynamic> json) => _$NamingFromJson(json);
+}
+
+@freezed
+class Drivetrain with _$Drivetrain {
+  const factory Drivetrain({
+    required String? type,
+  }) = _Drivetrain;
+
+  factory Drivetrain.fromJson(Map<String, dynamic> json) => _$DrivetrainFromJson(json);
+}
+
+@freezed
+class Connectors with _$Connectors {
+  const factory Connectors({
+    required String? standard,
+  }) = _Connectors;
+
+  factory Connectors.fromJson(Map<String, dynamic> json) => _$ConnectorsFromJson(json);
 }
 
 @freezed
@@ -67,36 +88,12 @@ class Range with _$Range {
 }
 
 @freezed
-class Performance with _$Performance {
-  const factory Performance({
-    required double? acceleration,
-    required int? topSpeed,
-  }) = _Performance;
-
-  factory Performance.fromJson(Map<String, dynamic> json) => _$PerformanceFromJson(json);
-}
-
-@freezed
 class VehicleBody with _$VehicleBody {
   const factory VehicleBody({
     required int? seats,
-    required int? width,
-    required int? height,
-    required Weight? weight,
   }) = _VehicleBody;
 
   factory VehicleBody.fromJson(Map<String, dynamic> json) => _$VehicleBodyFromJson(json);
-}
-
-@freezed
-class Weight with _$Weight {
-  const factory Weight({
-    required int? minimum,
-    required int? nominal,
-    required int? maximal,
-  }) = _Weight;
-
-  factory Weight.fromJson(Map<String, dynamic> json) => _$WeightFromJson(json);
 }
 
 @freezed
@@ -116,4 +113,29 @@ class ChargeTripRange with _$ChargeTripRange {
   }) = _ChargeTripRange;
 
   factory ChargeTripRange.fromJson(Map<String, dynamic> json) => _$ChargeTripRangeFromJson(json);
+}
+
+@freezed
+class Media with _$Media {
+  const factory Media({
+    required MediaContent? image,
+    required MediaContent? brand,
+  }) = _Media;
+
+  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
+}
+
+@freezed
+class MediaContent with _$MediaContent {
+  const factory MediaContent({
+    required String? id,
+    required String? url,
+    required int? height,
+    required int? width,
+    @JsonKey(name: 'thumbnail_url') required String? thumbnailUrl,
+    @JsonKey(name: 'thumbnail_height') required int? thumbnailHeight,
+    @JsonKey(name: 'thumbnail_width') required int? thumbnailWidth,
+  }) = _MediaContent;
+
+  factory MediaContent.fromJson(Map<String, dynamic> json) => _$MediaContentFromJson(json);
 }

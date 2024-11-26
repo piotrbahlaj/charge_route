@@ -70,25 +70,103 @@ class CarDetailsView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          const SizedBox(width: 10),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Icon(
-                                Icons.directions_car,
-                                size: 50,
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                              const SizedBox(width: 10),
                               Text(
                                 '${vehicle.naming?.make} ${vehicle.naming?.model}',
+                                textAlign: TextAlign.center,
                                 style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                   color: Theme.of(context).colorScheme.onSurface,
                                 ),
                               ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  vehicle.media!.brand!.url!,
+                                  height: 38,
+                                  width: 50,
+                                  fit: BoxFit.cover,
+                                  loadingBuilder: (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child;
+                                    }
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress.expectedTotalBytes != null
+                                            ? loadingProgress.cumulativeBytesLoaded /
+                                                loadingProgress.expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Center(
+                                      child: Text(
+                                        'Failed to load image',
+                                        style: GoogleFonts.roboto(
+                                          fontSize: 14,
+                                          color: Theme.of(context).colorScheme.onSurface,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ],
                           ),
-                          const SizedBox(height: 20),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              vehicle.media!.image!.url!,
+                              height: 200,
+                              width: double.infinity,
+                              fit: BoxFit.fitWidth,
+                              loadingBuilder: (context, child, loadingProgress) {
+                                if (loadingProgress == null) {
+                                  return child;
+                                }
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes != null
+                                        ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                        : null,
+                                  ),
+                                );
+                              },
+                              errorBuilder: (context, error, stackTrace) {
+                                return Center(
+                                  child: Text(
+                                    'Failed to load image',
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 14,
+                                      color: Theme.of(context).colorScheme.onSurface,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Model: ${vehicle.naming?.version ?? 'N/A'}',
+                            style: GoogleFonts.roboto(
+                              fontSize: 16,
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Type: ${vehicle.drivetrain?.type ?? 'N/A'}',
+                            style: GoogleFonts.roboto(
+                              fontSize: 16,
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
                           Text(
                             'Battery: ${vehicle.battery?.usableKwh ?? 'N/A'} kWh',
                             style: GoogleFonts.roboto(
@@ -106,23 +184,7 @@ class CarDetailsView extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            'Top Speed: ${vehicle.performance?.topSpeed ?? 'N/A'} ',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Acceleration (0-100 km/h): ${vehicle.performance?.acceleration ?? 'N/A'} ',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Weight (Nominal): ${vehicle.body?.weight?.nominal ?? 'N/A'}',
+                            'Number of Seats: ${vehicle.body?.seats ?? 'N/A'}',
                             style: GoogleFonts.roboto(
                               fontSize: 16,
                               color: Theme.of(context).colorScheme.onSurface,
