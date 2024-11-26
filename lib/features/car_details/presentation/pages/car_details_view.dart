@@ -55,7 +55,6 @@ class CarDetailsView extends StatelessWidget {
               if (state.isLoading) {
                 return const Center(child: CircularProgressIndicator());
               }
-
               if (state.selectedVehicle != null) {
                 final vehicle = state.selectedVehicle!;
                 return Padding(
@@ -163,19 +162,13 @@ class CarDetailsView extends StatelessWidget {
                 return SizedBox(
                   height: 300,
                   child: ListView.builder(
+                    shrinkWrap: true,
                     itemCount: state.suggestions.length,
                     itemBuilder: (context, index) {
                       final vehicle = state.suggestions[index];
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 1),
-                        ),
-                        elevation: 3,
-                        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: ListTile(
+                      return Column(
+                        children: [
+                          ListTile(
                             leading: Icon(
                               Icons.directions_car,
                               size: 40,
@@ -184,8 +177,6 @@ class CarDetailsView extends StatelessWidget {
                             title: Text(
                               '${vehicle.naming?.make} ${vehicle.naming?.model}',
                               style: GoogleFonts.roboto(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
@@ -195,7 +186,13 @@ class CarDetailsView extends StatelessWidget {
                               focusNode.unfocus();
                             },
                           ),
-                        ),
+                          Divider(
+                            color: Theme.of(context).colorScheme.onSecondary,
+                            thickness: 0.5,
+                            endIndent: 15,
+                            indent: 15,
+                          ),
+                        ],
                       );
                     },
                   ),
