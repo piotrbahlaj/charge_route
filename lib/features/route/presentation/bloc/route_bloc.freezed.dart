@@ -24,6 +24,7 @@ mixin _$RouteEvent {
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$RouteEvent {
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$RouteEvent {
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$RouteEvent {
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +75,7 @@ mixin _$RouteEvent {
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +88,7 @@ mixin _$RouteEvent {
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,6 +207,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return initalizeRoute(routeData);
   }
@@ -214,6 +221,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return initalizeRoute?.call(routeData);
   }
@@ -227,6 +235,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -248,6 +257,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return initalizeRoute(this);
   }
@@ -263,6 +273,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return initalizeRoute?.call(this);
   }
@@ -278,6 +289,7 @@ class _$InitalizeRouteEventImpl implements InitalizeRouteEvent {
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (initalizeRoute != null) {
@@ -378,6 +390,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return updateRouteProgress(stepIndex);
   }
@@ -391,6 +404,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return updateRouteProgress?.call(stepIndex);
   }
@@ -404,6 +418,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (updateRouteProgress != null) {
@@ -425,6 +440,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return updateRouteProgress(this);
   }
@@ -440,6 +456,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return updateRouteProgress?.call(this);
   }
@@ -455,6 +472,7 @@ class _$UpdateRouteProgressEventImpl implements UpdateRouteProgressEvent {
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (updateRouteProgress != null) {
@@ -528,6 +546,7 @@ class _$StartTrackingUserLocationEventImpl
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return startTrackingUserLocation();
   }
@@ -541,6 +560,7 @@ class _$StartTrackingUserLocationEventImpl
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return startTrackingUserLocation?.call();
   }
@@ -554,6 +574,7 @@ class _$StartTrackingUserLocationEventImpl
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (startTrackingUserLocation != null) {
@@ -575,6 +596,7 @@ class _$StartTrackingUserLocationEventImpl
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return startTrackingUserLocation(this);
   }
@@ -590,6 +612,7 @@ class _$StartTrackingUserLocationEventImpl
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return startTrackingUserLocation?.call(this);
   }
@@ -605,6 +628,7 @@ class _$StartTrackingUserLocationEventImpl
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (startTrackingUserLocation != null) {
@@ -670,6 +694,7 @@ class _$StopTrackingUserLocationEventImpl
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return stopTrackingUserLocation();
   }
@@ -683,6 +708,7 @@ class _$StopTrackingUserLocationEventImpl
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return stopTrackingUserLocation?.call();
   }
@@ -696,6 +722,7 @@ class _$StopTrackingUserLocationEventImpl
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (stopTrackingUserLocation != null) {
@@ -717,6 +744,7 @@ class _$StopTrackingUserLocationEventImpl
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return stopTrackingUserLocation(this);
   }
@@ -732,6 +760,7 @@ class _$StopTrackingUserLocationEventImpl
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return stopTrackingUserLocation?.call(this);
   }
@@ -747,6 +776,7 @@ class _$StopTrackingUserLocationEventImpl
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (stopTrackingUserLocation != null) {
@@ -837,6 +867,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return userOffRoute(userPosition);
   }
@@ -850,6 +881,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return userOffRoute?.call(userPosition);
   }
@@ -863,6 +895,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (userOffRoute != null) {
@@ -884,6 +917,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return userOffRoute(this);
   }
@@ -899,6 +933,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return userOffRoute?.call(this);
   }
@@ -914,6 +949,7 @@ class _$UserOffRouteEventImpl implements UserOffRouteEvent {
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (userOffRoute != null) {
@@ -986,6 +1022,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
     required TResult Function() stopTrackingUserLocation,
     required TResult Function(LatLng userPosition) userOffRoute,
     required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
   }) {
     return arrivedAtDestination();
   }
@@ -999,6 +1036,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
     TResult? Function()? stopTrackingUserLocation,
     TResult? Function(LatLng userPosition)? userOffRoute,
     TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
   }) {
     return arrivedAtDestination?.call();
   }
@@ -1012,6 +1050,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
     TResult Function()? stopTrackingUserLocation,
     TResult Function(LatLng userPosition)? userOffRoute,
     TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
     required TResult orElse(),
   }) {
     if (arrivedAtDestination != null) {
@@ -1033,6 +1072,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
     required TResult Function(UserOffRouteEvent value) userOffRoute,
     required TResult Function(ArrivedAtDestinationEvent value)
         arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
   }) {
     return arrivedAtDestination(this);
   }
@@ -1048,6 +1088,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
         stopTrackingUserLocation,
     TResult? Function(UserOffRouteEvent value)? userOffRoute,
     TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
   }) {
     return arrivedAtDestination?.call(this);
   }
@@ -1063,6 +1104,7 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
         stopTrackingUserLocation,
     TResult Function(UserOffRouteEvent value)? userOffRoute,
     TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
     required TResult orElse(),
   }) {
     if (arrivedAtDestination != null) {
@@ -1074,6 +1116,149 @@ class _$ArrivedAtDestinationEventImpl implements ArrivedAtDestinationEvent {
 
 abstract class ArrivedAtDestinationEvent implements RouteEvent {
   const factory ArrivedAtDestinationEvent() = _$ArrivedAtDestinationEventImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteRouteEventImplCopyWith<$Res> {
+  factory _$$DeleteRouteEventImplCopyWith(_$DeleteRouteEventImpl value,
+          $Res Function(_$DeleteRouteEventImpl) then) =
+      __$$DeleteRouteEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteRouteEventImplCopyWithImpl<$Res>
+    extends _$RouteEventCopyWithImpl<$Res, _$DeleteRouteEventImpl>
+    implements _$$DeleteRouteEventImplCopyWith<$Res> {
+  __$$DeleteRouteEventImplCopyWithImpl(_$DeleteRouteEventImpl _value,
+      $Res Function(_$DeleteRouteEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteRouteEventImpl implements DeleteRouteEvent {
+  const _$DeleteRouteEventImpl();
+
+  @override
+  String toString() {
+    return 'RouteEvent.deleteRoute()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteRouteEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RouteResponse? routeData) initalizeRoute,
+    required TResult Function(int stepIndex) updateRouteProgress,
+    required TResult Function() startTrackingUserLocation,
+    required TResult Function() stopTrackingUserLocation,
+    required TResult Function(LatLng userPosition) userOffRoute,
+    required TResult Function() arrivedAtDestination,
+    required TResult Function() deleteRoute,
+  }) {
+    return deleteRoute();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RouteResponse? routeData)? initalizeRoute,
+    TResult? Function(int stepIndex)? updateRouteProgress,
+    TResult? Function()? startTrackingUserLocation,
+    TResult? Function()? stopTrackingUserLocation,
+    TResult? Function(LatLng userPosition)? userOffRoute,
+    TResult? Function()? arrivedAtDestination,
+    TResult? Function()? deleteRoute,
+  }) {
+    return deleteRoute?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RouteResponse? routeData)? initalizeRoute,
+    TResult Function(int stepIndex)? updateRouteProgress,
+    TResult Function()? startTrackingUserLocation,
+    TResult Function()? stopTrackingUserLocation,
+    TResult Function(LatLng userPosition)? userOffRoute,
+    TResult Function()? arrivedAtDestination,
+    TResult Function()? deleteRoute,
+    required TResult orElse(),
+  }) {
+    if (deleteRoute != null) {
+      return deleteRoute();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitalizeRouteEvent value) initalizeRoute,
+    required TResult Function(UpdateRouteProgressEvent value)
+        updateRouteProgress,
+    required TResult Function(StartTrackingUserLocationEvent value)
+        startTrackingUserLocation,
+    required TResult Function(StopTrackingUserLocationEvent value)
+        stopTrackingUserLocation,
+    required TResult Function(UserOffRouteEvent value) userOffRoute,
+    required TResult Function(ArrivedAtDestinationEvent value)
+        arrivedAtDestination,
+    required TResult Function(DeleteRouteEvent value) deleteRoute,
+  }) {
+    return deleteRoute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult? Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+    TResult? Function(StartTrackingUserLocationEvent value)?
+        startTrackingUserLocation,
+    TResult? Function(StopTrackingUserLocationEvent value)?
+        stopTrackingUserLocation,
+    TResult? Function(UserOffRouteEvent value)? userOffRoute,
+    TResult? Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult? Function(DeleteRouteEvent value)? deleteRoute,
+  }) {
+    return deleteRoute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitalizeRouteEvent value)? initalizeRoute,
+    TResult Function(UpdateRouteProgressEvent value)? updateRouteProgress,
+    TResult Function(StartTrackingUserLocationEvent value)?
+        startTrackingUserLocation,
+    TResult Function(StopTrackingUserLocationEvent value)?
+        stopTrackingUserLocation,
+    TResult Function(UserOffRouteEvent value)? userOffRoute,
+    TResult Function(ArrivedAtDestinationEvent value)? arrivedAtDestination,
+    TResult Function(DeleteRouteEvent value)? deleteRoute,
+    required TResult orElse(),
+  }) {
+    if (deleteRoute != null) {
+      return deleteRoute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteRouteEvent implements RouteEvent {
+  const factory DeleteRouteEvent() = _$DeleteRouteEventImpl;
 }
 
 /// @nodoc

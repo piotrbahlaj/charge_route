@@ -22,6 +22,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     on<UpdateRouteProgressEvent>(_onUpdateRouteProgress);
     on<UserOffRouteEvent>(_onUserOffRoute);
     on<ArrivedAtDestinationEvent>(_onArrivedAtDestination);
+    on<DeleteRouteEvent>(_onDeleteRoute);
   }
 
   @override
@@ -58,13 +59,13 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
     if (isOffRoute) {
       add(UserOffRouteEvent(userPosition));
-    } else if (distanceToCurrentStepEnd < 2 && nextStep != null) {
+    } else if (distanceToCurrentStepEnd < 5 && nextStep != null) {
       add(UpdateRouteProgressEvent(state.currentStepIndex + 1));
     }
   }
 
   bool _isUserOffRoute(LatLng userPosition) {
-    const double deviationThreshold = 30.0;
+    const double deviationThreshold = 60.0;
     for (var polylinePoint in state.polylinePoints) {
       final distanceToPolylinePoint = repository.calculateDistance(userPosition, polylinePoint);
       if (distanceToPolylinePoint <= deviationThreshold) {
@@ -158,5 +159,23 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
   Future<void> _onArrivedAtDestination(ArrivedAtDestinationEvent event, Emitter<RouteState> emit) async {
     emit(state.copyWith(hasArrived: true));
+  }
+
+  Future<void> _onDeleteRoute(DeleteRouteEvent event, Emitter<RouteState> emit) async {
+    emit(state.copyWith(
+      route: null,
+      polylinePoints: [],
+      steps: [],
+      currentStepIndex: 0,
+      currentStepDistance: null,
+      currentStepDuration: null,
+      currentInstruction: null,
+      distance: null,
+      duration: null,
+      isRecalculating: false,
+      hasArrived: false,
+      errorMessage: null,
+    ));
+    _positionStreamSubscription?.cancel();
   }
 }
