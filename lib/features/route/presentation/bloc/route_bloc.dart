@@ -65,7 +65,11 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   bool _isUserOffRoute(LatLng userPosition) {
-    const double deviationThreshold = 60.0;
+    const double standardDeviationThreshold = 20.0;
+    const double firstStepDeviationThreshold = 80.0; // Allow more tolerance for the first step
+
+    final deviationThreshold = state.currentStepIndex == 0 ? firstStepDeviationThreshold : standardDeviationThreshold;
+
     for (var polylinePoint in state.polylinePoints) {
       final distanceToPolylinePoint = repository.calculateDistance(userPosition, polylinePoint);
       if (distanceToPolylinePoint <= deviationThreshold) {
