@@ -129,15 +129,25 @@ class DashboardSearchBar extends StatelessWidget {
                         itemCount: state.suggestions.length,
                         itemBuilder: (context, index) {
                           final suggestion = state.suggestions[index];
-                          return ListTile(
-                            title: Text(suggestion.description),
-                            onTap: () async {
-                              bloc.add(FetchPlaceDetailsEvent(suggestion.placeId, field));
-                              controller.text = suggestion.description;
-                              print('Set place: ${suggestion.description}');
-                              focusNode.unfocus();
-                              bloc.add(const ClearSuggestionsEvent());
-                            },
+                          return Column(
+                            children: [
+                              ListTile(
+                                title: Text(suggestion.description),
+                                onTap: () {
+                                  bloc.add(FetchPlaceDetailsEvent(suggestion.placeId, field));
+                                  controller.text = suggestion.description;
+                                  print('Set place: ${suggestion.description}');
+                                  focusNode.unfocus();
+                                  bloc.add(const ClearSuggestionsEvent());
+                                },
+                              ),
+                              Divider(
+                                color: Theme.of(context).colorScheme.onSecondary,
+                                thickness: 0.5,
+                                endIndent: 15,
+                                indent: 15,
+                              ),
+                            ],
                           );
                         },
                       ),

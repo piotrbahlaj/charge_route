@@ -6,11 +6,11 @@ import 'package:charge_route/%20core/models/route/route_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'api_service.g.dart';
+part 'google_api_service.g.dart';
 
 @RestApi()
-abstract class ApiService {
-  factory ApiService(Dio dio) = _ApiService;
+abstract class GoogleApiService {
+  factory GoogleApiService(Dio dio) = _GoogleApiService;
 
   @GET("place/autocomplete/json")
   Future<PlacesAutocompleteResponse> getAutocompleteSuggestions(

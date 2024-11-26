@@ -1,8 +1,13 @@
 import 'package:charge_route/%20core/network/api_client.dart';
-import 'package:charge_route/%20core/services/api_service.dart';
+import 'package:charge_route/%20core/services/ev_api_service/ev_api_service.dart';
+import 'package:charge_route/%20core/services/google_api_service/google_api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
-import 'package:charge_route/config/google_env_config/environment_config.dart';
-import 'package:charge_route/config/google_env_config/environment_config_interface.dart';
+import 'package:charge_route/config/ev_env_config/ev_environment_config.dart';
+import 'package:charge_route/config/ev_env_config/ev_environment_config_interface.dart';
+import 'package:charge_route/config/google_env_config/google_environment_config.dart';
+import 'package:charge_route/config/google_env_config/google_environment_config_interface.dart';
+import 'package:charge_route/features/car_details/domain/repository/car_details_repository.dart';
+import 'package:charge_route/features/car_details/domain/repository/car_details_repository_interface.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository.dart';
@@ -12,36 +17,82 @@ import 'package:get_it/get_it.dart';
 final GetIt getIt = GetIt.instance;
 
 void setupLocator() {
-  getIt.registerSingleton<EnvironmentConfigInterface>(EnvironmentConfig());
+  // Google API Configuration
+  getIt.registerSingleton<GoogleEnvironmentConfigInterface>(
+    GoogleEnvironmentConfig(),
+    instanceName: 'GoogleConfig',
+  );
 
-  //api client
-  getIt.registerLazySingleton<ApiClient>(() {
-    final environmentConfig = getIt<EnvironmentConfigInterface>();
-    return ApiClient(environmentConfigInterface: environmentConfig);
-  });
+  // EV API Configuration
+  getIt.registerSingleton<EvEnvironmentConfigInterface>(
+    EvEnvironmentConfig(),
+    instanceName: 'EvConfig',
+  );
 
-  //api service
-  getIt.registerLazySingleton<ApiService>(() {
-    final apiClient = getIt<ApiClient>();
-    return ApiService(apiClient.dio);
-  });
+  // Google ApiClient
+  getIt.registerLazySingleton<ApiClient>(
+    () {
+      final googleConfig = getIt<GoogleEnvironmentConfigInterface>(instanceName: 'GoogleConfig');
+      final client = ApiClient(baseUrl: googleConfig.baseUrl);
+      client.setApiKey(googleConfig.apiKey);
+      return client;
+    },
+    instanceName: 'GoogleApiClient',
+  );
 
-  //location service
+  // EV ApiClient
+  getIt.registerLazySingleton<ApiClient>(
+    () {
+      final evConfig = getIt<EvEnvironmentConfigInterface>(instanceName: 'EvConfig');
+      final client = ApiClient(baseUrl: evConfig.baseUrl);
+      client.setCredentials(evConfig.clientId, evConfig.appId);
+      return client;
+    },
+    instanceName: 'EvApiClient',
+  );
+
+  // Google ApiService
+  getIt.registerLazySingleton<GoogleApiService>(
+    () {
+      final apiClient = getIt<ApiClient>(instanceName: 'GoogleApiClient');
+      return GoogleApiService(apiClient.dio);
+    },
+    instanceName: 'GoogleApiService',
+  );
+
+  // EV ApiService
+  getIt.registerLazySingleton<EvApiService>(
+    () {
+      final apiClient = getIt<ApiClient>(instanceName: 'EvApiClient');
+      return EvApiService(apiClient.dio);
+    },
+    instanceName: 'EvApiService',
+  );
+
+  // Location Service
   getIt.registerLazySingleton<LocationService>(() => LocationService());
 
-  //dashboard repo
+  // Dashboard Repository
   getIt.registerLazySingleton<DashboardRepositoryInterface>(
     () => DashboardRepository(
-      getIt<ApiService>(),
+      getIt<GoogleApiService>(instanceName: 'GoogleApiService'),
       getIt<LocationService>(),
     ),
   );
 
-  //route repo
+  // Route Repository
   getIt.registerLazySingleton<RouteRepositoryInterface>(
     () => RouteRepository(
-      getIt<ApiService>(),
+      getIt<GoogleApiService>(instanceName: 'GoogleApiService'),
       getIt<LocationService>(),
+    ),
+  );
+
+  // EV Repository
+  getIt.registerLazySingleton<CarDetailsRepositoryInterface>(
+    () => CarDetailsRepository(
+      getIt<EvApiService>(instanceName: 'EvApiService'),
+      getIt<ApiClient>(instanceName: 'EvApiClient'),
     ),
   );
 }
