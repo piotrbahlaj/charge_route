@@ -1,5 +1,6 @@
 import 'package:charge_route/%20core/utilities/debouncer.dart';
 import 'package:charge_route/features/car_details/presentation/bloc/car_details_bloc.dart';
+import 'package:charge_route/features/car_details/presentation/widgets/car_details_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,171 +57,12 @@ class CarDetailsView extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               if (state.selectedVehicle != null) {
-                final vehicle = state.selectedVehicle!;
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      side: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 1),
-                    ),
-                    elevation: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(width: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '${vehicle.naming?.make} ${vehicle.naming?.model}',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Theme.of(context).colorScheme.onSurface,
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  vehicle.media!.brand!.url!,
-                                  height: 38,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                  loadingBuilder: (context, child, loadingProgress) {
-                                    if (loadingProgress == null) {
-                                      return child;
-                                    }
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress.expectedTotalBytes != null
-                                            ? loadingProgress.cumulativeBytesLoaded /
-                                                loadingProgress.expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Center(
-                                      child: Text(
-                                        'Failed to load image',
-                                        style: GoogleFonts.roboto(
-                                          fontSize: 14,
-                                          color: Theme.of(context).colorScheme.onSurface,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              vehicle.media!.image!.url!,
-                              height: 200,
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) {
-                                  return child;
-                                }
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    value: loadingProgress.expectedTotalBytes != null
-                                        ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                        : null,
-                                  ),
-                                );
-                              },
-                              errorBuilder: (context, error, stackTrace) {
-                                return Center(
-                                  child: Text(
-                                    'Failed to load image',
-                                    style: GoogleFonts.roboto(
-                                      fontSize: 14,
-                                      color: Theme.of(context).colorScheme.onSurface,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Model: ${vehicle.naming?.version ?? 'N/A'}',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Type: ${vehicle.drivetrain?.type ?? 'N/A'}',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Battery: ${vehicle.battery?.usableKwh ?? 'N/A'} kWh',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Range: ${vehicle.range?.chargetripRange?.worst ?? 'N/A'} - ${vehicle.range?.chargetripRange?.best ?? 'N/A'} km',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Number of Seats: ${vehicle.body?.seats ?? 'N/A'}',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'Fast Charging Support: ${vehicle.routing?.fastChargingSupport == true ? 'Yes' : 'No'}',
-                            style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          ElevatedButton.icon(
-                            onPressed: () {
-                              bloc.add(const ClearSelectedVehicleEvent());
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                            label: Text(
-                              'Delete vehicle',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                return const Padding(
+                  padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                  child: CarDetailsCard(),
                 );
               }
-              if (state.suggestions.isNotEmpty && state.selectedVehicle == null) {
+              if (state.suggestions.isNotEmpty) {
                 return SizedBox(
                   height: 300,
                   child: ListView.builder(
