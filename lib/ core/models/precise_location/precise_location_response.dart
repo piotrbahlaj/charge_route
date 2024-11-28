@@ -40,8 +40,8 @@ class Geometry with _$Geometry {
 @freezed
 class AddressComponent with _$AddressComponent {
   const factory AddressComponent({
-    required String long_name,
-    required String short_name,
+    @JsonKey(name: 'long_name') required String longName,
+    @JsonKey(name: 'short_name') required String shortName,
     required List<String> types,
   }) = _AddressComponent;
 
