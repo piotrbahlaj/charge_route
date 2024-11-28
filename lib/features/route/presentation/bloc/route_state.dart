@@ -14,5 +14,6 @@ class RouteState with _$RouteState {
     String? errorMessage,
     String? currentInstruction,
     @Default(false) bool isRecalculating,
+    @Default(false) bool hasArrived,
   }) = _RouteState;
 }

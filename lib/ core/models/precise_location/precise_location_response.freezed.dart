@@ -617,8 +617,10 @@ AddressComponent _$AddressComponentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AddressComponent {
-  String get long_name => throw _privateConstructorUsedError;
-  String get short_name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'long_name')
+  String get longName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'short_name')
+  String get shortName => throw _privateConstructorUsedError;
   List<String> get types => throw _privateConstructorUsedError;
 
   /// Serializes this AddressComponent to a JSON map.
@@ -637,7 +639,10 @@ abstract class $AddressComponentCopyWith<$Res> {
           AddressComponent value, $Res Function(AddressComponent) then) =
       _$AddressComponentCopyWithImpl<$Res, AddressComponent>;
   @useResult
-  $Res call({String long_name, String short_name, List<String> types});
+  $Res call(
+      {@JsonKey(name: 'long_name') String longName,
+      @JsonKey(name: 'short_name') String shortName,
+      List<String> types});
 }
 
 /// @nodoc
@@ -655,18 +660,18 @@ class _$AddressComponentCopyWithImpl<$Res, $Val extends AddressComponent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? long_name = null,
-    Object? short_name = null,
+    Object? longName = null,
+    Object? shortName = null,
     Object? types = null,
   }) {
     return _then(_value.copyWith(
-      long_name: null == long_name
-          ? _value.long_name
-          : long_name // ignore: cast_nullable_to_non_nullable
+      longName: null == longName
+          ? _value.longName
+          : longName // ignore: cast_nullable_to_non_nullable
               as String,
-      short_name: null == short_name
-          ? _value.short_name
-          : short_name // ignore: cast_nullable_to_non_nullable
+      shortName: null == shortName
+          ? _value.shortName
+          : shortName // ignore: cast_nullable_to_non_nullable
               as String,
       types: null == types
           ? _value.types
@@ -684,7 +689,10 @@ abstract class _$$AddressComponentImplCopyWith<$Res>
       __$$AddressComponentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String long_name, String short_name, List<String> types});
+  $Res call(
+      {@JsonKey(name: 'long_name') String longName,
+      @JsonKey(name: 'short_name') String shortName,
+      List<String> types});
 }
 
 /// @nodoc
@@ -700,18 +708,18 @@ class __$$AddressComponentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? long_name = null,
-    Object? short_name = null,
+    Object? longName = null,
+    Object? shortName = null,
     Object? types = null,
   }) {
     return _then(_$AddressComponentImpl(
-      long_name: null == long_name
-          ? _value.long_name
-          : long_name // ignore: cast_nullable_to_non_nullable
+      longName: null == longName
+          ? _value.longName
+          : longName // ignore: cast_nullable_to_non_nullable
               as String,
-      short_name: null == short_name
-          ? _value.short_name
-          : short_name // ignore: cast_nullable_to_non_nullable
+      shortName: null == shortName
+          ? _value.shortName
+          : shortName // ignore: cast_nullable_to_non_nullable
               as String,
       types: null == types
           ? _value._types
@@ -725,8 +733,8 @@ class __$$AddressComponentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AddressComponentImpl implements _AddressComponent {
   const _$AddressComponentImpl(
-      {required this.long_name,
-      required this.short_name,
+      {@JsonKey(name: 'long_name') required this.longName,
+      @JsonKey(name: 'short_name') required this.shortName,
       required final List<String> types})
       : _types = types;
 
@@ -734,9 +742,11 @@ class _$AddressComponentImpl implements _AddressComponent {
       _$$AddressComponentImplFromJson(json);
 
   @override
-  final String long_name;
+  @JsonKey(name: 'long_name')
+  final String longName;
   @override
-  final String short_name;
+  @JsonKey(name: 'short_name')
+  final String shortName;
   final List<String> _types;
   @override
   List<String> get types {
@@ -747,7 +757,7 @@ class _$AddressComponentImpl implements _AddressComponent {
 
   @override
   String toString() {
-    return 'AddressComponent(long_name: $long_name, short_name: $short_name, types: $types)';
+    return 'AddressComponent(longName: $longName, shortName: $shortName, types: $types)';
   }
 
   @override
@@ -755,16 +765,16 @@ class _$AddressComponentImpl implements _AddressComponent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressComponentImpl &&
-            (identical(other.long_name, long_name) ||
-                other.long_name == long_name) &&
-            (identical(other.short_name, short_name) ||
-                other.short_name == short_name) &&
+            (identical(other.longName, longName) ||
+                other.longName == longName) &&
+            (identical(other.shortName, shortName) ||
+                other.shortName == shortName) &&
             const DeepCollectionEquality().equals(other._types, _types));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, long_name, short_name,
+  int get hashCode => Object.hash(runtimeType, longName, shortName,
       const DeepCollectionEquality().hash(_types));
 
   /// Create a copy of AddressComponent
@@ -786,17 +796,19 @@ class _$AddressComponentImpl implements _AddressComponent {
 
 abstract class _AddressComponent implements AddressComponent {
   const factory _AddressComponent(
-      {required final String long_name,
-      required final String short_name,
+      {@JsonKey(name: 'long_name') required final String longName,
+      @JsonKey(name: 'short_name') required final String shortName,
       required final List<String> types}) = _$AddressComponentImpl;
 
   factory _AddressComponent.fromJson(Map<String, dynamic> json) =
       _$AddressComponentImpl.fromJson;
 
   @override
-  String get long_name;
+  @JsonKey(name: 'long_name')
+  String get longName;
   @override
-  String get short_name;
+  @JsonKey(name: 'short_name')
+  String get shortName;
   @override
   List<String> get types;
 

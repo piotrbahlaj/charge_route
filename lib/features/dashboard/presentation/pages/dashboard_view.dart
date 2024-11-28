@@ -105,7 +105,7 @@ class DashboardView extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 280,
+                height: 290,
                 child: DashBoardMap(),
               ),
             ],

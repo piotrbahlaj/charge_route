@@ -30,6 +30,7 @@ mixin _$DashboardEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +47,7 @@ mixin _$DashboardEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +63,7 @@ mixin _$DashboardEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +82,7 @@ mixin _$DashboardEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,6 +99,7 @@ mixin _$DashboardEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +115,7 @@ mixin _$DashboardEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -192,6 +198,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return loadDashboardData();
   }
@@ -211,6 +218,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return loadDashboardData?.call();
   }
@@ -229,6 +237,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (loadDashboardData != null) {
@@ -253,6 +262,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return loadDashboardData(this);
   }
@@ -272,6 +282,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return loadDashboardData?.call(this);
   }
@@ -290,6 +301,7 @@ class _$LoadDashboardDataEventImpl implements LoadDashboardDataEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (loadDashboardData != null) {
@@ -386,6 +398,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return fetchAutocomplete(query);
   }
@@ -405,6 +418,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return fetchAutocomplete?.call(query);
   }
@@ -423,6 +437,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -447,6 +462,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return fetchAutocomplete(this);
   }
@@ -466,6 +482,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return fetchAutocomplete?.call(this);
   }
@@ -484,6 +501,7 @@ class _$FetchAutocompleteEventImpl implements FetchAutocompleteEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchAutocomplete != null) {
@@ -589,6 +607,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return activateTextField(field);
   }
@@ -608,6 +627,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return activateTextField?.call(field);
   }
@@ -626,6 +646,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -650,6 +671,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return activateTextField(this);
   }
@@ -669,6 +691,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return activateTextField?.call(this);
   }
@@ -687,6 +710,7 @@ class _$ActivateTextFieldEventImpl implements ActivateTextFieldEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (activateTextField != null) {
@@ -764,6 +788,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return clearSuggestions();
   }
@@ -783,6 +808,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return clearSuggestions?.call();
   }
@@ -801,6 +827,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -825,6 +852,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return clearSuggestions(this);
   }
@@ -844,6 +872,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return clearSuggestions?.call(this);
   }
@@ -862,6 +891,7 @@ class _$ClearSuggestionsEventImpl implements ClearSuggestionsEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (clearSuggestions != null) {
@@ -931,6 +961,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return fetchCurrentLocation();
   }
@@ -950,6 +981,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return fetchCurrentLocation?.call();
   }
@@ -968,6 +1000,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -992,6 +1025,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return fetchCurrentLocation(this);
   }
@@ -1011,6 +1045,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return fetchCurrentLocation?.call(this);
   }
@@ -1029,6 +1064,7 @@ class _$FetchCurrentLocationEventImpl implements FetchCurrentLocationEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchCurrentLocation != null) {
@@ -1095,6 +1131,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return fetchRoute();
   }
@@ -1114,6 +1151,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return fetchRoute?.call();
   }
@@ -1132,6 +1170,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1156,6 +1195,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return fetchRoute(this);
   }
@@ -1175,6 +1215,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return fetchRoute?.call(this);
   }
@@ -1193,6 +1234,7 @@ class _$FetchRouteEventImpl implements FetchRouteEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchRoute != null) {
@@ -1297,6 +1339,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return fetchPlaceDetails(placeId, field);
   }
@@ -1316,6 +1359,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return fetchPlaceDetails?.call(placeId, field);
   }
@@ -1334,6 +1378,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchPlaceDetails != null) {
@@ -1358,6 +1403,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return fetchPlaceDetails(this);
   }
@@ -1377,6 +1423,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return fetchPlaceDetails?.call(this);
   }
@@ -1395,6 +1442,7 @@ class _$FetchPlaceDetailsEventImpl implements FetchPlaceDetailsEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (fetchPlaceDetails != null) {
@@ -1471,6 +1519,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return clearRoute();
   }
@@ -1490,6 +1539,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return clearRoute?.call();
   }
@@ -1508,6 +1558,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (clearRoute != null) {
@@ -1532,6 +1583,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return clearRoute(this);
   }
@@ -1551,6 +1603,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return clearRoute?.call(this);
   }
@@ -1569,6 +1622,7 @@ class _$ClearRouteEventImpl implements ClearRouteEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (clearRoute != null) {
@@ -1635,6 +1689,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return initializeMap();
   }
@@ -1654,6 +1709,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return initializeMap?.call();
   }
@@ -1672,6 +1728,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (initializeMap != null) {
@@ -1696,6 +1753,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return initializeMap(this);
   }
@@ -1715,6 +1773,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return initializeMap?.call(this);
   }
@@ -1733,6 +1792,7 @@ class _$InitializeMapEventImpl implements InitializeMapEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (initializeMap != null) {
@@ -1851,6 +1911,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return setDestinationLocation(location, address);
   }
@@ -1870,6 +1931,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return setDestinationLocation?.call(location, address);
   }
@@ -1888,6 +1950,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (setDestinationLocation != null) {
@@ -1912,6 +1975,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return setDestinationLocation(this);
   }
@@ -1931,6 +1995,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return setDestinationLocation?.call(this);
   }
@@ -1949,6 +2014,7 @@ class _$SetDestinationLocationEventImpl implements SetDestinationLocationEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (setDestinationLocation != null) {
@@ -2028,6 +2094,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     required TResult Function(Location location, String address)
         setDestinationLocation,
     required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
   }) {
     return resetDestination();
   }
@@ -2047,6 +2114,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     TResult? Function(Location location, String address)?
         setDestinationLocation,
     TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
   }) {
     return resetDestination?.call();
   }
@@ -2065,6 +2133,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     TResult Function()? initializeMap,
     TResult Function(Location location, String address)? setDestinationLocation,
     TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
     required TResult orElse(),
   }) {
     if (resetDestination != null) {
@@ -2089,6 +2158,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     required TResult Function(SetDestinationLocationEvent value)
         setDestinationLocation,
     required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
   }) {
     return resetDestination(this);
   }
@@ -2108,6 +2178,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     TResult? Function(SetDestinationLocationEvent value)?
         setDestinationLocation,
     TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
   }) {
     return resetDestination?.call(this);
   }
@@ -2126,6 +2197,7 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
     TResult Function(InitializeMapEvent value)? initializeMap,
     TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
     TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
     required TResult orElse(),
   }) {
     if (resetDestination != null) {
@@ -2137,6 +2209,176 @@ class _$ResetDestinationEventImpl implements ResetDestinationEvent {
 
 abstract class ResetDestinationEvent implements DashboardEvent {
   const factory ResetDestinationEvent() = _$ResetDestinationEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ResetRouteEventImplCopyWith<$Res> {
+  factory _$$ResetRouteEventImplCopyWith(_$ResetRouteEventImpl value,
+          $Res Function(_$ResetRouteEventImpl) then) =
+      __$$ResetRouteEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetRouteEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$ResetRouteEventImpl>
+    implements _$$ResetRouteEventImplCopyWith<$Res> {
+  __$$ResetRouteEventImplCopyWithImpl(
+      _$ResetRouteEventImpl _value, $Res Function(_$ResetRouteEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResetRouteEventImpl implements ResetRouteEvent {
+  const _$ResetRouteEventImpl();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.resetRoute()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetRouteEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadDashboardData,
+    required TResult Function(String query) fetchAutocomplete,
+    required TResult Function(String field) activateTextField,
+    required TResult Function() clearSuggestions,
+    required TResult Function() fetchCurrentLocation,
+    required TResult Function() fetchRoute,
+    required TResult Function(String placeId, String field) fetchPlaceDetails,
+    required TResult Function() clearRoute,
+    required TResult Function() initializeMap,
+    required TResult Function(Location location, String address)
+        setDestinationLocation,
+    required TResult Function() resetDestination,
+    required TResult Function() resetRoute,
+  }) {
+    return resetRoute();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadDashboardData,
+    TResult? Function(String query)? fetchAutocomplete,
+    TResult? Function(String field)? activateTextField,
+    TResult? Function()? clearSuggestions,
+    TResult? Function()? fetchCurrentLocation,
+    TResult? Function()? fetchRoute,
+    TResult? Function(String placeId, String field)? fetchPlaceDetails,
+    TResult? Function()? clearRoute,
+    TResult? Function()? initializeMap,
+    TResult? Function(Location location, String address)?
+        setDestinationLocation,
+    TResult? Function()? resetDestination,
+    TResult? Function()? resetRoute,
+  }) {
+    return resetRoute?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadDashboardData,
+    TResult Function(String query)? fetchAutocomplete,
+    TResult Function(String field)? activateTextField,
+    TResult Function()? clearSuggestions,
+    TResult Function()? fetchCurrentLocation,
+    TResult Function()? fetchRoute,
+    TResult Function(String placeId, String field)? fetchPlaceDetails,
+    TResult Function()? clearRoute,
+    TResult Function()? initializeMap,
+    TResult Function(Location location, String address)? setDestinationLocation,
+    TResult Function()? resetDestination,
+    TResult Function()? resetRoute,
+    required TResult orElse(),
+  }) {
+    if (resetRoute != null) {
+      return resetRoute();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadDashboardDataEvent value) loadDashboardData,
+    required TResult Function(FetchAutocompleteEvent value) fetchAutocomplete,
+    required TResult Function(ActivateTextFieldEvent value) activateTextField,
+    required TResult Function(ClearSuggestionsEvent value) clearSuggestions,
+    required TResult Function(FetchCurrentLocationEvent value)
+        fetchCurrentLocation,
+    required TResult Function(FetchRouteEvent value) fetchRoute,
+    required TResult Function(FetchPlaceDetailsEvent value) fetchPlaceDetails,
+    required TResult Function(ClearRouteEvent value) clearRoute,
+    required TResult Function(InitializeMapEvent value) initializeMap,
+    required TResult Function(SetDestinationLocationEvent value)
+        setDestinationLocation,
+    required TResult Function(ResetDestinationEvent value) resetDestination,
+    required TResult Function(ResetRouteEvent value) resetRoute,
+  }) {
+    return resetRoute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadDashboardDataEvent value)? loadDashboardData,
+    TResult? Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult? Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult? Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult? Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult? Function(FetchRouteEvent value)? fetchRoute,
+    TResult? Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+    TResult? Function(ClearRouteEvent value)? clearRoute,
+    TResult? Function(InitializeMapEvent value)? initializeMap,
+    TResult? Function(SetDestinationLocationEvent value)?
+        setDestinationLocation,
+    TResult? Function(ResetDestinationEvent value)? resetDestination,
+    TResult? Function(ResetRouteEvent value)? resetRoute,
+  }) {
+    return resetRoute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadDashboardDataEvent value)? loadDashboardData,
+    TResult Function(FetchAutocompleteEvent value)? fetchAutocomplete,
+    TResult Function(ActivateTextFieldEvent value)? activateTextField,
+    TResult Function(ClearSuggestionsEvent value)? clearSuggestions,
+    TResult Function(FetchCurrentLocationEvent value)? fetchCurrentLocation,
+    TResult Function(FetchRouteEvent value)? fetchRoute,
+    TResult Function(FetchPlaceDetailsEvent value)? fetchPlaceDetails,
+    TResult Function(ClearRouteEvent value)? clearRoute,
+    TResult Function(InitializeMapEvent value)? initializeMap,
+    TResult Function(SetDestinationLocationEvent value)? setDestinationLocation,
+    TResult Function(ResetDestinationEvent value)? resetDestination,
+    TResult Function(ResetRouteEvent value)? resetRoute,
+    required TResult orElse(),
+  }) {
+    if (resetRoute != null) {
+      return resetRoute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ResetRouteEvent implements DashboardEvent {
+  const factory ResetRouteEvent() = _$ResetRouteEventImpl;
 }
 
 /// @nodoc
@@ -2157,6 +2399,7 @@ mixin _$DashboardState {
   LatLng? get initialMapPosition => throw _privateConstructorUsedError;
   dynamic get isMapLoading => throw _privateConstructorUsedError;
   String? get destinationAddress => throw _privateConstructorUsedError;
+  bool get isRouteCleared => throw _privateConstructorUsedError;
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
@@ -2187,7 +2430,8 @@ abstract class $DashboardStateCopyWith<$Res> {
       RouteResponse? route,
       LatLng? initialMapPosition,
       dynamic isMapLoading,
-      String? destinationAddress});
+      String? destinationAddress,
+      bool isRouteCleared});
 
   $GeocodingResultCopyWith<$Res>? get userLocation;
   $GeocodingResultCopyWith<$Res>? get initialLocation;
@@ -2227,6 +2471,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
     Object? initialMapPosition = freezed,
     Object? isMapLoading = freezed,
     Object? destinationAddress = freezed,
+    Object? isRouteCleared = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -2293,6 +2538,10 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.destinationAddress
           : destinationAddress // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRouteCleared: null == isRouteCleared
+          ? _value.isRouteCleared
+          : isRouteCleared // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -2391,7 +2640,8 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
       RouteResponse? route,
       LatLng? initialMapPosition,
       dynamic isMapLoading,
-      String? destinationAddress});
+      String? destinationAddress,
+      bool isRouteCleared});
 
   @override
   $GeocodingResultCopyWith<$Res>? get userLocation;
@@ -2434,6 +2684,7 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
     Object? initialMapPosition = freezed,
     Object? isMapLoading = freezed,
     Object? destinationAddress = freezed,
+    Object? isRouteCleared = null,
   }) {
     return _then(_$DashboardStateImpl(
       isLoading: null == isLoading
@@ -2498,6 +2749,10 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
           ? _value.destinationAddress
           : destinationAddress // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRouteCleared: null == isRouteCleared
+          ? _value.isRouteCleared
+          : isRouteCleared // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2521,7 +2776,8 @@ class _$DashboardStateImpl implements _DashboardState {
       this.route,
       this.initialMapPosition,
       this.isMapLoading = true,
-      this.destinationAddress})
+      this.destinationAddress,
+      this.isRouteCleared = false})
       : _suggestions = suggestions,
         _chargingStations = chargingStations;
 
@@ -2577,10 +2833,13 @@ class _$DashboardStateImpl implements _DashboardState {
   final dynamic isMapLoading;
   @override
   final String? destinationAddress;
+  @override
+  @JsonKey()
+  final bool isRouteCleared;
 
   @override
   String toString() {
-    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, chargingStations: $chargingStations, hasSetDestination: $hasSetDestination, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route, initialMapPosition: $initialMapPosition, isMapLoading: $isMapLoading, destinationAddress: $destinationAddress)';
+    return 'DashboardState(isLoading: $isLoading, isRouteLoading: $isRouteLoading, suggestions: $suggestions, shouldNavigateToRoute: $shouldNavigateToRoute, chargingStations: $chargingStations, hasSetDestination: $hasSetDestination, userLocation: $userLocation, initialLocation: $initialLocation, activeField: $activeField, errorMessage: $errorMessage, startLocation: $startLocation, endLocation: $endLocation, route: $route, initialMapPosition: $initialMapPosition, isMapLoading: $isMapLoading, destinationAddress: $destinationAddress, isRouteCleared: $isRouteCleared)';
   }
 
   @override
@@ -2618,7 +2877,9 @@ class _$DashboardStateImpl implements _DashboardState {
             const DeepCollectionEquality()
                 .equals(other.isMapLoading, isMapLoading) &&
             (identical(other.destinationAddress, destinationAddress) ||
-                other.destinationAddress == destinationAddress));
+                other.destinationAddress == destinationAddress) &&
+            (identical(other.isRouteCleared, isRouteCleared) ||
+                other.isRouteCleared == isRouteCleared));
   }
 
   @override
@@ -2639,7 +2900,8 @@ class _$DashboardStateImpl implements _DashboardState {
       route,
       initialMapPosition,
       const DeepCollectionEquality().hash(isMapLoading),
-      destinationAddress);
+      destinationAddress,
+      isRouteCleared);
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.
@@ -2668,7 +2930,8 @@ abstract class _DashboardState implements DashboardState {
       final RouteResponse? route,
       final LatLng? initialMapPosition,
       final dynamic isMapLoading,
-      final String? destinationAddress}) = _$DashboardStateImpl;
+      final String? destinationAddress,
+      final bool isRouteCleared}) = _$DashboardStateImpl;
 
   @override
   bool get isLoading;
@@ -2702,6 +2965,8 @@ abstract class _DashboardState implements DashboardState {
   dynamic get isMapLoading;
   @override
   String? get destinationAddress;
+  @override
+  bool get isRouteCleared;
 
   /// Create a copy of DashboardState
   /// with the given fields replaced by the non-null parameter values.

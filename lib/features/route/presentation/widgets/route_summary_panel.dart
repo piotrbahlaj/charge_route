@@ -1,3 +1,4 @@
+import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,8 @@ class RouteSummaryPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routeBloc = context.read<RouteBloc>();
+    final dashboardBloc = context.read<DashboardBloc>();
     return BlocBuilder<RouteBloc, RouteState>(
       builder: (context, state) {
         if (state.route == null || state.steps.isEmpty) {
@@ -28,6 +31,8 @@ class RouteSummaryPanel extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
+                      routeBloc.add(const DeleteRouteEvent());
+                      dashboardBloc.add(const ClearRouteEvent());
                       context.pop();
                     },
                     child: Text(
