@@ -41,10 +41,9 @@ class DashboardSearchBar extends StatelessWidget {
       listenWhen: (previous, current) => previous.isRouteCleared != current.isRouteCleared,
       listener: (context, state) {
         if (state.isRouteCleared) {
-          // Clear the text field only if the route is cleared
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            controller.clear(); // Clear the text field
-            bloc.add(const ResetRouteEvent()); // Reset the flag to avoid re-clearing
+            controller.clear();
+            bloc.add(const ResetRouteEvent());
           });
         }
       },

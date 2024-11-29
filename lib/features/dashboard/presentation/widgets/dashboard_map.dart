@@ -24,7 +24,6 @@ class DashBoardMap extends StatelessWidget {
           return Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.secondary));
         }
 
-        // Charging station markers
         final markers = <Marker>{};
         for (var station in state.chargingStations) {
           if (station.geometry?.location != null) {
@@ -47,7 +46,7 @@ class DashBoardMap extends StatelessWidget {
                   title: station.name,
                   snippet: 'Charging station by: $address',
                 ),
-                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen), // Fallback for custom icon
+                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
               ),
             );
           }
@@ -59,7 +58,6 @@ class DashBoardMap extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
               final customIcon = snapshot.data!;
 
-              // Recreate markers with the custom icon
               final markersWithCustomIcon = markers.map((marker) {
                 return marker.copyWith(iconParam: customIcon);
               }).toSet();
@@ -93,14 +91,12 @@ class DashBoardMap extends StatelessWidget {
           child: GoogleMap(
             initialCameraPosition: CameraPosition(
               target: state.initialMapPosition!,
-              zoom: 13, // Adjust default zoom level if needed
+              zoom: 13,
             ),
             myLocationEnabled: true,
             myLocationButtonEnabled: true,
             markers: markers,
-            onMapCreated: (GoogleMapController controller) {
-              // Additional setup logic for map
-            },
+            onMapCreated: (GoogleMapController controller) {},
           ),
         ),
       ),
