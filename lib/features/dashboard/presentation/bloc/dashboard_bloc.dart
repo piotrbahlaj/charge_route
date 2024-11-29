@@ -149,8 +149,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       final placeDetails = await repository.fetchPlaceDetails(event.placeId);
 
       final selectedLocation = Location(
-        lat: placeDetails.result.geometry.location.lat,
-        lng: placeDetails.result.geometry.location.lng,
+        lat: placeDetails.result.geometry.location!.lat,
+        lng: placeDetails.result.geometry.location!.lng,
       );
 
       if (event.field == 'currentLocation') {

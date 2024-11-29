@@ -28,13 +28,3 @@ Map<String, dynamic> _$$ResultImplToJson(_$ResultImpl instance) =>
     <String, dynamic>{
       'geometry': instance.geometry,
     };
-
-_$GeometryImpl _$$GeometryImplFromJson(Map<String, dynamic> json) =>
-    _$GeometryImpl(
-      location: Location.fromJson(json['location'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$GeometryImplToJson(_$GeometryImpl instance) =>
-    <String, dynamic>{
-      'location': instance.location,
-    };

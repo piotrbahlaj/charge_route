@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:charge_route/%20core/models/location/location_response.dart';
+import 'package:charge_route/%20core/models/geometry/geometry_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'precise_location_response.freezed.dart';
@@ -26,15 +26,6 @@ class GeocodingResult with _$GeocodingResult {
   }) = _GeocodingResult;
 
   factory GeocodingResult.fromJson(Map<String, dynamic> json) => _$GeocodingResultFromJson(json);
-}
-
-@freezed
-class Geometry with _$Geometry {
-  const factory Geometry({
-    required Location location,
-  }) = _Geometry;
-
-  factory Geometry.fromJson(Map<String, dynamic> json) => _$GeometryFromJson(json);
 }
 
 @freezed

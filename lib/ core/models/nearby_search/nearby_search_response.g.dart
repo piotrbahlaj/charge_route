@@ -43,15 +43,3 @@ Map<String, dynamic> _$$NearbyResultImplToJson(_$NearbyResultImpl instance) =>
       'formatted_address': instance.formattedAddress,
       'geometry': instance.geometry,
     };
-
-_$GeometryImpl _$$GeometryImplFromJson(Map<String, dynamic> json) =>
-    _$GeometryImpl(
-      location: json['location'] == null
-          ? null
-          : Location.fromJson(json['location'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$GeometryImplToJson(_$GeometryImpl instance) =>
-    <String, dynamic>{
-      'location': instance.location,
-    };

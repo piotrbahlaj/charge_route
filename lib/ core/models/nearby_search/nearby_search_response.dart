@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:charge_route/%20core/models/location/location_response.dart';
+import 'package:charge_route/%20core/models/geometry/geometry_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'nearby_search_response.freezed.dart';
@@ -28,13 +28,4 @@ class NearbyResult with _$NearbyResult {
   }) = _NearbyResult;
 
   factory NearbyResult.fromJson(Map<String, dynamic> json) => _$NearbyResultFromJson(json);
-}
-
-@freezed
-class Geometry with _$Geometry {
-  const factory Geometry({
-    Location? location,
-  }) = _Geometry;
-
-  factory Geometry.fromJson(Map<String, dynamic> json) => _$GeometryFromJson(json);
 }

@@ -42,16 +42,6 @@ Map<String, dynamic> _$$GeocodingResultImplToJson(
       'address_components': instance.addressComponents,
     };
 
-_$GeometryImpl _$$GeometryImplFromJson(Map<String, dynamic> json) =>
-    _$GeometryImpl(
-      location: Location.fromJson(json['location'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$GeometryImplToJson(_$GeometryImpl instance) =>
-    <String, dynamic>{
-      'location': instance.location,
-    };
-
 _$AddressComponentImpl _$$AddressComponentImplFromJson(
         Map<String, dynamic> json) =>
     _$AddressComponentImpl(
