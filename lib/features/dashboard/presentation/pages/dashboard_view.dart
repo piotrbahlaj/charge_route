@@ -25,7 +25,6 @@ class DashboardView extends StatelessWidget {
         }
       },
       child: SafeArea(
-        //top container with title and search bar
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

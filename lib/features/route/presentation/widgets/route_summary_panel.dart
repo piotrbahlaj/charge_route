@@ -90,7 +90,6 @@ class RouteSummaryPanel extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Display the total route distance and ETA and destination address
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
