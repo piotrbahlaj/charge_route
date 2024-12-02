@@ -66,7 +66,6 @@ class AboutPage extends StatelessWidget {
                     'Contact: piotr.bahlaj@o2.pl',
                     style: TextStyle(fontSize: 16),
                   ),
-                  // You can add more information about the creator or the app here
                 ],
               ),
             ),

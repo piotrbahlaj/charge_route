@@ -65,7 +65,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   bool _isUserOffRoute(LatLng userPosition) {
-    const double standardDeviationThreshold = 20.0;
+    const double standardDeviationThreshold = 10.0;
     const double firstStepDeviationThreshold = 80.0;
 
     final deviationThreshold = state.currentStepIndex == 0 ? firstStepDeviationThreshold : standardDeviationThreshold;

@@ -1,4 +1,5 @@
 import 'package:charge_route/features/settings/bloc/settings_bloc.dart';
+import 'package:charge_route/features/settings/widgets/settings_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -27,8 +28,7 @@ class SettingsPage extends StatelessWidget {
             BlocBuilder<SettingsBloc, SettingsState>(
               builder: (context, state) {
                 final isDarkMode = (state is SettingsThemeUpdated) ? state.isDarkMode : false;
-                return ListTile(
-                  title: const Text('Theme'),
+                return SettingsListTile(
                   trailing: Switch(
                     value: isDarkMode,
                     onChanged: (value) {
@@ -37,24 +37,23 @@ class SettingsPage extends StatelessWidget {
                       );
                     },
                   ),
+                  text: 'Theme',
+                  onTap: () {},
                 );
               },
             ),
-            const Divider(),
-            ListTile(
-              title: const Text('Language'),
+            SettingsListTile(
               trailing: const Icon(Icons.arrow_forward_ios),
+              text: 'Language',
               onTap: () {},
             ),
-            const Divider(),
-            ListTile(
-              title: const Text('About'),
+            SettingsListTile(
               trailing: const Icon(Icons.arrow_forward_ios),
+              text: 'About',
               onTap: () {
                 GoRouter.of(context).push('/about');
               },
             ),
-            const Divider(),
           ],
         ),
       ),
