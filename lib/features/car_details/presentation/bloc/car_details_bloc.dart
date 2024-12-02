@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:charge_route/%20core/constants/values.dart';
 import 'package:charge_route/%20core/models/vehicle_detail/vehicle_detail_response.dart';
 import 'package:charge_route/features/car_details/domain/repository/car_details_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,59 +31,7 @@ class CarDetailsBloc extends Bloc<CarDetailsEvent, CarDetailsState> {
       errorMessage: null,
       hasSearched: true,
     ));
-    const query = '''
-    query vehicleListAll(\$search: String!) {
-      vehicleList (search: \$search) {
-        id
-        naming {
-          make
-          model
-          version
-        }
-        drivetrain {
-          type
-        }
-        connectors {
-          standard
-        }
-        battery {
-          usable_kwh
-        }
-        body {
-          seats
-        }
-        range {
-          chargetrip_range {
-            best
-            worst
-          }
-        }
-        media {
-          image {
-            id
-            url
-            height
-            width
-            thumbnail_url
-            thumbnail_height
-            thumbnail_width
-          }
-          brand {
-            id
-            url
-            height
-            width
-            thumbnail_url
-            thumbnail_height
-            thumbnail_width
-          }
-        }
-        routing {
-          fast_charging_support
-        }
-      }
-    }
-    ''';
+    const query = Values.carDetailsQuery;
     try {
       print('Search query: ${event.query}');
       final variables = {"search": event.query};

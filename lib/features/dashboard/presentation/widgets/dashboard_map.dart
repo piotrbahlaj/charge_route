@@ -96,7 +96,6 @@ class DashBoardMap extends StatelessWidget {
             myLocationEnabled: true,
             myLocationButtonEnabled: true,
             markers: markers,
-            onMapCreated: (GoogleMapController controller) {},
           ),
         ),
       ),

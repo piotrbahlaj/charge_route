@@ -1,6 +1,9 @@
 import 'package:charge_route/%20core/utilities/debouncer.dart';
 import 'package:charge_route/features/car_details/presentation/bloc/car_details_bloc.dart';
 import 'package:charge_route/features/car_details/presentation/widgets/car_details_card.dart';
+import 'package:charge_route/features/car_details/presentation/widgets/car_details_initial_content.dart';
+import 'package:charge_route/features/car_details/presentation/widgets/car_details_no_matches.dart';
+import 'package:charge_route/features/car_details/presentation/widgets/car_details_suggestions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -70,108 +73,23 @@ class CarDetailsView extends StatelessWidget {
                     itemCount: state.suggestions.length,
                     itemBuilder: (context, index) {
                       final vehicle = state.suggestions[index];
-                      return Column(
-                        children: [
-                          ListTile(
-                            leading: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                vehicle.media!.brand!.thumbnailUrl!,
-                                height: 38,
-                                width: 60,
-                                fit: BoxFit.fitWidth,
-                                loadingBuilder: (context, child, loadingProgress) {
-                                  if (loadingProgress == null) {
-                                    return child;
-                                  }
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress.expectedTotalBytes != null
-                                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                          : null,
-                                    ),
-                                  );
-                                },
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Center(
-                                    child: Text(
-                                      'Failed to load image',
-                                      style: GoogleFonts.roboto(
-                                        fontSize: 14,
-                                        color: Theme.of(context).colorScheme.onSurface,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            title: Text(
-                              '${vehicle.naming?.make} ${vehicle.naming?.model}',
-                              style: GoogleFonts.roboto(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                            ),
-                            onTap: () {
-                              bloc.add(CarDetailsEvent.selectVehicle(vehicle));
-                              controller.text = '${vehicle.naming?.make} ${vehicle.naming?.model}';
-                              focusNode.unfocus();
-                            },
-                          ),
-                          Divider(
-                            color: Theme.of(context).colorScheme.onSecondary,
-                            thickness: 0.5,
-                            endIndent: 15,
-                            indent: 15,
-                          ),
-                        ],
+                      return CarDetailsSuggestions(
+                        thumbnailUrl: vehicle.media!.brand!.thumbnailUrl!,
+                        make: vehicle.naming?.make,
+                        model: vehicle.naming?.model,
+                        onTap: () {
+                          bloc.add(CarDetailsEvent.selectVehicle(vehicle));
+                          controller.text = '${vehicle.naming?.make} ${vehicle.naming?.model}';
+                          focusNode.unfocus();
+                        },
                       );
                     },
                   ),
                 );
               } else if (state.suggestions.isEmpty && state.hasSearched) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
-                  child: Column(
-                    children: [
-                      Text(
-                        'No vehicles matches your search. Please try again.',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.kanit(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Icon(
-                        Icons.search_off,
-                        size: 50,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ],
-                  ),
-                );
+                return const CarDetailsNoMatches();
               } else if (state.suggestions.isEmpty) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 180, 10, 10),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Search for your car to see the details.',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.kanit(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Icon(
-                        Icons.directions_car,
-                        size: 50,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ],
-                  ),
-                );
+                return const CarDetailsInitialContent();
               }
               if (state.errorMessage != null) {
                 return Text(state.errorMessage!, style: const TextStyle(color: Colors.red));

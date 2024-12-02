@@ -84,7 +84,6 @@ class DashboardView extends StatelessWidget {
                     const SizedBox(
                       height: 15,
                     ),
-                    // search bar
                     const DashboardSearchBar(
                       titleText: 'Your current location',
                       hintText: 'Enter the starting location',
@@ -98,7 +97,6 @@ class DashboardView extends StatelessWidget {
                       field: 'destination',
                     ),
                     const SizedBox(height: 30),
-                    // search button
                     const DashboardSearchButton(),
                   ],
                 ),
