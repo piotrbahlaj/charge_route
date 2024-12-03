@@ -1,3 +1,4 @@
+import 'package:charge_route/%20core/database/app_database.dart';
 import 'package:charge_route/%20core/network/api_client.dart';
 import 'package:charge_route/%20core/services/ev_api_service/ev_api_service.dart';
 import 'package:charge_route/%20core/services/google_api_service/google_api_service.dart';
@@ -28,6 +29,12 @@ void setupLocator() {
     EvEnvironmentConfig(),
     instanceName: 'EvConfig',
   );
+
+  // Database
+  getIt.registerLazySingleton<AppDatabase>(() => AppDatabase());
+
+  // DAOs
+  // getIt.registerLazySingleton<CacheDao>(() => CacheDao(getIt<AppDatabase>()));
 
   // Google ApiClient
   getIt.registerLazySingleton<ApiClient>(
