@@ -28,4 +28,9 @@ class RecentRoutesRepository implements RecentRoutesRepositoryInterface {
   Future<void> clearAllRoutes() async {
     await _dao.clearRoutes();
   }
+
+  @override
+  Future<void> deleteRoute(int id) async {
+    await _dao.deleteRoute(id);
+  }
 }

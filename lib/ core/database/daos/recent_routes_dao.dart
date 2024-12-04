@@ -24,4 +24,8 @@ class RecentRoutesDao extends DatabaseAccessor<AppDatabase> with _$RecentRoutesD
   Future<void> clearRoutes() async {
     await delete(recentRoutesTable).go();
   }
+
+  Future<void> deleteRoute(int id) async {
+    await (delete(recentRoutesTable)..where((tbl) => tbl.id.equals(id))).go();
+  }
 }

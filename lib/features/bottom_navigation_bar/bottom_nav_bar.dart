@@ -12,6 +12,7 @@ class CustomNavigationBar extends StatefulWidget {
 final List<String> _pages = [
   '/dashboard',
   '/carDetails',
+  '/routeHistory',
   '/settings',
 ];
 
@@ -35,15 +36,20 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           selectedColor: Theme.of(context).colorScheme.onPrimary,
           unselectedColor: Theme.of(context).colorScheme.onSecondary,
         ),
-
         // Car details
         SalomonBottomBarItem(
           icon: const Icon(Icons.car_crash),
-          title: const Text('Car details'),
+          title: const Text('Car Details'),
           selectedColor: Theme.of(context).colorScheme.onPrimary,
           unselectedColor: Theme.of(context).colorScheme.onSecondary,
         ),
-
+        // Route history
+        SalomonBottomBarItem(
+          icon: const Icon(Icons.history),
+          title: const Text('Route History'),
+          selectedColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedColor: Theme.of(context).colorScheme.onSecondary,
+        ),
         // Settings
         SalomonBottomBarItem(
           icon: const Icon(Icons.settings),
