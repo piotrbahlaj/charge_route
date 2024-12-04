@@ -1,4 +1,5 @@
 import 'package:charge_route/%20core/database/app_database.dart';
+import 'package:charge_route/%20core/database/daos/recent_routes_dao.dart';
 import 'package:charge_route/%20core/network/api_client.dart';
 import 'package:charge_route/%20core/services/ev_api_service/ev_api_service.dart';
 import 'package:charge_route/%20core/services/google_api_service/google_api_service.dart';
@@ -11,6 +12,8 @@ import 'package:charge_route/features/car_details/domain/repository/car_details_
 import 'package:charge_route/features/car_details/domain/repository/car_details_repository_interface.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
+import 'package:charge_route/features/recent_routes/domain/repository/recent_routes_repository.dart';
+import 'package:charge_route/features/recent_routes/domain/repository/recent_routes_repository_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:get_it/get_it.dart';
@@ -34,7 +37,7 @@ void setupLocator() {
   getIt.registerLazySingleton<AppDatabase>(() => AppDatabase());
 
   // DAOs
-  // getIt.registerLazySingleton<CacheDao>(() => CacheDao(getIt<AppDatabase>()));
+  getIt.registerLazySingleton<RecentRoutesDao>(() => RecentRoutesDao(getIt<AppDatabase>()));
 
   // Google ApiClient
   getIt.registerLazySingleton<ApiClient>(
@@ -100,6 +103,13 @@ void setupLocator() {
     () => CarDetailsRepository(
       getIt<EvApiService>(instanceName: 'EvApiService'),
       getIt<ApiClient>(instanceName: 'EvApiClient'),
+    ),
+  );
+
+  // Recent Routes Repository
+  getIt.registerLazySingleton<RecentRoutesRepositoryInterface>(
+    () => RecentRoutesRepository(
+      getIt<RecentRoutesDao>(),
     ),
   );
 }

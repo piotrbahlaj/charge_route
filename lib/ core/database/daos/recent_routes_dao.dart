@@ -1,4 +1,4 @@
-import 'package:charge_route/%20core/database/database_tables.dart';
+import 'package:charge_route/%20core/database/tables/database_tables.dart';
 import 'package:drift/drift.dart';
 
 import '../app_database.dart';
