@@ -1,3 +1,4 @@
+import 'package:charge_route/%20core/utilities/address_trimmer.dart';
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:flutter/material.dart';
@@ -53,22 +54,10 @@ class RouteSummaryPanel extends StatelessWidget {
           );
         }
 
-        String simplifyAddress(String fullAddress) {
-          List<String> addressParts = fullAddress.split(',');
-
-          if (addressParts.length >= 2) {
-            return '${addressParts[0].trim()}, ${addressParts[1].trim()}';
-          } else if (addressParts.isNotEmpty) {
-            return addressParts[0].trim();
-          } else {
-            return fullAddress;
-          }
-        }
-
-        final endLocationName =
-            (state.route?.routes?.isNotEmpty ?? false) && (state.route?.routes?.first.legs?.isNotEmpty ?? false)
-                ? simplifyAddress(state.route!.routes!.first.legs!.last.endAddress ?? 'Unknown destination')
-                : 'Unknown destination';
+        final endLocationName = (state.route?.routes?.isNotEmpty ?? false) &&
+                (state.route?.routes?.first.legs?.isNotEmpty ?? false)
+            ? AddressTrimmer.simplifyAddress(state.route!.routes!.first.legs!.last.endAddress ?? 'Unknown destination')
+            : 'Unknown destination';
 
         return Positioned(
           bottom: 70,

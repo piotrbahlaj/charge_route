@@ -36,7 +36,8 @@ class Main extends StatelessWidget {
           create: (context) => CarDetailsBloc(getIt<CarDetailsRepositoryInterface>()),
         ),
         BlocProvider(
-          create: (context) => RecentRoutesBloc(getIt<RecentRoutesRepositoryInterface>()),
+          create: (context) =>
+              RecentRoutesBloc(getIt<RecentRoutesRepositoryInterface>())..add(const FetchRoutesEvent()),
         ),
       ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
