@@ -123,12 +123,13 @@ class DashboardSearchBar extends StatelessWidget {
                         bloc.add(FetchPlaceDetailsEvent(state.userLocation!.placeId, 'currentLocation'));
                         controller.text = state.userLocation!.formattedAddress;
                         hasSetLocation = true;
+                        //TODO SWITCH TO BLOC INSTEAD OF LOCAL FLAG FOR HASSETLOCATION
                       });
                     }
                     if (state.destinationAddress != null && field == 'destination' && state.hasSetDestination) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         controller.text = state.destinationAddress ?? '';
-                        context.read<DashboardBloc>().add(const ResetDestinationEvent());
+                        bloc.add(const ResetDestinationEvent());
                       });
                     }
                     if (state.suggestions.isNotEmpty && state.activeField == field) {

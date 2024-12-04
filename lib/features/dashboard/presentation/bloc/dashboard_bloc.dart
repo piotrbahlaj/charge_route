@@ -18,7 +18,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
   DashboardBloc(this.repository) : super(const DashboardState()) {
     on<LoadDashboardDataEvent>(_onLoadDashboardData);
-    add(const LoadDashboardDataEvent());
     on<FetchAutocompleteEvent>(_onFetchAutocomplete);
     on<ActivateTextFieldEvent>(_onActivateTextField);
     on<ClearSuggestionsEvent>(_onClearSuggestions);

@@ -30,7 +30,8 @@ class Main extends StatelessWidget {
           create: (context) => SettingsBloc(),
         ),
         BlocProvider<DashboardBloc>(
-          create: (context) => DashboardBloc(getIt<DashboardRepositoryInterface>()),
+          create: (context) =>
+              DashboardBloc(getIt<DashboardRepositoryInterface>())..add(const LoadDashboardDataEvent()),
         ),
         BlocProvider(
           create: (context) => CarDetailsBloc(getIt<CarDetailsRepositoryInterface>()),
