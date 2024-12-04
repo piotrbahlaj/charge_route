@@ -19,37 +19,39 @@ class CarDetailsSuggestions extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          //TODO LIST TILE WIDTH EXCEPTION
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              thumbnailUrl,
-              height: 38,
-              width: 60,
-              fit: BoxFit.fitWidth,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                        : null,
-                  ),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Center(
-                  child: Text(
-                    'Failed to load image',
-                    style: GoogleFonts.roboto(
-                      fontSize: 14,
-                      color: Theme.of(context).colorScheme.onSurface,
+          leading: SizedBox(
+            width: 60,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                thumbnailUrl,
+                height: 38,
+                width: 60,
+                fit: BoxFit.fitWidth,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                          : null,
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Center(
+                    child: Text(
+                      'Failed to load image',
+                      style: GoogleFonts.roboto(
+                        fontSize: 14,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
           title: Text(
