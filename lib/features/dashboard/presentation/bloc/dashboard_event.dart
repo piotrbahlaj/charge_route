@@ -13,5 +13,6 @@ class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.initializeMap() = InitializeMapEvent;
   const factory DashboardEvent.setDestinationLocation(Location location, String address) = SetDestinationLocationEvent;
   const factory DashboardEvent.resetDestination() = ResetDestinationEvent;
+  const factory DashboardEvent.setLocation() = SetLocationEvent;
   const factory DashboardEvent.resetRoute() = ResetRouteEvent;
 }

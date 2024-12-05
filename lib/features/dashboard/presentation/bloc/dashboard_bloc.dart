@@ -28,10 +28,12 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<SetDestinationLocationEvent>(_onSetDestinationLocation);
     on<ResetDestinationEvent>(_onResetDestination);
     on<ResetRouteEvent>(_onResetRoute);
+    on<SetLocationEvent>(_onSetLocation);
   }
 
   Future<void> _onLoadDashboardData(LoadDashboardDataEvent event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(isMapLoading: true));
+
     try {
       final Position position = await repository.fetchCurrentLocation();
       final String locationString = '${position.latitude},${position.longitude}';
@@ -119,6 +121,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       userLocation: null,
       isLoading: true,
       errorMessage: null,
+      hasSetLocation: false,
     ));
     try {
       final Position position = await repository.fetchCurrentLocation();
@@ -207,9 +210,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       destinationAddress: null,
       suggestions: [],
       activeField: null,
-      hasSetDestination: false,
+      hasSetDestination: true,
       errorMessage: null,
       isRouteCleared: true,
+      hasSetLocation: true,
     ));
   }
 
@@ -224,6 +228,12 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   Future<void> _onResetDestination(ResetDestinationEvent event, Emitter<DashboardState> emit) async {
     emit(state.copyWith(
       hasSetDestination: false,
+    ));
+  }
+
+  Future<void> _onSetLocation(SetLocationEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(
+      hasSetLocation: true,
     ));
   }
 
