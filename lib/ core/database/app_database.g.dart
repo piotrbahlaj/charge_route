@@ -34,9 +34,7 @@ class $RecentRoutesTableTable extends RecentRoutesTable
   @override
   late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
       'date', aliasedName, false,
-      type: DriftSqlType.dateTime,
-      requiredDuringInsert: false,
-      defaultValue: Constant(DateTime.now()));
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _distanceMeta =
       const VerificationMeta('distance');
   @override
@@ -76,6 +74,8 @@ class $RecentRoutesTableTable extends RecentRoutesTable
     if (data.containsKey('date')) {
       context.handle(
           _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+    } else if (isInserting) {
+      context.missing(_dateMeta);
     }
     if (data.containsKey('distance')) {
       context.handle(_distanceMeta,
@@ -233,10 +233,11 @@ class RecentRoutesTableCompanion extends UpdateCompanion<RecentRoutes> {
     this.id = const Value.absent(),
     required String startPoint,
     required String endPoint,
-    this.date = const Value.absent(),
+    required DateTime date,
     required double distance,
   })  : startPoint = Value(startPoint),
         endPoint = Value(endPoint),
+        date = Value(date),
         distance = Value(distance);
   static Insertable<RecentRoutes> custom({
     Expression<int>? id,
@@ -320,7 +321,7 @@ typedef $$RecentRoutesTableTableCreateCompanionBuilder
   Value<int> id,
   required String startPoint,
   required String endPoint,
-  Value<DateTime> date,
+  required DateTime date,
   required double distance,
 });
 typedef $$RecentRoutesTableTableUpdateCompanionBuilder
@@ -452,7 +453,7 @@ class $$RecentRoutesTableTableTableManager extends RootTableManager<
             Value<int> id = const Value.absent(),
             required String startPoint,
             required String endPoint,
-            Value<DateTime> date = const Value.absent(),
+            required DateTime date,
             required double distance,
           }) =>
               RecentRoutesTableCompanion.insert(
