@@ -7,7 +7,7 @@ class DashboardSearchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<DashboardBloc>();
+    final dashboardBloc = context.read<DashboardBloc>();
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
         return Container(
@@ -20,7 +20,7 @@ class DashboardSearchButton extends StatelessWidget {
             onPressed: state.isRouteLoading
                 ? null
                 : () {
-                    bloc.add(const FetchRouteEvent());
+                    dashboardBloc.add(const FetchRouteEvent());
                   },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,

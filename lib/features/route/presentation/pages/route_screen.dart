@@ -1,6 +1,4 @@
-import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:charge_route/features/route/presentation/pages/route_view.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +10,8 @@ class RouteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RouteBloc>(
-      create: (context) => RouteBloc(getIt<RouteRepositoryInterface>())..add(InitalizeRouteEvent(routeData)),
+    return BlocProvider.value(
+      value: context.read<RouteBloc>()..add(InitalizeRouteEvent(routeData)),
       child: const Scaffold(
         body: RouteView(),
       ),

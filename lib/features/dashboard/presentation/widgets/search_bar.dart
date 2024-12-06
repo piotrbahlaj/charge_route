@@ -1,5 +1,6 @@
 import 'package:charge_route/%20core/utilities/debouncer.dart';
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:charge_route/features/dashboard/presentation/widgets/search_suggestions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +25,6 @@ class DashboardSearchBar extends StatelessWidget {
     final debouncer = Debouncer(milliseconds: 400);
     final FocusNode focusNode = FocusNode();
     final bloc = context.read<DashboardBloc>();
-    bool hasSetLocation = false;
 
     focusNode.addListener(
       () {
@@ -105,7 +105,6 @@ class DashboardSearchBar extends StatelessWidget {
                               } else {
                                 return IconButton(
                                   onPressed: () async {
-                                    hasSetLocation = false;
                                     context.read<DashboardBloc>().add(const FetchCurrentLocationEvent());
                                   },
                                   icon: const Icon(Icons.my_location),
@@ -118,48 +117,26 @@ class DashboardSearchBar extends StatelessWidget {
                 ),
                 BlocBuilder<DashboardBloc, DashboardState>(
                   builder: (context, state) {
-                    if (state.userLocation != null && !hasSetLocation && field == 'currentLocation') {
+                    if (state.userLocation != null && !state.hasSetLocation && field == 'currentLocation') {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         bloc.add(FetchPlaceDetailsEvent(state.userLocation!.placeId, 'currentLocation'));
                         controller.text = state.userLocation!.formattedAddress;
-                        hasSetLocation = true;
+                        bloc.add(const SetLocationEvent());
                       });
                     }
                     if (state.destinationAddress != null && field == 'destination' && state.hasSetDestination) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         controller.text = state.destinationAddress ?? '';
-                        context.read<DashboardBloc>().add(const ResetDestinationEvent());
+                        bloc.add(const ResetDestinationEvent());
                       });
                     }
                     if (state.suggestions.isNotEmpty && state.activeField == field) {
-                      return SizedBox(
-                        height: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: state.suggestions.length,
-                          itemBuilder: (context, index) {
-                            final suggestion = state.suggestions[index];
-                            return Column(
-                              children: [
-                                ListTile(
-                                  title: Text(suggestion.description),
-                                  onTap: () {
-                                    bloc.add(FetchPlaceDetailsEvent(suggestion.placeId, field));
-                                    controller.text = suggestion.description;
-                                    focusNode.unfocus();
-                                    bloc.add(const ClearSuggestionsEvent());
-                                  },
-                                ),
-                                Divider(
-                                  color: Theme.of(context).colorScheme.onSecondary,
-                                  thickness: 0.5,
-                                  endIndent: 15,
-                                  indent: 15,
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                      return SearchSuggestions(
+                        prediction: state.suggestions,
+                        controller: controller,
+                        field: field,
+                        focusNode: focusNode,
+                        suggestionsLength: state.suggestions.length,
                       );
                     } else if (state.errorMessage != null && state.activeField == field) {
                       return Text(state.errorMessage!);

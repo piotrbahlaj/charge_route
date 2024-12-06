@@ -49,7 +49,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
         LatLng(destination.lat, destination.lng),
       );
 
-      if (distanceToDestination <= 20) {
+      if (distanceToDestination <= 50) {
         add(const ArrivedAtDestinationEvent());
         return;
       }
