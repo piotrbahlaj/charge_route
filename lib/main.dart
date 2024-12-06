@@ -7,6 +7,8 @@ import 'package:charge_route/features/dashboard/domain/repository/dashboard_repo
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:charge_route/features/recent_routes/domain/repository/recent_routes_repository_interface.dart';
 import 'package:charge_route/features/recent_routes/presentation/bloc/recent_routes_bloc.dart';
+import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
+import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:charge_route/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,10 +35,13 @@ class Main extends StatelessWidget {
           create: (context) =>
               DashboardBloc(getIt<DashboardRepositoryInterface>())..add(const LoadDashboardDataEvent()),
         ),
-        BlocProvider(
+        BlocProvider<CarDetailsBloc>(
           create: (context) => CarDetailsBloc(getIt<CarDetailsRepositoryInterface>()),
         ),
-        BlocProvider(
+        BlocProvider<RouteBloc>(
+          create: (context) => RouteBloc(getIt<RouteRepositoryInterface>()),
+        ),
+        BlocProvider<RecentRoutesBloc>(
           create: (context) =>
               RecentRoutesBloc(getIt<RecentRoutesRepositoryInterface>())..add(const FetchRoutesEvent()),
         ),

@@ -1,5 +1,4 @@
 import 'package:charge_route/features/dashboard/presentation/bloc/dashboard_bloc.dart';
-import 'package:charge_route/features/recent_routes/presentation/bloc/recent_routes_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +8,6 @@ class DashboardSearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dashboardBloc = context.read<DashboardBloc>();
-    final recentRoutesBloc = context.read<RecentRoutesBloc>();
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
         return Container(
@@ -23,16 +21,6 @@ class DashboardSearchButton extends StatelessWidget {
                 ? null
                 : () {
                     dashboardBloc.add(const FetchRouteEvent());
-                    if (state.startLocation != null && state.endLocation != null) {
-                      recentRoutesBloc.add(
-                        RecentRoutesEvent.addRoute(
-                          startPoint: state.userLocation?.formattedAddress ?? "Unknown Start",
-                          endPoint: state.destinationAddress ?? "Unknown End",
-                          distance: state.route?.routes?.first.legs?.first.distance?.value?.toDouble() ?? 0.0,
-                          date: DateTime.now(),
-                        ),
-                      );
-                    }
                   },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
