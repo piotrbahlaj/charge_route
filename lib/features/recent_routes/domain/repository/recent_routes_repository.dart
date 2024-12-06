@@ -9,12 +9,17 @@ class RecentRoutesRepository implements RecentRoutesRepositoryInterface {
   RecentRoutesRepository(this._dao);
 
   @override
-  Future<void> saveRoute({required String startPoint, required String endPoint, required double distance}) async {
+  Future<void> saveRoute({
+    required String startPoint,
+    required String endPoint,
+    required double distance,
+    required DateTime date,
+  }) async {
     final route = RecentRoutesTableCompanion(
       startPoint: Value(startPoint),
       endPoint: Value(endPoint),
       distance: Value(distance),
-      date: Value(DateTime.now()),
+      date: Value(date),
     );
     await _dao.insertRoute(route);
   }

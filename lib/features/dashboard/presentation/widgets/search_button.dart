@@ -29,6 +29,7 @@ class DashboardSearchButton extends StatelessWidget {
                           startPoint: state.userLocation?.formattedAddress ?? "Unknown Start",
                           endPoint: state.destinationAddress ?? "Unknown End",
                           distance: state.route?.routes?.first.legs?.first.distance?.value?.toDouble() ?? 0.0,
+                          date: DateTime.now(),
                         ),
                       );
                     }

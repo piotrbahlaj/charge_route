@@ -41,6 +41,7 @@ class RecentRoutesBloc extends Bloc<RecentRoutesEvent, RecentRoutesState> {
         startPoint: event.startPoint,
         endPoint: event.endPoint,
         distance: event.distance,
+        date: event.date,
       );
       emit(state.copyWith(isLoading: false));
     } catch (e, stacktrace) {

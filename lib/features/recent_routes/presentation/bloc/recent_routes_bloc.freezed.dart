@@ -20,7 +20,7 @@ mixin _$RecentRoutesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchRoutes,
     required TResult Function(
-            String startPoint, String endPoint, double distance)
+            String startPoint, String endPoint, double distance, DateTime date)
         addRoute,
     required TResult Function(int id) deleteRoute,
     required TResult Function() deleteRouteHistory,
@@ -29,7 +29,8 @@ mixin _$RecentRoutesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchRoutes,
-    TResult? Function(String startPoint, String endPoint, double distance)?
+    TResult? Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult? Function(int id)? deleteRoute,
     TResult? Function()? deleteRouteHistory,
@@ -38,7 +39,8 @@ mixin _$RecentRoutesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchRoutes,
-    TResult Function(String startPoint, String endPoint, double distance)?
+    TResult Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult Function(int id)? deleteRoute,
     TResult Function()? deleteRouteHistory,
@@ -136,7 +138,7 @@ class _$FetchRoutesEventImpl implements FetchRoutesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchRoutes,
     required TResult Function(
-            String startPoint, String endPoint, double distance)
+            String startPoint, String endPoint, double distance, DateTime date)
         addRoute,
     required TResult Function(int id) deleteRoute,
     required TResult Function() deleteRouteHistory,
@@ -148,7 +150,8 @@ class _$FetchRoutesEventImpl implements FetchRoutesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchRoutes,
-    TResult? Function(String startPoint, String endPoint, double distance)?
+    TResult? Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult? Function(int id)? deleteRoute,
     TResult? Function()? deleteRouteHistory,
@@ -160,7 +163,8 @@ class _$FetchRoutesEventImpl implements FetchRoutesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchRoutes,
-    TResult Function(String startPoint, String endPoint, double distance)?
+    TResult Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult Function(int id)? deleteRoute,
     TResult Function()? deleteRouteHistory,
@@ -220,7 +224,8 @@ abstract class _$$AddRouteEventImplCopyWith<$Res> {
           _$AddRouteEventImpl value, $Res Function(_$AddRouteEventImpl) then) =
       __$$AddRouteEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String startPoint, String endPoint, double distance});
+  $Res call(
+      {String startPoint, String endPoint, double distance, DateTime date});
 }
 
 /// @nodoc
@@ -239,6 +244,7 @@ class __$$AddRouteEventImplCopyWithImpl<$Res>
     Object? startPoint = null,
     Object? endPoint = null,
     Object? distance = null,
+    Object? date = null,
   }) {
     return _then(_$AddRouteEventImpl(
       startPoint: null == startPoint
@@ -253,6 +259,10 @@ class __$$AddRouteEventImplCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -263,7 +273,8 @@ class _$AddRouteEventImpl implements AddRouteEvent {
   const _$AddRouteEventImpl(
       {required this.startPoint,
       required this.endPoint,
-      required this.distance});
+      required this.distance,
+      required this.date});
 
   @override
   final String startPoint;
@@ -271,10 +282,12 @@ class _$AddRouteEventImpl implements AddRouteEvent {
   final String endPoint;
   @override
   final double distance;
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'RecentRoutesEvent.addRoute(startPoint: $startPoint, endPoint: $endPoint, distance: $distance)';
+    return 'RecentRoutesEvent.addRoute(startPoint: $startPoint, endPoint: $endPoint, distance: $distance, date: $date)';
   }
 
   @override
@@ -287,11 +300,13 @@ class _$AddRouteEventImpl implements AddRouteEvent {
             (identical(other.endPoint, endPoint) ||
                 other.endPoint == endPoint) &&
             (identical(other.distance, distance) ||
-                other.distance == distance));
+                other.distance == distance) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startPoint, endPoint, distance);
+  int get hashCode =>
+      Object.hash(runtimeType, startPoint, endPoint, distance, date);
 
   /// Create a copy of RecentRoutesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -306,38 +321,40 @@ class _$AddRouteEventImpl implements AddRouteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchRoutes,
     required TResult Function(
-            String startPoint, String endPoint, double distance)
+            String startPoint, String endPoint, double distance, DateTime date)
         addRoute,
     required TResult Function(int id) deleteRoute,
     required TResult Function() deleteRouteHistory,
   }) {
-    return addRoute(startPoint, endPoint, distance);
+    return addRoute(startPoint, endPoint, distance, date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchRoutes,
-    TResult? Function(String startPoint, String endPoint, double distance)?
+    TResult? Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult? Function(int id)? deleteRoute,
     TResult? Function()? deleteRouteHistory,
   }) {
-    return addRoute?.call(startPoint, endPoint, distance);
+    return addRoute?.call(startPoint, endPoint, distance, date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchRoutes,
-    TResult Function(String startPoint, String endPoint, double distance)?
+    TResult Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult Function(int id)? deleteRoute,
     TResult Function()? deleteRouteHistory,
     required TResult orElse(),
   }) {
     if (addRoute != null) {
-      return addRoute(startPoint, endPoint, distance);
+      return addRoute(startPoint, endPoint, distance, date);
     }
     return orElse();
   }
@@ -384,11 +401,13 @@ abstract class AddRouteEvent implements RecentRoutesEvent {
   const factory AddRouteEvent(
       {required final String startPoint,
       required final String endPoint,
-      required final double distance}) = _$AddRouteEventImpl;
+      required final double distance,
+      required final DateTime date}) = _$AddRouteEventImpl;
 
   String get startPoint;
   String get endPoint;
   double get distance;
+  DateTime get date;
 
   /// Create a copy of RecentRoutesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -468,7 +487,7 @@ class _$DeleteRouteEventImpl implements DeleteRouteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchRoutes,
     required TResult Function(
-            String startPoint, String endPoint, double distance)
+            String startPoint, String endPoint, double distance, DateTime date)
         addRoute,
     required TResult Function(int id) deleteRoute,
     required TResult Function() deleteRouteHistory,
@@ -480,7 +499,8 @@ class _$DeleteRouteEventImpl implements DeleteRouteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchRoutes,
-    TResult? Function(String startPoint, String endPoint, double distance)?
+    TResult? Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult? Function(int id)? deleteRoute,
     TResult? Function()? deleteRouteHistory,
@@ -492,7 +512,8 @@ class _$DeleteRouteEventImpl implements DeleteRouteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchRoutes,
-    TResult Function(String startPoint, String endPoint, double distance)?
+    TResult Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult Function(int id)? deleteRoute,
     TResult Function()? deleteRouteHistory,
@@ -600,7 +621,7 @@ class _$DeleteRouteHistoryEventImpl implements DeleteRouteHistoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchRoutes,
     required TResult Function(
-            String startPoint, String endPoint, double distance)
+            String startPoint, String endPoint, double distance, DateTime date)
         addRoute,
     required TResult Function(int id) deleteRoute,
     required TResult Function() deleteRouteHistory,
@@ -612,7 +633,8 @@ class _$DeleteRouteHistoryEventImpl implements DeleteRouteHistoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchRoutes,
-    TResult? Function(String startPoint, String endPoint, double distance)?
+    TResult? Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult? Function(int id)? deleteRoute,
     TResult? Function()? deleteRouteHistory,
@@ -624,7 +646,8 @@ class _$DeleteRouteHistoryEventImpl implements DeleteRouteHistoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchRoutes,
-    TResult Function(String startPoint, String endPoint, double distance)?
+    TResult Function(
+            String startPoint, String endPoint, double distance, DateTime date)?
         addRoute,
     TResult Function(int id)? deleteRoute,
     TResult Function()? deleteRouteHistory,

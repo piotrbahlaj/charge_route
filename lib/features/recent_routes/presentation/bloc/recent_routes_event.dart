@@ -7,6 +7,7 @@ class RecentRoutesEvent with _$RecentRoutesEvent {
     required String startPoint,
     required String endPoint,
     required double distance,
+    required DateTime date,
   }) = AddRouteEvent;
   const factory RecentRoutesEvent.deleteRoute(int id) = DeleteRouteEvent;
   const factory RecentRoutesEvent.deleteRouteHistory() = DeleteRouteHistoryEvent;
