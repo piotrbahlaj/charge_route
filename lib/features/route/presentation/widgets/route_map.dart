@@ -3,48 +3,66 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class RouteMap extends StatelessWidget {
+class RouteMap extends StatefulWidget {
   const RouteMap({Key? key}) : super(key: key);
 
   @override
+  State<RouteMap> createState() => _RouteMapState();
+}
+
+class _RouteMapState extends State<RouteMap> {
+  GoogleMapController? _mapController;
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RouteBloc, RouteState>(
-      builder: (context, state) {
-        if (state.route == null || state.steps.isEmpty) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        final startLocation = state.steps.first.startLocation;
-        final endLocation = state.steps.last.endLocation;
-
-        final polylines = {
-          Polyline(
-            polylineId: const PolylineId('route'),
-            points: state.polylinePoints,
-            color: Colors.blue,
-            width: 5,
-          ),
-        };
-
-        return GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: LatLng(startLocation!.lat, startLocation.lng),
-            zoom: 14,
-          ),
-          polylines: polylines,
-          markers: {
-            Marker(
-              markerId: const MarkerId('end'),
-              position: LatLng(endLocation!.lat, endLocation.lng),
-              infoWindow: const InfoWindow(title: 'End Location'),
+    return BlocListener<RouteBloc, RouteState>(
+      listener: (context, state) {
+        if (state.userLocation != null && _mapController != null) {
+          _mapController!.animateCamera(
+            CameraUpdate.newLatLng(
+              LatLng(state.userLocation!.latitude, state.userLocation!.longitude),
             ),
-          },
-          myLocationEnabled: true,
-          onMapCreated: (GoogleMapController controller) {
-            _moveCameraToBounds(controller, state.polylinePoints);
-          },
-        );
+          );
+        }
       },
+      child: BlocBuilder<RouteBloc, RouteState>(
+        builder: (context, state) {
+          if (state.route == null || state.steps.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          final startLocation = state.steps.first.startLocation;
+          final endLocation = state.steps.last.endLocation;
+
+          final polylines = {
+            Polyline(
+              polylineId: const PolylineId('route'),
+              points: state.polylinePoints,
+              color: Colors.blue,
+              width: 5,
+            ),
+          };
+
+          return GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: LatLng(startLocation!.lat, startLocation.lng),
+              zoom: 14,
+            ),
+            polylines: polylines,
+            markers: {
+              Marker(
+                markerId: const MarkerId('end'),
+                position: LatLng(endLocation!.lat, endLocation.lng),
+                infoWindow: const InfoWindow(title: 'End Location'),
+              ),
+            },
+            myLocationEnabled: true,
+            onMapCreated: (GoogleMapController controller) {
+              _mapController = controller;
+              _moveCameraToBounds(controller, state.polylinePoints);
+            },
+          );
+        },
+      ),
     );
   }
 

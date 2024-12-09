@@ -83,7 +83,9 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
     _positionStreamSubscription?.cancel();
 
     _positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
-      _evaluateUserProgress(LatLng(position.latitude, position.longitude));
+      final userLocation = LatLng(position.latitude, position.longitude);
+      _evaluateUserProgress(userLocation);
+      emit(state.copyWith(userLocation: userLocation));
     });
   }
 

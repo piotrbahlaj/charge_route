@@ -35,16 +35,9 @@ class RouteInfoPanel extends StatelessWidget {
               ],
             ),
             child: state.isRecalculating
-                ? const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(strokeWidth: 2),
-                      SizedBox(width: 12),
-                      Text(
-                        'Recalculating route...',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                ? const Text(
+                    'Recalculating route...',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
