@@ -1,3 +1,4 @@
+import 'package:charge_route/%20core/utilities/maneuver_icons.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,22 +40,37 @@ class RouteInfoPanel extends StatelessWidget {
                     'Recalculating route...',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        stripHtml(state.currentInstruction ?? 'You have arrived at your destination'),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
+                      Icon(
+                        ManeuverIcons.maneuverIcons[state.steps[state.currentStepIndex].maneuver ?? 'straight'] ??
+                            Icons.directions,
+                        size: 40,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'Distance: ${state.currentStepDistance?.text ?? ''}, ETA: ${state.currentStepDuration?.text ?? ''}',
-                        style: const TextStyle(fontSize: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              stripHtml(state.currentInstruction ?? 'You have arrived at your destination'),
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Distance: ${state.currentStepDistance?.text ?? ''}, ETA: ${state.currentStepDuration?.text ?? ''}',
+                              style: const TextStyle(fontSize: 14),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
