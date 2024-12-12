@@ -107,6 +107,7 @@ _$StepImpl _$$StepImplFromJson(Map<String, dynamic> json) => _$StepImpl(
           : Polyline.fromJson(json['polyline'] as Map<String, dynamic>),
       instruction: json['html_instructions'] as String?,
       travelMode: json['travel_mode'] as String?,
+      maneuver: json['maneuver'] as String?,
     );
 
 Map<String, dynamic> _$$StepImplToJson(_$StepImpl instance) =>
@@ -118,6 +119,7 @@ Map<String, dynamic> _$$StepImplToJson(_$StepImpl instance) =>
       'polyline': instance.polyline,
       'html_instructions': instance.instruction,
       'travel_mode': instance.travelMode,
+      'maneuver': instance.maneuver,
     };
 
 _$BoundsImpl _$$BoundsImplFromJson(Map<String, dynamic> json) => _$BoundsImpl(

@@ -61,9 +61,10 @@ class Step with _$Step {
     required FullDuration? duration,
     @JsonKey(name: 'start_location') required Location? startLocation,
     @JsonKey(name: 'end_location') required Location? endLocation,
-    @JsonKey(name: 'polyline') required Polyline? polyline,
+    required Polyline? polyline,
     @JsonKey(name: 'html_instructions') required String? instruction,
     @JsonKey(name: 'travel_mode') required String? travelMode,
+    String? maneuver,
   }) = _Step;
 
   factory Step.fromJson(Map<String, dynamic> json) => _$StepFromJson(json);

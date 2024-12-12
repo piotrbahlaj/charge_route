@@ -1041,12 +1041,12 @@ mixin _$Step {
   Location? get startLocation => throw _privateConstructorUsedError;
   @JsonKey(name: 'end_location')
   Location? get endLocation => throw _privateConstructorUsedError;
-  @JsonKey(name: 'polyline')
   Polyline? get polyline => throw _privateConstructorUsedError;
   @JsonKey(name: 'html_instructions')
   String? get instruction => throw _privateConstructorUsedError;
   @JsonKey(name: 'travel_mode')
   String? get travelMode => throw _privateConstructorUsedError;
+  String? get maneuver => throw _privateConstructorUsedError;
 
   /// Serializes this Step to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1067,9 +1067,10 @@ abstract class $StepCopyWith<$Res> {
       FullDuration? duration,
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
-      @JsonKey(name: 'polyline') Polyline? polyline,
+      Polyline? polyline,
       @JsonKey(name: 'html_instructions') String? instruction,
-      @JsonKey(name: 'travel_mode') String? travelMode});
+      @JsonKey(name: 'travel_mode') String? travelMode,
+      String? maneuver});
 
   $DistanceCopyWith<$Res>? get distance;
   $FullDurationCopyWith<$Res>? get duration;
@@ -1100,6 +1101,7 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
     Object? polyline = freezed,
     Object? instruction = freezed,
     Object? travelMode = freezed,
+    Object? maneuver = freezed,
   }) {
     return _then(_value.copyWith(
       distance: freezed == distance
@@ -1129,6 +1131,10 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
       travelMode: freezed == travelMode
           ? _value.travelMode
           : travelMode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      maneuver: freezed == maneuver
+          ? _value.maneuver
+          : maneuver // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -1216,9 +1222,10 @@ abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
       FullDuration? duration,
       @JsonKey(name: 'start_location') Location? startLocation,
       @JsonKey(name: 'end_location') Location? endLocation,
-      @JsonKey(name: 'polyline') Polyline? polyline,
+      Polyline? polyline,
       @JsonKey(name: 'html_instructions') String? instruction,
-      @JsonKey(name: 'travel_mode') String? travelMode});
+      @JsonKey(name: 'travel_mode') String? travelMode,
+      String? maneuver});
 
   @override
   $DistanceCopyWith<$Res>? get distance;
@@ -1251,6 +1258,7 @@ class __$$StepImplCopyWithImpl<$Res>
     Object? polyline = freezed,
     Object? instruction = freezed,
     Object? travelMode = freezed,
+    Object? maneuver = freezed,
   }) {
     return _then(_$StepImpl(
       distance: freezed == distance
@@ -1281,6 +1289,10 @@ class __$$StepImplCopyWithImpl<$Res>
           ? _value.travelMode
           : travelMode // ignore: cast_nullable_to_non_nullable
               as String?,
+      maneuver: freezed == maneuver
+          ? _value.maneuver
+          : maneuver // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1293,9 +1305,10 @@ class _$StepImpl implements _Step {
       required this.duration,
       @JsonKey(name: 'start_location') required this.startLocation,
       @JsonKey(name: 'end_location') required this.endLocation,
-      @JsonKey(name: 'polyline') required this.polyline,
+      required this.polyline,
       @JsonKey(name: 'html_instructions') required this.instruction,
-      @JsonKey(name: 'travel_mode') required this.travelMode});
+      @JsonKey(name: 'travel_mode') required this.travelMode,
+      this.maneuver});
 
   factory _$StepImpl.fromJson(Map<String, dynamic> json) =>
       _$$StepImplFromJson(json);
@@ -1311,7 +1324,6 @@ class _$StepImpl implements _Step {
   @JsonKey(name: 'end_location')
   final Location? endLocation;
   @override
-  @JsonKey(name: 'polyline')
   final Polyline? polyline;
   @override
   @JsonKey(name: 'html_instructions')
@@ -1319,10 +1331,12 @@ class _$StepImpl implements _Step {
   @override
   @JsonKey(name: 'travel_mode')
   final String? travelMode;
+  @override
+  final String? maneuver;
 
   @override
   String toString() {
-    return 'Step(distance: $distance, duration: $duration, startLocation: $startLocation, endLocation: $endLocation, polyline: $polyline, instruction: $instruction, travelMode: $travelMode)';
+    return 'Step(distance: $distance, duration: $duration, startLocation: $startLocation, endLocation: $endLocation, polyline: $polyline, instruction: $instruction, travelMode: $travelMode, maneuver: $maneuver)';
   }
 
   @override
@@ -1343,13 +1357,15 @@ class _$StepImpl implements _Step {
             (identical(other.instruction, instruction) ||
                 other.instruction == instruction) &&
             (identical(other.travelMode, travelMode) ||
-                other.travelMode == travelMode));
+                other.travelMode == travelMode) &&
+            (identical(other.maneuver, maneuver) ||
+                other.maneuver == maneuver));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, distance, duration,
-      startLocation, endLocation, polyline, instruction, travelMode);
+      startLocation, endLocation, polyline, instruction, travelMode, maneuver);
 
   /// Create a copy of Step
   /// with the given fields replaced by the non-null parameter values.
@@ -1373,10 +1389,10 @@ abstract class _Step implements Step {
       required final FullDuration? duration,
       @JsonKey(name: 'start_location') required final Location? startLocation,
       @JsonKey(name: 'end_location') required final Location? endLocation,
-      @JsonKey(name: 'polyline') required final Polyline? polyline,
+      required final Polyline? polyline,
       @JsonKey(name: 'html_instructions') required final String? instruction,
-      @JsonKey(name: 'travel_mode')
-      required final String? travelMode}) = _$StepImpl;
+      @JsonKey(name: 'travel_mode') required final String? travelMode,
+      final String? maneuver}) = _$StepImpl;
 
   factory _Step.fromJson(Map<String, dynamic> json) = _$StepImpl.fromJson;
 
@@ -1391,7 +1407,6 @@ abstract class _Step implements Step {
   @JsonKey(name: 'end_location')
   Location? get endLocation;
   @override
-  @JsonKey(name: 'polyline')
   Polyline? get polyline;
   @override
   @JsonKey(name: 'html_instructions')
@@ -1399,6 +1414,8 @@ abstract class _Step implements Step {
   @override
   @JsonKey(name: 'travel_mode')
   String? get travelMode;
+  @override
+  String? get maneuver;
 
   /// Create a copy of Step
   /// with the given fields replaced by the non-null parameter values.

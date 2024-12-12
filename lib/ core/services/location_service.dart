@@ -29,7 +29,10 @@ class LocationService {
 
   Stream<Position> getPositionStream({LocationAccuracy accuracy = LocationAccuracy.high}) {
     return Geolocator.getPositionStream(
-      locationSettings: LocationSettings(accuracy: accuracy),
+      locationSettings: LocationSettings(
+        accuracy: accuracy,
+        distanceFilter: 10,
+      ),
     );
   }
 

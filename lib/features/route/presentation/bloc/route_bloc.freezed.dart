@@ -1275,6 +1275,7 @@ mixin _$RouteState {
   String? get currentInstruction => throw _privateConstructorUsedError;
   bool get isRecalculating => throw _privateConstructorUsedError;
   bool get hasArrived => throw _privateConstructorUsedError;
+  LatLng? get userLocation => throw _privateConstructorUsedError;
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.
@@ -1301,7 +1302,8 @@ abstract class $RouteStateCopyWith<$Res> {
       String? errorMessage,
       String? currentInstruction,
       bool isRecalculating,
-      bool hasArrived});
+      bool hasArrived,
+      LatLng? userLocation});
 
   $RouteResponseCopyWith<$Res>? get route;
   $DistanceCopyWith<$Res>? get currentStepDistance;
@@ -1337,6 +1339,7 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
     Object? currentInstruction = freezed,
     Object? isRecalculating = null,
     Object? hasArrived = null,
+    Object? userLocation = freezed,
   }) {
     return _then(_value.copyWith(
       route: freezed == route
@@ -1387,6 +1390,10 @@ class _$RouteStateCopyWithImpl<$Res, $Val extends RouteState>
           ? _value.hasArrived
           : hasArrived // ignore: cast_nullable_to_non_nullable
               as bool,
+      userLocation: freezed == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ) as $Val);
   }
 
@@ -1481,7 +1488,8 @@ abstract class _$$RouteStateImplCopyWith<$Res>
       String? errorMessage,
       String? currentInstruction,
       bool isRecalculating,
-      bool hasArrived});
+      bool hasArrived,
+      LatLng? userLocation});
 
   @override
   $RouteResponseCopyWith<$Res>? get route;
@@ -1520,6 +1528,7 @@ class __$$RouteStateImplCopyWithImpl<$Res>
     Object? currentInstruction = freezed,
     Object? isRecalculating = null,
     Object? hasArrived = null,
+    Object? userLocation = freezed,
   }) {
     return _then(_$RouteStateImpl(
       route: freezed == route
@@ -1570,6 +1579,10 @@ class __$$RouteStateImplCopyWithImpl<$Res>
           ? _value.hasArrived
           : hasArrived // ignore: cast_nullable_to_non_nullable
               as bool,
+      userLocation: freezed == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ));
   }
 }
@@ -1589,7 +1602,8 @@ class _$RouteStateImpl implements _RouteState {
       this.errorMessage,
       this.currentInstruction,
       this.isRecalculating = false,
-      this.hasArrived = false})
+      this.hasArrived = false,
+      this.userLocation})
       : _polylinePoints = polylinePoints,
         _steps = steps;
 
@@ -1634,10 +1648,12 @@ class _$RouteStateImpl implements _RouteState {
   @override
   @JsonKey()
   final bool hasArrived;
+  @override
+  final LatLng? userLocation;
 
   @override
   String toString() {
-    return 'RouteState(route: $route, polylinePoints: $polylinePoints, steps: $steps, currentStepIndex: $currentStepIndex, currentStepDistance: $currentStepDistance, currentStepDuration: $currentStepDuration, distance: $distance, duration: $duration, errorMessage: $errorMessage, currentInstruction: $currentInstruction, isRecalculating: $isRecalculating, hasArrived: $hasArrived)';
+    return 'RouteState(route: $route, polylinePoints: $polylinePoints, steps: $steps, currentStepIndex: $currentStepIndex, currentStepDistance: $currentStepDistance, currentStepDuration: $currentStepDuration, distance: $distance, duration: $duration, errorMessage: $errorMessage, currentInstruction: $currentInstruction, isRecalculating: $isRecalculating, hasArrived: $hasArrived, userLocation: $userLocation)';
   }
 
   @override
@@ -1666,7 +1682,9 @@ class _$RouteStateImpl implements _RouteState {
             (identical(other.isRecalculating, isRecalculating) ||
                 other.isRecalculating == isRecalculating) &&
             (identical(other.hasArrived, hasArrived) ||
-                other.hasArrived == hasArrived));
+                other.hasArrived == hasArrived) &&
+            (identical(other.userLocation, userLocation) ||
+                other.userLocation == userLocation));
   }
 
   @override
@@ -1683,7 +1701,8 @@ class _$RouteStateImpl implements _RouteState {
       errorMessage,
       currentInstruction,
       isRecalculating,
-      hasArrived);
+      hasArrived,
+      userLocation);
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.
@@ -1707,7 +1726,8 @@ abstract class _RouteState implements RouteState {
       final String? errorMessage,
       final String? currentInstruction,
       final bool isRecalculating,
-      final bool hasArrived}) = _$RouteStateImpl;
+      final bool hasArrived,
+      final LatLng? userLocation}) = _$RouteStateImpl;
 
   @override
   RouteResponse? get route;
@@ -1733,6 +1753,8 @@ abstract class _RouteState implements RouteState {
   bool get isRecalculating;
   @override
   bool get hasArrived;
+  @override
+  LatLng? get userLocation;
 
   /// Create a copy of RouteState
   /// with the given fields replaced by the non-null parameter values.

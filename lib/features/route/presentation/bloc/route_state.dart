@@ -15,5 +15,6 @@ class RouteState with _$RouteState {
     String? currentInstruction,
     @Default(false) bool isRecalculating,
     @Default(false) bool hasArrived,
+    LatLng? userLocation,
   }) = _RouteState;
 }
