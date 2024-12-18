@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/%20core/utilities/polyline_decoder.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
@@ -14,8 +14,9 @@ part 'route_state.dart';
 
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
   RouteRepositoryInterface repository;
+  PolylineDecoderInterface polylineDecoder;
   StreamSubscription<Position>? _positionStreamSubscription;
-  RouteBloc(this.repository) : super(const RouteState()) {
+  RouteBloc(this.repository, this.polylineDecoder) : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
     on<StopTrackingUserLocationEvent>(_onStopTrackingUserLocation);
@@ -102,7 +103,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
       for (var leg in route.legs ?? []) {
         for (var step in leg.steps) {
-          polylinePoints.addAll(PolylineDecoder.decodePolyline(step.polyline.points));
+          polylinePoints.addAll(polylineDecoder.decodePolyline(step.polyline.points));
         }
       }
 

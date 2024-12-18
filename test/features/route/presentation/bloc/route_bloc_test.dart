@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,22 +10,21 @@ import 'package:mocktail/mocktail.dart';
 
 class MockRouteRepository extends Mock implements RouteRepositoryInterface {}
 
-class MockPolylineDecoder {
-  static List<google_maps.LatLng> decodePolyline(String encoded) {
-    return [
-      const google_maps.LatLng(52.2297, 21.0122),
-      const google_maps.LatLng(52.2300, 21.0150),
-    ];
-  }
-}
+class MockPolylineDecoder extends Mock implements PolylineDecoderInterface {}
 
-late MockRouteRepository mockRouteRepo;
+late MockRouteRepository mockRepo;
+late MockPolylineDecoder mockPolylineDecoder;
 late RouteBloc routeBloc;
 
 void main() {
-  mockRouteRepo = MockRouteRepository();
-  routeBloc = RouteBloc(mockRouteRepo);
-  const mockRouteResponse = RouteResponse(
+  setUpAll(() {
+    registerFallbackValue(const google_maps.LatLng(0, 0));
+  });
+  mockRepo = MockRouteRepository();
+  mockPolylineDecoder = MockPolylineDecoder();
+  routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
+
+  const mockResponse = RouteResponse(
     routes: [
       Route(
         legs: [
@@ -68,11 +68,15 @@ void main() {
     const google_maps.LatLng(52.2300, 21.0150),
   ];
   setUp(() {
-    mockRouteRepo = MockRouteRepository();
-    routeBloc = RouteBloc(mockRouteRepo);
+    mockRepo = MockRouteRepository();
+    mockPolylineDecoder = MockPolylineDecoder();
+    routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
 
-    when(() => MockPolylineDecoder.decodePolyline(any())).thenReturn(decodedPolylinePoints);
-    //TODO MOCK POLYLINE DECODER
+    when(() => mockRepo.fetchPositionStream()).thenAnswer((_) => const Stream.empty());
+
+    when(() => mockRepo.calculateDistance(any(), any())).thenReturn(100.0);
+
+    when(() => mockPolylineDecoder.decodePolyline(any())).thenReturn(decodedPolylinePoints);
   });
 
   tearDown(() {
@@ -82,25 +86,24 @@ void main() {
   blocTest<RouteBloc, RouteState>(
     'emits route initialization state with decoded polyline and first step',
     build: () => routeBloc,
-    act: (bloc) => bloc.add(const InitalizeRouteEvent(mockRouteResponse)),
+    act: (bloc) => bloc.add(const InitalizeRouteEvent(mockResponse)),
     expect: () => [
       RouteState(
         isRecalculating: false,
-        route: mockRouteResponse,
-        polylinePoints: [
-          const google_maps.LatLng(52.2297, 21.0122),
-          const google_maps.LatLng(52.2300, 21.0150),
-        ],
-        steps: mockRouteResponse.routes!.first.legs!.first.steps!,
-        distance: mockRouteResponse.routes!.first.legs!.first.distance,
-        duration: mockRouteResponse.routes!.first.legs!.first.duration,
-        currentStepDistance: mockRouteResponse.routes!.first.legs!.first.steps!.first.distance,
-        currentStepDuration: mockRouteResponse.routes!.first.legs!.first.steps!.first.duration,
-        currentInstruction: mockRouteResponse.routes!.first.legs!.first.steps!.first.instruction,
+        route: mockResponse,
+        polylinePoints: decodedPolylinePoints,
+        steps: mockResponse.routes!.first.legs!.first.steps!,
+        distance: mockResponse.routes!.first.legs!.first.distance,
+        duration: mockResponse.routes!.first.legs!.first.duration,
+        currentStepDistance: mockResponse.routes!.first.legs!.first.steps!.first.distance,
+        currentStepDuration: mockResponse.routes!.first.legs!.first.steps!.first.duration,
+        currentInstruction: mockResponse.routes!.first.legs!.first.steps!.first.instruction,
+        userLocation: null,
       ),
     ],
     verify: (_) {
-      verifyNever(() => mockRouteRepo.fetchRoute(any(), any()));
+      verify(() => mockRepo.fetchPositionStream()).called(1);
+      verifyNever(() => mockRepo.fetchRoute(any(), any()));
     },
   );
 }
