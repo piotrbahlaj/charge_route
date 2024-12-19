@@ -7,13 +7,13 @@ import 'package:mocktail/mocktail.dart';
 
 class MockRecentRouteRepository extends Mock implements RecentRoutesRepositoryInterface {}
 
-late RecentRoutesBloc recentRoutesBloc;
+late RecentRoutesBloc bloc;
 late MockRecentRouteRepository mockRepo;
 late List<RecentRoutes> mockRoutes;
 void main() {
   setUpAll(() {
     mockRepo = MockRecentRouteRepository();
-    recentRoutesBloc = RecentRoutesBloc(mockRepo);
+    bloc = RecentRoutesBloc(mockRepo);
   });
 
   setUp(() {
@@ -37,12 +37,12 @@ void main() {
   });
 
   tearDown(() {
-    recentRoutesBloc.close();
+    bloc.close();
   });
 
   blocTest<RecentRoutesBloc, RecentRoutesState>(
     'fetches recent routes history',
-    build: () => recentRoutesBloc,
+    build: () => bloc,
     act: (bloc) => bloc.add(const FetchRoutesEvent()),
     expect: () => [
       const RecentRoutesState(

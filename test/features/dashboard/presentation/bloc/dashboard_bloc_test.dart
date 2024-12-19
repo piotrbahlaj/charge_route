@@ -12,12 +12,15 @@ import 'package:mocktail/mocktail.dart';
 
 class MockDashboardRepository extends Mock implements DashboardRepositoryInterface {}
 
+late MockDashboardRepository mockRepo;
+late DashboardBloc bloc;
 void main() {
-  late MockDashboardRepository mockRepo;
+  setUpAll(() {
+    mockRepo = MockDashboardRepository();
+    bloc = DashboardBloc(mockRepo);
+  });
 
   setUp(() {
-    mockRepo = MockDashboardRepository();
-
     when(() => mockRepo.fetchCurrentLocation()).thenAnswer(
       (_) async => Position(
         latitude: 52.2297,
@@ -54,9 +57,13 @@ void main() {
     );
   });
 
+  tearDown(() {
+    bloc.close();
+  });
+
   blocTest<DashboardBloc, DashboardState>(
     'emits loading and success states when dashboard data is loaded successfully',
-    build: () => DashboardBloc(mockRepo),
+    build: () => bloc,
     act: (bloc) => bloc.add(const LoadDashboardDataEvent()),
     expect: () => [
       const DashboardState(isMapLoading: true),

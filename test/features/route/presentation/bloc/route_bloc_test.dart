@@ -19,11 +19,10 @@ late RouteBloc routeBloc;
 void main() {
   setUpAll(() {
     registerFallbackValue(const google_maps.LatLng(0, 0));
+    mockRepo = MockRouteRepository();
+    mockPolylineDecoder = MockPolylineDecoder();
+    routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
   });
-  mockRepo = MockRouteRepository();
-  mockPolylineDecoder = MockPolylineDecoder();
-  routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
-
   const mockResponse = RouteResponse(
     routes: [
       Route(
@@ -68,10 +67,6 @@ void main() {
     const google_maps.LatLng(52.2300, 21.0150),
   ];
   setUp(() {
-    mockRepo = MockRouteRepository();
-    mockPolylineDecoder = MockPolylineDecoder();
-    routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
-
     when(() => mockRepo.fetchPositionStream()).thenAnswer((_) => const Stream.empty());
 
     when(() => mockRepo.calculateDistance(any(), any())).thenReturn(100.0);
