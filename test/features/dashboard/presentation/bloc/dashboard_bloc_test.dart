@@ -13,12 +13,12 @@ import 'package:mocktail/mocktail.dart';
 class MockDashboardRepository extends Mock implements DashboardRepositoryInterface {}
 
 void main() {
-  late MockDashboardRepository mockDashboardRepo;
+  late MockDashboardRepository mockRepo;
 
   setUp(() {
-    mockDashboardRepo = MockDashboardRepository();
+    mockRepo = MockDashboardRepository();
 
-    when(() => mockDashboardRepo.fetchCurrentLocation()).thenAnswer(
+    when(() => mockRepo.fetchCurrentLocation()).thenAnswer(
       (_) async => Position(
         latitude: 52.2297,
         longitude: 21.0122,
@@ -33,7 +33,7 @@ void main() {
       ),
     );
 
-    when(() => mockDashboardRepo.fetchAddressFromLocation(any())).thenAnswer(
+    when(() => mockRepo.fetchAddressFromLocation(any())).thenAnswer(
       (_) async => const GeocodingResponse(
         status: "OK",
         results: [
@@ -49,14 +49,14 @@ void main() {
       ),
     );
 
-    when(() => mockDashboardRepo.fetchChargingStations(any())).thenAnswer(
+    when(() => mockRepo.fetchChargingStations(any())).thenAnswer(
       (_) async => <NearbyResult>[],
     );
   });
 
   blocTest<DashboardBloc, DashboardState>(
     'emits loading and success states when dashboard data is loaded successfully',
-    build: () => DashboardBloc(mockDashboardRepo),
+    build: () => DashboardBloc(mockRepo),
     act: (bloc) => bloc.add(const LoadDashboardDataEvent()),
     expect: () => [
       const DashboardState(isMapLoading: true),
@@ -77,9 +77,9 @@ void main() {
       ),
     ],
     verify: (_) {
-      verify(() => mockDashboardRepo.fetchCurrentLocation()).called(1);
-      verify(() => mockDashboardRepo.fetchAddressFromLocation(any())).called(1);
-      verify(() => mockDashboardRepo.fetchChargingStations(any())).called(1);
+      verify(() => mockRepo.fetchCurrentLocation()).called(1);
+      verify(() => mockRepo.fetchAddressFromLocation(any())).called(1);
+      verify(() => mockRepo.fetchChargingStations(any())).called(1);
     },
   );
 }

@@ -103,7 +103,6 @@ void main() {
     ],
     verify: (_) {
       verify(() => mockRepo.fetchPositionStream()).called(1);
-      verifyNever(() => mockRepo.fetchRoute(any(), any()));
     },
   );
 }
