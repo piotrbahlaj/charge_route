@@ -48,12 +48,6 @@ void main() {
       ),
       media: null,
     );
-
-    final mockVehicleResponse = VehicleDetailResponse(
-      vehiclesList: [mockVehicle],
-    );
-
-    when(() => mockRepo.fetchVehicleDetails(any(), any())).thenAnswer((_) async => mockVehicleResponse);
   });
 
   tearDown(() {
@@ -62,7 +56,13 @@ void main() {
 
   blocTest<CarDetailsBloc, CarDetailsState>(
     'emits loading and success states when fetching vehicle details succeeds',
-    build: () => bloc,
+    build: () {
+      final mockVehicleResponse = VehicleDetailResponse(
+        vehiclesList: [mockVehicle],
+      );
+      when(() => mockRepo.fetchVehicleDetails(any(), any())).thenAnswer((_) async => mockVehicleResponse);
+      return bloc;
+    },
     act: (bloc) => bloc.add(const SearchVehicleEvent('Tesla')),
     expect: () => [
       const CarDetailsState(

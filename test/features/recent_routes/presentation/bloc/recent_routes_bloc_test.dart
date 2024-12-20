@@ -33,7 +33,6 @@ void main() {
         date: DateTime(2024, 12, 2),
       ),
     ];
-    when(() => mockRepo.fetchRecentRoutes()).thenAnswer((_) async => mockRoutes);
   });
 
   tearDown(() {
@@ -42,7 +41,10 @@ void main() {
 
   blocTest<RecentRoutesBloc, RecentRoutesState>(
     'fetches recent routes history',
-    build: () => bloc,
+    build: () {
+      when(() => mockRepo.fetchRecentRoutes()).thenAnswer((_) async => mockRoutes);
+      return bloc;
+    },
     act: (bloc) => bloc.add(const FetchRoutesEvent()),
     expect: () => [
       const RecentRoutesState(

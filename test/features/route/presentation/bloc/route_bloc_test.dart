@@ -14,74 +14,77 @@ class MockPolylineDecoder extends Mock implements PolylineDecoderInterface {}
 
 late MockRouteRepository mockRepo;
 late MockPolylineDecoder mockPolylineDecoder;
-late RouteBloc routeBloc;
+late RouteBloc bloc;
+late RouteResponse mockResponse;
+late List<google_maps.LatLng> decodedPolylinePoints;
 
 void main() {
   setUpAll(() {
     registerFallbackValue(const google_maps.LatLng(0, 0));
     mockRepo = MockRouteRepository();
     mockPolylineDecoder = MockPolylineDecoder();
-    routeBloc = RouteBloc(mockRepo, mockPolylineDecoder);
+    bloc = RouteBloc(mockRepo, mockPolylineDecoder);
   });
-  const mockResponse = RouteResponse(
-    routes: [
-      Route(
-        legs: [
-          Leg(
-            steps: [
-              Step(
-                polyline: Polyline(points: 'encoded_polyline'),
-                distance: Distance(text: '1 km', value: 1000),
-                duration: FullDuration(text: '2 min', value: 120),
-                instruction: 'Start at point A',
-                startLocation: Location(lat: 52.2297, lng: 21.0122),
-                endLocation: Location(lat: 52.2300, lng: 21.0150),
-                travelMode: 'DRIVING',
-              ),
-            ],
-            distance: Distance(text: '5 km', value: 5000),
-            duration: FullDuration(text: '10 min', value: 600),
-            startAddress: 'Start Address Mocked',
-            endAddress: 'End Address Mocked',
-            startLocation: Location(lat: 52.2297, lng: 21.0122),
-            endLocation: Location(lat: 52.2400, lng: 21.0200),
-          ),
-        ],
-        bounds: Bounds(
-          northeast: Location(lat: 52.2500, lng: 21.0250),
-          southwest: Location(lat: 52.2000, lng: 21.0000),
-        ),
-        overviewPolyline: Polyline(points: 'overview_polyline'),
-      ),
-    ],
-    geocodedWaypoints: [
-      GeocodedWaypoint(
-        placeId: 'place_id_mock',
-        types: ['route'],
-        geocoderStatus: 'OK',
-      ),
-    ],
-  );
-  final decodedPolylinePoints = [
-    const google_maps.LatLng(52.2297, 21.0122),
-    const google_maps.LatLng(52.2300, 21.0150),
-  ];
+
   setUp(() {
-    when(() => mockRepo.fetchPositionStream()).thenAnswer((_) => const Stream.empty());
-
-    when(() => mockRepo.calculateDistance(any(), any())).thenReturn(100.0);
-
-    when(() => mockPolylineDecoder.decodePolyline(any())).thenReturn(decodedPolylinePoints);
+    mockResponse = const RouteResponse(
+      routes: [
+        Route(
+          legs: [
+            Leg(
+              steps: [
+                Step(
+                  polyline: Polyline(points: 'encoded_polyline'),
+                  distance: Distance(text: '1 km', value: 1000),
+                  duration: FullDuration(text: '2 min', value: 120),
+                  instruction: 'Start at point A',
+                  startLocation: Location(lat: 52.2297, lng: 21.0122),
+                  endLocation: Location(lat: 52.2300, lng: 21.0150),
+                  travelMode: 'DRIVING',
+                ),
+              ],
+              distance: Distance(text: '5 km', value: 5000),
+              duration: FullDuration(text: '10 min', value: 600),
+              startAddress: 'Start Address Mocked',
+              endAddress: 'End Address Mocked',
+              startLocation: Location(lat: 52.2297, lng: 21.0122),
+              endLocation: Location(lat: 52.2400, lng: 21.0200),
+            ),
+          ],
+          bounds: Bounds(
+            northeast: Location(lat: 52.2500, lng: 21.0250),
+            southwest: Location(lat: 52.2000, lng: 21.0000),
+          ),
+          overviewPolyline: Polyline(points: 'overview_polyline'),
+        ),
+      ],
+      geocodedWaypoints: [
+        GeocodedWaypoint(
+          placeId: 'place_id_mock',
+          types: ['route'],
+          geocoderStatus: 'OK',
+        ),
+      ],
+    );
+    decodedPolylinePoints = [
+      const google_maps.LatLng(52.2297, 21.0122),
+      const google_maps.LatLng(52.2300, 21.0150),
+    ];
   });
 
   tearDown(() {
-    routeBloc.close();
+    bloc.close();
   });
 
   blocTest<RouteBloc, RouteState>(
     'emits route initialization state with decoded polyline and first step',
-    build: () => routeBloc,
-    act: (bloc) => bloc.add(const InitalizeRouteEvent(mockResponse)),
+    build: () {
+      when(() => mockRepo.fetchPositionStream()).thenAnswer((_) => const Stream.empty());
+      when(() => mockRepo.calculateDistance(any(), any())).thenReturn(100.0);
+      when(() => mockPolylineDecoder.decodePolyline(any())).thenReturn(decodedPolylinePoints);
+      return bloc;
+    },
+    act: (bloc) => bloc.add(InitalizeRouteEvent(mockResponse)),
     expect: () => [
       RouteState(
         isRecalculating: false,
