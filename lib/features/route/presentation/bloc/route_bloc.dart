@@ -15,7 +15,7 @@ part 'route_state.dart';
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
   RouteRepositoryInterface repository;
   PolylineDecoderInterface polylineDecoder;
-  StreamSubscription<Position>? _positionStreamSubscription;
+  StreamSubscription<Position>? positionStreamSubscription;
   RouteBloc(this.repository, this.polylineDecoder) : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
@@ -28,7 +28,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
   @override
   Future<void> close() {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
     return super.close();
   }
 
@@ -81,9 +81,9 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   Future<void> _onStartTrackingUserLocation(StartTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
 
-    _positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
+    positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
       final userLocation = LatLng(position.latitude, position.longitude);
       _evaluateUserProgress(userLocation);
       emit(state.copyWith(userLocation: userLocation));
@@ -91,7 +91,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   Future<void> _onStopTrackingUserLocation(StopTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
   }
 
   Future<void> _onInitializeRoute(InitalizeRouteEvent event, Emitter<RouteState> emit) async {
@@ -183,6 +183,6 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
       hasArrived: false,
       errorMessage: null,
     ));
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
   }
 }

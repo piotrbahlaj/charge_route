@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:charge_route/%20core/models/location/location_response.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
@@ -5,6 +7,7 @@ import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder
 import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:charge_route/features/route/presentation/bloc/route_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
 import 'package:mocktail/mocktail.dart';
 
@@ -12,11 +15,44 @@ class MockRouteRepository extends Mock implements RouteRepositoryInterface {}
 
 class MockPolylineDecoder extends Mock implements PolylineDecoderInterface {}
 
+class MockStreamSubscription<T> extends Mock implements StreamSubscription<T> {}
+
 late MockRouteRepository mockRepo;
 late MockPolylineDecoder mockPolylineDecoder;
 late RouteBloc bloc;
-late RouteResponse mockResponse;
+late RouteResponse mockInitialData;
 late List<google_maps.LatLng> decodedPolylinePoints;
+
+const mockStep = Step(
+  startLocation: Location(lat: 52.5200, lng: 13.4050),
+  endLocation: Location(lat: 48.8566, lng: 2.3522),
+  polyline: Polyline(points: 'mocked_polyline'),
+  distance: Distance(text: '500 km', value: 500000),
+  duration: FullDuration(text: '5 hours', value: 18000),
+  instruction: 'Test Step',
+  travelMode: 'DRIVING',
+);
+
+const List<Step> mockListOfSteps = [
+  Step(
+    polyline: Polyline(points: 'step_1_polyline'),
+    distance: Distance(text: '1 km', value: 1000),
+    duration: FullDuration(text: '2 min', value: 120),
+    instruction: 'Step 1 Instruction',
+    startLocation: Location(lat: 52.2297, lng: 21.0122),
+    endLocation: Location(lat: 52.2300, lng: 21.0150),
+    travelMode: 'DRIVING',
+  ),
+  Step(
+    polyline: Polyline(points: 'step_2_polyline'),
+    distance: Distance(text: '2 km', value: 2000),
+    duration: FullDuration(text: '4 min', value: 240),
+    instruction: 'Step 2 Instruction',
+    startLocation: Location(lat: 52.2300, lng: 21.0150),
+    endLocation: Location(lat: 52.2350, lng: 21.0200),
+    travelMode: 'DRIVING',
+  ),
+];
 
 void main() {
   setUpAll(() {
@@ -27,7 +63,7 @@ void main() {
   });
 
   setUp(() {
-    mockResponse = const RouteResponse(
+    mockInitialData = const RouteResponse(
       routes: [
         Route(
           legs: [
@@ -76,6 +112,7 @@ void main() {
     bloc.close();
   });
 
+// INITIALIZE ROUTE EVENT
   blocTest<RouteBloc, RouteState>(
     'emits route initialization state with decoded polyline and first step',
     build: () {
@@ -84,23 +121,92 @@ void main() {
       when(() => mockPolylineDecoder.decodePolyline(any())).thenReturn(decodedPolylinePoints);
       return bloc;
     },
-    act: (bloc) => bloc.add(InitalizeRouteEvent(mockResponse)),
+    act: (bloc) => bloc.add(InitalizeRouteEvent(mockInitialData)),
     expect: () => [
       RouteState(
         isRecalculating: false,
-        route: mockResponse,
+        route: mockInitialData,
         polylinePoints: decodedPolylinePoints,
-        steps: mockResponse.routes!.first.legs!.first.steps!,
-        distance: mockResponse.routes!.first.legs!.first.distance,
-        duration: mockResponse.routes!.first.legs!.first.duration,
-        currentStepDistance: mockResponse.routes!.first.legs!.first.steps!.first.distance,
-        currentStepDuration: mockResponse.routes!.first.legs!.first.steps!.first.duration,
-        currentInstruction: mockResponse.routes!.first.legs!.first.steps!.first.instruction,
+        steps: mockInitialData.routes!.first.legs!.first.steps!,
+        distance: mockInitialData.routes!.first.legs!.first.distance,
+        duration: mockInitialData.routes!.first.legs!.first.duration,
+        currentStepDistance: mockInitialData.routes!.first.legs!.first.steps!.first.distance,
+        currentStepDuration: mockInitialData.routes!.first.legs!.first.steps!.first.duration,
+        currentInstruction: mockInitialData.routes!.first.legs!.first.steps!.first.instruction,
         userLocation: null,
       ),
     ],
     verify: (_) {
       verify(() => mockRepo.fetchPositionStream()).called(1);
+    },
+  );
+
+// STOP TRACKING USER LOCATION EVENT
+  blocTest<RouteBloc, RouteState>(
+    'cancels position stream subscription when StopTrackingUserLocationEvent is added',
+    build: () {
+      final mockStreamSubscription = MockStreamSubscription<Position>();
+      when(() => mockStreamSubscription.cancel()).thenAnswer((_) async {
+        return;
+      });
+      bloc.positionStreamSubscription = mockStreamSubscription;
+      return bloc;
+    },
+    act: (bloc) => bloc.add(const StopTrackingUserLocationEvent()),
+    verify: (_) {
+      verifyInOrder([
+        () => bloc.positionStreamSubscription?.cancel(),
+      ]);
+    },
+    tearDown: () {
+      bloc.positionStreamSubscription = null;
+    },
+  );
+
+  // UPDATE ROUTE PROGRESS EVENT
+  blocTest<RouteBloc, RouteState>(
+    'updates route progress when a valid step index is provided',
+    build: () => bloc,
+    seed: () => const RouteState(
+      steps: mockListOfSteps,
+      currentStepIndex: 0,
+    ),
+    act: (bloc) => bloc.add(const UpdateRouteProgressEvent(1)),
+    expect: () => [
+      const RouteState(
+        steps: mockListOfSteps,
+        currentStepIndex: 1,
+        currentStepDistance: Distance(text: '2 km', value: 2000),
+        currentStepDuration: FullDuration(text: '4 min', value: 240),
+        currentInstruction: 'Step 2 Instruction',
+      ),
+    ],
+  );
+
+  // USER OFF ROUTE EVENT
+  blocTest<RouteBloc, RouteState>(
+    'emits isRecalculating and triggers InitalizeRouteEvent on successful route recalculation',
+    build: () {
+      when(() => mockRepo.fetchRoute(any(), any())).thenAnswer(
+        (_) async => mockInitialData,
+      );
+      return bloc;
+    },
+    seed: () => const RouteState(
+      steps: [mockStep],
+    ),
+    act: (bloc) => bloc.add(const UserOffRouteEvent(google_maps.LatLng(52.5200, 13.4050))),
+    expect: () => [
+      const RouteState(
+        steps: [mockStep],
+        isRecalculating: true,
+      ),
+    ],
+    verify: (_) {
+      verify(() => mockRepo.fetchRoute(
+            const google_maps.LatLng(52.5200, 13.4050),
+            const google_maps.LatLng(48.8566, 2.3522),
+          )).called(1);
     },
   );
 }
