@@ -59,4 +59,72 @@ void main() {
       verify(() => mockRepo.fetchRecentRoutes()).called(1);
     },
   );
+
+  // ADD ROUTE EVENT
+  blocTest<RecentRoutesBloc, RecentRoutesState>(
+    'saves route in local cache and emits loading states',
+    build: () {
+      when(() => mockRepo.saveRoute(
+            startPoint: any(named: 'startPoint'),
+            endPoint: any(named: 'endPoint'),
+            distance: any(named: 'distance'),
+            date: any(named: 'date'),
+          )).thenAnswer((_) async {});
+      return bloc;
+    },
+    act: (bloc) => bloc.add(AddRouteEvent(
+      startPoint: "Start Point",
+      endPoint: "End Point",
+      distance: 10000,
+      date: DateTime(2024, 12, 1),
+    )),
+    expect: () => [
+      const RecentRoutesState(isLoading: true),
+      const RecentRoutesState(isLoading: false),
+    ],
+    verify: (_) {
+      verify(() => mockRepo.saveRoute(
+            startPoint: 'Start Point',
+            endPoint: 'End Point',
+            distance: 10000,
+            date: DateTime(2024, 12, 1),
+          )).called(1);
+    },
+  );
+
+  // DELETE ROUTE EVENT
+  blocTest<RecentRoutesBloc, RecentRoutesState>(
+    'deletes a route and fetches updated route list',
+    build: () {
+      when(() => mockRepo.deleteRoute(any())).thenAnswer((_) async {});
+      when(() => mockRepo.fetchRecentRoutes()).thenAnswer((_) async => mockRoutes);
+      return bloc;
+    },
+    act: (bloc) => bloc.add(const DeleteRouteEvent(1)),
+    expect: () => [
+      const RecentRoutesState(isLoading: true),
+      RecentRoutesState(isLoading: false, routes: mockRoutes),
+    ],
+    verify: (_) {
+      verify(() => mockRepo.deleteRoute(1)).called(1);
+      verify(() => mockRepo.fetchRecentRoutes()).called(1);
+    },
+  );
+
+  // DELETE ROUTE HISTORY EVENT
+  blocTest<RecentRoutesBloc, RecentRoutesState>(
+    'clears all routes from history',
+    build: () {
+      when(() => mockRepo.clearAllRoutes()).thenAnswer((_) async {});
+      return bloc;
+    },
+    act: (bloc) => bloc.add(const DeleteRouteHistoryEvent()),
+    expect: () => [
+      const RecentRoutesState(isLoading: true),
+      const RecentRoutesState(isLoading: false, routes: []),
+    ],
+    verify: (_) {
+      verify(() => mockRepo.clearAllRoutes()).called(1);
+    },
+  );
 }
