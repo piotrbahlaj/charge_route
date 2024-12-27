@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:charge_route/%20core/models/route/route_response.dart';
-import 'package:charge_route/%20core/utilities/polyline_decoder.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:charge_route/features/route/domain/repository/route_repository_interface.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
@@ -14,8 +14,9 @@ part 'route_state.dart';
 
 class RouteBloc extends Bloc<RouteEvent, RouteState> {
   RouteRepositoryInterface repository;
-  StreamSubscription<Position>? _positionStreamSubscription;
-  RouteBloc(this.repository) : super(const RouteState()) {
+  PolylineDecoderInterface polylineDecoder;
+  StreamSubscription<Position>? positionStreamSubscription;
+  RouteBloc(this.repository, this.polylineDecoder) : super(const RouteState()) {
     on<InitalizeRouteEvent>(_onInitializeRoute);
     on<StartTrackingUserLocationEvent>(_onStartTrackingUserLocation);
     on<StopTrackingUserLocationEvent>(_onStopTrackingUserLocation);
@@ -27,7 +28,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
   @override
   Future<void> close() {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
     return super.close();
   }
 
@@ -80,9 +81,9 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   Future<void> _onStartTrackingUserLocation(StartTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
 
-    _positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
+    positionStreamSubscription = repository.fetchPositionStream().listen((Position position) {
       final userLocation = LatLng(position.latitude, position.longitude);
       _evaluateUserProgress(userLocation);
       emit(state.copyWith(userLocation: userLocation));
@@ -90,7 +91,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
   }
 
   Future<void> _onStopTrackingUserLocation(StopTrackingUserLocationEvent event, Emitter<RouteState> emit) async {
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
   }
 
   Future<void> _onInitializeRoute(InitalizeRouteEvent event, Emitter<RouteState> emit) async {
@@ -102,7 +103,7 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
 
       for (var leg in route.legs ?? []) {
         for (var step in leg.steps) {
-          polylinePoints.addAll(PolylineDecoder.decodePolyline(step.polyline.points));
+          polylinePoints.addAll(polylineDecoder.decodePolyline(step.polyline.points));
         }
       }
 
@@ -182,6 +183,6 @@ class RouteBloc extends Bloc<RouteEvent, RouteState> {
       hasArrived: false,
       errorMessage: null,
     ));
-    _positionStreamSubscription?.cancel();
+    positionStreamSubscription?.cancel();
   }
 }

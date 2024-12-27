@@ -1,6 +1,7 @@
 import 'package:charge_route/%20core/di/service_locator.dart';
 import 'package:charge_route/%20core/router.dart';
 import 'package:charge_route/%20core/theme.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:charge_route/features/car_details/domain/repository/car_details_repository_interface.dart';
 import 'package:charge_route/features/car_details/presentation/bloc/car_details_bloc.dart';
 import 'package:charge_route/features/dashboard/domain/repository/dashboard_repository_interface.dart';
@@ -39,7 +40,10 @@ class Main extends StatelessWidget {
           create: (context) => CarDetailsBloc(getIt<CarDetailsRepositoryInterface>()),
         ),
         BlocProvider<RouteBloc>(
-          create: (context) => RouteBloc(getIt<RouteRepositoryInterface>()),
+          create: (context) => RouteBloc(
+            getIt<RouteRepositoryInterface>(),
+            getIt<PolylineDecoderInterface>(),
+          ),
         ),
         BlocProvider<RecentRoutesBloc>(
           create: (context) =>

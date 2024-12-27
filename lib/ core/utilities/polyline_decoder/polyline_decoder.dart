@@ -1,7 +1,9 @@
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class PolylineDecoder {
-  static List<LatLng> decodePolyline(String encoded) {
+class PolylineDecoder implements PolylineDecoderInterface {
+  @override
+  List<LatLng> decodePolyline(String encoded) {
     List<LatLng> polylineCoordinates = [];
     int index = 0;
     int len = encoded.length;

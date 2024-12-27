@@ -4,6 +4,8 @@ import 'package:charge_route/%20core/network/api_client.dart';
 import 'package:charge_route/%20core/services/ev_api_service/ev_api_service.dart';
 import 'package:charge_route/%20core/services/google_api_service/google_api_service.dart';
 import 'package:charge_route/%20core/services/location_service.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder.dart';
+import 'package:charge_route/%20core/utilities/polyline_decoder/polyline_decoder_interface.dart';
 import 'package:charge_route/config/ev_env_config/ev_environment_config.dart';
 import 'package:charge_route/config/ev_env_config/ev_environment_config_interface.dart';
 import 'package:charge_route/config/google_env_config/google_environment_config.dart';
@@ -112,4 +114,7 @@ void setupLocator() {
       getIt<RecentRoutesDao>(),
     ),
   );
+
+  // Polyline Decoder for Route Bloc
+  getIt.registerLazySingleton<PolylineDecoderInterface>(() => PolylineDecoder());
 }
