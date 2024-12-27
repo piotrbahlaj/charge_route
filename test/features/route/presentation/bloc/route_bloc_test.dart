@@ -209,4 +209,48 @@ void main() {
           )).called(1);
     },
   );
+
+  // ON ARRIVED AT DESTINATION EVENT
+  blocTest<RouteBloc, RouteState>(
+    'sets hasArrived to true when ArrivedAtDestinationEvent is added',
+    build: () => bloc,
+    act: (bloc) => bloc.add(const ArrivedAtDestinationEvent()),
+    expect: () => [const RouteState(hasArrived: true)],
+  );
+
+  // ON DELETE ROUTE EVENT
+  blocTest<RouteBloc, RouteState>(
+    'resets route state and cancels position stream subscription when DeleteRouteEvent is added',
+    build: () {
+      final mockStreamSubscription = MockStreamSubscription<Position>();
+      when(() => mockStreamSubscription.cancel()).thenAnswer((_) async {});
+      bloc.positionStreamSubscription = mockStreamSubscription;
+      return bloc;
+    },
+    act: (bloc) => bloc.add(const DeleteRouteEvent()),
+    expect: () => [
+      const RouteState(
+        route: null,
+        polylinePoints: [],
+        steps: [],
+        currentStepIndex: 0,
+        currentInstruction: null,
+        currentStepDistance: null,
+        currentStepDuration: null,
+        distance: null,
+        duration: null,
+        errorMessage: null,
+        isRecalculating: false,
+        hasArrived: false,
+      )
+    ],
+    verify: (_) {
+      verifyInOrder([
+        () => bloc.positionStreamSubscription?.cancel(),
+      ]);
+    },
+    tearDown: () {
+      bloc.positionStreamSubscription = null;
+    },
+  );
 }
