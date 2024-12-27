@@ -54,6 +54,7 @@ void main() {
     bloc.close();
   });
 
+// SEARCH VEHICLE EVENT
   blocTest<CarDetailsBloc, CarDetailsState>(
     'emits loading and success states when fetching vehicle details succeeds',
     build: () {
@@ -78,5 +79,37 @@ void main() {
     verify: (_) {
       verify(() => mockRepo.fetchVehicleDetails(any(), any())).called(1);
     },
+  );
+
+// SELECT VEHICLE EVENT
+  blocTest<CarDetailsBloc, CarDetailsState>(
+    'emits loading and updates selectedVehicle when a vehicle is selected',
+    build: () => bloc,
+    act: (bloc) => bloc.add(SelectVehicleEvent(mockVehicle)),
+    expect: () => [
+      const CarDetailsState(isLoading: true),
+      CarDetailsState(isLoading: false, selectedVehicle: mockVehicle),
+    ],
+  );
+
+  // CLEAR VEHICLE SUGGESTIONS EVENT
+  blocTest<CarDetailsBloc, CarDetailsState>(
+    'clears suggestions and emits hasSearched flag to false',
+    build: () => bloc,
+    act: (bloc) => bloc.add(const ClearVehicleSuggestionsEvent()),
+    expect: () => [
+      const CarDetailsState(suggestions: [], hasSearched: false),
+    ],
+  );
+
+  // CLEAR SELECTED VEHICLE EVENT
+  blocTest<CarDetailsBloc, CarDetailsState>(
+    'clears the selected vehicle',
+    build: () => bloc,
+    seed: () => CarDetailsState(selectedVehicle: mockVehicle),
+    act: (bloc) => bloc.add(const ClearSelectedVehicleEvent()),
+    expect: () => [
+      const CarDetailsState(selectedVehicle: null),
+    ],
   );
 }
